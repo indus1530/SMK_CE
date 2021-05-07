@@ -485,8 +485,13 @@
                         app:maxValue="99999999999"
 
                         app:type="range" />
+
                 </LinearLayout>
-            </androidx.cardview.widget.CardView><!--EndButton LinearLayout-->
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!--EndButton LinearLayout-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -513,7 +518,13 @@
                     android:onClick="@{() -> callback.BtnContinue()}"
                     android:text="Save"
                     android:textColor="@color/white" />
+
             </LinearLayout>
+            <!--EndButton LinearLayout-->
+
+
         </LinearLayout>
+
     </ScrollView>
+
 </layout>
