@@ -18,7 +18,6 @@ import edu.aku.hassannaqvi.smk_ce.contracts.MHContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper;
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivityEndingBinding;
-import edu.aku.hassannaqvi.smk_ce.ui.sections.SectionMobileHealth;
 
 import static edu.aku.hassannaqvi.smk_ce.CONSTANTS.SECTION_MAIN_CHECK_FOR_END;
 import static edu.aku.hassannaqvi.smk_ce.core.MainApp.mobileHealth;
@@ -68,7 +67,7 @@ public class EndingActivity extends AppCompatActivity {
         saveDraft();
         if (UpdateDB()) {
             finish();
-            gotoActivity(this, SectionMobileHealth.class);
+            gotoActivity(this, MainActivity.class);
         } else {
             Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
         }
