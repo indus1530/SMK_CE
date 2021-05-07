@@ -29,7 +29,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
-        <activity android:name=".ui.sections.Section02"></activity>
+        <activity android:name=".ui.sections.Section04"></activity>
+        <activity android:name=".ui.sections.Section03" />
+        <activity android:name=".ui.sections.Section02" />
         <activity android:name=".ui.sections.Section01" />
         <activity
             android:name=".ui.SplashscreenActivity"
