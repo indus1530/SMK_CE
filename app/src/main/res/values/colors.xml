@@ -18,6 +18,10 @@
     <!-- Standard App Colors -->
     <color name="grayDark">#5e5e5e</color>
     <color name="grayDark1">#696969</color>
+    <color name="grayDark2">#999999</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="lightgrey">#D3D3D3</color>
+    <color name="whitesmoke">#F5F5F5</color>
     <color name="grayLight">#efefef</color>
     <color name="greenLight">#d600ef00</color>
     <color name="redLight">#d6ef0000</color>
