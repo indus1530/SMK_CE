@@ -417,8 +417,11 @@
                             android:tag="vhc0696"
                             android:text='@{vhc0696.checked ? vhc0696x.getText().toString() : ""}'
                             android:visibility='@{vhc0696.checked? View.VISIBLE : View.GONE}' />
+
                     </LinearLayout>
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 

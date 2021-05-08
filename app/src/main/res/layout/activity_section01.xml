@@ -209,6 +209,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="@string/hhi01" />
+
                     </LinearLayout>
 
                     <com.edittextpicker.aliazaz.EditTextPicker
@@ -219,7 +220,7 @@
                         android:inputType="number"
                         android:maxLength="11"
                         app:maxValue="99999999999"
-
+                        app:minValue="0"
                         app:type="range" />
 
                 </LinearLayout>
@@ -449,7 +450,7 @@
                         android:inputType="number"
                         android:maxLength="11"
                         app:maxValue="99999999999"
-
+                        app:minValue="0"
                         app:type="range" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -491,7 +492,7 @@
                         android:inputType="number"
                         android:maxLength="11"
                         app:maxValue="99999999999"
-
+                        app:minValue="0"
                         app:type="range" />
 
                 </LinearLayout>

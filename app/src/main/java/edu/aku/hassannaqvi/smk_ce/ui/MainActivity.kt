@@ -17,7 +17,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
-import com.google.gson.Gson
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.base.repository.GeneralRepository
@@ -31,12 +30,11 @@ import edu.aku.hassannaqvi.smk_ce.models.Camps
 import edu.aku.hassannaqvi.smk_ce.ui.list_activity.FormsReportCluster
 import edu.aku.hassannaqvi.smk_ce.ui.list_activity.FormsReportDate
 import edu.aku.hassannaqvi.smk_ce.ui.login_activity.LoginActivity
-import edu.aku.hassannaqvi.smk_ce.ui.sections.Section01
+import edu.aku.hassannaqvi.smk_ce.ui.sections.*
 import edu.aku.hassannaqvi.smk_ce.utils.extension.gotoActivity
 import edu.aku.hassannaqvi.smk_ce.utils.extension.gotoActivityWithNoHistory
 import edu.aku.hassannaqvi.smk_ce.utils.extension.obtainViewModel
 import edu.aku.hassannaqvi.smk_ce.utils.isNetworkConnected
-import edu.aku.hassannaqvi.smk_ce.utils.shared.SharedStorage
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -262,9 +260,13 @@ class MainActivity : AppCompatActivity() {
     fun openSpecificActivity(v: View) {
         when (v.id) {
             R.id.formA -> {
-                SharedStorage.setSelectedCampData(this, Gson().toJson(camp))
+                //SharedStorage.setSelectedCampData(this, Gson().toJson(camp))
                 gotoActivity(Section01::class.java)
             }
+            R.id.formB -> gotoActivity(Section02::class.java)
+            R.id.formC -> gotoActivity(Section03::class.java)
+            R.id.formD -> gotoActivity(Section04::class.java)
+            R.id.formE -> gotoActivity(Section05::class.java)
             R.id.databaseBtn -> startActivity(Intent(this, AndroidDatabaseManager::class.java))
             R.id.btn_check_camp -> {
                 populateCampDetails()

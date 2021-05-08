@@ -47,11 +47,11 @@
                 android:paddingTop="8dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
                     android:layout_gravity="center"
                     android:paddingTop="24dp"
-                    android:src="@drawable/naunehal_mobile_service" />
+                    android:src="@drawable/smk_ce_icon" />
 
                 <TextView
                     android:layout_width="match_parent"
