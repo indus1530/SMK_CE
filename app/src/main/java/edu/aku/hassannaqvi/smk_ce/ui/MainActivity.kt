@@ -268,9 +268,7 @@ class MainActivity : AppCompatActivity() {
             R.id.formD -> gotoActivity(Section04::class.java)
             R.id.formE -> gotoActivity(Section05::class.java)
             R.id.databaseBtn -> startActivity(Intent(this, AndroidDatabaseManager::class.java))
-            R.id.btn_check_camp -> {
-                populateCampDetails()
-            }
+            R.id.btn_check_camp -> populateCampDetails()
         }
     }
 
