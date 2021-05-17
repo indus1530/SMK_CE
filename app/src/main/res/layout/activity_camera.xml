@@ -69,6 +69,7 @@
             android:paddingEnd="16dp"
             android:radius="2dp"
             android:text="Accept" />
+
     </LinearLayout>
 
 </FrameLayout>

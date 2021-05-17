@@ -51,8 +51,11 @@
                     android:textColor="#7f7f7f"
                     android:textSize="14dp"
                     android:textStyle="normal" />
+
             </LinearLayout>
+
         </androidx.cardview.widget.CardView>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

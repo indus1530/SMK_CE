@@ -47,8 +47,8 @@
                 android:paddingTop="8dp">
 
                 <ImageView
-                    android:layout_width="@dimen/_150sdp"
-                    android:layout_height="@dimen/_150sdp"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
                     android:layout_gravity="center"
                     android:paddingTop="24dp"
                     android:src="@drawable/smk_ce_icon" />
@@ -214,8 +214,8 @@
                                 android:paddingEnd="12dp"
                                 android:text="Download User Data"
                                 android:textColor="@color/white" />
-                        </LinearLayout>
 
+                        </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
 
@@ -237,6 +237,7 @@
                     android:text="Ver."
                     android:textColor="#989898"
                     android:textSize="11sp" />
+
             </LinearLayout>
 
         </ScrollView>
