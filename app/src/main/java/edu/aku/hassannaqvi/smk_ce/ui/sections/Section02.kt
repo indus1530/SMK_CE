@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.smk_ce.ui.sections
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,12 +13,19 @@ import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection02Binding
 import edu.aku.hassannaqvi.smk_ce.models.Form
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
+import edu.aku.hassannaqvi.smk_ce.utils.datecollection.AgeModel
+import edu.aku.hassannaqvi.smk_ce.utils.datecollection.DateRepository.Companion.getCalculatedAge
+import org.threeten.bp.Instant
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.ZoneId
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
 class Section02 : AppCompatActivity() {
 
     lateinit var bi: ActivitySection02Binding
+    var dtFlag = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,6 +109,42 @@ class Section02 : AppCompatActivity() {
 
     override fun onBackPressed() {
         Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show()
+    }
+
+
+    fun hh04OnTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        bi.hh05.isEnabled = false
+        bi.hh05.text = null
+        MainApp.childInformation.calculatedDOB = null
+        if (TextUtils.isEmpty(bi.hh04a.text) || TextUtils.isEmpty(bi.hh04b.text) || TextUtils.isEmpty(bi.hh04c.text)) return
+        if (!bi.hh04a.isRangeTextValidate || !bi.hh04b.isRangeTextValidate || !bi.hh04c.isRangeTextValidate) return
+        if (bi.hh04a.text.toString() == "98" && bi.hh04b.text.toString() == "98" && bi.hh04c.text.toString() == "9998") {
+            bi.hh05.isEnabled = true
+            dtFlag = true
+            return
+        }
+        val day = if (bi.hh04a.text.toString() == "98") 15 else bi.hh04a.text.toString().toInt()
+        val month = bi.hh04b.text.toString().toInt()
+        val year = bi.hh04c.text.toString().toInt()
+        val age: AgeModel?
+        age = if (MainApp.form.localDate != null) getCalculatedAge(MainApp.form.localDate, year, month, day) else getCalculatedAge(year = year, month = month, day = day)
+        if (age == null) {
+            bi.hh04c.error = "Invalid date!!"
+            dtFlag = false
+            return
+        }
+        dtFlag = true
+        bi.hh05.setText(age.year.toString())
+
+        //Setting Date
+        try {
+            val instant = Instant.parse(SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).parse(
+                    "$day-$month-$year"
+            )) + "T06:24:01Z")
+            MainApp.childInformation.calculatedDOB = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate()
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
     }
 
 
