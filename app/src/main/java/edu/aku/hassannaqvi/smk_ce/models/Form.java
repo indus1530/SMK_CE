@@ -190,6 +190,8 @@ public class Form extends BaseObservable {
     private String adol15e = StringUtils.EMPTY;
     private String adol1596 = StringUtils.EMPTY;
     private String adol1596x = StringUtils.EMPTY;
+
+    //SECTION V H C
     private String vhc01 = StringUtils.EMPTY;
     private String vhc02 = StringUtils.EMPTY;
     private String vhc03 = StringUtils.EMPTY;
