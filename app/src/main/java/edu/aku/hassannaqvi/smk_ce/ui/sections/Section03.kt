@@ -2,10 +2,17 @@ package edu.aku.hassannaqvi.smk_ce.ui.sections
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
 import android.view.View
+import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.validatorcrawler.aliazaz.Clear
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
@@ -24,6 +31,90 @@ class Section03 : AppCompatActivity() {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section03)
         bi.callback
         setSupportActionBar(bi.toolbar)
+        setupSkips()
+    }
+
+
+    private fun setupSkips() {
+
+        //bi.chkWeight.setOnCheckedChangeListener { compoundButton, b -> Clear.clearAllFields(bi.mh012, !b) }
+
+
+        /*bi.mwra03.setOnCheckedChangeListener { radioGroup, i ->
+            if (i == bi.mwra03b.id) {
+                Clear.clearAllFields(bi.fldGrpCVmwra04)
+                bi.fldGrpCVmwra04.visibility = View.GONE
+            } else {
+                bi.fldGrpCVmwra04.visibility = View.VISIBLE
+            }
+        }*/
+
+        bi.mwra04.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if (TextUtils.isEmpty(bi.mwra04.text)) return
+                if (bi.mwra04.text.toString().toInt() == 0) {
+                    Clear.clearAllFields(bi.fldGrpCVmwra05)
+                    bi.fldGrpCVmwra05.visibility = View.GONE
+                } else {
+                    bi.fldGrpCVmwra05.visibility = View.VISIBLE
+                }
+            }
+
+            override fun afterTextChanged(s: Editable) {}
+        })
+
+
+        bi.mwra07.setOnCheckedChangeListener { radioGroup, i ->
+            if (i == bi.mwra07b.id) {
+                Clear.clearAllFields(bi.fldGrpCVmwra08)
+                bi.fldGrpCVmwra08.visibility = View.GONE
+            } else {
+                bi.fldGrpCVmwra08.visibility = View.VISIBLE
+            }
+        }
+
+
+        bi.mwra09.setOnCheckedChangeListener { radioGroup, i ->
+            if (i == bi.mwra09b.id) {
+                Clear.clearAllFields(bi.llmwra09)
+                bi.llmwra09.visibility = View.GONE
+            } else {
+                bi.llmwra09.visibility = View.VISIBLE
+            }
+        }
+
+
+        bi.mwra11.setOnCheckedChangeListener { radioGroup, i ->
+            if (i == bi.mwra11b.id) {
+                Clear.clearAllFields(bi.fldGrpCVmwra12)
+                bi.fldGrpCVmwra12.visibility = View.GONE
+            } else {
+                bi.fldGrpCVmwra12.visibility = View.VISIBLE
+            }
+        }
+
+
+        bi.mwra13.setOnCheckedChangeListener { radioGroup, i ->
+            if (i == bi.mwra13b.id) {
+                Clear.clearAllFields(bi.llmwra13)
+                bi.llmwra13.visibility = View.GONE
+            } else {
+                bi.llmwra13.visibility = View.VISIBLE
+            }
+        }
+
+        rgLsnr(bi.mwra03, bi.mwra03b, bi.fldGrpCVmwra04)
+
+    }
+
+
+    private fun rgLsnr(rg: RadioGroup, rb: RadioButton, vg: ViewGroup) {
+        rg.setOnCheckedChangeListener { radioGroup, i ->
+            Clear.clearAllFields(vg)
+            vg.visibility = View.VISIBLE
+            if (i == rb.id) vg.visibility = View.GONE
+        }
     }
 
 
