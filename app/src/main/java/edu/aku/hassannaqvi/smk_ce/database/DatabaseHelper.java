@@ -951,7 +951,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // New value for one column
         ContentValues values = new ContentValues();
         values.put(FormsContract.FormsTable.COLUMN_ISTATUS, MainApp.form.getIStatus());
-        values.put(FormsContract.FormsTable.COLUMN_ISTATUS, MainApp.form.getHh26());
+        //values.put(FormsContract.FormsTable.COLUMN_ISTATUS, MainApp.form.getHh26());
         values.put(FormsContract.FormsTable.COLUMN_ISTATUS96x, MainApp.form.getIStatus96x());
         values.put(FormsContract.FormsTable.COLUMN_ENDINGDATETIME, MainApp.form.getEndTime());
 
