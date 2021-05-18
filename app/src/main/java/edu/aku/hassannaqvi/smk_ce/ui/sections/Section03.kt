@@ -40,15 +40,6 @@ class Section03 : AppCompatActivity() {
         //bi.chkWeight.setOnCheckedChangeListener { compoundButton, b -> Clear.clearAllFields(bi.mh012, !b) }
 
 
-        /*bi.mwra03.setOnCheckedChangeListener { radioGroup, i ->
-            if (i == bi.mwra03b.id) {
-                Clear.clearAllFields(bi.fldGrpCVmwra04)
-                bi.fldGrpCVmwra04.visibility = View.GONE
-            } else {
-                bi.fldGrpCVmwra04.visibility = View.VISIBLE
-            }
-        }*/
-
         bi.mwra04.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
@@ -64,47 +55,11 @@ class Section03 : AppCompatActivity() {
             override fun afterTextChanged(s: Editable) {}
         })
 
-
-        bi.mwra07.setOnCheckedChangeListener { radioGroup, i ->
-            if (i == bi.mwra07b.id) {
-                Clear.clearAllFields(bi.fldGrpCVmwra08)
-                bi.fldGrpCVmwra08.visibility = View.GONE
-            } else {
-                bi.fldGrpCVmwra08.visibility = View.VISIBLE
-            }
-        }
-
-
-        bi.mwra09.setOnCheckedChangeListener { radioGroup, i ->
-            if (i == bi.mwra09b.id) {
-                Clear.clearAllFields(bi.llmwra09)
-                bi.llmwra09.visibility = View.GONE
-            } else {
-                bi.llmwra09.visibility = View.VISIBLE
-            }
-        }
-
-
-        bi.mwra11.setOnCheckedChangeListener { radioGroup, i ->
-            if (i == bi.mwra11b.id) {
-                Clear.clearAllFields(bi.fldGrpCVmwra12)
-                bi.fldGrpCVmwra12.visibility = View.GONE
-            } else {
-                bi.fldGrpCVmwra12.visibility = View.VISIBLE
-            }
-        }
-
-
-        bi.mwra13.setOnCheckedChangeListener { radioGroup, i ->
-            if (i == bi.mwra13b.id) {
-                Clear.clearAllFields(bi.llmwra13)
-                bi.llmwra13.visibility = View.GONE
-            } else {
-                bi.llmwra13.visibility = View.VISIBLE
-            }
-        }
-
         rgLsnr(bi.mwra03, bi.mwra03b, bi.fldGrpCVmwra04)
+        rgLsnr(bi.mwra07, bi.mwra07b, bi.fldGrpCVmwra08)
+        rgLsnr(bi.mwra09, bi.mwra09b, bi.llmwra09)
+        rgLsnr(bi.mwra11, bi.mwra11b, bi.fldGrpCVmwra12)
+        rgLsnr(bi.mwra13, bi.mwra13b, bi.llmwra13)
 
     }
 
