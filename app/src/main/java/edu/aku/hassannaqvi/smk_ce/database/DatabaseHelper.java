@@ -109,11 +109,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_HHNO, form.getHhno());
         values.put(FormsTable.COLUMN_DCODE, form.getDcode());
         values.put(FormsTable.COLUMN_UCODE, form.getUcode());
-        values.put(FormsTable.COLUMN_S01HH, form.getS01HH());
-        values.put(FormsTable.COLUMN_S05PD, form.getS05PD());
-        values.put(FormsTable.COLUMN_S06BF, form.getS06BF());
-        values.put(FormsTable.COLUMN_S07CV, form.getS07CV());
-        values.put(FormsTable.COLUMN_S08SE, form.getS08SE());
+        values.put(FormsTable.COLUMN_SA, form.getsA());
+        values.put(FormsTable.COLUMN_SB, form.getsB());
+        values.put(FormsTable.COLUMN_SC, form.getsC());
+        values.put(FormsTable.COLUMN_SD, form.getsD());
+        values.put(FormsTable.COLUMN_SE, form.getsE());
 
         values.put(FormsTable.COLUMN_ISTATUS, form.getIStatus());
         values.put(FormsTable.COLUMN_ISTATUS96x, form.getIStatus96x());

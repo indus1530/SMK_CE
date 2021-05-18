@@ -2,8 +2,10 @@ package edu.aku.hassannaqvi.smk_ce.ui.sections
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -13,12 +15,6 @@ import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection02Binding
 import edu.aku.hassannaqvi.smk_ce.models.Form
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
-import edu.aku.hassannaqvi.smk_ce.utils.datecollection.AgeModel
-import edu.aku.hassannaqvi.smk_ce.utils.datecollection.DateRepository.Companion.getCalculatedAge
-import org.threeten.bp.Instant
-import org.threeten.bp.LocalDateTime
-import org.threeten.bp.ZoneId
-import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -30,8 +26,23 @@ class Section02 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section02)
-        bi.callback
+        bi.callback = this
         setSupportActionBar(bi.toolbar)
+
+
+        val txtListener = arrayOf<EditText>(bi.hh04a, bi.hh04b)
+        for (txtItem in txtListener) {
+            txtItem.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                    bi.hh05.text = null
+                    bi.hh04c.text = null
+                }
+
+                override fun afterTextChanged(s: Editable) {}
+            })
+        }
+
     }
 
 
@@ -113,38 +124,51 @@ class Section02 : AppCompatActivity() {
 
 
     fun hh04OnTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        bi.hh05.isEnabled = false
-        bi.hh05.text = null
-        MainApp.childInformation.calculatedDOB = null
-        if (TextUtils.isEmpty(bi.hh04a.text) || TextUtils.isEmpty(bi.hh04b.text) || TextUtils.isEmpty(bi.hh04c.text)) return
-        if (!bi.hh04a.isRangeTextValidate || !bi.hh04b.isRangeTextValidate || !bi.hh04c.isRangeTextValidate) return
-        if (bi.hh04a.text.toString() == "98" && bi.hh04b.text.toString() == "98" && bi.hh04c.text.toString() == "9998") {
-            bi.hh05.isEnabled = true
-            dtFlag = true
-            return
+        segregate()
+        /*Clear.clearAllFields(bi.fldGrpCVhh04, false)
+        bi.fldGrpCVmh017.setVisibility(View.GONE)
+        bi.llmh020.setVisibility(View.GONE)
+        bi.fldGrpCVmh015.setVisibility(View.GONE)
+        bi.fldGrpCVmh016.setVisibility(View.GONE)
+        bi.fldGrpCVmh018.setVisibility(View.GONE)
+        bi.llchild.setVisibility(View.GONE)
+        patientType = "General"
+        if (age >= 5110 && age < 18250 && bi.mh01002.isChecked()) {
+            bi.fldGrpCVmh017.setVisibility(View.VISIBLE)
+            bi.llmh020.setVisibility(View.VISIBLE)
+            patientType = "MWRA"
         }
-        val day = if (bi.hh04a.text.toString() == "98") 15 else bi.hh04a.text.toString().toInt()
-        val month = bi.hh04b.text.toString().toInt()
-        val year = bi.hh04c.text.toString().toInt()
-        val age: AgeModel?
-        age = if (MainApp.form.localDate != null) getCalculatedAge(MainApp.form.localDate, year, month, day) else getCalculatedAge(year = year, month = month, day = day)
-        if (age == null) {
-            bi.hh04c.error = "Invalid date!!"
-            dtFlag = false
-            return
-        }
-        dtFlag = true
-        bi.hh05.setText(age.year.toString())
+        if (age <= 1825) {
+            bi.fldGrpCVmh015.setVisibility(View.VISIBLE)
+            bi.fldGrpCVmh016.setVisibility(View.VISIBLE)
+            bi.fldGrpCVmh018.setVisibility(View.VISIBLE)
+            bi.llchild.setVisibility(View.VISIBLE)
+            bi.mh012.setMinvalue(0.9f)
+            bi.mh012.setMaxvalue(58f)
+            bi.mh012.setMask("###.#")
+            bi.mh012.setHint("###.#")
+            patientType = "Child"
+        }*/
+    }
 
-        //Setting Date
-        try {
-            val instant = Instant.parse(SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).parse(
-                    "$day-$month-$year"
-            )) + "T06:24:01Z")
-            MainApp.childInformation.calculatedDOB = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate()
-        } catch (e: ParseException) {
-            e.printStackTrace()
+    private fun segregate() {
+
+        /*var age: Int = 0
+        Clear.clearAllFields(bi.fldGrpCVhh05, false)
+        if (TextUtils.isEmpty(bi.hh04a.text) || TextUtils.isEmpty(bi.hh04b.text) || TextUtils.isEmpty(bi.hh04c.text)) return
+
+        if ((bi.hh04a.text.toString() == "98" && bi.hh04b.text.toString() == "98" && bi.hh04c.text.toString() == "9998")) {
+            Clear.clearAllFields(bi.fldGrpCVhh05, true)
+        } else {
+            age = bi.hh04a.text.toString().toInt() + bi.hh04b.text.toString().toInt() * 29 + bi.hh04c.text.toString().toInt() * 365
         }
+
+        if (age in 1.. 5475) {
+            Clear.clearAllFields(bi.llhh05)
+            bi.llhh05.visibility = View.GONE
+        } else {
+            bi.llhh05.visibility = View.VISIBLE
+        }*/
     }
 
 

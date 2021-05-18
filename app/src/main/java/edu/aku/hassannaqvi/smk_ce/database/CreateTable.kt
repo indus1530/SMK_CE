@@ -30,11 +30,11 @@ object CreateTable {
             + FormsContract.FormsTable.COLUMN_UCODE + " TEXT,"
             + FormsContract.FormsTable.COLUMN_CLUSTER + " TEXT,"
             + FormsContract.FormsTable.COLUMN_HHNO + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_S01HH + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_S05PD + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_S06BF + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_S07CV + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_S08SE + " TEXT"
+            + FormsContract.FormsTable.COLUMN_SA + " TEXT,"
+            + FormsContract.FormsTable.COLUMN_SB + " TEXT,"
+            + FormsContract.FormsTable.COLUMN_SC + " TEXT,"
+            + FormsContract.FormsTable.COLUMN_SD + " TEXT,"
+            + FormsContract.FormsTable.COLUMN_SE + " TEXT"
             + " );")
 
     const val SQL_CREATE_CHILD_INFO = ("CREATE TABLE "

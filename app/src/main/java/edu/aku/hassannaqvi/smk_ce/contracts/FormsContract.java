@@ -25,11 +25,11 @@ public class FormsContract {
         public static final String COLUMN_UCODE = "ucCode";
         public static final String COLUMN_CLUSTER = "clusterno";
         public static final String COLUMN_HHNO = "hhno";
-        public static final String COLUMN_S01HH = "s01HH";
-        public static final String COLUMN_S05PD = "s05PD";
-        public static final String COLUMN_S06BF = "s06BF";
-        public static final String COLUMN_S07CV = "s07CV";
-        public static final String COLUMN_S08SE = "s08SE";
+        public static final String COLUMN_SA = "s01HH";
+        public static final String COLUMN_SB = "s05PD";
+        public static final String COLUMN_SC = "s06BF";
+        public static final String COLUMN_SD = "s07CV";
+        public static final String COLUMN_SE = "s08SE";
         public static final String COLUMN_G5FLAG = "g5FLAG";
         public static final String COLUMN_HHFLAG = "hhFLAG";
         public static final String COLUMN_ISTATUS = "istatus";
