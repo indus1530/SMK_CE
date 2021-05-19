@@ -3,9 +3,13 @@ package edu.aku.hassannaqvi.smk_ce.ui.sections
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.validatorcrawler.aliazaz.Clear
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
@@ -24,6 +28,24 @@ class Section04 : AppCompatActivity() {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section04)
         bi.callback
         setSupportActionBar(bi.toolbar)
+        setupSkips()
+    }
+
+
+    private fun setupSkips() {
+        rgLsnr(bi.adol05, bi.adol05b, arrayOf(bi.fldGrpCVadol06, bi.fldGrpCVadol07))
+
+    }
+
+
+    private fun rgLsnr(rg: RadioGroup, rb: RadioButton, vgArray: Array<ViewGroup>) {
+        rg.setOnCheckedChangeListener { radioGroup, i ->
+            vgArray.forEach {
+                Clear.clearAllFields(it)
+                it.visibility = View.VISIBLE
+                if (i == rb.id) it.visibility = View.GONE
+            }
+        }
     }
 
 
