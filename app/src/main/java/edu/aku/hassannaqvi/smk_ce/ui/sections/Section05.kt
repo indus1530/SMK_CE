@@ -3,9 +3,13 @@ package edu.aku.hassannaqvi.smk_ce.ui.sections
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.validatorcrawler.aliazaz.Clear
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
@@ -24,6 +28,27 @@ class Section05 : AppCompatActivity() {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section05)
         bi.callback
         setSupportActionBar(bi.toolbar)
+        setupSkips()
+    }
+
+
+    private fun setupSkips() {
+        rgLsnr(bi.vhc01, bi.vhc01b, arrayOf(bi.fldGrpCVvhc02, bi.fldGrpCVvhc03, bi.fldGrpCVvhc04, bi.fldGrpCVvhc05, bi.fldGrpCVvhc06))
+        rgLsnr(bi.vhc02, bi.vhc02b, arrayOf(bi.fldGrpCVvhc03, bi.fldGrpCVvhc04, bi.fldGrpCVvhc05, bi.fldGrpCVvhc06))
+        rgLsnr(bi.vhc03, bi.vhc03b, arrayOf(bi.fldGrpCVvhc04, bi.fldGrpCVvhc05))
+        rgLsnr(bi.vhc05, bi.vhc05b, arrayOf(bi.fldGrpCVvhc06))
+
+    }
+
+
+    private fun rgLsnr(rg: RadioGroup, rb: RadioButton, vgArray: Array<ViewGroup>) {
+        rg.setOnCheckedChangeListener { radioGroup, i ->
+            vgArray.forEach {
+                Clear.clearAllFields(it)
+                it.visibility = View.VISIBLE
+                if (i == rb.id) it.visibility = View.GONE
+            }
+        }
     }
 
 
