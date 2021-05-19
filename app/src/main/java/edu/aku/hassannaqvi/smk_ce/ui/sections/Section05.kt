@@ -36,7 +36,7 @@ class Section05 : AppCompatActivity() {
         rgLsnr(bi.vhc01, bi.vhc01b, arrayOf(bi.fldGrpCVvhc02, bi.fldGrpCVvhc03, bi.fldGrpCVvhc04, bi.fldGrpCVvhc05, bi.fldGrpCVvhc06))
         rgLsnr(bi.vhc02, bi.vhc02b, arrayOf(bi.fldGrpCVvhc03, bi.fldGrpCVvhc04, bi.fldGrpCVvhc05, bi.fldGrpCVvhc06))
         rgLsnr(bi.vhc03, bi.vhc03b, arrayOf(bi.fldGrpCVvhc04, bi.fldGrpCVvhc05))
-        rgLsnr(bi.vhc05, bi.vhc05b, arrayOf(bi.fldGrpCVvhc06))
+        rgLsnr(bi.vhc05, bi.vhc05a, arrayOf(bi.fldGrpCVvhc06))
 
     }
 
