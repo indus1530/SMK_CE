@@ -55,20 +55,44 @@ class Section03 : AppCompatActivity() {
             override fun afterTextChanged(s: Editable) {}
         })
 
-        rgLsnr(bi.mwra03, bi.mwra03b, bi.fldGrpCVmwra04)
-        rgLsnr(bi.mwra07, bi.mwra07b, bi.fldGrpCVmwra08)
-        rgLsnr(bi.mwra09, bi.mwra09b, bi.llmwra09)
-        rgLsnr(bi.mwra11, bi.mwra11b, bi.fldGrpCVmwra12)
-        rgLsnr(bi.mwra13, bi.mwra13b, bi.llmwra13)
+
+        bi.mwra16.setOnCheckedChangeListener { radioGroup, i ->
+            Clear.clearAllFields(bi.fldGrpCVmwra17)
+            Clear.clearAllFields(bi.fldGrpCVmwra18)
+            Clear.clearAllFields(bi.fldGrpCVmwra19)
+            Clear.clearAllFields(bi.fldGrpCVmwra20)
+            bi.fldGrpCVmwra17.visibility = View.GONE
+            bi.fldGrpCVmwra18.visibility = View.GONE
+            bi.fldGrpCVmwra19.visibility = View.GONE
+            bi.fldGrpCVmwra20.visibility = View.GONE
+            if (i == bi.mwra16a.id) bi.fldGrpCVmwra20.visibility = View.VISIBLE
+            else {
+                bi.fldGrpCVmwra17.visibility = View.VISIBLE
+                bi.fldGrpCVmwra18.visibility = View.VISIBLE
+                bi.fldGrpCVmwra19.visibility = View.VISIBLE
+            }
+        }
+
+
+        rgLsnr(bi.mwra03, bi.mwra03b, arrayOf(bi.fldGrpCVmwra04))
+        rgLsnr(bi.mwra07, bi.mwra07b, arrayOf(bi.fldGrpCVmwra08))
+        rgLsnr(bi.mwra09, bi.mwra09b, arrayOf(bi.fldGrpCVmwra10, bi.fldGrpCVmwra11, bi.fldGrpCVmwra12))
+        rgLsnr(bi.mwra11, bi.mwra11b, arrayOf(bi.fldGrpCVmwra12))
+        rgLsnr(bi.mwra13, bi.mwra13b, arrayOf(bi.fldGrpCVmwra14, bi.fldGrpCVmwra15, bi.fldGrpCVmwra16, bi.fldGrpCVmwra17))
+        rgLsnr(bi.mwra19, bi.mwra19b, arrayOf(bi.fldGrpCVmwra20))
+        rgLsnr(bi.mwra21, bi.mwra21b, arrayOf(bi.fldGrpCVmwra22))
+        rgLsnr(bi.mwra22, bi.mwra22a, arrayOf(bi.fldGrpCVmwra23))
 
     }
 
 
-    private fun rgLsnr(rg: RadioGroup, rb: RadioButton, vg: ViewGroup) {
+    private fun rgLsnr(rg: RadioGroup, rb: RadioButton, vgArray: Array<ViewGroup>) {
         rg.setOnCheckedChangeListener { radioGroup, i ->
-            Clear.clearAllFields(vg)
-            vg.visibility = View.VISIBLE
-            if (i == rb.id) vg.visibility = View.GONE
+            vgArray.forEach {
+                Clear.clearAllFields(it)
+                it.visibility = View.VISIBLE
+                if (i == rb.id) it.visibility = View.GONE
+            }
         }
     }
 
