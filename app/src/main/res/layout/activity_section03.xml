@@ -55,6 +55,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="@string/mwrahint" />
 
                     </LinearLayout>
@@ -85,9 +86,8 @@
                                 android:text="@string/Q_mwra01" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra01" />
 
                         </LinearLayout>
@@ -126,9 +126,8 @@
                                 android:text="@string/Q_mwra02" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra02" />
 
                         </LinearLayout>
@@ -137,7 +136,8 @@
                             android:id="@+id/mwra02"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/mwra02"
+                            android:gravity="center"
+                            android:hint="##"
                             android:inputType="number"
                             android:maxLength="2"
                             app:maxValue="49"
@@ -172,9 +172,8 @@
                                 android:text="@string/Q_mwra03" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra03" />
 
                         </LinearLayout>
@@ -229,9 +228,8 @@
                                 android:text="@string/Q_mwra04" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra04" />
 
                         </LinearLayout>
@@ -240,7 +238,8 @@
                             android:id="@+id/mwra04"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/mwra04"
+                            android:gravity="center"
+                            android:hint="##"
                             android:inputType="number"
                             android:maxLength="2"
                             app:maxValue="10"
@@ -275,9 +274,8 @@
                                 android:text="@string/Q_mwra05" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra05" />
 
                         </LinearLayout>
@@ -285,6 +283,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
                             android:orientation="horizontal">
 
                             <TextView
@@ -306,6 +305,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
                             android:orientation="horizontal">
 
                             <com.edittextpicker.aliazaz.EditTextPicker
@@ -314,7 +314,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:hint="@string/mwra05a"
+                                android:hint="##"
                                 android:inputType="number"
                                 android:maxLength="2"
                                 app:maxValue="30"
@@ -327,7 +327,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:hint="@string/mwra05b"
+                                android:hint="##"
                                 android:inputType="number"
                                 android:maxLength="2"
                                 app:maxValue="11"
@@ -364,9 +364,8 @@
                                 android:text="@string/Q_mwra06" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra06" />
 
                         </LinearLayout>
@@ -375,7 +374,8 @@
                             android:id="@+id/mwra06"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/mwra06"
+                            android:gravity="center"
+                            android:hint="#"
                             android:inputType="number"
                             android:maxLength="1"
                             app:maxValue="9"
@@ -410,9 +410,8 @@
                                 android:text="@string/Q_mwra07" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra07" />
 
                         </LinearLayout>
@@ -467,9 +466,8 @@
                                 android:text="@string/Q_mwra08" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra08" />
 
                         </LinearLayout>
@@ -569,9 +567,8 @@
                                 android:text="@string/Q_mwra09" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra09" />
 
                         </LinearLayout>
@@ -626,9 +623,8 @@
                                 android:text="@string/Q_mwra10" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra10" />
 
                         </LinearLayout>
@@ -637,7 +633,8 @@
                             android:id="@+id/mwra10"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/mwra10"
+                            android:gravity="center"
+                            android:hint="#"
                             android:inputType="number"
                             android:maxLength="1"
                             app:maxValue="5"
@@ -672,9 +669,8 @@
                                 android:text="@string/Q_mwra11" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra11" />
 
                         </LinearLayout>
@@ -729,9 +725,8 @@
                                 android:text="@string/Q_mwra12" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra12" />
 
                         </LinearLayout>
@@ -867,9 +862,8 @@
                                 android:text="@string/Q_mwra13" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra13" />
 
                         </LinearLayout>
@@ -924,9 +918,8 @@
                                 android:text="@string/Q_mwra14" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra14" />
 
                         </LinearLayout>
@@ -1060,9 +1053,8 @@
                                 android:text="@string/Q_mwra15" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra15" />
 
                         </LinearLayout>
@@ -1156,9 +1148,8 @@
                                 android:text="@string/Q_mwra16" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra16" />
 
                         </LinearLayout>
@@ -1213,9 +1204,8 @@
                                 android:text="@string/Q_mwra17" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra17" />
 
                         </LinearLayout>
@@ -1303,9 +1293,8 @@
                                 android:text="@string/Q_mwra18" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra18" />
 
                         </LinearLayout>
@@ -1411,9 +1400,8 @@
                                 android:text="@string/Q_mwra19" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra19" />
 
                         </LinearLayout>
@@ -1468,9 +1456,8 @@
                                 android:text="@string/Q_mwra20" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra20" />
 
                         </LinearLayout>
@@ -1604,9 +1591,8 @@
                                 android:text="@string/Q_mwra21" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra21" />
 
                         </LinearLayout>
@@ -1661,9 +1647,8 @@
                                 android:text="@string/Q_mwra22" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra22" />
 
                         </LinearLayout>
@@ -1718,9 +1703,8 @@
                                 android:text="@string/Q_mwra23" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra23" />
 
                         </LinearLayout>
@@ -1838,9 +1822,8 @@
                                 android:text="@string/Q_mwra24" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/mwra24" />
 
                         </LinearLayout>
