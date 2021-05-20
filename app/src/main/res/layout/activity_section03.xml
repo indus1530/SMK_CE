@@ -8,7 +8,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.smk_ce.ui.sections.Section03" />
+            type="edu.aku.hassannaqvi.smk_ce.ui.sections.Section03Activity" />
 
     </data>
 
@@ -540,7 +540,9 @@
                                 android:visibility='@{mwra0896.checked? View.VISIBLE : View.GONE}' />
 
                         </LinearLayout>
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
 
@@ -836,7 +838,9 @@
                                 android:visibility='@{mwra1296.checked? View.VISIBLE : View.GONE}' />
 
                         </LinearLayout>
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
 
@@ -1270,7 +1274,9 @@
                                 android:visibility='@{mwra1796.checked? View.VISIBLE : View.GONE}' />
 
                         </LinearLayout>
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
 
@@ -1376,7 +1382,9 @@
                                 android:visibility='@{mwra1896.checked? View.VISIBLE : View.GONE}' />
 
                         </LinearLayout>
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
 
@@ -1801,7 +1809,9 @@
                                 android:visibility='@{mwra2396.checked? View.VISIBLE : View.GONE}' />
 
                         </LinearLayout>
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
 

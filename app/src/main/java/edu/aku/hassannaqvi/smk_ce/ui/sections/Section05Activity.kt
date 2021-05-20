@@ -19,7 +19,7 @@ import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Section05 : AppCompatActivity() {
+class Section05Activity : AppCompatActivity() {
 
     lateinit var bi: ActivitySection05Binding
 

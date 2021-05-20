@@ -2,9 +2,6 @@ package edu.aku.hassannaqvi.smk_ce.ui.sections
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextUtils
-import android.text.TextWatcher
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
@@ -16,19 +13,19 @@ import com.validatorcrawler.aliazaz.Clear
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
-import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection03Binding
+import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection04Binding
 import edu.aku.hassannaqvi.smk_ce.models.Form
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Section03 : AppCompatActivity() {
+class Section04Activity : AppCompatActivity() {
 
-    lateinit var bi: ActivitySection03Binding
+    lateinit var bi: ActivitySection04Binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section03)
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section04)
         bi.callback
         setSupportActionBar(bi.toolbar)
         setupSkips()
@@ -36,52 +33,7 @@ class Section03 : AppCompatActivity() {
 
 
     private fun setupSkips() {
-
-        //bi.chkWeight.setOnCheckedChangeListener { compoundButton, b -> Clear.clearAllFields(bi.mh012, !b) }
-
-
-        bi.mwra04.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (TextUtils.isEmpty(bi.mwra04.text)) return
-                if (bi.mwra04.text.toString().toInt() == 0) {
-                    Clear.clearAllFields(bi.fldGrpCVmwra05)
-                    bi.fldGrpCVmwra05.visibility = View.GONE
-                } else {
-                    bi.fldGrpCVmwra05.visibility = View.VISIBLE
-                }
-            }
-
-            override fun afterTextChanged(s: Editable) {}
-        })
-
-
-        bi.mwra16.setOnCheckedChangeListener { radioGroup, i ->
-            Clear.clearAllFields(bi.fldGrpCVmwra17)
-            Clear.clearAllFields(bi.fldGrpCVmwra18)
-            Clear.clearAllFields(bi.fldGrpCVmwra19)
-            Clear.clearAllFields(bi.fldGrpCVmwra20)
-            bi.fldGrpCVmwra17.visibility = View.GONE
-            bi.fldGrpCVmwra18.visibility = View.GONE
-            bi.fldGrpCVmwra19.visibility = View.GONE
-            bi.fldGrpCVmwra20.visibility = View.GONE
-            if (i == bi.mwra16a.id) bi.fldGrpCVmwra20.visibility = View.VISIBLE
-            else {
-                bi.fldGrpCVmwra17.visibility = View.VISIBLE
-                bi.fldGrpCVmwra18.visibility = View.VISIBLE
-                bi.fldGrpCVmwra19.visibility = View.VISIBLE
-            }
-        }
-
-
-        rgLsnr(bi.mwra03, bi.mwra03b, arrayOf(bi.fldGrpCVmwra04))
-        rgLsnr(bi.mwra07, bi.mwra07b, arrayOf(bi.fldGrpCVmwra08))
-        rgLsnr(bi.mwra09, bi.mwra09b, arrayOf(bi.fldGrpCVmwra10, bi.fldGrpCVmwra11, bi.fldGrpCVmwra12))
-        rgLsnr(bi.mwra11, bi.mwra11b, arrayOf(bi.fldGrpCVmwra12))
-        rgLsnr(bi.mwra13, bi.mwra13b, arrayOf(bi.fldGrpCVmwra14, bi.fldGrpCVmwra15, bi.fldGrpCVmwra16, bi.fldGrpCVmwra17))
-        rgLsnr(bi.mwra19, bi.mwra19b, arrayOf(bi.fldGrpCVmwra20))
-        rgLsnr(bi.mwra21, bi.mwra21b, arrayOf(bi.fldGrpCVmwra22))
-        rgLsnr(bi.mwra22, bi.mwra22a, arrayOf(bi.fldGrpCVmwra23))
+        rgLsnr(bi.adol05, bi.adol05b, arrayOf(bi.fldGrpCVadol06, bi.fldGrpCVadol07))
 
     }
 

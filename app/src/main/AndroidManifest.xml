@@ -87,31 +87,31 @@
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".ui.sections.Section01"
+            android:name=".ui.sections.Section01Activity"
             android:label="@string/hhidinfo"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />
 
         <activity
-            android:name=".ui.sections.Section02"
+            android:name=".ui.sections.Section02Activity"
             android:label="@string/hhinfo"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />
 
         <activity
-            android:name=".ui.sections.Section03"
+            android:name=".ui.sections.Section03Activity"
             android:label="@string/mwratitle"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />
 
         <activity
-            android:name=".ui.sections.Section04"
+            android:name=".ui.sections.Section04Activity"
             android:label="@string/adoltitle"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />
 
         <activity
-            android:name=".ui.sections.Section05"
+            android:name=".ui.sections.Section05Activity"
             android:label="@string/vhctitle"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />

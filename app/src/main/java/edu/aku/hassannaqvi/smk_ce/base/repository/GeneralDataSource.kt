@@ -40,6 +40,9 @@ interface GeneralDataSource {
     * */
     suspend fun getCampsFromDB(campNo: String, distCode: String): Camps
 
+
+    suspend fun getDistrictsFromDB(): ArrayList<Districts>
+
     suspend fun getUcsByDistrictsFromDB(dCode: String): ArrayList<UCs>
 
     suspend fun getBLByDistrictsFromDB(distCode: String, cluster: String, hhno: String): BLRandom

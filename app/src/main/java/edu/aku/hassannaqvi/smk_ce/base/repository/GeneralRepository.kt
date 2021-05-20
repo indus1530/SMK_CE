@@ -21,6 +21,10 @@ open class GeneralRepository(private val db: DatabaseHelper) : GeneralDataSource
         db.getSpecificCamp(campNo, distCode)
     }
 
+    override suspend fun getDistrictsFromDB(): ArrayList<Districts> = withContext(Dispatchers.IO) {
+        db.allDistricts
+    }
+
     override suspend fun getUcsByDistrictsFromDB(dCode: String): ArrayList<UCs> = withContext(Dispatchers.IO) {
         db.getUCsByDistricts(dCode)
     }

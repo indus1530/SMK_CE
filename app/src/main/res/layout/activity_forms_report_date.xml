@@ -74,8 +74,11 @@
                     android:src="@drawable/search" />
 
             </LinearLayout>
+
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fc_recycler_view"

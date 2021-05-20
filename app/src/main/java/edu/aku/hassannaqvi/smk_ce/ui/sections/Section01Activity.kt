@@ -1,48 +1,86 @@
 package edu.aku.hassannaqvi.smk_ce.ui.sections
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
-import android.widget.EditText
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
-import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection02Binding
+import edu.aku.hassannaqvi.smk_ce.core.MainApp.form
+import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
+import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01Binding
+import edu.aku.hassannaqvi.smk_ce.models.Districts
 import edu.aku.hassannaqvi.smk_ce.models.Form
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Section02 : AppCompatActivity() {
+class Section01Activity : AppCompatActivity() {
 
-    lateinit var bi: ActivitySection02Binding
-    var dtFlag = false
+    lateinit var bi: ActivitySection01Binding
+    var district = mutableListOf("....")
+    var districtCode = mutableListOf<String>()
+    var uc = mutableListOf("....")
+    var ucCode = mutableListOf<String>()
+    lateinit var districtAdapter: ArrayAdapter<String>
+    lateinit var ucAdapter: ArrayAdapter<String>
+    lateinit var db: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section02)
-        bi.callback = this
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section01)
+        bi.callback
         setSupportActionBar(bi.toolbar)
+        populateSpinner(this)
+        setupSkips()
+
+    }
+
+    private fun setupSkips() {
+    }
 
 
-        val txtListener = arrayOf<EditText>(bi.hh04a, bi.hh04b)
-        for (txtItem in txtListener) {
-            txtItem.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    bi.hh05.text = null
-                    bi.hh04c.text = null
-                }
+    private fun populateSpinner(context: Context) {
+        db = MainApp.appInfo.dbHelper
 
-                override fun afterTextChanged(s: Editable) {}
-            })
+        var dcs: Collection<Districts> = db.allDistricts
+        for (dc in dcs) {
+            district.add(dc.districtName)
+            districtCode.add(dc.districtCode)
         }
 
+        /*dcs.forEach{
+              district.add(it.districtName);
+            districtCode.add(it.districtCode)
+        }*/
+
+        bi.lhw01.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, district)
+        //bi.lhw01.adapter = districtAdapter
+        ucAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, uc)
+        bi.lhw02.adapter = ucAdapter
+
+        bi.lhw01.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+                bi.lhw02.setSelection(0)
+                if (position == 0) {
+                    bi.lhw02.isEnabled = false
+                    return
+                }
+                bi.lhw02.isEnabled = true
+                uc.clear()
+                ucCode.clear()
+                uc.add("....")
+                //viewModel.getUCsDistrictFromDB(districtCode[position - 1])
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
     }
 
 
@@ -59,8 +97,8 @@ class Section02 : AppCompatActivity() {
 
 
     private fun saveDraft() {
-        MainApp.form = Form()
-        MainApp.form.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
+        form = Form()
+        form.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
         /*form.setUuid(MainApp.form.getUid())
         form.setUserName(MainApp.user.getUserName())
         form.setDcode(MainApp.form.getDcode())
@@ -121,55 +159,5 @@ class Section02 : AppCompatActivity() {
     override fun onBackPressed() {
         Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show()
     }
-
-
-    fun hh04OnTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        segregate()
-        /*Clear.clearAllFields(bi.fldGrpCVhh04, false)
-        bi.fldGrpCVmh017.setVisibility(View.GONE)
-        bi.llmh020.setVisibility(View.GONE)
-        bi.fldGrpCVmh015.setVisibility(View.GONE)
-        bi.fldGrpCVmh016.setVisibility(View.GONE)
-        bi.fldGrpCVmh018.setVisibility(View.GONE)
-        bi.llchild.setVisibility(View.GONE)
-        patientType = "General"
-        if (age >= 5110 && age < 18250 && bi.mh01002.isChecked()) {
-            bi.fldGrpCVmh017.setVisibility(View.VISIBLE)
-            bi.llmh020.setVisibility(View.VISIBLE)
-            patientType = "MWRA"
-        }
-        if (age <= 1825) {
-            bi.fldGrpCVmh015.setVisibility(View.VISIBLE)
-            bi.fldGrpCVmh016.setVisibility(View.VISIBLE)
-            bi.fldGrpCVmh018.setVisibility(View.VISIBLE)
-            bi.llchild.setVisibility(View.VISIBLE)
-            bi.mh012.setMinvalue(0.9f)
-            bi.mh012.setMaxvalue(58f)
-            bi.mh012.setMask("###.#")
-            bi.mh012.setHint("###.#")
-            patientType = "Child"
-        }*/
-    }
-
-    private fun segregate() {
-
-        /*var age: Int = 0
-        Clear.clearAllFields(bi.fldGrpCVhh05, false)
-        if (TextUtils.isEmpty(bi.hh04a.text) || TextUtils.isEmpty(bi.hh04b.text) || TextUtils.isEmpty(bi.hh04c.text)) return
-
-        if ((bi.hh04a.text.toString() == "98" && bi.hh04b.text.toString() == "98" && bi.hh04c.text.toString() == "9998")) {
-            Clear.clearAllFields(bi.fldGrpCVhh05, true)
-        } else {
-            age = bi.hh04a.text.toString().toInt() + bi.hh04b.text.toString().toInt() * 29 + bi.hh04c.text.toString().toInt() * 365
-        }
-
-        if (age in 1.. 5475) {
-            Clear.clearAllFields(bi.llhh05)
-            bi.llhh05.visibility = View.GONE
-        } else {
-            bi.llhh05.visibility = View.VISIBLE
-        }*/
-    }
-
 
 }

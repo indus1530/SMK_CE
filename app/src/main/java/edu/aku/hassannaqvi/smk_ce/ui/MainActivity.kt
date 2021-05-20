@@ -261,12 +261,12 @@ class MainActivity : AppCompatActivity() {
         when (v.id) {
             R.id.formA -> {
                 //SharedStorage.setSelectedCampData(this, Gson().toJson(camp))
-                gotoActivity(Section01::class.java)
+                gotoActivity(Section01Activity::class.java)
             }
-            R.id.formB -> gotoActivity(Section02::class.java)
-            R.id.formC -> gotoActivity(Section03::class.java)
-            R.id.formD -> gotoActivity(Section04::class.java)
-            R.id.formE -> gotoActivity(Section05::class.java)
+            R.id.formB -> gotoActivity(Section02Activity::class.java)
+            R.id.formC -> gotoActivity(Section03Activity::class.java)
+            R.id.formD -> gotoActivity(Section04Activity::class.java)
+            R.id.formE -> gotoActivity(Section05Activity::class.java)
             R.id.databaseBtn -> startActivity(Intent(this, AndroidDatabaseManager::class.java))
             R.id.btn_check_camp -> populateCampDetails()
         }
