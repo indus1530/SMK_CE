@@ -49,16 +49,16 @@ class Section01Activity : AppCompatActivity() {
     private fun populateSpinner(context: Context) {
         db = MainApp.appInfo.dbHelper
 
-        var dcs: Collection<Districts> = db.allDistricts
-        for (dc in dcs) {
+        var dcs: ArrayList<Districts> = db.allDistricts
+        /*for (dc in dcs) {
             district.add(dc.districtName)
             districtCode.add(dc.districtCode)
-        }
-
-        /*dcs.forEach{
-              district.add(it.districtName);
-            districtCode.add(it.districtCode)
         }*/
+
+        dcs.forEach {
+            district.add(it.districtName)
+            districtCode.add(it.districtCode)
+        }
 
         bi.lhw01.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, district)
         //bi.lhw01.adapter = districtAdapter
