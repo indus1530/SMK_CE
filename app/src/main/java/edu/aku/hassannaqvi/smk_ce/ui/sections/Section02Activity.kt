@@ -35,7 +35,8 @@ class Section02Activity : AppCompatActivity() {
             txtItem.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    bi.hh05.text = null
+                    bi.hh05y.text = null
+                    bi.hh05m.text = null
                     bi.hh04c.text = null
                 }
 
