@@ -2657,4 +2657,10 @@
     <string name='Q_vhchint'>vhchint</string>
     <string name='Q_vhctitle'>vhctitle</string>
 
+    <string name='Q_hh26'>//TODO:</string>
+    <string name='hh26hint'>//TODO:</string>
+    <string name='hh2602'>//TODO:</string>
+    <string name='hh2601'>//TODO:</string>
+    <string name='hh2603'>//TODO:</string>
+
 </resources>
