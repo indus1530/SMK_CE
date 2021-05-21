@@ -4,12 +4,15 @@
     <data>
 
         <import type="android.view.View" />
+
         <!--<variable
             name="form"
             type="edu.aku.hassannaqvi.sk.models.Form" />-->
+
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.smk_ce.ui.sections.Section04Activity" />
+
     </data>
 
 
@@ -55,6 +58,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="@string/adolhint" />
 
                     </LinearLayout>
@@ -661,8 +665,8 @@
 
                             <CheckBox
                                 android:id="@+id/adol10b"
-                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
                                 android:text="@string/adol10b" />
 
                             <CheckBox
