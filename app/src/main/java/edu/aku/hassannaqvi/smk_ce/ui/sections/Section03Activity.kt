@@ -15,12 +15,10 @@ import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Clear
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
+import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection03Binding
-import edu.aku.hassannaqvi.smk_ce.models.Form
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
-import java.text.SimpleDateFormat
-import java.util.*
 
 class Section03Activity : AppCompatActivity() {
 
@@ -97,6 +95,17 @@ class Section03Activity : AppCompatActivity() {
     }
 
 
+    private fun updateDB(): Boolean {
+        val db = MainApp.appInfo.dbHelper
+        val count = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_SC, MainApp.form.sCtoString())
+        return if (count > 0) true
+        else {
+            Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
+            false
+        }
+    }
+
+
     fun BtnContinue(view: View) {
         if (!formValidation()) return
         saveDraft()
@@ -110,22 +119,240 @@ class Section03Activity : AppCompatActivity() {
 
 
     private fun saveDraft() {
-        MainApp.form = Form()
-        MainApp.form.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
-        /*form.setUuid(MainApp.form.getUid())
-        form.setUserName(MainApp.user.getUserName())
-        form.setDcode(MainApp.form.getDcode())
-        form.setUcode(MainApp.form.getUcode())
-        form.setCluster(MainApp.form.getCluster())
-        form.setHhno(MainApp.form.getHhno())
-        form.setDeviceId(MainApp.appInfo.getDeviceID())
-        form.setDeviceTag(MainApp.appInfo.getTagName())
-        form.setAppver(MainApp.appInfo.getAppVersion())
-        form.setMh01(if (bi.mh01.getText().toString().trim().isEmpty()) "-1" else bi.mh01.getText().toString())
-        form.setMh02(if (bi.mh02.getText().toString().trim().isEmpty()) "-1" else bi.mh02.getText().toString())
-        form.setMh03(if (bi.mh03.getText().toString().trim().isEmpty()) "-1" else bi.mh03.getText().toString())
-        form.setMh04(if (bi.mh04.getText().toString().trim().isEmpty()) "-1" else bi.mh04.getText().toString())
-        form.setMh05(if (bi.mh05.getText().toString().trim().isEmpty()) "-1" else bi.mh05.getText().toString())*/
+
+        MainApp.form.mwra01 = when {
+            bi.mwra01.text.toString().trim().isNotEmpty() -> bi.mwra01.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.mwra02 = when {
+            bi.mwra02.text.toString().trim().isNotEmpty() -> bi.mwra02.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.mwra03 = when {
+            bi.mwra03a.isChecked -> "1"
+            bi.mwra03b.isChecked -> "2"
+            else -> "-1"
+        }
+
+        MainApp.form.mwra04 = when {
+            bi.mwra04.text.toString().trim().isNotEmpty() -> bi.mwra04.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.mwra05a = when {
+            bi.mwra05a.text.toString().trim().isNotEmpty() -> bi.mwra05a.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.mwra05b = when {
+            bi.mwra05b.text.toString().trim().isNotEmpty() -> bi.mwra05b.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.mwra06 = when {
+            bi.mwra06.text.toString().trim().isNotEmpty() -> bi.mwra06.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.mwra07 = when {
+            bi.mwra07a.isChecked -> "1"
+            bi.mwra07b.isChecked -> "2"
+            else -> "-1"
+        }
+
+        MainApp.form.mwra08a = if (bi.mwra08a.isChecked) "1" else "-1"
+        MainApp.form.mwra08b = if (bi.mwra08b.isChecked) "2" else "-1"
+        MainApp.form.mwra08c = if (bi.mwra08c.isChecked) "3" else "-1"
+        MainApp.form.mwra08d = if (bi.mwra08d.isChecked) "4" else "-1"
+        MainApp.form.mwra08e = if (bi.mwra08e.isChecked) "5" else "-1"
+        MainApp.form.mwra08f = if (bi.mwra08f.isChecked) "6" else "-1"
+        MainApp.form.mwra08g = if (bi.mwra08g.isChecked) "7" else "-1"
+        MainApp.form.mwra0896 = if (bi.mwra0896.isChecked) "96" else "-1"
+
+        MainApp.form.mwra0896x = when {
+            bi.mwra0896x.text.toString().trim().isNotEmpty() -> bi.mwra0896x.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.mwra09 = when {
+            bi.mwra09a.isChecked -> "1"
+            bi.mwra09b.isChecked -> "2"
+            else -> "-1"
+        }
+
+        MainApp.form.mwra10 = when {
+            bi.mwra10.text.toString().trim().isNotEmpty() -> bi.mwra10.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.mwra11 = when {
+            bi.mwra11a.isChecked -> "1"
+            bi.mwra11b.isChecked -> "2"
+            else -> "-1"
+        }
+
+        MainApp.form.mwra12a = if (bi.mwra12a.isChecked) "1" else "-1"
+        MainApp.form.mwra12b = if (bi.mwra12b.isChecked) "2" else "-1"
+        MainApp.form.mwra12c = if (bi.mwra12c.isChecked) "3" else "-1"
+        MainApp.form.mwra12d = if (bi.mwra12d.isChecked) "4" else "-1"
+        MainApp.form.mwra12e = if (bi.mwra12e.isChecked) "5" else "-1"
+        MainApp.form.mwra12f = if (bi.mwra12f.isChecked) "6" else "-1"
+        MainApp.form.mwra12g = if (bi.mwra12g.isChecked) "7" else "-1"
+        MainApp.form.mwra12h = if (bi.mwra12h.isChecked) "8" else "-1"
+        MainApp.form.mwra12i = if (bi.mwra12i.isChecked) "9" else "-1"
+        MainApp.form.mwra12j = if (bi.mwra12j.isChecked) "10" else "-1"
+        MainApp.form.mwra12k = if (bi.mwra12k.isChecked) "11" else "-1"
+        MainApp.form.mwra12l = if (bi.mwra12l.isChecked) "12" else "-1"
+        MainApp.form.mwra12m = if (bi.mwra12m.isChecked) "13" else "-1"
+        MainApp.form.mwra1296 = if (bi.mwra1296.isChecked) "96" else "-1"
+
+        MainApp.form.mwra1296x = when {
+            bi.mwra1296x.text.toString().trim().isNotEmpty() -> bi.mwra1296x.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.mwra13 = when {
+            bi.mwra13a.isChecked -> "1"
+            bi.mwra13b.isChecked -> "2"
+            else -> "-1"
+        }
+
+        MainApp.form.mwra14 = when {
+            bi.mwra14a.isChecked -> "1"
+            bi.mwra14b.isChecked -> "2"
+            bi.mwra14c.isChecked -> "3"
+            bi.mwra14d.isChecked -> "4"
+            bi.mwra14e.isChecked -> "5"
+            bi.mwra14f.isChecked -> "6"
+            bi.mwra14g.isChecked -> "7"
+            bi.mwra14h.isChecked -> "8"
+            bi.mwra14i.isChecked -> "9"
+            bi.mwra14j.isChecked -> "10"
+            bi.mwra14k.isChecked -> "11"
+            bi.mwra14l.isChecked -> "12"
+            bi.mwra14m.isChecked -> "13"
+            bi.mwra1496.isChecked -> "96"
+            else -> "-1"
+        }
+
+        MainApp.form.mwra1496x = when {
+            bi.mwra1496x.text.toString().trim().isNotEmpty() -> bi.mwra1496x.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.mwra15 = when {
+            bi.mwra15a.isChecked -> "1"
+            bi.mwra15b.isChecked -> "2"
+            bi.mwra15c.isChecked -> "3"
+            bi.mwra15d.isChecked -> "4"
+            bi.mwra15e.isChecked -> "5"
+            bi.mwra15f.isChecked -> "6"
+            bi.mwra15g.isChecked -> "7"
+            bi.mwra15h.isChecked -> "8"
+            bi.mwra15i.isChecked -> "9"
+            else -> "-1"
+        }
+
+        MainApp.form.mwra16 = when {
+            bi.mwra16a.isChecked -> "1"
+            bi.mwra16b.isChecked -> "2"
+            else -> "-1"
+        }
+
+        MainApp.form.mwra17a = if (bi.mwra17a.isChecked) "1" else "-1"
+        MainApp.form.mwra17b = if (bi.mwra17b.isChecked) "2" else "-1"
+        MainApp.form.mwra17c = if (bi.mwra17c.isChecked) "3" else "-1"
+        MainApp.form.mwra17d = if (bi.mwra17d.isChecked) "4" else "-1"
+        MainApp.form.mwra17e = if (bi.mwra17e.isChecked) "5" else "-1"
+        MainApp.form.mwra1796 = if (bi.mwra1796.isChecked) "96" else "-1"
+
+        MainApp.form.mwra1796x = when {
+            bi.mwra1796x.text.toString().trim().isNotEmpty() -> bi.mwra1796x.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.mwra18a = if (bi.mwra18a.isChecked) "1" else "-1"
+        MainApp.form.mwra18b = if (bi.mwra18b.isChecked) "2" else "-1"
+        MainApp.form.mwra18c = if (bi.mwra18c.isChecked) "3" else "-1"
+        MainApp.form.mwra18d = if (bi.mwra18d.isChecked) "4" else "-1"
+        MainApp.form.mwra18e = if (bi.mwra18e.isChecked) "5" else "-1"
+        MainApp.form.mwra18f = if (bi.mwra18f.isChecked) "6" else "-1"
+        MainApp.form.mwra18g = if (bi.mwra18g.isChecked) "7" else "-1"
+        MainApp.form.mwra18h = if (bi.mwra18h.isChecked) "8" else "-1"
+        MainApp.form.mwra1896 = if (bi.mwra1896.isChecked) "96" else "-1"
+
+        MainApp.form.mwra1896x = when {
+            bi.mwra1896x.text.toString().trim().isNotEmpty() -> bi.mwra1896x.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.mwra19 = when {
+            bi.mwra19a.isChecked -> "1"
+            bi.mwra19b.isChecked -> "2"
+            else -> "-1"
+        }
+
+        MainApp.form.mwra20 = when {
+            bi.mwra20a.isChecked -> "1"
+            bi.mwra20b.isChecked -> "2"
+            bi.mwra20c.isChecked -> "3"
+            bi.mwra20d.isChecked -> "4"
+            bi.mwra20e.isChecked -> "5"
+            bi.mwra20f.isChecked -> "6"
+            bi.mwra20g.isChecked -> "7"
+            bi.mwra20h.isChecked -> "8"
+            bi.mwra20i.isChecked -> "9"
+            bi.mwra20j.isChecked -> "10"
+            bi.mwra20k.isChecked -> "11"
+            bi.mwra20l.isChecked -> "12"
+            bi.mwra20m.isChecked -> "13"
+            bi.mwra2096.isChecked -> "96"
+            else -> "-1"
+        }
+
+        MainApp.form.mwra2096x = when {
+            bi.mwra2096x.text.toString().trim().isNotEmpty() -> bi.mwra2096x.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.mwra21 = when {
+            bi.mwra21a.isChecked -> "1"
+            bi.mwra21b.isChecked -> "2"
+            else -> "-1"
+        }
+
+        MainApp.form.mwra22 = when {
+            bi.mwra22a.isChecked -> "1"
+            bi.mwra22b.isChecked -> "2"
+            else -> "-1"
+        }
+
+        MainApp.form.mwra23a = if (bi.mwra23a.isChecked) "1" else "-1"
+        MainApp.form.mwra23b = if (bi.mwra23b.isChecked) "2" else "-1"
+        MainApp.form.mwra23c = if (bi.mwra23c.isChecked) "3" else "-1"
+        MainApp.form.mwra23d = if (bi.mwra23d.isChecked) "4" else "-1"
+        MainApp.form.mwra23e = if (bi.mwra23e.isChecked) "5" else "-1"
+        MainApp.form.mwra23f = if (bi.mwra23f.isChecked) "6" else "-1"
+        MainApp.form.mwra23g = if (bi.mwra23g.isChecked) "7" else "-1"
+        MainApp.form.mwra23h = if (bi.mwra23h.isChecked) "8" else "-1"
+        MainApp.form.mwra23i = if (bi.mwra23i.isChecked) "9" else "-1"
+        MainApp.form.mwra23j = if (bi.mwra23j.isChecked) "10" else "-1"
+        MainApp.form.mwra2396 = if (bi.mwra2396.isChecked) "96" else "-1"
+
+        MainApp.form.mwra2396x = when {
+            bi.mwra2396x.text.toString().trim().isNotEmpty() -> bi.mwra2396x.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.mwra24 = when {
+            bi.mwra24a.isChecked -> "1"
+            bi.mwra24b.isChecked -> "2"
+            else -> "-1"
+        }
+
+
     }
 
 
@@ -133,35 +360,6 @@ class Section03Activity : AppCompatActivity() {
         //openSectionMainActivity(this, "G")
         finish()
         startActivity(Intent(this, MainActivity::class.java))
-    }
-
-
-    private fun updateDB(): Boolean {
-        /*val db = MainApp.appInfo.dbHelper
-        if (!MainApp.childInformation.isEditFlag) {
-            val updcount = db.addChildInformation(MainApp.childInformation)
-            return if (updcount > 0) {
-                MainApp.childInformation.id = updcount.toString()
-                MainApp.childInformation.uid = MainApp.childInformation.deviceId + MainApp.childInformation.id
-                var count = db.updatesChildInformationColumn(ChildInformationContract.ChildInfoTable.COLUMN_UID, MainApp.childInformation.uid)
-                if (count > 0) count = db.updatesChildInformationColumn(ChildInformationContract.ChildInfoTable.COLUMN_SCB, MainApp.childInformation.sCBtoString())
-                if (count > 0) true else {
-                    Toast.makeText(this, "Sorry. You can't go further.\n" +
-                            " Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show()
-                    false
-                }
-            } else {
-                Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show()
-                false
-            }
-        } else {
-            val updcount = db.updatesChildInformationColumn(ChildInformationContract.ChildInfoTable.COLUMN_SCB, MainApp.childInformation.sCBtoString())
-            return if (updcount > 0) true else {
-                Toast.makeText(this, "Sorry. You can't go further.\n" +
-                        " Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show()
-                false
-            }
-        }*/ return true
     }
 
 
