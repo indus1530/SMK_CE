@@ -254,37 +254,45 @@
                                 android:text="@string/Q_vhc04" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/vhc04" />
+
                         </LinearLayout>
 
                         <RadioGroup
                             android:id="@+id/vhc04"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <RadioButton
                                 android:id="@+id/vhc04a"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:text="@string/vhc04a" />
 
                             <RadioButton
                                 android:id="@+id/vhc04b"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:text="@string/vhc04b" />
 
                             <RadioButton
                                 android:id="@+id/vhc04c"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_width="match_parent"
+                                android:layout_weight="1"
                                 android:text="@string/vhc04c" />
+
                         </RadioGroup>
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
+
 
                 <!-- vhc05  Radio   -->
                 <androidx.cardview.widget.CardView
@@ -309,31 +317,37 @@
                                 android:text="@string/Q_vhc05" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/vhc05" />
                         </LinearLayout>
 
                         <RadioGroup
                             android:id="@+id/vhc05"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <RadioButton
                                 android:id="@+id/vhc05a"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:text="@string/vhc05a" />
 
                             <RadioButton
                                 android:id="@+id/vhc05b"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:text="@string/vhc05b" />
+
                         </RadioGroup>
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
+
 
                 <!-- vhc06  CheckBox   -->
                 <androidx.cardview.widget.CardView
@@ -358,10 +372,10 @@
                                 android:text="@string/Q_vhc06" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/vhc06" />
+
                         </LinearLayout>
 
                         <LinearLayout

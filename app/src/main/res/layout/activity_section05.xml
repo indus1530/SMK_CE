@@ -55,6 +55,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="@string/vhchint" />
 
                     </LinearLayout>
@@ -85,9 +86,8 @@
                                 android:text="@string/Q_vhc01" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/vhc01" />
 
                         </LinearLayout>
@@ -142,9 +142,8 @@
                                 android:text="@string/Q_vhc02" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/vhc02" />
 
                         </LinearLayout>
@@ -199,9 +198,8 @@
                                 android:text="@string/Q_vhc03" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/vhc03" />
 
                         </LinearLayout>
@@ -256,9 +254,8 @@
                                 android:text="@string/Q_vhc04" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/vhc04" />
 
                         </LinearLayout>
@@ -320,11 +317,9 @@
                                 android:text="@string/Q_vhc05" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/vhc05" />
-
                         </LinearLayout>
 
                         <RadioGroup
@@ -377,9 +372,8 @@
                                 android:text="@string/Q_vhc06" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/vhc06" />
 
                         </LinearLayout>
@@ -514,5 +508,6 @@
 
 
     </LinearLayout>
+
 
 </layout>

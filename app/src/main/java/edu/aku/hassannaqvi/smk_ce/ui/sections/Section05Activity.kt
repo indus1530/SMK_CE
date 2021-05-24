@@ -26,7 +26,7 @@ class Section05Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section05)
-        bi.callback
+        bi.callback = this
         setSupportActionBar(bi.toolbar)
         setupSkips()
     }
