@@ -24,25 +24,552 @@ public class Form extends BaseObservable {
     private String projectName = MainApp.PROJECT_NAME;
 
 
+    // APP VARIABLES
+    private String id = StringUtils.EMPTY;
+    private String uid = StringUtils.EMPTY;
+    private String userName = StringUtils.EMPTY;
+    private String sysDate = StringUtils.EMPTY;
+    private String dcode = StringUtils.EMPTY;
+    private String ucode = StringUtils.EMPTY;
+    private String cluster = StringUtils.EMPTY;
+    private String hhno = StringUtils.EMPTY;
+    private String deviceId = StringUtils.EMPTY;
+    private String deviceTag = StringUtils.EMPTY;
+    private String appver = StringUtils.EMPTY;
+    private String endTime = StringUtils.EMPTY;
+    private String iStatus = StringUtils.EMPTY;
+    private String iStatus96x = StringUtils.EMPTY;
+    private String synced = StringUtils.EMPTY;
+    private String syncDate = StringUtils.EMPTY;
+    private String g5Flag = "-1";
+    private String hhflag = "-1";
+
+
+    // SECTION VARIABLES
+    private String sA = StringUtils.EMPTY;
+    private String sB = StringUtils.EMPTY;
+    private String sC = StringUtils.EMPTY;
+    private String sD = StringUtils.EMPTY;
+    private String sE = StringUtils.EMPTY;
+
+    //Not saving in DB
+    private LocalDate localDate = null;
+    private boolean exist = false;
     // FIELD VARIABLES
+    //L H W and HouseHold Information
     private String lhw01 = StringUtils.EMPTY;
+    private String lhw04 = StringUtils.EMPTY;
+    private String hhi04a = StringUtils.EMPTY;
+    private String hhi04b = StringUtils.EMPTY;
+    private String hhi04c = StringUtils.EMPTY;
+    private String hhi04d = StringUtils.EMPTY;
+    private String hhi04e = StringUtils.EMPTY;
+    private String hhi04f = StringUtils.EMPTY;
+    private String lhwphoto = StringUtils.EMPTY;
+    private String hhv01 = StringUtils.EMPTY;
+    private String hhv02 = StringUtils.EMPTY;
+    private String hhv03a = StringUtils.EMPTY;
+    private String hhv03b = StringUtils.EMPTY;
+    private String hhv03c = StringUtils.EMPTY;
+    private String hhv03d = StringUtils.EMPTY;
+    private String hhv03e = StringUtils.EMPTY;
+    private String hhv03f = StringUtils.EMPTY;
+    //HouseHold Information verify
+    private String hh01 = StringUtils.EMPTY;
+    private String hh05y = StringUtils.EMPTY;
+    private String hh05m = StringUtils.EMPTY;
+    //M W R A
+    private String mwra01 = StringUtils.EMPTY;
+    //ADOLESCENT
+    private String adol01 = StringUtils.EMPTY;
+    // V H C
+    private String vhc01 = StringUtils.EMPTY;
+
+    public Form() {
+
+    }
+
+    public boolean isExist() {
+        return exist;
+    }
+
+    public void setExist(boolean exist) {
+        this.exist = exist;
+    }
+
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
+    }
+
+    public void setForm(String userName, String sysDate, String dcode, String ucode, String cluster, String hhno, String deviceId, String deviceTag, String appver) {
+        this.userName = userName;
+        this.sysDate = sysDate;
+        this.dcode = dcode;
+        this.ucode = ucode;
+        this.cluster = cluster;
+        this.hhno = hhno;
+        this.deviceId = deviceId;
+        this.deviceTag = deviceTag;
+        this.appver = appver;
+    }
+
+    @Bindable
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        if (projectName != projectName)
+            this.projectName = projectName;
+
+        //TODO: Update field in layout
+        // notifyPropertyChanged(BR.layoutFieldName);
+    }
+
+    @Bindable
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+
+    }
+
+    @Bindable
+    public String getUid() {
+        return uid;
+    }
+
+    public Form setUid(String uid) {
+        this.uid = uid;
+        return this;
+    }
+
+    @Bindable
+    public String getUserName() {
+        return userName;
+    }
+
+    public Form setUserName(String userName) {
+        this.userName = userName;
+        return this;
+    }
+
+    @Bindable
+    public String getDcode() {
+        return dcode;
+    }
+
+    public Form setDcode(String dcode) {
+        this.dcode = dcode;
+        return this;
+    }
+
+    @Bindable
+    public String getUcode() {
+        return ucode;
+    }
+
+    public Form setUcode(String ucode) {
+        this.ucode = ucode;
+        return this;
+    }
+
+    @Bindable
+    public String getCluster() {
+        return cluster;
+    }
+
+    public Form setCluster(String cluster) {
+        this.cluster = cluster;
+        return this;
+    }
+
+    @Bindable
+    public String getHhno() {
+        return hhno;
+    }
+
+    public Form setHhno(String hhno) {
+        this.hhno = hhno;
+        return this;
+    }
+
+    @Bindable
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public Form setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
+        return this;
+    }
+
+    @Bindable
+    public String getDeviceTag() {
+        return deviceTag;
+    }
+
+    public Form setDeviceTag(String deviceTag) {
+        this.deviceTag = deviceTag;
+        return this;
+    }
+
+    @Bindable
+    public String getAppver() {
+        return appver;
+    }
+
+    public Form setAppver(String appver) {
+        this.appver = appver;
+        return this;
+    }
+
+    @Bindable
+    public String getSysDate() {
+        return sysDate;
+    }
+
+    public Form setSysDate(String sysDate) {
+        this.sysDate = sysDate;
+        return this;
+    }
+
+    @Bindable
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public Form setEndTime(String endTime) {
+        this.endTime = endTime;
+        return this;
+    }
+
     private String lhw02 = StringUtils.EMPTY;
     private String lhw03 = StringUtils.EMPTY;
+
+    @Bindable
+    public String getSynced() {
+        return synced;
+    }
+
     private String hhi01 = StringUtils.EMPTY;
     private String hhi02 = StringUtils.EMPTY;
-    private String hhi02a = StringUtils.EMPTY;
-    private String hhi02b = StringUtils.EMPTY;
-    private String hhi02c = StringUtils.EMPTY;
-    private String hhi02d = StringUtils.EMPTY;
-    private String hhi02e = StringUtils.EMPTY;
     private String hhi03 = StringUtils.EMPTY;
-    private String hh01 = StringUtils.EMPTY;
+
+    public Form setSynced(String synced) {
+        this.synced = synced;
+        return this;
+    }
+
+    @Bindable
+    public String getSyncDate() {
+        return syncDate;
+    }
+
+    public Form setSyncDate(String syncDate) {
+        this.syncDate = syncDate;
+        return this;
+    }
+
+    public String getG5Flag() {
+        return g5Flag;
+    }
+
+    public void setG5Flag(String g5Flag) {
+        this.g5Flag = g5Flag;
+    }
+
+    public String getHhflag() {
+        return hhflag;
+    }
+
+    public Form setHhflag(String hhflag) {
+        this.hhflag = hhflag;
+        return this;
+    }
+
+    public String getsA() {
+        return sA;
+    }
+
+    public Form setsA(String sA) {
+        this.sA = sA;
+        return this;
+    }
+
+    public String getsB() {
+        return sB;
+    }
+
+    public Form setsB(String sB) {
+        this.sB = sB;
+        return this;
+    }
+
+    public String getsC() {
+        return sC;
+    }
+
+    public Form setsC(String sC) {
+        this.sC = sC;
+        return this;
+    }
+
+    public String getsD() {
+        return sD;
+    }
+
+    public Form setsD(String sD) {
+        this.sD = sD;
+        return this;
+    }
+
+    public String getsE() {
+        return sE;
+    }
+
+    public Form setsE(String sE) {
+        this.sE = sE;
+        return this;
+    }
+
+    @Bindable
+    public String getIStatus() {
+        return iStatus;
+    }
+
+    public void setIStatus(String iStatus) {
+        this.iStatus = iStatus;
+        notifyPropertyChanged(BR.iStatus);
+    }
+
+    @Bindable
+    public String getIStatus96x() {
+        return iStatus96x;
+    }
+
+    public void setIStatus96x(String iStatus96x) {
+        this.iStatus96x = iStatus96x;
+        notifyPropertyChanged(BR.iStatus96x);
+    }
+
+    @Bindable
+    public String getLhw01() {
+        return lhw01;
+    }
+
+    public void setLhw01(String lhw01) {
+        this.lhw01 = lhw01;
+        notifyPropertyChanged(BR.lhw01);
+    }
+
+    @Bindable
+    public String getLhw02() {
+        return lhw02;
+    }
+
+    public void setLhw02(String lhw02) {
+        this.lhw02 = lhw02;
+        notifyPropertyChanged(BR.lhw02);
+    }
+
+    @Bindable
+    public String getLhw03() {
+        return lhw03;
+    }
+
+    public void setLhw03(String lhw03) {
+        this.lhw03 = lhw03;
+        notifyPropertyChanged(BR.lhw03);
+    }
+
+    @Bindable
+    public String getLhw04() {
+        return lhw04;
+    }
+
+    public void setLhw04(String lhw04) {
+        this.lhw04 = lhw04;
+        notifyPropertyChanged(BR.lhw04);
+    }
+
+    @Bindable
+    public String getHhi01() {
+        return hhi01;
+    }
+
+    public void setHhi01(String hhi01) {
+        this.hhi01 = hhi01;
+        notifyPropertyChanged(BR.hhi01);
+    }
+
+    @Bindable
+    public String getHhi02() {
+        return hhi02;
+    }
+
+    public void setHhi02(String hhi02) {
+        this.hhi02 = hhi02;
+        notifyPropertyChanged(BR.hhi02);
+    }
+
+    @Bindable
+    public String getHhi03() {
+        return hhi03;
+    }
+
+    public void setHhi03(String hhi03) {
+        this.hhi03 = hhi03;
+        notifyPropertyChanged(BR.hhi03);
+    }
+
+    @Bindable
+    public String getHhi04a() {
+        return hhi04a;
+    }
+
+    public void setHhi04a(String hhi04a) {
+        this.hhi04a = hhi04a;
+        notifyPropertyChanged(BR.hhi04a);
+    }
+
+    @Bindable
+    public String getHhi04b() {
+        return hhi04b;
+    }
+
+    public void setHhi04b(String hhi04b) {
+        this.hhi04b = hhi04b;
+        notifyPropertyChanged(BR.hhi04b);
+    }
+
+    @Bindable
+    public String getHhi04c() {
+        return hhi04c;
+    }
+
+    public void setHhi04c(String hhi04c) {
+        this.hhi04c = hhi04c;
+        notifyPropertyChanged(BR.hhi04c);
+    }
+
+    @Bindable
+    public String getHhi04d() {
+        return hhi04d;
+    }
+
+    public void setHhi04d(String hhi04d) {
+        this.hhi04d = hhi04d;
+        notifyPropertyChanged(BR.hhi04d);
+    }
+
+    @Bindable
+    public String getHhi04e() {
+        return hhi04e;
+    }
+
+    public void setHhi04e(String hhi04e) {
+        this.hhi04e = hhi04e;
+        notifyPropertyChanged(BR.hhi04e);
+    }
+
+    @Bindable
+    public String getHhi04f() {
+        return hhi04f;
+    }
+
+    public void setHhi04f(String hhi04f) {
+        this.hhi04f = hhi04f;
+        notifyPropertyChanged(BR.hhi04f);
+    }
+
+    @Bindable
+    public String getLhwphoto() {
+        return lhwphoto;
+    }
+
+    public void setLhwphoto(String lhwphoto) {
+        this.lhwphoto = lhwphoto;
+        notifyPropertyChanged(BR.lhwphoto);
+    }
+
+    @Bindable
+    public String getHhv01() {
+        return hhv01;
+    }
+
+    public void setHhv01(String hhv01) {
+        this.hhv01 = hhv01;
+        notifyPropertyChanged(BR.hhv01);
+    }
+
+    @Bindable
+    public String getHhv02() {
+        return hhv02;
+    }
+
+    public void setHhv02(String hhv02) {
+        this.hhv02 = hhv02;
+        notifyPropertyChanged(BR.hhv02);
+    }
+
+    @Bindable
+    public String getHhv03a() {
+        return hhv03a;
+    }
+
+    public void setHhv03a(String hhv03a) {
+        this.hhv03a = hhv03a;
+        notifyPropertyChanged(BR.hhv03a);
+    }
+
+    @Bindable
+    public String getHhv03b() {
+        return hhv03b;
+    }
+
+    public void setHhv03b(String hhv03b) {
+        this.hhv03b = hhv03b;
+        notifyPropertyChanged(BR.hhv03b);
+    }
+
+    @Bindable
+    public String getHhv03c() {
+        return hhv03c;
+    }
+
+    public void setHhv03c(String hhv03c) {
+        this.hhv03c = hhv03c;
+        notifyPropertyChanged(BR.hhv03c);
+    }
+
+    @Bindable
+    public String getHhv03d() {
+        return hhv03d;
+    }
+
     private String hh02 = StringUtils.EMPTY;
     private String hh03 = StringUtils.EMPTY;
     private String hh04a = StringUtils.EMPTY;
     private String hh04b = StringUtils.EMPTY;
     private String hh04c = StringUtils.EMPTY;
-    private String hh05 = StringUtils.EMPTY;
+
+    public void setHhv03d(String hhv03d) {
+        this.hhv03d = hhv03d;
+        notifyPropertyChanged(BR.hhv03d);
+    }
+
+    @Bindable
+    public String getHhv03e() {
+        return hhv03e;
+    }
+
     private String hh06 = StringUtils.EMPTY;
     private String hh07 = StringUtils.EMPTY;
     private String hh08 = StringUtils.EMPTY;
@@ -50,8 +577,151 @@ public class Form extends BaseObservable {
     private String hh10 = StringUtils.EMPTY;
     private String hh11 = StringUtils.EMPTY;
 
-    //SECTION M W R A
-    private String mwra01 = StringUtils.EMPTY;
+    public void setHhv03e(String hhv03e) {
+        this.hhv03e = hhv03e;
+        notifyPropertyChanged(BR.hhv03e);
+    }
+
+    @Bindable
+    public String getHhv03f() {
+        return hhv03f;
+    }
+
+    public void setHhv03f(String hhv03f) {
+        this.hhv03f = hhv03f;
+        notifyPropertyChanged(BR.hhv03f);
+    }
+
+    @Bindable
+    public String getHh01() {
+        return hh01;
+    }
+
+    public void setHh01(String hh01) {
+        this.hh01 = hh01;
+        notifyPropertyChanged(BR.hh01);
+    }
+
+    @Bindable
+    public String getHh02() {
+        return hh02;
+    }
+
+    public void setHh02(String hh02) {
+        this.hh02 = hh02;
+        notifyPropertyChanged(BR.hh02);
+    }
+
+    @Bindable
+    public String getHh03() {
+        return hh03;
+    }
+
+    public void setHh03(String hh03) {
+        this.hh03 = hh03;
+        notifyPropertyChanged(BR.hh03);
+    }
+
+    @Bindable
+    public String getHh04a() {
+        return hh04a;
+    }
+
+    public void setHh04a(String hh04a) {
+        this.hh04a = hh04a;
+        notifyPropertyChanged(BR.hh04a);
+    }
+
+    @Bindable
+    public String getHh04b() {
+        return hh04b;
+    }
+
+    public void setHh04b(String hh04b) {
+        this.hh04b = hh04b;
+        notifyPropertyChanged(BR.hh04b);
+    }
+
+    @Bindable
+    public String getHh04c() {
+        return hh04c;
+    }
+
+    public void setHh04c(String hh04c) {
+        this.hh04c = hh04c;
+        notifyPropertyChanged(BR.hh04c);
+    }
+
+    @Bindable
+    public String getHh05y() {
+        return hh05y;
+    }
+
+    public void setHh05y(String hh05y) {
+        this.hh05y = hh05y;
+        notifyPropertyChanged(BR.hh05y);
+    }
+
+    @Bindable
+    public String getHh05m() {
+        return hh05m;
+    }
+
+    public void setHh05m(String hh05m) {
+        this.hh05m = hh05m;
+        notifyPropertyChanged(BR.hh05m);
+    }
+
+    @Bindable
+    public String getHh06() {
+        return hh06;
+    }
+
+    public void setHh06(String hh06) {
+        this.hh06 = hh06;
+        notifyPropertyChanged(BR.hh06);
+    }
+
+    @Bindable
+    public String getHh07() {
+        return hh07;
+    }
+
+    public void setHh07(String hh07) {
+        this.hh07 = hh07;
+        notifyPropertyChanged(BR.hh07);
+    }
+
+    @Bindable
+    public String getHh08() {
+        return hh08;
+    }
+
+    public void setHh08(String hh08) {
+        this.hh08 = hh08;
+        notifyPropertyChanged(BR.hh08);
+    }
+
+    @Bindable
+    public String getHh09() {
+        return hh09;
+    }
+
+    public void setHh09(String hh09) {
+        this.hh09 = hh09;
+        notifyPropertyChanged(BR.hh09);
+    }
+
+    @Bindable
+    public String getHh10() {
+        return hh10;
+    }
+
+    public void setHh10(String hh10) {
+        this.hh10 = hh10;
+        notifyPropertyChanged(BR.hh10);
+    }
+
     private String mwra02 = StringUtils.EMPTY;
     private String mwra03 = StringUtils.EMPTY;
     private String mwra04 = StringUtils.EMPTY;
@@ -132,8 +802,811 @@ public class Form extends BaseObservable {
     private String mwra2396x = StringUtils.EMPTY;
     private String mwra24 = StringUtils.EMPTY;
 
-    //SECTION ADOLESCENT
-    private String adol01 = StringUtils.EMPTY;
+    @Bindable
+    public String getHh11() {
+        return hh11;
+    }
+
+    public void setHh11(String hh11) {
+        this.hh11 = hh11;
+        notifyPropertyChanged(BR.hh11);
+    }
+
+    @Bindable
+    public String getMwra01() {
+        return mwra01;
+    }
+
+    public void setMwra01(String mwra01) {
+        this.mwra01 = mwra01;
+        notifyPropertyChanged(BR.mwra01);
+    }
+
+    @Bindable
+    public String getMwra02() {
+        return mwra02;
+    }
+
+    public void setMwra02(String mwra02) {
+        this.mwra02 = mwra02;
+        notifyPropertyChanged(BR.mwra02);
+    }
+
+    @Bindable
+    public String getMwra03() {
+        return mwra03;
+    }
+
+    public void setMwra03(String mwra03) {
+        this.mwra03 = mwra03;
+        notifyPropertyChanged(BR.mwra03);
+    }
+
+    @Bindable
+    public String getMwra04() {
+        return mwra04;
+    }
+
+    public void setMwra04(String mwra04) {
+        this.mwra04 = mwra04;
+        notifyPropertyChanged(BR.mwra04);
+    }
+
+    @Bindable
+    public String getMwra05a() {
+        return mwra05a;
+    }
+
+    public void setMwra05a(String mwra05a) {
+        this.mwra05a = mwra05a;
+        notifyPropertyChanged(BR.mwra05a);
+    }
+
+    @Bindable
+    public String getMwra05b() {
+        return mwra05b;
+    }
+
+    public void setMwra05b(String mwra05b) {
+        this.mwra05b = mwra05b;
+        notifyPropertyChanged(BR.mwra05b);
+    }
+
+    @Bindable
+    public String getMwra06() {
+        return mwra06;
+    }
+
+    public void setMwra06(String mwra06) {
+        this.mwra06 = mwra06;
+        notifyPropertyChanged(BR.mwra06);
+    }
+
+    @Bindable
+    public String getMwra07() {
+        return mwra07;
+    }
+
+    public void setMwra07(String mwra07) {
+        this.mwra07 = mwra07;
+        notifyPropertyChanged(BR.mwra07);
+    }
+
+    @Bindable
+    public String getMwra08() {
+        return mwra08;
+    }
+
+    public void setMwra08(String mwra08) {
+        this.mwra08 = mwra08;
+        notifyPropertyChanged(BR.mwra08);
+    }
+
+    @Bindable
+    public String getMwra08a() {
+        return mwra08a;
+    }
+
+    public void setMwra08a(String mwra08a) {
+        this.mwra08a = mwra08a;
+        notifyPropertyChanged(BR.mwra08a);
+    }
+
+    @Bindable
+    public String getMwra08b() {
+        return mwra08b;
+    }
+
+    public void setMwra08b(String mwra08b) {
+        this.mwra08b = mwra08b;
+        notifyPropertyChanged(BR.mwra08b);
+    }
+
+    @Bindable
+    public String getMwra08c() {
+        return mwra08c;
+    }
+
+    public void setMwra08c(String mwra08c) {
+        this.mwra08c = mwra08c;
+        notifyPropertyChanged(BR.mwra08c);
+    }
+
+    @Bindable
+    public String getMwra08d() {
+        return mwra08d;
+    }
+
+    public void setMwra08d(String mwra08d) {
+        this.mwra08d = mwra08d;
+        notifyPropertyChanged(BR.mwra08d);
+    }
+
+    @Bindable
+    public String getMwra08e() {
+        return mwra08e;
+    }
+
+    public void setMwra08e(String mwra08e) {
+        this.mwra08e = mwra08e;
+        notifyPropertyChanged(BR.mwra08e);
+    }
+
+    @Bindable
+    public String getMwra08f() {
+        return mwra08f;
+    }
+
+    public void setMwra08f(String mwra08f) {
+        this.mwra08f = mwra08f;
+        notifyPropertyChanged(BR.mwra08f);
+    }
+
+    @Bindable
+    public String getMwra08g() {
+        return mwra08g;
+    }
+
+    public void setMwra08g(String mwra08g) {
+        this.mwra08g = mwra08g;
+        notifyPropertyChanged(BR.mwra08g);
+    }
+
+    @Bindable
+    public String getMwra0896() {
+        return mwra0896;
+    }
+
+    public void setMwra0896(String mwra0896) {
+        this.mwra0896 = mwra0896;
+        notifyPropertyChanged(BR.mwra0896);
+    }
+
+    @Bindable
+    public String getMwra0896x() {
+        return mwra0896x;
+    }
+
+    public void setMwra0896x(String mwra0896x) {
+        this.mwra0896x = mwra0896x;
+        notifyPropertyChanged(BR.mwra0896x);
+    }
+
+    @Bindable
+    public String getMwra09() {
+        return mwra09;
+    }
+
+    public void setMwra09(String mwra09) {
+        this.mwra09 = mwra09;
+        notifyPropertyChanged(BR.mwra09);
+    }
+
+    @Bindable
+    public String getMwra10() {
+        return mwra10;
+    }
+
+    public void setMwra10(String mwra10) {
+        this.mwra10 = mwra10;
+        notifyPropertyChanged(BR.mwra10);
+    }
+
+    @Bindable
+    public String getMwra11() {
+        return mwra11;
+    }
+
+    public void setMwra11(String mwra11) {
+        this.mwra11 = mwra11;
+        notifyPropertyChanged(BR.mwra11);
+    }
+
+    @Bindable
+    public String getMwra12() {
+        return mwra12;
+    }
+
+    public void setMwra12(String mwra12) {
+        this.mwra12 = mwra12;
+        notifyPropertyChanged(BR.mwra12);
+    }
+
+    @Bindable
+    public String getMwra12a() {
+        return mwra12a;
+    }
+
+    public void setMwra12a(String mwra12a) {
+        this.mwra12a = mwra12a;
+        notifyPropertyChanged(BR.mwra12a);
+    }
+
+    @Bindable
+    public String getMwra12b() {
+        return mwra12b;
+    }
+
+    public void setMwra12b(String mwra12b) {
+        this.mwra12b = mwra12b;
+        notifyPropertyChanged(BR.mwra12b);
+    }
+
+    @Bindable
+    public String getMwra12c() {
+        return mwra12c;
+    }
+
+    public void setMwra12c(String mwra12c) {
+        this.mwra12c = mwra12c;
+        notifyPropertyChanged(BR.mwra12c);
+    }
+
+    @Bindable
+    public String getMwra12d() {
+        return mwra12d;
+    }
+
+    public void setMwra12d(String mwra12d) {
+        this.mwra12d = mwra12d;
+        notifyPropertyChanged(BR.mwra12d);
+    }
+
+    @Bindable
+    public String getMwra12e() {
+        return mwra12e;
+    }
+
+    public void setMwra12e(String mwra12e) {
+        this.mwra12e = mwra12e;
+        notifyPropertyChanged(BR.mwra12e);
+    }
+
+    @Bindable
+    public String getMwra12f() {
+        return mwra12f;
+    }
+
+    public void setMwra12f(String mwra12f) {
+        this.mwra12f = mwra12f;
+        notifyPropertyChanged(BR.mwra12f);
+    }
+
+    @Bindable
+    public String getMwra12g() {
+        return mwra12g;
+    }
+
+    public void setMwra12g(String mwra12g) {
+        this.mwra12g = mwra12g;
+        notifyPropertyChanged(BR.mwra12g);
+    }
+
+    @Bindable
+    public String getMwra12h() {
+        return mwra12h;
+    }
+
+    public void setMwra12h(String mwra12h) {
+        this.mwra12h = mwra12h;
+        notifyPropertyChanged(BR.mwra12h);
+    }
+
+    @Bindable
+    public String getMwra12i() {
+        return mwra12i;
+    }
+
+    public void setMwra12i(String mwra12i) {
+        this.mwra12i = mwra12i;
+        notifyPropertyChanged(BR.mwra12i);
+    }
+
+    @Bindable
+    public String getMwra12j() {
+        return mwra12j;
+    }
+
+    public void setMwra12j(String mwra12j) {
+        this.mwra12j = mwra12j;
+        notifyPropertyChanged(BR.mwra12j);
+    }
+
+    @Bindable
+    public String getMwra12k() {
+        return mwra12k;
+    }
+
+    public void setMwra12k(String mwra12k) {
+        this.mwra12k = mwra12k;
+        notifyPropertyChanged(BR.mwra12k);
+    }
+
+    @Bindable
+    public String getMwra12l() {
+        return mwra12l;
+    }
+
+    public void setMwra12l(String mwra12l) {
+        this.mwra12l = mwra12l;
+        notifyPropertyChanged(BR.mwra12l);
+    }
+
+    @Bindable
+    public String getMwra12m() {
+        return mwra12m;
+    }
+
+    public void setMwra12m(String mwra12m) {
+        this.mwra12m = mwra12m;
+        notifyPropertyChanged(BR.mwra12m);
+    }
+
+    @Bindable
+    public String getMwra1296() {
+        return mwra1296;
+    }
+
+    public void setMwra1296(String mwra1296) {
+        this.mwra1296 = mwra1296;
+        notifyPropertyChanged(BR.mwra1296);
+    }
+
+    @Bindable
+    public String getMwra1296x() {
+        return mwra1296x;
+    }
+
+    public void setMwra1296x(String mwra1296x) {
+        this.mwra1296x = mwra1296x;
+        notifyPropertyChanged(BR.mwra1296x);
+    }
+
+    @Bindable
+    public String getMwra13() {
+        return mwra13;
+    }
+
+    public void setMwra13(String mwra13) {
+        this.mwra13 = mwra13;
+        notifyPropertyChanged(BR.mwra13);
+    }
+
+    @Bindable
+    public String getMwra14() {
+        return mwra14;
+    }
+
+    public void setMwra14(String mwra14) {
+        this.mwra14 = mwra14;
+        notifyPropertyChanged(BR.mwra14);
+    }
+
+    @Bindable
+    public String getMwra1496x() {
+        return mwra1496x;
+    }
+
+    public void setMwra1496x(String mwra1496x) {
+        this.mwra1496x = mwra1496x;
+        notifyPropertyChanged(BR.mwra1496x);
+    }
+
+    @Bindable
+    public String getMwra15() {
+        return mwra15;
+    }
+
+    public void setMwra15(String mwra15) {
+        this.mwra15 = mwra15;
+        notifyPropertyChanged(BR.mwra15);
+    }
+
+    @Bindable
+    public String getMwra16() {
+        return mwra16;
+    }
+
+    public void setMwra16(String mwra16) {
+        this.mwra16 = mwra16;
+        notifyPropertyChanged(BR.mwra16);
+    }
+
+    @Bindable
+    public String getMwra17() {
+        return mwra17;
+    }
+
+    public void setMwra17(String mwra17) {
+        this.mwra17 = mwra17;
+        notifyPropertyChanged(BR.mwra17);
+    }
+
+    @Bindable
+    public String getMwra17a() {
+        return mwra17a;
+    }
+
+    public void setMwra17a(String mwra17a) {
+        this.mwra17a = mwra17a;
+        notifyPropertyChanged(BR.mwra17a);
+    }
+
+    @Bindable
+    public String getMwra17b() {
+        return mwra17b;
+    }
+
+    public void setMwra17b(String mwra17b) {
+        this.mwra17b = mwra17b;
+        notifyPropertyChanged(BR.mwra17b);
+    }
+
+    @Bindable
+    public String getMwra17c() {
+        return mwra17c;
+    }
+
+    public void setMwra17c(String mwra17c) {
+        this.mwra17c = mwra17c;
+        notifyPropertyChanged(BR.mwra17c);
+    }
+
+    @Bindable
+    public String getMwra17d() {
+        return mwra17d;
+    }
+
+    public void setMwra17d(String mwra17d) {
+        this.mwra17d = mwra17d;
+        notifyPropertyChanged(BR.mwra17d);
+    }
+
+    @Bindable
+    public String getMwra17e() {
+        return mwra17e;
+    }
+
+    public void setMwra17e(String mwra17e) {
+        this.mwra17e = mwra17e;
+        notifyPropertyChanged(BR.mwra17e);
+    }
+
+    @Bindable
+    public String getMwra1796() {
+        return mwra1796;
+    }
+
+    public void setMwra1796(String mwra1796) {
+        this.mwra1796 = mwra1796;
+        notifyPropertyChanged(BR.mwra1796);
+    }
+
+    @Bindable
+    public String getMwra1796x() {
+        return mwra1796x;
+    }
+
+    public void setMwra1796x(String mwra1796x) {
+        this.mwra1796x = mwra1796x;
+        notifyPropertyChanged(BR.mwra1796x);
+    }
+
+    @Bindable
+    public String getMwra18() {
+        return mwra18;
+    }
+
+    public void setMwra18(String mwra18) {
+        this.mwra18 = mwra18;
+        notifyPropertyChanged(BR.mwra18);
+    }
+
+    @Bindable
+    public String getMwra18a() {
+        return mwra18a;
+    }
+
+    public void setMwra18a(String mwra18a) {
+        this.mwra18a = mwra18a;
+        notifyPropertyChanged(BR.mwra18a);
+    }
+
+    @Bindable
+    public String getMwra18b() {
+        return mwra18b;
+    }
+
+    public void setMwra18b(String mwra18b) {
+        this.mwra18b = mwra18b;
+        notifyPropertyChanged(BR.mwra18b);
+    }
+
+    @Bindable
+    public String getMwra18c() {
+        return mwra18c;
+    }
+
+    public void setMwra18c(String mwra18c) {
+        this.mwra18c = mwra18c;
+        notifyPropertyChanged(BR.mwra18c);
+    }
+
+    @Bindable
+    public String getMwra18d() {
+        return mwra18d;
+    }
+
+    public void setMwra18d(String mwra18d) {
+        this.mwra18d = mwra18d;
+        notifyPropertyChanged(BR.mwra18d);
+    }
+
+    @Bindable
+    public String getMwra18e() {
+        return mwra18e;
+    }
+
+    public void setMwra18e(String mwra18e) {
+        this.mwra18e = mwra18e;
+        notifyPropertyChanged(BR.mwra18e);
+    }
+
+    @Bindable
+    public String getMwra18f() {
+        return mwra18f;
+    }
+
+    public void setMwra18f(String mwra18f) {
+        this.mwra18f = mwra18f;
+        notifyPropertyChanged(BR.mwra18f);
+    }
+
+    @Bindable
+    public String getMwra18g() {
+        return mwra18g;
+    }
+
+    public void setMwra18g(String mwra18g) {
+        this.mwra18g = mwra18g;
+        notifyPropertyChanged(BR.mwra18g);
+    }
+
+    @Bindable
+    public String getMwra18h() {
+        return mwra18h;
+    }
+
+    public void setMwra18h(String mwra18h) {
+        this.mwra18h = mwra18h;
+        notifyPropertyChanged(BR.mwra18h);
+    }
+
+    @Bindable
+    public String getMwra1896() {
+        return mwra1896;
+    }
+
+    public void setMwra1896(String mwra1896) {
+        this.mwra1896 = mwra1896;
+        notifyPropertyChanged(BR.mwra1896);
+    }
+
+    @Bindable
+    public String getMwra1896x() {
+        return mwra1896x;
+    }
+
+    public void setMwra1896x(String mwra1896x) {
+        this.mwra1896x = mwra1896x;
+        notifyPropertyChanged(BR.mwra1896x);
+    }
+
+    @Bindable
+    public String getMwra19() {
+        return mwra19;
+    }
+
+    public void setMwra19(String mwra19) {
+        this.mwra19 = mwra19;
+        notifyPropertyChanged(BR.mwra19);
+    }
+
+    @Bindable
+    public String getMwra20() {
+        return mwra20;
+    }
+
+    public void setMwra20(String mwra20) {
+        this.mwra20 = mwra20;
+        notifyPropertyChanged(BR.mwra20);
+    }
+
+    @Bindable
+    public String getMwra2096x() {
+        return mwra2096x;
+    }
+
+    public void setMwra2096x(String mwra2096x) {
+        this.mwra2096x = mwra2096x;
+        notifyPropertyChanged(BR.mwra2096x);
+    }
+
+    @Bindable
+    public String getMwra21() {
+        return mwra21;
+    }
+
+    public void setMwra21(String mwra21) {
+        this.mwra21 = mwra21;
+        notifyPropertyChanged(BR.mwra21);
+    }
+
+    @Bindable
+    public String getMwra22() {
+        return mwra22;
+    }
+
+    public void setMwra22(String mwra22) {
+        this.mwra22 = mwra22;
+        notifyPropertyChanged(BR.mwra22);
+    }
+
+    @Bindable
+    public String getMwra23() {
+        return mwra23;
+    }
+
+    public void setMwra23(String mwra23) {
+        this.mwra23 = mwra23;
+        notifyPropertyChanged(BR.mwra23);
+    }
+
+    @Bindable
+    public String getMwra23a() {
+        return mwra23a;
+    }
+
+    public void setMwra23a(String mwra23a) {
+        this.mwra23a = mwra23a;
+        notifyPropertyChanged(BR.mwra23a);
+    }
+
+    @Bindable
+    public String getMwra23b() {
+        return mwra23b;
+    }
+
+    public void setMwra23b(String mwra23b) {
+        this.mwra23b = mwra23b;
+        notifyPropertyChanged(BR.mwra23b);
+    }
+
+    @Bindable
+    public String getMwra23c() {
+        return mwra23c;
+    }
+
+    public void setMwra23c(String mwra23c) {
+        this.mwra23c = mwra23c;
+        notifyPropertyChanged(BR.mwra23c);
+    }
+
+    @Bindable
+    public String getMwra23d() {
+        return mwra23d;
+    }
+
+    public void setMwra23d(String mwra23d) {
+        this.mwra23d = mwra23d;
+        notifyPropertyChanged(BR.mwra23d);
+    }
+
+    @Bindable
+    public String getMwra23e() {
+        return mwra23e;
+    }
+
+    public void setMwra23e(String mwra23e) {
+        this.mwra23e = mwra23e;
+        notifyPropertyChanged(BR.mwra23e);
+    }
+
+    @Bindable
+    public String getMwra23f() {
+        return mwra23f;
+    }
+
+    public void setMwra23f(String mwra23f) {
+        this.mwra23f = mwra23f;
+        notifyPropertyChanged(BR.mwra23f);
+    }
+
+    @Bindable
+    public String getMwra23g() {
+        return mwra23g;
+    }
+
+    public void setMwra23g(String mwra23g) {
+        this.mwra23g = mwra23g;
+        notifyPropertyChanged(BR.mwra23g);
+    }
+
+    @Bindable
+    public String getMwra23h() {
+        return mwra23h;
+    }
+
+    public void setMwra23h(String mwra23h) {
+        this.mwra23h = mwra23h;
+        notifyPropertyChanged(BR.mwra23h);
+    }
+
+    @Bindable
+    public String getMwra23i() {
+        return mwra23i;
+    }
+
+    public void setMwra23i(String mwra23i) {
+        this.mwra23i = mwra23i;
+        notifyPropertyChanged(BR.mwra23i);
+    }
+
+    @Bindable
+    public String getMwra23j() {
+        return mwra23j;
+    }
+
+    public void setMwra23j(String mwra23j) {
+        this.mwra23j = mwra23j;
+        notifyPropertyChanged(BR.mwra23j);
+    }
+
+    @Bindable
+    public String getMwra2396() {
+        return mwra2396;
+    }
+
+    public void setMwra2396(String mwra2396) {
+        this.mwra2396 = mwra2396;
+        notifyPropertyChanged(BR.mwra2396);
+    }
+
+    @Bindable
+    public String getMwra2396x() {
+        return mwra2396x;
+    }
+
+    public void setMwra2396x(String mwra2396x) {
+        this.mwra2396x = mwra2396x;
+        notifyPropertyChanged(BR.mwra2396x);
+    }
+
+    @Bindable
+    public String getMwra24() {
+        return mwra24;
+    }
+
     private String adol02 = StringUtils.EMPTY;
     private String adol03 = StringUtils.EMPTY;
     private String adol04 = StringUtils.EMPTY;
@@ -191,1457 +1664,10 @@ public class Form extends BaseObservable {
     private String adol1596 = StringUtils.EMPTY;
     private String adol1596x = StringUtils.EMPTY;
 
-    //SECTION V H C
-    private String vhc01 = StringUtils.EMPTY;
-    private String vhc02 = StringUtils.EMPTY;
-    private String vhc03 = StringUtils.EMPTY;
-    private String vhc04 = StringUtils.EMPTY;
-    private String vhc05 = StringUtils.EMPTY;
-    private String vhc06 = StringUtils.EMPTY;
-    private String vhc06a = StringUtils.EMPTY;
-    private String vhc06b = StringUtils.EMPTY;
-    private String vhc06c = StringUtils.EMPTY;
-    private String vhc06d = StringUtils.EMPTY;
-    private String vhc06e = StringUtils.EMPTY;
-    private String vhc06f = StringUtils.EMPTY;
-    private String vhc06g = StringUtils.EMPTY;
-    private String vhc06h = StringUtils.EMPTY;
-    private String vhc06i = StringUtils.EMPTY;
-    private String vhc06j = StringUtils.EMPTY;
-    private String vhc0696 = StringUtils.EMPTY;
-    private String vhc0696x = StringUtils.EMPTY;
-
-    // APP VARIABLES
-    private String id = StringUtils.EMPTY;
-    private String uid = StringUtils.EMPTY;
-    private String userName = StringUtils.EMPTY;
-    private String sysDate = StringUtils.EMPTY;
-    private String dcode = StringUtils.EMPTY;
-    private String ucode = StringUtils.EMPTY;
-    private String cluster = StringUtils.EMPTY;
-    private String hhno = StringUtils.EMPTY;
-    private String deviceId = StringUtils.EMPTY;
-    private String deviceTag = StringUtils.EMPTY;
-    private String appver = StringUtils.EMPTY;
-    private String endTime = StringUtils.EMPTY;
-    private String iStatus = StringUtils.EMPTY;
-    private String iStatus96x = StringUtils.EMPTY;
-    private String synced = StringUtils.EMPTY;
-    private String syncDate = StringUtils.EMPTY;
-    private String g5Flag = "-1";
-    private String hhflag = "-1";
-
-    // SECTION VARIABLES
-    private String sA = StringUtils.EMPTY;
-    private String sB = StringUtils.EMPTY;
-    private String sC = StringUtils.EMPTY;
-    private String sD = StringUtils.EMPTY;
-    private String sE = StringUtils.EMPTY;
-
-    //Not saving in DB
-    private LocalDate localDate = null;
-    private boolean exist = false;
-
-    public Form() {
-
-    }
-
-    public boolean isExist() {
-        return exist;
-    }
-
-    public void setExist(boolean exist) {
-        this.exist = exist;
-    }
-
-    public LocalDate getLocalDate() {
-        return localDate;
-    }
-
-    public void setLocalDate(LocalDate localDate) {
-        this.localDate = localDate;
-    }
-
-    public void setForm(String userName, String sysDate, String dcode, String ucode, String cluster, String hhno, String deviceId, String deviceTag, String appver) {
-        this.userName = userName;
-        this.sysDate = sysDate;
-        this.dcode = dcode;
-        this.ucode = ucode;
-        this.cluster = cluster;
-        this.hhno = hhno;
-        this.deviceId = deviceId;
-        this.deviceTag = deviceTag;
-        this.appver = appver;
-    }
-
-    @Bindable
-    public String getProjectName() {
-        return projectName;
-    }
-
-    public void setProjectName(String projectName) {
-        if (projectName != projectName)
-            this.projectName = projectName;
-
-        //TODO: Update field in layout
-        // notifyPropertyChanged(BR.layoutFieldName);
-    }
-
-    @Bindable
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-
-    }
-
-    @Bindable
-    public String getUid() {
-        return uid;
-    }
-
-    public Form setUid(String uid) {
-        this.uid = uid;
-        return this;
-    }
-
-    @Bindable
-    public String getUserName() {
-        return userName;
-    }
-
-    public Form setUserName(String userName) {
-        this.userName = userName;
-        return this;
-    }
-
-
-    @Bindable
-    public String getDcode() {
-        return dcode;
-    }
-
-    public Form setDcode(String dcode) {
-        this.dcode = dcode;
-        return this;
-    }
-
-
-    @Bindable
-    public String getUcode() {
-        return ucode;
-    }
-
-    public Form setUcode(String ucode) {
-        this.ucode = ucode;
-        return this;
-    }
-
-
-    @Bindable
-    public String getCluster() {
-        return cluster;
-    }
-
-    public Form setCluster(String cluster) {
-        this.cluster = cluster;
-        return this;
-    }
-
-
-    @Bindable
-    public String getHhno() {
-        return hhno;
-    }
-
-    public Form setHhno(String hhno) {
-        this.hhno = hhno;
-        return this;
-    }
-
-
-    @Bindable
-    public String getDeviceId() {
-        return deviceId;
-    }
-
-    public Form setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
-        return this;
-    }
-
-    @Bindable
-    public String getDeviceTag() {
-        return deviceTag;
-    }
-
-    public Form setDeviceTag(String deviceTag) {
-        this.deviceTag = deviceTag;
-        return this;
-    }
-
-    @Bindable
-    public String getAppver() {
-        return appver;
-    }
-
-    public Form setAppver(String appver) {
-        this.appver = appver;
-        return this;
-    }
-
-    @Bindable
-    public String getSysDate() {
-        return sysDate;
-    }
-
-    public Form setSysDate(String sysDate) {
-        this.sysDate = sysDate;
-        return this;
-    }
-
-    @Bindable
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public Form setEndTime(String endTime) {
-        this.endTime = endTime;
-        return this;
-    }
-
-
-    @Bindable
-    public String getSynced() {
-        return synced;
-    }
-
-    public Form setSynced(String synced) {
-        this.synced = synced;
-        return this;
-    }
-
-    @Bindable
-    public String getSyncDate() {
-        return syncDate;
-    }
-
-    public Form setSyncDate(String syncDate) {
-        this.syncDate = syncDate;
-        return this;
-    }
-
-
-    public String getG5Flag() {
-        return g5Flag;
-    }
-
-    public void setG5Flag(String g5Flag) {
-        this.g5Flag = g5Flag;
-    }
-
-
-    public String getHhflag() {
-        return hhflag;
-    }
-
-    public Form setHhflag(String hhflag) {
-        this.hhflag = hhflag;
-        return this;
-    }
-
-
-    public String getsA() {
-        return sA;
-    }
-
-    public Form setsA(String sA) {
-        this.sA = sA;
-        return this;
-    }
-
-    public String getsB() {
-        return sB;
-    }
-
-    public Form setsB(String sB) {
-        this.sB = sB;
-        return this;
-    }
-
-    public String getsC() {
-        return sC;
-    }
-
-    public Form setsC(String sC) {
-        this.sC = sC;
-        return this;
-    }
-
-    public String getsD() {
-        return sD;
-    }
-
-    public Form setsD(String sD) {
-        this.sD = sD;
-        return this;
-    }
-
-    public String getsE() {
-        return sE;
-    }
-
-    public Form setsE(String sE) {
-        this.sE = sE;
-        return this;
-    }
-
-
-    @Bindable
-    public String getLhw01() {
-        return lhw01;
-    }
-
-    public void setLhw01(String lhw01) {
-        this.lhw01 = lhw01;
-        notifyPropertyChanged(BR.lhw01);
-    }
-
-
-    @Bindable
-    public String getLhw02() {
-        return lhw02;
-    }
-
-    public void setLhw02(String lhw02) {
-        this.lhw02 = lhw02;
-        notifyPropertyChanged(BR.lhw02);
-    }
-
-
-    @Bindable
-    public String getLhw03() {
-        return lhw03;
-    }
-
-    public void setLhw03(String lhw03) {
-        this.lhw03 = lhw03;
-        notifyPropertyChanged(BR.lhw03);
-    }
-
-
-    @Bindable
-    public String getHhi01() {
-        return hhi01;
-    }
-
-    public void setHhi01(String hhi01) {
-        this.hhi01 = hhi01;
-        notifyPropertyChanged(BR.hhi01);
-    }
-
-
-    @Bindable
-    public String getHhi02() {
-        return hhi02;
-    }
-
-    public void setHhi02(String hhi02) {
-        this.hhi02 = hhi02;
-        notifyPropertyChanged(BR.hhi02);
-    }
-
-
-    @Bindable
-    public String getHhi02a() {
-        return hhi02a;
-    }
-
-    public void setHhi02a(String hhi02a) {
-        this.hhi02a = hhi02a;
-        notifyPropertyChanged(BR.hhi02a);
-    }
-
-
-    @Bindable
-    public String getHhi02b() {
-        return hhi02b;
-    }
-
-    public void setHhi02b(String hhi02b) {
-        this.hhi02b = hhi02b;
-        notifyPropertyChanged(BR.hhi02b);
-    }
-
-
-    @Bindable
-    public String getHhi02c() {
-        return hhi02c;
-    }
-
-    public void setHhi02c(String hhi02c) {
-        this.hhi02c = hhi02c;
-        notifyPropertyChanged(BR.hhi02c);
-    }
-
-
-    @Bindable
-    public String getHhi02d() {
-        return hhi02d;
-    }
-
-    public void setHhi02d(String hhi02d) {
-        this.hhi02d = hhi02d;
-        notifyPropertyChanged(BR.hhi02d);
-    }
-
-
-    @Bindable
-    public String getHhi02e() {
-        return hhi02e;
-    }
-
-    public void setHhi02e(String hhi02e) {
-        this.hhi02e = hhi02e;
-        notifyPropertyChanged(BR.hhi02e);
-    }
-
-
-    @Bindable
-    public String getHhi03() {
-        return hhi03;
-    }
-
-    public void setHhi03(String hhi03) {
-        this.hhi03 = hhi03;
-        notifyPropertyChanged(BR.hhi03);
-    }
-
-
-    @Bindable
-    public String getHh01() {
-        return hh01;
-    }
-
-    public void setHh01(String hh01) {
-        this.hh01 = hh01;
-        notifyPropertyChanged(BR.hh01);
-    }
-
-
-    @Bindable
-    public String getHh02() {
-        return hh02;
-    }
-
-    public void setHh02(String hh02) {
-        this.hh02 = hh02;
-        notifyPropertyChanged(BR.hh02);
-    }
-
-
-    @Bindable
-    public String getHh03() {
-        return hh03;
-    }
-
-    public void setHh03(String hh03) {
-        this.hh03 = hh03;
-        notifyPropertyChanged(BR.hh03);
-    }
-
-
-    @Bindable
-    public String getHh04a() {
-        return hh04a;
-    }
-
-    public void setHh04a(String hh04a) {
-        this.hh04a = hh04a;
-        notifyPropertyChanged(BR.hh04a);
-    }
-
-
-    @Bindable
-    public String getHh04b() {
-        return hh04b;
-    }
-
-    public void setHh04b(String hh04b) {
-        this.hh04b = hh04b;
-        notifyPropertyChanged(BR.hh04b);
-    }
-
-
-    @Bindable
-
-    public String getHh04c() {
-        return hh04c;
-    }
-
-    public void setHh04c(String hh04c) {
-        this.hh04c = hh04c;
-        notifyPropertyChanged(BR.hh04c);
-    }
-
-
-    @Bindable
-    public String getHh05() {
-        return hh05;
-    }
-
-    public void setHh05(String hh05) {
-        this.hh05 = hh05;
-        notifyPropertyChanged(BR.hh05);
-    }
-
-
-    @Bindable
-    public String getHh06() {
-        return hh06;
-    }
-
-    public void setHh06(String hh06) {
-        this.hh06 = hh06;
-        notifyPropertyChanged(BR.hh06);
-    }
-
-
-    @Bindable
-    public String getHh07() {
-        return hh07;
-    }
-
-    public void setHh07(String hh07) {
-        this.hh07 = hh07;
-        notifyPropertyChanged(BR.hh07);
-    }
-
-
-    @Bindable
-    public String getHh08() {
-        return hh08;
-    }
-
-    public void setHh08(String hh08) {
-        this.hh08 = hh08;
-        notifyPropertyChanged(BR.hh08);
-    }
-
-
-    @Bindable
-    public String getHh09() {
-        return hh09;
-    }
-
-    public void setHh09(String hh09) {
-        this.hh09 = hh09;
-        notifyPropertyChanged(BR.hh09);
-    }
-
-
-    @Bindable
-    public String getHh10() {
-        return hh10;
-    }
-
-    public void setHh10(String hh10) {
-        this.hh10 = hh10;
-        notifyPropertyChanged(BR.hh10);
-    }
-
-
-    @Bindable
-    public String getHh11() {
-        return hh11;
-    }
-
-    public void setHh11(String hh11) {
-        this.hh11 = hh11;
-        notifyPropertyChanged(BR.hh11);
-    }
-
-
-    @Bindable
-    public String getMwra01() {
-        return mwra01;
-    }
-
-    public void setMwra01(String mwra01) {
-        this.mwra01 = mwra01;
-        notifyPropertyChanged(BR.mwra01);
-    }
-
-
-    @Bindable
-    public String getMwra02() {
-        return mwra02;
-    }
-
-    public void setMwra02(String mwra02) {
-        this.mwra02 = mwra02;
-        notifyPropertyChanged(BR.mwra02);
-    }
-
-
-    @Bindable
-    public String getMwra03() {
-        return mwra03;
-    }
-
-    public void setMwra03(String mwra03) {
-        this.mwra03 = mwra03;
-        notifyPropertyChanged(BR.mwra03);
-    }
-
-
-    @Bindable
-    public String getMwra04() {
-        return mwra04;
-    }
-
-    public void setMwra04(String mwra04) {
-        this.mwra04 = mwra04;
-        notifyPropertyChanged(BR.mwra04);
-    }
-
-
-    @Bindable
-    public String getMwra05a() {
-        return mwra05a;
-    }
-
-    public void setMwra05a(String mwra05a) {
-        this.mwra05a = mwra05a;
-        notifyPropertyChanged(BR.mwra05a);
-    }
-
-
-    @Bindable
-    public String getMwra05b() {
-        return mwra05b;
-    }
-
-    public void setMwra05b(String mwra05b) {
-        this.mwra05b = mwra05b;
-        notifyPropertyChanged(BR.mwra05b);
-    }
-
-
-    @Bindable
-    public String getMwra06() {
-        return mwra06;
-    }
-
-    public void setMwra06(String mwra06) {
-        this.mwra06 = mwra06;
-        notifyPropertyChanged(BR.mwra06);
-    }
-
-
-    @Bindable
-    public String getMwra07() {
-        return mwra07;
-    }
-
-    public void setMwra07(String mwra07) {
-        this.mwra07 = mwra07;
-        notifyPropertyChanged(BR.mwra07);
-    }
-
-
-    @Bindable
-    public String getMwra08() {
-        return mwra08;
-    }
-
-    public void setMwra08(String mwra08) {
-        this.mwra08 = mwra08;
-        notifyPropertyChanged(BR.mwra08);
-    }
-
-
-    @Bindable
-    public String getMwra08a() {
-        return mwra08a;
-    }
-
-    public void setMwra08a(String mwra08a) {
-        this.mwra08a = mwra08a;
-        notifyPropertyChanged(BR.mwra08a);
-    }
-
-
-    @Bindable
-    public String getMwra08b() {
-        return mwra08b;
-    }
-
-    public void setMwra08b(String mwra08b) {
-        this.mwra08b = mwra08b;
-        notifyPropertyChanged(BR.mwra08b);
-    }
-
-
-    @Bindable
-    public String getMwra08c() {
-        return mwra08c;
-    }
-
-    public void setMwra08c(String mwra08c) {
-        this.mwra08c = mwra08c;
-        notifyPropertyChanged(BR.mwra08c);
-    }
-
-
-    @Bindable
-    public String getMwra08d() {
-        return mwra08d;
-    }
-
-    public void setMwra08d(String mwra08d) {
-        this.mwra08d = mwra08d;
-        notifyPropertyChanged(BR.mwra08d);
-    }
-
-
-    @Bindable
-    public String getMwra08e() {
-        return mwra08e;
-    }
-
-    public void setMwra08e(String mwra08e) {
-        this.mwra08e = mwra08e;
-        notifyPropertyChanged(BR.mwra08e);
-    }
-
-
-    @Bindable
-    public String getMwra08f() {
-        return mwra08f;
-    }
-
-    public void setMwra08f(String mwra08f) {
-        this.mwra08f = mwra08f;
-        notifyPropertyChanged(BR.mwra08f);
-    }
-
-
-    @Bindable
-    public String getMwra08g() {
-        return mwra08g;
-    }
-
-    public void setMwra08g(String mwra08g) {
-        this.mwra08g = mwra08g;
-        notifyPropertyChanged(BR.mwra08g);
-    }
-
-
-    @Bindable
-    public String getMwra0896() {
-        return mwra0896;
-    }
-
-    public void setMwra0896(String mwra0896) {
-        this.mwra0896 = mwra0896;
-        notifyPropertyChanged(BR.mwra0896);
-    }
-
-
-    @Bindable
-    public String getMwra0896x() {
-        return mwra0896x;
-    }
-
-    public void setMwra0896x(String mwra0896x) {
-        this.mwra0896x = mwra0896x;
-        notifyPropertyChanged(BR.mwra0896x);
-    }
-
-
-    @Bindable
-    public String getMwra09() {
-        return mwra09;
-    }
-
-    public void setMwra09(String mwra09) {
-        this.mwra09 = mwra09;
-        notifyPropertyChanged(BR.mwra09);
-    }
-
-
-    @Bindable
-    public String getMwra10() {
-        return mwra10;
-    }
-
-    public void setMwra10(String mwra10) {
-        this.mwra10 = mwra10;
-        notifyPropertyChanged(BR.mwra10);
-    }
-
-
-    @Bindable
-    public String getMwra11() {
-        return mwra11;
-    }
-
-    public void setMwra11(String mwra11) {
-        this.mwra11 = mwra11;
-        notifyPropertyChanged(BR.mwra11);
-    }
-
-
-    @Bindable
-    public String getMwra12() {
-        return mwra12;
-    }
-
-    public void setMwra12(String mwra12) {
-        this.mwra12 = mwra12;
-        notifyPropertyChanged(BR.mwra12);
-    }
-
-
-    @Bindable
-    public String getMwra12a() {
-        return mwra12a;
-    }
-
-    public void setMwra12a(String mwra12a) {
-        this.mwra12a = mwra12a;
-        notifyPropertyChanged(BR.mwra12a);
-    }
-
-
-    @Bindable
-    public String getMwra12b() {
-        return mwra12b;
-    }
-
-    public void setMwra12b(String mwra12b) {
-        this.mwra12b = mwra12b;
-        notifyPropertyChanged(BR.mwra12b);
-    }
-
-
-    @Bindable
-    public String getMwra12c() {
-        return mwra12c;
-    }
-
-    public void setMwra12c(String mwra12c) {
-        this.mwra12c = mwra12c;
-        notifyPropertyChanged(BR.mwra12c);
-    }
-
-
-    @Bindable
-    public String getMwra12d() {
-        return mwra12d;
-    }
-
-    public void setMwra12d(String mwra12d) {
-        this.mwra12d = mwra12d;
-    }
-
-
-    @Bindable
-    public String getMwra12e() {
-        return mwra12e;
-    }
-
-    public void setMwra12e(String mwra12e) {
-        this.mwra12e = mwra12e;
-        notifyPropertyChanged(BR.mwra12e);
-    }
-
-
-    @Bindable
-    public String getMwra12f() {
-        return mwra12f;
-    }
-
-    public void setMwra12f(String mwra12f) {
-        this.mwra12f = mwra12f;
-        notifyPropertyChanged(BR.mwra12f);
-    }
-
-
-    @Bindable
-    public String getMwra12g() {
-        return mwra12g;
-    }
-
-    public void setMwra12g(String mwra12g) {
-        this.mwra12g = mwra12g;
-        notifyPropertyChanged(BR.mwra12g);
-    }
-
-
-    @Bindable
-    public String getMwra12h() {
-        return mwra12h;
-    }
-
-    public void setMwra12h(String mwra12h) {
-        this.mwra12h = mwra12h;
-        notifyPropertyChanged(BR.mwra12h);
-    }
-
-
-    @Bindable
-    public String getMwra12i() {
-        return mwra12i;
-    }
-
-    public void setMwra12i(String mwra12i) {
-        this.mwra12i = mwra12i;
-        notifyPropertyChanged(BR.mwra12i);
-    }
-
-
-    @Bindable
-    public String getMwra12j() {
-        return mwra12j;
-    }
-
-    public void setMwra12j(String mwra12j) {
-        this.mwra12j = mwra12j;
-        notifyPropertyChanged(BR.mwra12j);
-    }
-
-
-    @Bindable
-    public String getMwra12k() {
-        return mwra12k;
-    }
-
-    public void setMwra12k(String mwra12k) {
-        this.mwra12k = mwra12k;
-        notifyPropertyChanged(BR.mwra12k);
-    }
-
-
-    @Bindable
-    public String getMwra12l() {
-        return mwra12l;
-    }
-
-    public void setMwra12l(String mwra12l) {
-        this.mwra12l = mwra12l;
-        notifyPropertyChanged(BR.mwra12l);
-    }
-
-
-    @Bindable
-    public String getMwra12m() {
-        return mwra12m;
-    }
-
-    public void setMwra12m(String mwra12m) {
-        this.mwra12m = mwra12m;
-        notifyPropertyChanged(BR.mwra12m);
-    }
-
-
-    @Bindable
-    public String getMwra1296() {
-        return mwra1296;
-    }
-
-    public void setMwra1296(String mwra1296) {
-        this.mwra1296 = mwra1296;
-        notifyPropertyChanged(BR.mwra1296);
-    }
-
-
-    @Bindable
-    public String getMwra1296x() {
-        return mwra1296x;
-    }
-
-    public void setMwra1296x(String mwra1296x) {
-        this.mwra1296x = mwra1296x;
-        notifyPropertyChanged(BR.mwra1296x);
-    }
-
-
-    @Bindable
-    public String getMwra13() {
-        return mwra13;
-    }
-
-    public void setMwra13(String mwra13) {
-        this.mwra13 = mwra13;
-        notifyPropertyChanged(BR.mwra13);
-    }
-
-
-    @Bindable
-    public String getMwra14() {
-        return mwra14;
-    }
-
-    public void setMwra14(String mwra14) {
-        this.mwra14 = mwra14;
-        notifyPropertyChanged(BR.mwra14);
-    }
-
-
-    @Bindable
-    public String getMwra1496x() {
-        return mwra1496x;
-    }
-
-    public void setMwra1496x(String mwra1496x) {
-        this.mwra1496x = mwra1496x;
-        notifyPropertyChanged(BR.mwra1496x);
-    }
-
-
-    @Bindable
-    public String getMwra15() {
-        return mwra15;
-    }
-
-    public void setMwra15(String mwra15) {
-        this.mwra15 = mwra15;
-        notifyPropertyChanged(BR.mwra15);
-    }
-
-
-    @Bindable
-    public String getMwra16() {
-        return mwra16;
-    }
-
-    public void setMwra16(String mwra16) {
-        this.mwra16 = mwra16;
-        notifyPropertyChanged(BR.mwra16);
-    }
-
-
-    @Bindable
-    public String getMwra17() {
-        return mwra17;
-    }
-
-    public void setMwra17(String mwra17) {
-        this.mwra17 = mwra17;
-        notifyPropertyChanged(BR.mwra17);
-    }
-
-
-    @Bindable
-    public String getMwra17a() {
-        return mwra17a;
-    }
-
-    public void setMwra17a(String mwra17a) {
-        this.mwra17a = mwra17a;
-        notifyPropertyChanged(BR.mwra17a);
-    }
-
-
-    @Bindable
-    public String getMwra17b() {
-        return mwra17b;
-    }
-
-    public void setMwra17b(String mwra17b) {
-        this.mwra17b = mwra17b;
-        notifyPropertyChanged(BR.mwra17b);
-    }
-
-
-    @Bindable
-    public String getMwra17c() {
-        return mwra17c;
-    }
-
-    public void setMwra17c(String mwra17c) {
-        this.mwra17c = mwra17c;
-        notifyPropertyChanged(BR.mwra17c);
-    }
-
-
-    @Bindable
-    public String getMwra17d() {
-        return mwra17d;
-    }
-
-    public void setMwra17d(String mwra17d) {
-        this.mwra17d = mwra17d;
-        notifyPropertyChanged(BR.mwra17d);
-    }
-
-
-    @Bindable
-    public String getMwra17e() {
-        return mwra17e;
-    }
-
-    public void setMwra17e(String mwra17e) {
-        this.mwra17e = mwra17e;
-        notifyPropertyChanged(BR.mwra17e);
-    }
-
-
-    @Bindable
-    public String getMwra1796() {
-        return mwra1796;
-    }
-
-    public void setMwra1796(String mwra1796) {
-        this.mwra1796 = mwra1796;
-        notifyPropertyChanged(BR.mwra1796);
-    }
-
-
-    @Bindable
-    public String getMwra1796x() {
-        return mwra1796x;
-    }
-
-    public void setMwra1796x(String mwra1796x) {
-        this.mwra1796x = mwra1796x;
-        notifyPropertyChanged(BR.mwra1796x);
-    }
-
-
-    @Bindable
-    public String getMwra18() {
-        return mwra18;
-    }
-
-    public void setMwra18(String mwra18) {
-        this.mwra18 = mwra18;
-        notifyPropertyChanged(BR.mwra18);
-    }
-
-
-    @Bindable
-    public String getMwra18a() {
-        return mwra18a;
-    }
-
-    public void setMwra18a(String mwra18a) {
-        this.mwra18a = mwra18a;
-        notifyPropertyChanged(BR.mwra18a);
-    }
-
-
-    @Bindable
-    public String getMwra18b() {
-        return mwra18b;
-    }
-
-    public void setMwra18b(String mwra18b) {
-        this.mwra18b = mwra18b;
-        notifyPropertyChanged(BR.mwra18b);
-    }
-
-
-    @Bindable
-    public String getMwra18c() {
-        return mwra18c;
-    }
-
-    public void setMwra18c(String mwra18c) {
-        this.mwra18c = mwra18c;
-        notifyPropertyChanged(BR.mwra18c);
-    }
-
-
-    @Bindable
-    public String getMwra18d() {
-        return mwra18d;
-    }
-
-    public void setMwra18d(String mwra18d) {
-        this.mwra18d = mwra18d;
-        notifyPropertyChanged(BR.mwra18d);
-    }
-
-
-    @Bindable
-    public String getMwra18e() {
-        return mwra18e;
-    }
-
-    public void setMwra18e(String mwra18e) {
-        this.mwra18e = mwra18e;
-        notifyPropertyChanged(BR.mwra18e);
-    }
-
-
-    @Bindable
-    public String getMwra18f() {
-        return mwra18f;
-    }
-
-    public void setMwra18f(String mwra18f) {
-        this.mwra18f = mwra18f;
-        notifyPropertyChanged(BR.mwra18f);
-    }
-
-
-    @Bindable
-    public String getMwra18g() {
-        return mwra18g;
-    }
-
-    public void setMwra18g(String mwra18g) {
-        this.mwra18g = mwra18g;
-        notifyPropertyChanged(BR.mwra18g);
-    }
-
-
-    @Bindable
-    public String getMwra18h() {
-        return mwra18h;
-    }
-
-    public void setMwra18h(String mwra18h) {
-        this.mwra18h = mwra18h;
-        notifyPropertyChanged(BR.mwra18h);
-    }
-
-
-    @Bindable
-    public String getMwra1896() {
-        return mwra1896;
-    }
-
-    public void setMwra1896(String mwra1896) {
-        this.mwra1896 = mwra1896;
-        notifyPropertyChanged(BR.mwra1896);
-    }
-
-
-    @Bindable
-    public String getMwra1896x() {
-        return mwra1896x;
-    }
-
-    public void setMwra1896x(String mwra1896x) {
-        this.mwra1896x = mwra1896x;
-        notifyPropertyChanged(BR.mwra1896x);
-    }
-
-
-    @Bindable
-    public String getMwra19() {
-        return mwra19;
-    }
-
-    public void setMwra19(String mwra19) {
-        this.mwra19 = mwra19;
-        notifyPropertyChanged(BR.mwra19);
-    }
-
-
-    @Bindable
-    public String getMwra20() {
-        return mwra20;
-    }
-
-    public void setMwra20(String mwra20) {
-        this.mwra20 = mwra20;
-        notifyPropertyChanged(BR.mwra20);
-    }
-
-
-    @Bindable
-    public String getMwra2096x() {
-        return mwra2096x;
-    }
-
-    public void setMwra2096x(String mwra2096x) {
-        this.mwra2096x = mwra2096x;
-        notifyPropertyChanged(BR.mwra2096x);
-    }
-
-
-    @Bindable
-    public String getMwra21() {
-        return mwra21;
-    }
-
-    public void setMwra21(String mwra21) {
-        this.mwra21 = mwra21;
-        notifyPropertyChanged(BR.mwra21);
-    }
-
-
-    @Bindable
-    public String getMwra22() {
-        return mwra22;
-    }
-
-    public void setMwra22(String mwra22) {
-        this.mwra22 = mwra22;
-        notifyPropertyChanged(BR.mwra22);
-    }
-
-
-    @Bindable
-    public String getMwra23() {
-        return mwra23;
-    }
-
-    public void setMwra23(String mwra23) {
-        this.mwra23 = mwra23;
-        notifyPropertyChanged(BR.mwra23);
-    }
-
-
-    @Bindable
-    public String getMwra23a() {
-        return mwra23a;
-    }
-
-    public void setMwra23a(String mwra23a) {
-        this.mwra23a = mwra23a;
-        notifyPropertyChanged(BR.mwra23a);
-    }
-
-
-    @Bindable
-    public String getMwra23b() {
-        return mwra23b;
-    }
-
-    public void setMwra23b(String mwra23b) {
-        this.mwra23b = mwra23b;
-        notifyPropertyChanged(BR.mwra23b);
-    }
-
-
-    @Bindable
-    public String getMwra23c() {
-        return mwra23c;
-    }
-
-    public void setMwra23c(String mwra23c) {
-        this.mwra23c = mwra23c;
-        notifyPropertyChanged(BR.mwra23c);
-    }
-
-
-    @Bindable
-    public String getMwra23d() {
-        return mwra23d;
-    }
-
-    public void setMwra23d(String mwra23d) {
-        this.mwra23d = mwra23d;
-        notifyPropertyChanged(BR.mwra23d);
-    }
-
-
-    @Bindable
-    public String getMwra23e() {
-        return mwra23e;
-    }
-
-    public void setMwra23e(String mwra23e) {
-        this.mwra23e = mwra23e;
-        notifyPropertyChanged(BR.mwra23e);
-    }
-
-
-    @Bindable
-    public String getMwra23f() {
-        return mwra23f;
-    }
-
-    public void setMwra23f(String mwra23f) {
-        this.mwra23f = mwra23f;
-        notifyPropertyChanged(BR.mwra23f);
-    }
-
-
-    @Bindable
-    public String getMwra23g() {
-        return mwra23g;
-    }
-
-    public void setMwra23g(String mwra23g) {
-        this.mwra23g = mwra23g;
-        notifyPropertyChanged(BR.mwra23g);
-    }
-
-
-    @Bindable
-    public String getMwra23h() {
-        return mwra23h;
-    }
-
-    public void setMwra23h(String mwra23h) {
-        this.mwra23h = mwra23h;
-        notifyPropertyChanged(BR.mwra23h);
-    }
-
-
-    @Bindable
-    public String getMwra23i() {
-        return mwra23i;
-    }
-
-    public void setMwra23i(String mwra23i) {
-        this.mwra23i = mwra23i;
-        notifyPropertyChanged(BR.mwra23i);
-    }
-
-
-    @Bindable
-    public String getMwra23j() {
-        return mwra23j;
-    }
-
-    public void setMwra23j(String mwra23j) {
-        this.mwra23j = mwra23j;
-        notifyPropertyChanged(BR.mwra23j);
-    }
-
-
-    @Bindable
-    public String getMwra2396() {
-        return mwra2396;
-    }
-
-    public void setMwra2396(String mwra2396) {
-        this.mwra2396 = mwra2396;
-        notifyPropertyChanged(BR.mwra2396);
-    }
-
-
-    @Bindable
-    public String getMwra2396x() {
-        return mwra2396x;
-    }
-
-    public void setMwra2396x(String mwra2396x) {
-        this.mwra2396x = mwra2396x;
-        notifyPropertyChanged(BR.mwra2396x);
-    }
-
-
-    @Bindable
-    public String getMwra24() {
-        return mwra24;
-    }
-
     public void setMwra24(String mwra24) {
         this.mwra24 = mwra24;
         notifyPropertyChanged(BR.mwra24);
     }
-
 
     @Bindable
     public String getAdol01() {
@@ -1652,7 +1678,6 @@ public class Form extends BaseObservable {
         this.adol01 = adol01;
         notifyPropertyChanged(BR.adol01);
     }
-
 
     @Bindable
     public String getAdol02() {
@@ -1884,7 +1909,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol08);
     }
 
-
     @Bindable
     public String getAdol09() {
         return adol09;
@@ -1895,7 +1919,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol09);
     }
 
-
     @Bindable
     public String getAdol10() {
         return adol10;
@@ -1905,7 +1928,6 @@ public class Form extends BaseObservable {
         this.adol10 = adol10;
         notifyPropertyChanged(BR.adol10);
     }
-
 
     @Bindable
     public String getAdol10a() {
@@ -1927,7 +1949,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol10b);
     }
 
-
     @Bindable
     public String getAdol10c() {
         return adol10c;
@@ -1937,7 +1958,6 @@ public class Form extends BaseObservable {
         this.adol10c = adol10c;
         notifyPropertyChanged(BR.adol10c);
     }
-
 
     @Bindable
     public String getAdol10d() {
@@ -1949,7 +1969,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol10d);
     }
 
-
     @Bindable
     public String getAdol10e() {
         return adol10e;
@@ -1959,7 +1978,6 @@ public class Form extends BaseObservable {
         this.adol10e = adol10e;
         notifyPropertyChanged(BR.adol10e);
     }
-
 
     @Bindable
     public String getAdol10f() {
@@ -1971,7 +1989,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol10f);
     }
 
-
     @Bindable
     public String getAdol10g() {
         return adol10g;
@@ -1981,7 +1998,6 @@ public class Form extends BaseObservable {
         this.adol10g = adol10g;
         notifyPropertyChanged(BR.adol10g);
     }
-
 
     @Bindable
     public String getAdol10h() {
@@ -1993,7 +2009,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol10h);
     }
 
-
     @Bindable
     public String getAdol10i() {
         return adol10i;
@@ -2003,7 +2018,6 @@ public class Form extends BaseObservable {
         this.adol10i = adol10i;
         notifyPropertyChanged(BR.adol10i);
     }
-
 
     @Bindable
     public String getAdol10j() {
@@ -2015,7 +2029,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol10j);
     }
 
-
     @Bindable
     public String getAdol1096() {
         return adol1096;
@@ -2025,7 +2038,6 @@ public class Form extends BaseObservable {
         this.adol1096 = adol1096;
         notifyPropertyChanged(BR.adol1096);
     }
-
 
     @Bindable
     public String getAdol1096x() {
@@ -2037,7 +2049,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol1096x);
     }
 
-
     @Bindable
     public String getAdol11() {
         return adol11;
@@ -2047,7 +2058,6 @@ public class Form extends BaseObservable {
         this.adol11 = adol11;
         notifyPropertyChanged(BR.adol11);
     }
-
 
     @Bindable
     public String getAdol1196x() {
@@ -2059,7 +2069,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol1196x);
     }
 
-
     @Bindable
     public String getAdol12() {
         return adol12;
@@ -2069,7 +2078,6 @@ public class Form extends BaseObservable {
         this.adol12 = adol12;
         notifyPropertyChanged(BR.adol12);
     }
-
 
     @Bindable
     public String getAdol12a() {
@@ -2081,7 +2089,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol12a);
     }
 
-
     @Bindable
     public String getAdol12b() {
         return adol12b;
@@ -2091,7 +2098,6 @@ public class Form extends BaseObservable {
         this.adol12b = adol12b;
         notifyPropertyChanged(BR.adol12b);
     }
-
 
     @Bindable
     public String getAdol12c() {
@@ -2103,7 +2109,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol12c);
     }
 
-
     @Bindable
     public String getAdol12d() {
         return adol12d;
@@ -2113,7 +2118,6 @@ public class Form extends BaseObservable {
         this.adol12d = adol12d;
         notifyPropertyChanged(BR.adol12d);
     }
-
 
     @Bindable
     public String getAdol1296() {
@@ -2125,7 +2129,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol1296);
     }
 
-
     @Bindable
     public String getAdol1296x() {
         return adol1296x;
@@ -2135,7 +2138,6 @@ public class Form extends BaseObservable {
         this.adol1296x = adol1296x;
         notifyPropertyChanged(BR.adol1296x);
     }
-
 
     @Bindable
     public String getAdol13() {
@@ -2147,7 +2149,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol13);
     }
 
-
     @Bindable
     public String getAdol14() {
         return adol14;
@@ -2157,7 +2158,6 @@ public class Form extends BaseObservable {
         this.adol14 = adol14;
         notifyPropertyChanged(BR.adol14);
     }
-
 
     @Bindable
     public String getAdol15() {
@@ -2169,7 +2169,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol15);
     }
 
-
     @Bindable
     public String getAdol15a() {
         return adol15a;
@@ -2179,7 +2178,6 @@ public class Form extends BaseObservable {
         this.adol15a = adol15a;
         notifyPropertyChanged(BR.adol15a);
     }
-
 
     @Bindable
     public String getAdol15b() {
@@ -2191,7 +2189,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol15b);
     }
 
-
     @Bindable
     public String getAdol15c() {
         return adol15c;
@@ -2201,7 +2198,6 @@ public class Form extends BaseObservable {
         this.adol15c = adol15c;
         notifyPropertyChanged(BR.adol15c);
     }
-
 
     @Bindable
     public String getAdol15d() {
@@ -2213,7 +2209,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol15d);
     }
 
-
     @Bindable
     public String getAdol15e() {
         return adol15e;
@@ -2223,7 +2218,6 @@ public class Form extends BaseObservable {
         this.adol15e = adol15e;
         notifyPropertyChanged(BR.adol15e);
     }
-
 
     @Bindable
     public String getAdol1596() {
@@ -2235,7 +2229,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol1596);
     }
 
-
     @Bindable
     public String getAdol1596x() {
         return adol1596x;
@@ -2246,6 +2239,23 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol1596x);
     }
 
+    private String vhc02 = StringUtils.EMPTY;
+    private String vhc03 = StringUtils.EMPTY;
+    private String vhc04 = StringUtils.EMPTY;
+    private String vhc05 = StringUtils.EMPTY;
+    private String vhc06 = StringUtils.EMPTY;
+    private String vhc06a = StringUtils.EMPTY;
+    private String vhc06b = StringUtils.EMPTY;
+    private String vhc06c = StringUtils.EMPTY;
+    private String vhc06d = StringUtils.EMPTY;
+    private String vhc06e = StringUtils.EMPTY;
+    private String vhc06f = StringUtils.EMPTY;
+    private String vhc06g = StringUtils.EMPTY;
+    private String vhc06h = StringUtils.EMPTY;
+    private String vhc06i = StringUtils.EMPTY;
+    private String vhc06j = StringUtils.EMPTY;
+    private String vhc0696 = StringUtils.EMPTY;
+    private String vhc0696x = StringUtils.EMPTY;
 
     @Bindable
     public String getVhc01() {
@@ -2257,7 +2267,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.vhc01);
     }
 
-
     @Bindable
     public String getVhc02() {
         return vhc02;
@@ -2267,7 +2276,6 @@ public class Form extends BaseObservable {
         this.vhc02 = vhc02;
         notifyPropertyChanged(BR.vhc02);
     }
-
 
     @Bindable
     public String getVhc03() {
@@ -2279,7 +2287,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.vhc03);
     }
 
-
     @Bindable
     public String getVhc04() {
         return vhc04;
@@ -2289,7 +2296,6 @@ public class Form extends BaseObservable {
         this.vhc04 = vhc04;
         notifyPropertyChanged(BR.vhc04);
     }
-
 
     @Bindable
     public String getVhc05() {
@@ -2311,7 +2317,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.vhc06);
     }
 
-
     @Bindable
     public String getVhc06a() {
         return vhc06a;
@@ -2321,7 +2326,6 @@ public class Form extends BaseObservable {
         this.vhc06a = vhc06a;
         notifyPropertyChanged(BR.vhc06a);
     }
-
 
     @Bindable
     public String getVhc06b() {
@@ -2333,7 +2337,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.vhc06b);
     }
 
-
     @Bindable
     public String getVhc06c() {
         return vhc06c;
@@ -2343,7 +2346,6 @@ public class Form extends BaseObservable {
         this.vhc06c = vhc06c;
         notifyPropertyChanged(BR.vhc06c);
     }
-
 
     @Bindable
     public String getVhc06d() {
@@ -2355,7 +2357,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.vhc06d);
     }
 
-
     @Bindable
     public String getVhc06e() {
         return vhc06e;
@@ -2366,7 +2367,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.vhc06e);
     }
 
-
     @Bindable
     public String getVhc06f() {
         return vhc06f;
@@ -2376,7 +2376,6 @@ public class Form extends BaseObservable {
         this.vhc06f = vhc06f;
         notifyPropertyChanged(BR.vhc06f);
     }
-
 
     @Bindable
     public String getVhc06g() {
@@ -2398,7 +2397,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.vhc06h);
     }
 
-
     @Bindable
     public String getVhc06i() {
         return vhc06i;
@@ -2408,7 +2406,6 @@ public class Form extends BaseObservable {
         this.vhc06i = vhc06i;
         notifyPropertyChanged(BR.vhc06i);
     }
-
 
     @Bindable
     public String getVhc06j() {
@@ -2420,7 +2417,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.vhc06j);
     }
 
-
     @Bindable
     public String getVhc0696() {
         return vhc0696;
@@ -2431,7 +2427,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.vhc0696);
     }
 
-
     @Bindable
     public String getVhc0696x() {
         return vhc0696x;
@@ -2440,27 +2435,6 @@ public class Form extends BaseObservable {
     public void setVhc0696x(String vhc0696x) {
         this.vhc0696x = vhc0696x;
         notifyPropertyChanged(BR.vhc0696x);
-    }
-
-
-    @Bindable
-    public String getIStatus() {
-        return iStatus;
-    }
-
-    public void setIStatus(String iStatus) {
-        this.iStatus = iStatus;
-        notifyPropertyChanged(BR.iStatus);
-    }
-
-    @Bindable
-    public String getIStatus96x() {
-        return iStatus96x;
-    }
-
-    public void setIStatus96x(String iStatus96x) {
-        this.iStatus96x = iStatus96x;
-        notifyPropertyChanged(BR.iStatus96x);
     }
 
 
@@ -2535,7 +2509,6 @@ public class Form extends BaseObservable {
         return new GsonBuilder().create().toJson(this, Form.class);
     }
 
-
     public String sAtoString() {
         JSONObject json = new JSONObject();
 
@@ -2543,14 +2516,25 @@ public class Form extends BaseObservable {
             json.put("lhw01", lhw01)
                     .put("lhw02", lhw02)
                     .put("lhw03", lhw03)
+                    .put("lhw04", lhw04)
                     .put("hhi01", hhi01)
                     .put("hhi02", hhi02)
-                    .put("hhi02a", hhi02a)
-                    .put("hhi02b", hhi02b)
-                    .put("hhi02c", hhi02c)
-                    .put("hhi02d", hhi02d)
-                    .put("hhi02e", hhi02e)
-                    .put("hhi03", hhi03);
+                    .put("hhi03", hhi03)
+                    .put("hhi04a", hhi04a)
+                    .put("hhi04b", hhi04b)
+                    .put("hhi04c", hhi04c)
+                    .put("hhi04d", hhi04d)
+                    .put("hhi04e", hhi04e)
+                    .put("hhio4f", hhi04f)
+                    .put("lhwphoto", lhwphoto)
+                    .put("hhv01", hhv01)
+                    .put("hhv02", hhv02)
+                    .put("hhv03a", hhv03a)
+                    .put("hhv03b", hhv03b)
+                    .put("hhv03c", hhv03c)
+                    .put("hhv03d", hhv03d)
+                    .put("hhv03e", hhv03e)
+                    .put("hhv03f", hhv03f);
         } catch (JSONException e) {
             e.printStackTrace();
             return "\"error\":, \"" + e.getMessage() + "\"";
@@ -2569,7 +2553,8 @@ public class Form extends BaseObservable {
                     .put("hh04a", hh04a)
                     .put("hh04b", hh04b)
                     .put("hh04c", hh04c)
-                    .put("hh05", hh05)
+                    .put("hh05y", hh05y)
+                    .put("hh05m", hh05m)
                     .put("hh06", hh06)
                     .put("hh07", hh07)
                     .put("hh08", hh08)
@@ -2845,18 +2830,28 @@ public class Form extends BaseObservable {
             try {
                 JSONObject json = null;
                 json = new JSONObject(string);
-                this.hh01 = json.getString("hh01");
                 this.lhw01 = json.getString("lhw01");
                 this.lhw02 = json.getString("lhw02");
                 this.lhw03 = json.getString("lhw03");
+                this.lhw04 = json.getString("lhw04");
                 this.hhi01 = json.getString("hhi01");
                 this.hhi02 = json.getString("hhi02");
-                this.hhi02a = json.getString("hhi02a");
-                this.hhi02b = json.getString("hhi02b");
-                this.hhi02c = json.getString("hhi02c");
-                this.hhi02d = json.getString("hhi02d");
-                this.hhi02e = json.getString("hhi02e");
                 this.hhi03 = json.getString("hhi03");
+                this.hhi04a = json.getString("hhi04a");
+                this.hhi04b = json.getString("hhi04b");
+                this.hhi04c = json.getString("hhi04c");
+                this.hhi04d = json.getString("hhi04d");
+                this.hhi04e = json.getString("hhi04e");
+                this.hhi04f = json.getString("hhio4f");
+                this.lhwphoto = json.getString("lhwphoto");
+                this.hhv01 = json.getString("hhv01");
+                this.hhv02 = json.getString("hhv02");
+                this.hhv03a = json.getString("hhv03a");
+                this.hhv03b = json.getString("hhv03b");
+                this.hhv03c = json.getString("hhv03c");
+                this.hhv03d = json.getString("hhv03d");
+                this.hhv03e = json.getString("hhv03e");
+                this.hhv03f = json.getString("hhv03f");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -2877,7 +2872,8 @@ public class Form extends BaseObservable {
                 this.hh04a = json.getString("hh04a");
                 this.hh04b = json.getString("hh04b");
                 this.hh04c = json.getString("hh04c");
-                this.hh05 = json.getString("hh05");
+                this.hh05y = json.getString("hh05y");
+                this.hh05m = json.getString("hh05m");
                 this.hh06 = json.getString("hh06");
                 this.hh07 = json.getString("hh07");
                 this.hh08 = json.getString("hh08");

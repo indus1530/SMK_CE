@@ -35,7 +35,7 @@ class Section01Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section01)
-        bi.callback
+        bi.callback = this
         setSupportActionBar(bi.toolbar)
         populateSpinner(this)
         setupSkips()
@@ -113,6 +113,87 @@ class Section01Activity : AppCompatActivity() {
         form.setMh03(if (bi.mh03.getText().toString().trim().isEmpty()) "-1" else bi.mh03.getText().toString())
         form.setMh04(if (bi.mh04.getText().toString().trim().isEmpty()) "-1" else bi.mh04.getText().toString())
         form.setMh05(if (bi.mh05.getText().toString().trim().isEmpty()) "-1" else bi.mh05.getText().toString())*/
+
+
+
+        form.lhw01 = bi.lhw01.selectedItem.toString()
+        form.lhw02 = bi.lhw02.selectedItem.toString()
+        form.lhw03 = bi.lhw03.selectedItem.toString()
+
+        form.lhw04 = when {
+            bi.lhw04.text.toString().trim().isNotEmpty() -> bi.lhw04.text.toString()
+            else -> "-1"
+        }
+
+        form.hhi01 = when {
+            bi.hhi01.text.toString().trim().isNotEmpty() -> bi.hhi01.text.toString()
+            else -> "-1"
+        }
+
+        form.hhi02 = when {
+            bi.hhi02.text.toString().trim().isNotEmpty() -> bi.hhi02.text.toString()
+            else -> "-1"
+        }
+
+        form.hhi03 = when {
+            bi.hhi03.text.toString().trim().isNotEmpty() -> bi.hhi03.text.toString()
+            else -> "-1"
+        }
+
+        form.hhi04a = when {
+            bi.hhi04a.text.toString().trim().isNotEmpty() -> bi.hhi04a.text.toString()
+            else -> "-1"
+        }
+
+        form.hhi04b = when {
+            bi.hhi04b.text.toString().trim().isNotEmpty() -> bi.hhi04b.text.toString()
+            else -> "-1"
+        }
+
+        form.hhi04c = when {
+            bi.hhi04c.text.toString().trim().isNotEmpty() -> bi.hhi04c.text.toString()
+            else -> "-1"
+        }
+
+        form.hhi04d = when {
+            bi.hhi04d.text.toString().trim().isNotEmpty() -> bi.hhi04d.text.toString()
+            else -> "-1"
+        }
+
+        form.hhi04e = when {
+            bi.hhi04e.text.toString().trim().isNotEmpty() -> bi.hhi04e.text.toString()
+            else -> "-1"
+        }
+
+        form.hhi04f = when {
+            bi.hhi04f.text.toString().trim().isNotEmpty() -> bi.hhi04f.text.toString()
+            else -> "-1"
+        }
+
+        form.lhwphoto = when {
+            bi.lhwphoto.text.toString().trim().isNotEmpty() -> bi.lhwphoto.text.toString()
+            else -> "-1"
+        }
+
+        form.hhv01 = when {
+            bi.hhv01.text.toString().trim().isNotEmpty() -> bi.hhv01.text.toString()
+            else -> "-1"
+        }
+
+        form.hhv02 = bi.hhv02.text.toString()
+
+        form.hhv03a = bi.hhv03a.text.toString()
+
+        form.hhv03b = bi.hhv03b.text.toString()
+
+        form.hhv03c = bi.hhv03c.text.toString()
+
+        form.hhv03d = bi.hhv03d.text.toString()
+
+        form.hhv03e = bi.hhv03e.text.toString()
+
+        form.hhv03f = bi.hhv03f.text.toString()
+
     }
 
 

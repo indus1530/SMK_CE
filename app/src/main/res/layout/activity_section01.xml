@@ -518,14 +518,14 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="@string/hhio4f" />
+                                android:text="@string/hhi04f" />
 
                             <EditText
-                                android:id="@+id/hhio4f"
+                                android:id="@+id/hhi04f"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:hint="@string/hhio4f" />
+                                android:hint="@string/hhi04f" />
 
                         </LinearLayout>
 
