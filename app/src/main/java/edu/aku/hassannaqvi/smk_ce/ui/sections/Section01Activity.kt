@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
+import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.form
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
@@ -84,6 +85,25 @@ class Section01Activity : AppCompatActivity() {
     }
 
 
+    private fun updateDB(): Boolean {
+        val db = MainApp.appInfo.dbHelper
+        val updcount = db.addForm(form)
+        return if (updcount > 0) {
+            form.id = updcount.toString()
+            form.uid = form.deviceId + form.id
+            var count = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_UID, form.uid)
+            if (count > 0) count = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_SA, form.sAtoString())
+            if (count > 0) true else {
+                Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
+                false
+            }
+        } else {
+            Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
+            false
+        }
+    }
+
+
     fun BtnContinue(view: View) {
         if (!formValidation()) return
         saveDraft()
@@ -99,22 +119,15 @@ class Section01Activity : AppCompatActivity() {
     private fun saveDraft() {
         form = Form()
         form.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
-        /*form.setUuid(MainApp.form.getUid())
-        form.setUserName(MainApp.user.getUserName())
-        form.setDcode(MainApp.form.getDcode())
-        form.setUcode(MainApp.form.getUcode())
-        form.setCluster(MainApp.form.getCluster())
-        form.setHhno(MainApp.form.getHhno())
-        form.setDeviceId(MainApp.appInfo.getDeviceID())
-        form.setDeviceTag(MainApp.appInfo.getTagName())
-        form.setAppver(MainApp.appInfo.getAppVersion())
-        form.setMh01(if (bi.mh01.getText().toString().trim().isEmpty()) "-1" else bi.mh01.getText().toString())
-        form.setMh02(if (bi.mh02.getText().toString().trim().isEmpty()) "-1" else bi.mh02.getText().toString())
-        form.setMh03(if (bi.mh03.getText().toString().trim().isEmpty()) "-1" else bi.mh03.getText().toString())
-        form.setMh04(if (bi.mh04.getText().toString().trim().isEmpty()) "-1" else bi.mh04.getText().toString())
-        form.setMh05(if (bi.mh05.getText().toString().trim().isEmpty()) "-1" else bi.mh05.getText().toString())*/
-
-
+        form.uid = form.uid
+        form.userName = MainApp.user.userName
+        form.dcode = form.dcode
+        form.ucode = form.ucode
+        form.cluster = form.cluster
+        form.hhno = form.hhno
+        form.deviceId = MainApp.appInfo.deviceID
+        form.deviceTag = MainApp.appInfo.tagName
+        form.appver = MainApp.appInfo.appVersion
 
         form.lhw01 = bi.lhw01.selectedItem.toString()
         form.lhw02 = bi.lhw02.selectedItem.toString()
@@ -180,19 +193,40 @@ class Section01Activity : AppCompatActivity() {
             else -> "-1"
         }
 
-        form.hhv02 = bi.hhv02.text.toString()
+        form.hhv02 = when {
+            bi.hhv02.text.toString().trim().isNotEmpty() -> bi.hhv02.text.toString()
+            else -> "-1"
+        }
 
-        form.hhv03a = bi.hhv03a.text.toString()
+        form.hhv03a = when {
+            bi.hhv03a.text.toString().trim().isNotEmpty() -> bi.hhv03a.text.toString()
+            else -> "-1"
+        }
 
-        form.hhv03b = bi.hhv03b.text.toString()
+        form.hhv03b = when {
+            bi.hhv03b.text.toString().trim().isNotEmpty() -> bi.hhv03b.text.toString()
+            else -> "-1"
+        }
 
-        form.hhv03c = bi.hhv03c.text.toString()
+        form.hhv03c = when {
+            bi.hhv03c.text.toString().trim().isNotEmpty() -> bi.hhv03c.text.toString()
+            else -> "-1"
+        }
 
-        form.hhv03d = bi.hhv03d.text.toString()
+        form.hhv03d = when {
+            bi.hhv03d.text.toString().trim().isNotEmpty() -> bi.hhv03d.text.toString()
+            else -> "-1"
+        }
 
-        form.hhv03e = bi.hhv03e.text.toString()
+        form.hhv03e = when {
+            bi.hhv03e.text.toString().trim().isNotEmpty() -> bi.hhv03e.text.toString()
+            else -> "-1"
+        }
 
-        form.hhv03f = bi.hhv03f.text.toString()
+        form.hhv03f = when {
+            bi.hhv03f.text.toString().trim().isNotEmpty() -> bi.hhv03f.text.toString()
+            else -> "-1"
+        }
 
     }
 
@@ -201,35 +235,6 @@ class Section01Activity : AppCompatActivity() {
         //openSectionMainActivity(this, "G")
         finish()
         startActivity(Intent(this, MainActivity::class.java))
-    }
-
-
-    private fun updateDB(): Boolean {
-        /*val db = MainApp.appInfo.dbHelper
-        if (!MainApp.childInformation.isEditFlag) {
-            val updcount = db.addChildInformation(MainApp.childInformation)
-            return if (updcount > 0) {
-                MainApp.childInformation.id = updcount.toString()
-                MainApp.childInformation.uid = MainApp.childInformation.deviceId + MainApp.childInformation.id
-                var count = db.updatesChildInformationColumn(ChildInformationContract.ChildInfoTable.COLUMN_UID, MainApp.childInformation.uid)
-                if (count > 0) count = db.updatesChildInformationColumn(ChildInformationContract.ChildInfoTable.COLUMN_SCB, MainApp.childInformation.sCBtoString())
-                if (count > 0) true else {
-                    Toast.makeText(this, "Sorry. You can't go further.\n" +
-                            " Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show()
-                    false
-                }
-            } else {
-                Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show()
-                false
-            }
-        } else {
-            val updcount = db.updatesChildInformationColumn(ChildInformationContract.ChildInfoTable.COLUMN_SCB, MainApp.childInformation.sCBtoString())
-            return if (updcount > 0) true else {
-                Toast.makeText(this, "Sorry. You can't go further.\n" +
-                        " Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show()
-                false
-            }
-        }*/ return true
     }
 
 

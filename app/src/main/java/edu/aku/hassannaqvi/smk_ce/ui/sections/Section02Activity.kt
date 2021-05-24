@@ -11,12 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
+import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection02Binding
-import edu.aku.hassannaqvi.smk_ce.models.Form
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
-import java.text.SimpleDateFormat
-import java.util.*
 
 class Section02Activity : AppCompatActivity() {
 
@@ -47,6 +45,17 @@ class Section02Activity : AppCompatActivity() {
     }
 
 
+    private fun updateDB(): Boolean {
+        val db = MainApp.appInfo.dbHelper
+        val count = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_SB, MainApp.form.sBtoString())
+        return if (count > 0) true
+        else {
+            Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
+            false
+        }
+    }
+
+
     fun BtnContinue(view: View) {
         if (!formValidation()) return
         saveDraft()
@@ -60,22 +69,104 @@ class Section02Activity : AppCompatActivity() {
 
 
     private fun saveDraft() {
-        MainApp.form = Form()
-        MainApp.form.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
-        /*form.setUuid(MainApp.form.getUid())
-        form.setUserName(MainApp.user.getUserName())
-        form.setDcode(MainApp.form.getDcode())
-        form.setUcode(MainApp.form.getUcode())
-        form.setCluster(MainApp.form.getCluster())
-        form.setHhno(MainApp.form.getHhno())
-        form.setDeviceId(MainApp.appInfo.getDeviceID())
-        form.setDeviceTag(MainApp.appInfo.getTagName())
-        form.setAppver(MainApp.appInfo.getAppVersion())
-        form.setMh01(if (bi.mh01.getText().toString().trim().isEmpty()) "-1" else bi.mh01.getText().toString())
-        form.setMh02(if (bi.mh02.getText().toString().trim().isEmpty()) "-1" else bi.mh02.getText().toString())
-        form.setMh03(if (bi.mh03.getText().toString().trim().isEmpty()) "-1" else bi.mh03.getText().toString())
-        form.setMh04(if (bi.mh04.getText().toString().trim().isEmpty()) "-1" else bi.mh04.getText().toString())
-        form.setMh05(if (bi.mh05.getText().toString().trim().isEmpty()) "-1" else bi.mh05.getText().toString())*/
+
+        MainApp.form.hh01 = when {
+            bi.hh01.text.toString().trim().isNotEmpty() -> bi.hh01.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.hh02 = when {
+            bi.hh02.text.toString().trim().isNotEmpty() -> bi.hh02.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.hh03 = when {
+            bi.hh03a.isChecked -> "1"
+            bi.hh03b.isChecked -> "2"
+            else -> "-1"
+        }
+
+        MainApp.form.hh04a = when {
+            bi.hh04a.text.toString().trim().isNotEmpty() -> bi.hh04a.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.hh04b = when {
+            bi.hh04b.text.toString().trim().isNotEmpty() -> bi.hh04b.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.hh04c = when {
+            bi.hh04c.text.toString().trim().isNotEmpty() -> bi.hh04c.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.hh05y = when {
+            bi.hh05y.text.toString().trim().isNotEmpty() -> bi.hh05y.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.hh05m = when {
+            bi.hh05m.text.toString().trim().isNotEmpty() -> bi.hh05m.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.hh06 = when {
+            bi.hh06a.isChecked -> "1"
+            bi.hh06b.isChecked -> "2"
+            bi.hh06c.isChecked -> "3"
+            bi.hh06d.isChecked -> "4"
+            else -> "-1"
+        }
+
+        MainApp.form.hh07 = when {
+            bi.hh07.text.toString().trim().isNotEmpty() -> bi.hh07.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.hh08 = when {
+            bi.hh08.text.toString().trim().isNotEmpty() -> bi.hh08.text.toString()
+            else -> "-1"
+        }
+
+        MainApp.form.hh09 = when {
+            bi.hh09a.isChecked -> "1"
+            bi.hh09b.isChecked -> "2"
+            bi.hh09c.isChecked -> "3"
+            bi.hh09d.isChecked -> "4"
+            bi.hh09e.isChecked -> "5"
+            bi.hh09f.isChecked -> "6"
+            bi.hh09g.isChecked -> "7"
+            bi.hh09h.isChecked -> "8"
+            bi.hh09i.isChecked -> "9"
+            bi.hh09j.isChecked -> "10"
+            bi.hh09k.isChecked -> "11"
+            bi.hh09l.isChecked -> "98"
+            bi.hh09m.isChecked -> "99"
+            else -> "-1"
+        }
+
+        MainApp.form.hh10 = when {
+            bi.hh10a.isChecked -> "1"
+            bi.hh10b.isChecked -> "2"
+            bi.hh10c.isChecked -> "3"
+            bi.hh10d.isChecked -> "4"
+            bi.hh10e.isChecked -> "5"
+            bi.hh10f.isChecked -> "6"
+            bi.hh10g.isChecked -> "7"
+            bi.hh10h.isChecked -> "8"
+            bi.hh10i.isChecked -> "98"
+            bi.hh10j.isChecked -> "99"
+            else -> "-1"
+        }
+
+        MainApp.form.hh11 = when {
+            bi.hh11a.isChecked -> "1"
+            bi.hh11b.isChecked -> "2"
+            else -> "-1"
+        }
+
+
     }
 
 
@@ -83,35 +174,6 @@ class Section02Activity : AppCompatActivity() {
         //openSectionMainActivity(this, "G")
         finish()
         startActivity(Intent(this, MainActivity::class.java))
-    }
-
-
-    private fun updateDB(): Boolean {
-        /*val db = MainApp.appInfo.dbHelper
-        if (!MainApp.childInformation.isEditFlag) {
-            val updcount = db.addChildInformation(MainApp.childInformation)
-            return if (updcount > 0) {
-                MainApp.childInformation.id = updcount.toString()
-                MainApp.childInformation.uid = MainApp.childInformation.deviceId + MainApp.childInformation.id
-                var count = db.updatesChildInformationColumn(ChildInformationContract.ChildInfoTable.COLUMN_UID, MainApp.childInformation.uid)
-                if (count > 0) count = db.updatesChildInformationColumn(ChildInformationContract.ChildInfoTable.COLUMN_SCB, MainApp.childInformation.sCBtoString())
-                if (count > 0) true else {
-                    Toast.makeText(this, "Sorry. You can't go further.\n" +
-                            " Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show()
-                    false
-                }
-            } else {
-                Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show()
-                false
-            }
-        } else {
-            val updcount = db.updatesChildInformationColumn(ChildInformationContract.ChildInfoTable.COLUMN_SCB, MainApp.childInformation.sCBtoString())
-            return if (updcount > 0) true else {
-                Toast.makeText(this, "Sorry. You can't go further.\n" +
-                        " Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show()
-                false
-            }
-        }*/ return true
     }
 
 
