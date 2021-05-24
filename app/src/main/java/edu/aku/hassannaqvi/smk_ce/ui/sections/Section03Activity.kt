@@ -111,7 +111,7 @@ class Section03Activity : AppCompatActivity() {
         saveDraft()
         if (updateDB()) {
             finish()
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, Section04Activity::class.java))
         } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show()
         }
