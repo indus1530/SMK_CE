@@ -29,6 +29,8 @@ class Section01Activity : AppCompatActivity() {
     var districtCode = mutableListOf<String>()
     var uc = mutableListOf("....")
     var ucCode = mutableListOf<String>()
+    var lhw = mutableListOf("....")
+    var lhwCode = mutableListOf<String>()
     lateinit var districtAdapter: ArrayAdapter<String>
     lateinit var ucAdapter: ArrayAdapter<String>
     lateinit var db: DatabaseHelper
@@ -56,15 +58,19 @@ class Section01Activity : AppCompatActivity() {
             districtCode.add(dc.districtCode)
         }*/
 
-        dcs.forEach {
+        /*dcs.forEach {
             district.add(it.districtName)
             districtCode.add(it.districtCode)
         }
+*/
+
+        district.add("DISTRICT")
 
         bi.lhw01.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, district)
         //bi.lhw01.adapter = districtAdapter
         ucAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, uc)
         bi.lhw02.adapter = ucAdapter
+        bi.lhw03.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, lhw)
 
         bi.lhw01.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
@@ -77,6 +83,25 @@ class Section01Activity : AppCompatActivity() {
                 uc.clear()
                 ucCode.clear()
                 uc.add("....")
+                uc.add("Union Council")
+                //viewModel.getUCsDistrictFromDB(districtCode[position - 1])
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        bi.lhw02.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+                bi.lhw03.setSelection(0)
+                if (position == 0) {
+                    bi.lhw03.isEnabled = false
+                    return
+                }
+                bi.lhw03.isEnabled = true
+                lhw.clear()
+                lhwCode.clear()
+                lhw.add("....")
+                lhw.add("Lady Health Worker")
                 //viewModel.getUCsDistrictFromDB(districtCode[position - 1])
             }
 

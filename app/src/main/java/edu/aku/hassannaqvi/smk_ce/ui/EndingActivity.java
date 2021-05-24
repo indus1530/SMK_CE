@@ -14,13 +14,12 @@ import java.util.Date;
 import java.util.Locale;
 
 import edu.aku.hassannaqvi.smk_ce.R;
-import edu.aku.hassannaqvi.smk_ce.contracts.MHContract;
+import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper;
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivityEndingBinding;
 
 import static edu.aku.hassannaqvi.smk_ce.CONSTANTS.SECTION_MAIN_CHECK_FOR_END;
-import static edu.aku.hassannaqvi.smk_ce.core.MainApp.mobileHealth;
 import static edu.aku.hassannaqvi.smk_ce.utils.extension.ActivityExtKt.gotoActivity;
 
 
@@ -54,11 +53,11 @@ public class EndingActivity extends AppCompatActivity {
     }
 
     private void saveDraft() {
-        mobileHealth.setStatus(bi.istatusa.isChecked() ? "1"
+        MainApp.form.setIStatus(bi.istatusa.isChecked() ? "1"
                 : bi.istatusb.isChecked() ? "2"
                 : bi.istatusc.isChecked() ? "3"
                 : "-1");
-        mobileHealth.setEndTime(new SimpleDateFormat("dd-MM-yy HH:mm", Locale.ENGLISH).format(new Date().getTime()));
+        MainApp.form.setEndTime(new SimpleDateFormat("dd-MM-yy HH:mm", Locale.ENGLISH).format(new Date().getTime()));
     }
 
 
@@ -75,7 +74,7 @@ public class EndingActivity extends AppCompatActivity {
 
     private boolean UpdateDB() {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updatesMHColumn(MHContract.MHTable.COLUMN_STATUS, mobileHealth.getStatus());
+        int updcount = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_ISTATUS, MainApp.form.getIStatus());
         if (updcount > 0) {
             //int count = db.updateEnding();
             return updcount > 0;
