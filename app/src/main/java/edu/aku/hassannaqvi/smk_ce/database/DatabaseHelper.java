@@ -17,17 +17,22 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import edu.aku.hassannaqvi.smk_ce.contracts.AdolescentContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.ChildContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.ChildContract.ChildTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.ChildInformationContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.ChildInformationContract.ChildInfoTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract.FormsTable;
+import edu.aku.hassannaqvi.smk_ce.contracts.HHInfoContract;
+import edu.aku.hassannaqvi.smk_ce.contracts.HHMembersContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.IMContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.IMContract.IMTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.MHContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.MHContract.MHTable;
+import edu.aku.hassannaqvi.smk_ce.contracts.MwraContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
+import edu.aku.hassannaqvi.smk_ce.models.AdolescentModel;
 import edu.aku.hassannaqvi.smk_ce.models.BLRandom;
 import edu.aku.hassannaqvi.smk_ce.models.BLRandom.TableRandom;
 import edu.aku.hassannaqvi.smk_ce.models.Camps;
@@ -40,8 +45,11 @@ import edu.aku.hassannaqvi.smk_ce.models.Districts.TableDistricts;
 import edu.aku.hassannaqvi.smk_ce.models.Doctor;
 import edu.aku.hassannaqvi.smk_ce.models.Form;
 import edu.aku.hassannaqvi.smk_ce.models.FormIndicatorsModel;
+import edu.aku.hassannaqvi.smk_ce.models.HHInfoModel;
+import edu.aku.hassannaqvi.smk_ce.models.HHMembersModel;
 import edu.aku.hassannaqvi.smk_ce.models.Immunization;
 import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
+import edu.aku.hassannaqvi.smk_ce.models.MwraModel;
 import edu.aku.hassannaqvi.smk_ce.models.UCs;
 import edu.aku.hassannaqvi.smk_ce.models.UCs.TableUCs;
 import edu.aku.hassannaqvi.smk_ce.models.Users;
@@ -72,6 +80,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CreateTable.SQL_CREATE_UCS);
         db.execSQL(CreateTable.SQL_CREATE_CLUSTERS);
         db.execSQL(CreateTable.SQL_CREATE_FORMS);
+        db.execSQL(CreateTable.SQL_CREATE_HHINFO);
+        db.execSQL(CreateTable.SQL_CREATE_HHMEMBERS);
+        db.execSQL(CreateTable.SQL_CREATE_MWRA);
+        db.execSQL(CreateTable.SQL_CREATE_ADOLESCENT);
         db.execSQL(CreateTable.SQL_CREATE_CHILD_INFO);
         db.execSQL(CreateTable.SQL_CREATE_CHILD);
         db.execSQL(CreateTable.SQL_CREATE_IMMUNIZATION);
@@ -105,15 +117,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_UID, form.getUid());
         values.put(FormsTable.COLUMN_USERNAME, form.getUserName());
         values.put(FormsTable.COLUMN_SYSDATE, form.getSysDate());
-        values.put(FormsTable.COLUMN_LHW_CODE, form.getLhwCode());
-        values.put(FormsTable.COLUMN_HHNO, form.getKhandanNumber());
         values.put(FormsTable.COLUMN_DISTRICT_CODE, form.getDistrictCode());
+        values.put(FormsTable.COLUMN_DISTRICT_NAME, form.getDistrictName());
         values.put(FormsTable.COLUMN_TEHSIL_CODE, form.getTehsilCode());
+        values.put(FormsTable.COLUMN_TEHSIL_NAME, form.getTehsilName());
+        values.put(FormsTable.COLUMN_LHW_CODE, form.getLhwCode());
+        values.put(FormsTable.COLUMN_LHW_NAME, form.getLhwName());
+        values.put(FormsTable.COLUMN_KHANDAN_NUMBER, form.getKhandanNumber());
         values.put(FormsTable.COLUMN_SA, form.getsA());
         values.put(FormsTable.COLUMN_SB, form.getsB());
-        values.put(FormsTable.COLUMN_SC, form.getsC());
-        values.put(FormsTable.COLUMN_SD, form.getsD());
-        values.put(FormsTable.COLUMN_SE, form.getsE());
 
         values.put(FormsTable.COLUMN_ISTATUS, form.getIStatus());
         values.put(FormsTable.COLUMN_ISTATUS96x, form.getIStatus96x());
@@ -122,8 +134,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_DEVICETAGID, form.getDeviceTag());
         values.put(FormsTable.COLUMN_DEVICEID, form.getDeviceId());
         values.put(FormsTable.COLUMN_APPVERSION, form.getAppver());
-        values.put(FormsTable.COLUMN_G5FLAG, form.getG5Flag());
-        values.put(FormsTable.COLUMN_HHFLAG, form.getHhflag());
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
@@ -133,6 +143,143 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values);
         return newRowId;
     }
+
+
+    //HHINFO
+    public Long addHHInfo(HHInfoModel hhInfoModel) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(HHInfoContract.HHInfoTable.COLUMN_PROJECT_NAME, hhInfoModel.getProjectName());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_UID, hhInfoModel.getUid());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_UUID, hhInfoModel.getUuid());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_SERIAL_NO, hhInfoModel.getSerialNo());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_USERNAME, hhInfoModel.getUserName());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_SYSDATE, hhInfoModel.getSysDate());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_DISTRICT_CODE, hhInfoModel.getDistrictCode());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_DISTRICT_NAME, hhInfoModel.getDistrictName());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_TEHSIL_CODE, hhInfoModel.getTehsilCode());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_TEHSIL_NAME, hhInfoModel.getTehsilName());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_LHW_CODE, hhInfoModel.getLhwCode());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_LHW_NAME, hhInfoModel.getLhwName());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_KHANDAN_NUMBER, hhInfoModel.getKhandanNumber());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_SA, hhInfoModel.getsA());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_STATUS, hhInfoModel.getStatus());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_ENDINGDATETIME, hhInfoModel.getEndTime());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_DEVICETAGID, hhInfoModel.getDeviceTag());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_DEVICEID, hhInfoModel.getDeviceId());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_APPVERSION, hhInfoModel.getAppver());
+
+        long newRowId;
+        newRowId = db.insert(
+                HHInfoContract.HHInfoTable.TABLE_NAME,
+                HHInfoContract.HHInfoTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+
+    //HHMEMBERS
+    public Long addHHMembers(HHMembersModel model) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(HHMembersContract.HHMembersTable.COLUMN_PROJECT_NAME, model.getProjectName());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_UID, model.getUid());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_UUID, model.getUuid());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_SERIAL_NO, model.getSerialNo());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_USERNAME, model.getUserName());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_SYSDATE, model.getSysDate());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_DISTRICT_CODE, model.getDistrictCode());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_DISTRICT_NAME, model.getDistrictName());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_TEHSIL_CODE, model.getTehsilCode());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_TEHSIL_NAME, model.getTehsilName());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_LHW_CODE, model.getLhwCode());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_LHW_NAME, model.getLhwName());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_KHANDAN_NUMBER, model.getKhandanNumber());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_SA, model.getsA());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_STATUS, model.getStatus());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_ENDINGDATETIME, model.getEndTime());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_DEVICETAGID, model.getDeviceTag());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_DEVICEID, model.getDeviceId());
+        values.put(HHMembersContract.HHMembersTable.COLUMN_APPVERSION, model.getAppver());
+
+        long newRowId;
+        newRowId = db.insert(
+                HHMembersContract.HHMembersTable.TABLE_NAME,
+                HHMembersContract.HHMembersTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+
+    //MWRA
+    public Long addMWRA(MwraModel model) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(MwraContract.MwraTable.COLUMN_PROJECT_NAME, model.getProjectName());
+        values.put(MwraContract.MwraTable.COLUMN_UID, model.getUid());
+        values.put(MwraContract.MwraTable.COLUMN_UUID, model.getUuid());
+        values.put(MwraContract.MwraTable.COLUMN_SERIAL_NO, model.getSerialNo());
+        values.put(MwraContract.MwraTable.COLUMN_USERNAME, model.getUserName());
+        values.put(MwraContract.MwraTable.COLUMN_SYSDATE, model.getSysDate());
+        values.put(MwraContract.MwraTable.COLUMN_DISTRICT_CODE, model.getDistrictCode());
+        values.put(MwraContract.MwraTable.COLUMN_DISTRICT_NAME, model.getDistrictName());
+        values.put(MwraContract.MwraTable.COLUMN_TEHSIL_CODE, model.getTehsilCode());
+        values.put(MwraContract.MwraTable.COLUMN_TEHSIL_NAME, model.getTehsilName());
+        values.put(MwraContract.MwraTable.COLUMN_LHW_CODE, model.getLhwCode());
+        values.put(MwraContract.MwraTable.COLUMN_LHW_NAME, model.getLhwName());
+        values.put(MwraContract.MwraTable.COLUMN_KHANDAN_NUMBER, model.getKhandanNumber());
+        values.put(MwraContract.MwraTable.COLUMN_SA, model.getsA());
+        values.put(MwraContract.MwraTable.COLUMN_STATUS, model.getStatus());
+        values.put(MwraContract.MwraTable.COLUMN_ENDINGDATETIME, model.getEndTime());
+        values.put(MwraContract.MwraTable.COLUMN_DEVICETAGID, model.getDeviceTag());
+        values.put(MwraContract.MwraTable.COLUMN_DEVICEID, model.getDeviceId());
+        values.put(MwraContract.MwraTable.COLUMN_APPVERSION, model.getAppver());
+
+        long newRowId;
+        newRowId = db.insert(
+                MwraContract.MwraTable.TABLE_NAME,
+                MwraContract.MwraTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+
+    //ADOLESCENT
+    public Long addAdolscent(AdolescentModel model) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(AdolescentContract.AdolescentTable.COLUMN_PROJECT_NAME, model.getProjectName());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_UID, model.getUid());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_UUID, model.getUuid());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_SERIAL_NO, model.getSerialNo());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_USERNAME, model.getUserName());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_SYSDATE, model.getSysDate());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_DISTRICT_CODE, model.getDistrictCode());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_DISTRICT_NAME, model.getDistrictName());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_TEHSIL_CODE, model.getTehsilCode());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_TEHSIL_NAME, model.getTehsilName());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_LHW_CODE, model.getLhwCode());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_LHW_NAME, model.getLhwName());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_KHANDAN_NUMBER, model.getKhandanNumber());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_SA, model.getsA());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_STATUS, model.getStatus());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_ENDINGDATETIME, model.getEndTime());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_DEVICETAGID, model.getDeviceTag());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_DEVICEID, model.getDeviceId());
+        values.put(AdolescentContract.AdolescentTable.COLUMN_APPVERSION, model.getAppver());
+
+        long newRowId;
+        newRowId = db.insert(
+                AdolescentContract.AdolescentTable.TABLE_NAME,
+                AdolescentContract.AdolescentTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
 
     public Long addChild(Child child) {
 
@@ -719,7 +866,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String whereClause;
         whereClause = FormsTable.COLUMN_DISTRICT_CODE + "=? AND " +
                 FormsTable.COLUMN_LHW_CODE + "=? AND " +
-                FormsTable.COLUMN_HHNO + "=? AND " +
+                FormsTable.COLUMN_KHANDAN_NUMBER + "=? AND " +
                 FormsTable.COLUMN_SYNCED + " is null AND " +
                 FormsTable.COLUMN_ISTATUS + "=?";
 
@@ -940,6 +1087,66 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(MainApp.form.getId())};
 
         return db.update(FormsContract.FormsTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
+    public int updatesHHInfoColumn(String column, String value) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = HHInfoContract.HHInfoTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.hhinfo.getId())};
+
+        return db.update(HHInfoContract.HHInfoTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
+    public int updatesHHMemColumn(String column, String value) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = HHMembersContract.HHMembersTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.hhmem.getId())};
+
+        return db.update(HHMembersContract.HHMembersTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
+    public int updatesMwraColumn(String column, String value) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = MwraContract.MwraTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.mwra.getId())};
+
+        return db.update(MwraContract.MwraTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
+    public int updatesAdoleColumn(String column, String value) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = AdolescentContract.AdolescentTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.adolescent.getId())};
+
+        return db.update(AdolescentContract.AdolescentTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -1701,7 +1908,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_LHW_CODE,
-                FormsTable.COLUMN_HHNO,
+                FormsTable.COLUMN_KHANDAN_NUMBER,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
         };
@@ -1728,7 +1935,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 fc.setUid(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
                 fc.setSysDate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
                 fc.setLhwCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_LHW_CODE)));
-                fc.setKhandanNumber(c.getString(c.getColumnIndex(FormsTable.COLUMN_HHNO)));
+                fc.setKhandanNumber(c.getString(c.getColumnIndex(FormsTable.COLUMN_KHANDAN_NUMBER)));
                 fc.setIStatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 fc.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
                 allFC.add(fc);
