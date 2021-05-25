@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
-import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
+import edu.aku.hassannaqvi.smk_ce.contracts.HHMembersContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.hhmem
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection02Binding
@@ -51,7 +51,7 @@ class Section02Activity : AppCompatActivity() {
 
     private fun updateDB(): Boolean {
         val db = MainApp.appInfo.dbHelper
-        val count = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_SB, MainApp.form.sBtoString())
+        val count = db.updatesFormColumn(HHMembersContract.HHMembersTable.COLUMN_SA, hhmem.sAtoString())
         return if (count > 0) true
         else {
             Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()

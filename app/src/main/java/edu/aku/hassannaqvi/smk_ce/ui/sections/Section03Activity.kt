@@ -15,10 +15,14 @@ import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Clear
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
-import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
+import edu.aku.hassannaqvi.smk_ce.contracts.MwraContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
+import edu.aku.hassannaqvi.smk_ce.core.MainApp.mwra
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection03Binding
+import edu.aku.hassannaqvi.smk_ce.models.MwraModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
+import java.text.SimpleDateFormat
+import java.util.*
 
 class Section03Activity : AppCompatActivity() {
 
@@ -97,7 +101,7 @@ class Section03Activity : AppCompatActivity() {
 
     private fun updateDB(): Boolean {
         val db = MainApp.appInfo.dbHelper
-        val count = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_SC, MainApp.form.sCtoString())
+        val count = db.updatesFormColumn(MwraContract.MwraTable.COLUMN_SA, mwra.sAtoString())
         return if (count > 0) true
         else {
             Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
@@ -120,106 +124,118 @@ class Section03Activity : AppCompatActivity() {
 
     private fun saveDraft() {
 
-        MainApp.form.mwra01 = when {
+        mwra = MwraModel()
+        mwra.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
+        mwra.uuid = MainApp.form.uid
+        mwra.userName = MainApp.user.userName
+        mwra.districtCode = MainApp.form.districtCode
+        mwra.tehsilCode = MainApp.form.tehsilCode
+        mwra.lhwCode = MainApp.form.lhwCode
+        mwra.khandanNumber = MainApp.form.khandanNumber
+        mwra.deviceId = MainApp.appInfo.deviceID
+        mwra.deviceTag = MainApp.appInfo.tagName
+        mwra.appver = MainApp.appInfo.appVersion
+        
+        mwra.mwra01 = when {
             bi.mwra01.text.toString().trim().isNotEmpty() -> bi.mwra01.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.mwra02 = when {
+        mwra.mwra02 = when {
             bi.mwra02.text.toString().trim().isNotEmpty() -> bi.mwra02.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.mwra03 = when {
+        mwra.mwra03 = when {
             bi.mwra03a.isChecked -> "1"
             bi.mwra03b.isChecked -> "2"
             else -> "-1"
         }
 
-        MainApp.form.mwra04 = when {
+        mwra.mwra04 = when {
             bi.mwra04.text.toString().trim().isNotEmpty() -> bi.mwra04.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.mwra05a = when {
+        mwra.mwra05a = when {
             bi.mwra05a.text.toString().trim().isNotEmpty() -> bi.mwra05a.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.mwra05b = when {
+        mwra.mwra05b = when {
             bi.mwra05b.text.toString().trim().isNotEmpty() -> bi.mwra05b.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.mwra06 = when {
+        mwra.mwra06 = when {
             bi.mwra06.text.toString().trim().isNotEmpty() -> bi.mwra06.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.mwra07 = when {
+        mwra.mwra07 = when {
             bi.mwra07a.isChecked -> "1"
             bi.mwra07b.isChecked -> "2"
             else -> "-1"
         }
 
-        MainApp.form.mwra08a = if (bi.mwra08a.isChecked) "1" else "-1"
-        MainApp.form.mwra08b = if (bi.mwra08b.isChecked) "2" else "-1"
-        MainApp.form.mwra08c = if (bi.mwra08c.isChecked) "3" else "-1"
-        MainApp.form.mwra08d = if (bi.mwra08d.isChecked) "4" else "-1"
-        MainApp.form.mwra08e = if (bi.mwra08e.isChecked) "5" else "-1"
-        MainApp.form.mwra08f = if (bi.mwra08f.isChecked) "6" else "-1"
-        MainApp.form.mwra08g = if (bi.mwra08g.isChecked) "7" else "-1"
-        MainApp.form.mwra0896 = if (bi.mwra0896.isChecked) "96" else "-1"
+        mwra.mwra08a = if (bi.mwra08a.isChecked) "1" else "-1"
+        mwra.mwra08b = if (bi.mwra08b.isChecked) "2" else "-1"
+        mwra.mwra08c = if (bi.mwra08c.isChecked) "3" else "-1"
+        mwra.mwra08d = if (bi.mwra08d.isChecked) "4" else "-1"
+        mwra.mwra08e = if (bi.mwra08e.isChecked) "5" else "-1"
+        mwra.mwra08f = if (bi.mwra08f.isChecked) "6" else "-1"
+        mwra.mwra08g = if (bi.mwra08g.isChecked) "7" else "-1"
+        mwra.mwra0896 = if (bi.mwra0896.isChecked) "96" else "-1"
 
-        MainApp.form.mwra0896x = when {
+        mwra.mwra0896x = when {
             bi.mwra0896x.text.toString().trim().isNotEmpty() -> bi.mwra0896x.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.mwra09 = when {
+        mwra.mwra09 = when {
             bi.mwra09a.isChecked -> "1"
             bi.mwra09b.isChecked -> "2"
             else -> "-1"
         }
 
-        MainApp.form.mwra10 = when {
+        mwra.mwra10 = when {
             bi.mwra10.text.toString().trim().isNotEmpty() -> bi.mwra10.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.mwra11 = when {
+        mwra.mwra11 = when {
             bi.mwra11a.isChecked -> "1"
             bi.mwra11b.isChecked -> "2"
             else -> "-1"
         }
 
-        MainApp.form.mwra12a = if (bi.mwra12a.isChecked) "1" else "-1"
-        MainApp.form.mwra12b = if (bi.mwra12b.isChecked) "2" else "-1"
-        MainApp.form.mwra12c = if (bi.mwra12c.isChecked) "3" else "-1"
-        MainApp.form.mwra12d = if (bi.mwra12d.isChecked) "4" else "-1"
-        MainApp.form.mwra12e = if (bi.mwra12e.isChecked) "5" else "-1"
-        MainApp.form.mwra12f = if (bi.mwra12f.isChecked) "6" else "-1"
-        MainApp.form.mwra12g = if (bi.mwra12g.isChecked) "7" else "-1"
-        MainApp.form.mwra12h = if (bi.mwra12h.isChecked) "8" else "-1"
-        MainApp.form.mwra12i = if (bi.mwra12i.isChecked) "9" else "-1"
-        MainApp.form.mwra12j = if (bi.mwra12j.isChecked) "10" else "-1"
-        MainApp.form.mwra12k = if (bi.mwra12k.isChecked) "11" else "-1"
-        MainApp.form.mwra12l = if (bi.mwra12l.isChecked) "12" else "-1"
-        MainApp.form.mwra12m = if (bi.mwra12m.isChecked) "13" else "-1"
-        MainApp.form.mwra1296 = if (bi.mwra1296.isChecked) "96" else "-1"
+        mwra.mwra12a = if (bi.mwra12a.isChecked) "1" else "-1"
+        mwra.mwra12b = if (bi.mwra12b.isChecked) "2" else "-1"
+        mwra.mwra12c = if (bi.mwra12c.isChecked) "3" else "-1"
+        mwra.mwra12d = if (bi.mwra12d.isChecked) "4" else "-1"
+        mwra.mwra12e = if (bi.mwra12e.isChecked) "5" else "-1"
+        mwra.mwra12f = if (bi.mwra12f.isChecked) "6" else "-1"
+        mwra.mwra12g = if (bi.mwra12g.isChecked) "7" else "-1"
+        mwra.mwra12h = if (bi.mwra12h.isChecked) "8" else "-1"
+        mwra.mwra12i = if (bi.mwra12i.isChecked) "9" else "-1"
+        mwra.mwra12j = if (bi.mwra12j.isChecked) "10" else "-1"
+        mwra.mwra12k = if (bi.mwra12k.isChecked) "11" else "-1"
+        mwra.mwra12l = if (bi.mwra12l.isChecked) "12" else "-1"
+        mwra.mwra12m = if (bi.mwra12m.isChecked) "13" else "-1"
+        mwra.mwra1296 = if (bi.mwra1296.isChecked) "96" else "-1"
 
-        MainApp.form.mwra1296x = when {
+        mwra.mwra1296x = when {
             bi.mwra1296x.text.toString().trim().isNotEmpty() -> bi.mwra1296x.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.mwra13 = when {
+        mwra.mwra13 = when {
             bi.mwra13a.isChecked -> "1"
             bi.mwra13b.isChecked -> "2"
             else -> "-1"
         }
 
-        MainApp.form.mwra14 = when {
+        mwra.mwra14 = when {
             bi.mwra14a.isChecked -> "1"
             bi.mwra14b.isChecked -> "2"
             bi.mwra14c.isChecked -> "3"
@@ -237,12 +253,12 @@ class Section03Activity : AppCompatActivity() {
             else -> "-1"
         }
 
-        MainApp.form.mwra1496x = when {
+        mwra.mwra1496x = when {
             bi.mwra1496x.text.toString().trim().isNotEmpty() -> bi.mwra1496x.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.mwra15 = when {
+        mwra.mwra15 = when {
             bi.mwra15a.isChecked -> "1"
             bi.mwra15b.isChecked -> "2"
             bi.mwra15c.isChecked -> "3"
@@ -255,46 +271,46 @@ class Section03Activity : AppCompatActivity() {
             else -> "-1"
         }
 
-        MainApp.form.mwra16 = when {
+        mwra.mwra16 = when {
             bi.mwra16a.isChecked -> "1"
             bi.mwra16b.isChecked -> "2"
             else -> "-1"
         }
 
-        MainApp.form.mwra17a = if (bi.mwra17a.isChecked) "1" else "-1"
-        MainApp.form.mwra17b = if (bi.mwra17b.isChecked) "2" else "-1"
-        MainApp.form.mwra17c = if (bi.mwra17c.isChecked) "3" else "-1"
-        MainApp.form.mwra17d = if (bi.mwra17d.isChecked) "4" else "-1"
-        MainApp.form.mwra17e = if (bi.mwra17e.isChecked) "5" else "-1"
-        MainApp.form.mwra1796 = if (bi.mwra1796.isChecked) "96" else "-1"
+        mwra.mwra17a = if (bi.mwra17a.isChecked) "1" else "-1"
+        mwra.mwra17b = if (bi.mwra17b.isChecked) "2" else "-1"
+        mwra.mwra17c = if (bi.mwra17c.isChecked) "3" else "-1"
+        mwra.mwra17d = if (bi.mwra17d.isChecked) "4" else "-1"
+        mwra.mwra17e = if (bi.mwra17e.isChecked) "5" else "-1"
+        mwra.mwra1796 = if (bi.mwra1796.isChecked) "96" else "-1"
 
-        MainApp.form.mwra1796x = when {
+        mwra.mwra1796x = when {
             bi.mwra1796x.text.toString().trim().isNotEmpty() -> bi.mwra1796x.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.mwra18a = if (bi.mwra18a.isChecked) "1" else "-1"
-        MainApp.form.mwra18b = if (bi.mwra18b.isChecked) "2" else "-1"
-        MainApp.form.mwra18c = if (bi.mwra18c.isChecked) "3" else "-1"
-        MainApp.form.mwra18d = if (bi.mwra18d.isChecked) "4" else "-1"
-        MainApp.form.mwra18e = if (bi.mwra18e.isChecked) "5" else "-1"
-        MainApp.form.mwra18f = if (bi.mwra18f.isChecked) "6" else "-1"
-        MainApp.form.mwra18g = if (bi.mwra18g.isChecked) "7" else "-1"
-        MainApp.form.mwra18h = if (bi.mwra18h.isChecked) "8" else "-1"
-        MainApp.form.mwra1896 = if (bi.mwra1896.isChecked) "96" else "-1"
+        mwra.mwra18a = if (bi.mwra18a.isChecked) "1" else "-1"
+        mwra.mwra18b = if (bi.mwra18b.isChecked) "2" else "-1"
+        mwra.mwra18c = if (bi.mwra18c.isChecked) "3" else "-1"
+        mwra.mwra18d = if (bi.mwra18d.isChecked) "4" else "-1"
+        mwra.mwra18e = if (bi.mwra18e.isChecked) "5" else "-1"
+        mwra.mwra18f = if (bi.mwra18f.isChecked) "6" else "-1"
+        mwra.mwra18g = if (bi.mwra18g.isChecked) "7" else "-1"
+        mwra.mwra18h = if (bi.mwra18h.isChecked) "8" else "-1"
+        mwra.mwra1896 = if (bi.mwra1896.isChecked) "96" else "-1"
 
-        MainApp.form.mwra1896x = when {
+        mwra.mwra1896x = when {
             bi.mwra1896x.text.toString().trim().isNotEmpty() -> bi.mwra1896x.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.mwra19 = when {
+        mwra.mwra19 = when {
             bi.mwra19a.isChecked -> "1"
             bi.mwra19b.isChecked -> "2"
             else -> "-1"
         }
 
-        MainApp.form.mwra20 = when {
+        mwra.mwra20 = when {
             bi.mwra20a.isChecked -> "1"
             bi.mwra20b.isChecked -> "2"
             bi.mwra20c.isChecked -> "3"
@@ -312,41 +328,41 @@ class Section03Activity : AppCompatActivity() {
             else -> "-1"
         }
 
-        MainApp.form.mwra2096x = when {
+        mwra.mwra2096x = when {
             bi.mwra2096x.text.toString().trim().isNotEmpty() -> bi.mwra2096x.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.mwra21 = when {
+        mwra.mwra21 = when {
             bi.mwra21a.isChecked -> "1"
             bi.mwra21b.isChecked -> "2"
             else -> "-1"
         }
 
-        MainApp.form.mwra22 = when {
+        mwra.mwra22 = when {
             bi.mwra22a.isChecked -> "1"
             bi.mwra22b.isChecked -> "2"
             else -> "-1"
         }
 
-        MainApp.form.mwra23a = if (bi.mwra23a.isChecked) "1" else "-1"
-        MainApp.form.mwra23b = if (bi.mwra23b.isChecked) "2" else "-1"
-        MainApp.form.mwra23c = if (bi.mwra23c.isChecked) "3" else "-1"
-        MainApp.form.mwra23d = if (bi.mwra23d.isChecked) "4" else "-1"
-        MainApp.form.mwra23e = if (bi.mwra23e.isChecked) "5" else "-1"
-        MainApp.form.mwra23f = if (bi.mwra23f.isChecked) "6" else "-1"
-        MainApp.form.mwra23g = if (bi.mwra23g.isChecked) "7" else "-1"
-        MainApp.form.mwra23h = if (bi.mwra23h.isChecked) "8" else "-1"
-        MainApp.form.mwra23i = if (bi.mwra23i.isChecked) "9" else "-1"
-        MainApp.form.mwra23j = if (bi.mwra23j.isChecked) "10" else "-1"
-        MainApp.form.mwra2396 = if (bi.mwra2396.isChecked) "96" else "-1"
+        mwra.mwra23a = if (bi.mwra23a.isChecked) "1" else "-1"
+        mwra.mwra23b = if (bi.mwra23b.isChecked) "2" else "-1"
+        mwra.mwra23c = if (bi.mwra23c.isChecked) "3" else "-1"
+        mwra.mwra23d = if (bi.mwra23d.isChecked) "4" else "-1"
+        mwra.mwra23e = if (bi.mwra23e.isChecked) "5" else "-1"
+        mwra.mwra23f = if (bi.mwra23f.isChecked) "6" else "-1"
+        mwra.mwra23g = if (bi.mwra23g.isChecked) "7" else "-1"
+        mwra.mwra23h = if (bi.mwra23h.isChecked) "8" else "-1"
+        mwra.mwra23i = if (bi.mwra23i.isChecked) "9" else "-1"
+        mwra.mwra23j = if (bi.mwra23j.isChecked) "10" else "-1"
+        mwra.mwra2396 = if (bi.mwra2396.isChecked) "96" else "-1"
 
-        MainApp.form.mwra2396x = when {
+        mwra.mwra2396x = when {
             bi.mwra2396x.text.toString().trim().isNotEmpty() -> bi.mwra2396x.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.mwra24 = when {
+        mwra.mwra24 = when {
             bi.mwra24a.isChecked -> "1"
             bi.mwra24b.isChecked -> "2"
             else -> "-1"

@@ -18,6 +18,7 @@ import edu.aku.hassannaqvi.smk_ce.models.HHInfoModel;
 import edu.aku.hassannaqvi.smk_ce.models.HHMembersModel;
 import edu.aku.hassannaqvi.smk_ce.models.Immunization;
 import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
+import edu.aku.hassannaqvi.smk_ce.models.MwraModel;
 import edu.aku.hassannaqvi.smk_ce.models.Users;
 
 public class MainApp extends Application {
@@ -38,6 +39,7 @@ public class MainApp extends Application {
     public static Form form;
     public static HHInfoModel hhinfo;
     public static HHMembersModel hhmem;
+    public static MwraModel mwra;
     public static Child child;
     public static Immunization immunization;
     public static MobileHealth mobileHealth;
