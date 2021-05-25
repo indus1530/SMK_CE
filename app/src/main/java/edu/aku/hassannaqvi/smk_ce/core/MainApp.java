@@ -11,6 +11,7 @@ import org.json.JSONArray;
 import java.io.File;
 import java.util.List;
 
+import edu.aku.hassannaqvi.smk_ce.models.AdolescentModel;
 import edu.aku.hassannaqvi.smk_ce.models.Child;
 import edu.aku.hassannaqvi.smk_ce.models.ChildInformation;
 import edu.aku.hassannaqvi.smk_ce.models.Form;
@@ -40,6 +41,7 @@ public class MainApp extends Application {
     public static HHInfoModel hhinfo;
     public static HHMembersModel hhmem;
     public static MwraModel mwra;
+    public static AdolescentModel adolescent;
     public static Child child;
     public static Immunization immunization;
     public static MobileHealth mobileHealth;
