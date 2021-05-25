@@ -101,9 +101,17 @@ class Section03Activity : AppCompatActivity() {
 
     private fun updateDB(): Boolean {
         val db = MainApp.appInfo.dbHelper
-        val count = db.updatesFormColumn(MwraContract.MwraTable.COLUMN_SA, mwra.sAtoString())
-        return if (count > 0) true
-        else {
+        val updcount = db.addMWRA(mwra)
+        return if (updcount > 0) {
+            mwra.id = updcount.toString()
+            mwra.uid = mwra.deviceId + mwra.id
+            var count = db.updatesMwraColumn(MwraContract.MwraTable.COLUMN_UID, mwra.uid)
+            if (count > 0) count = db.updatesMwraColumn(MwraContract.MwraTable.COLUMN_SA, mwra.sAtoString())
+            if (count > 0) true else {
+                Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
+                false
+            }
+        } else {
             Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
             false
         }
@@ -135,7 +143,7 @@ class Section03Activity : AppCompatActivity() {
         mwra.deviceId = MainApp.appInfo.deviceID
         mwra.deviceTag = MainApp.appInfo.tagName
         mwra.appver = MainApp.appInfo.appVersion
-        
+
         mwra.mwra01 = when {
             bi.mwra01.text.toString().trim().isNotEmpty() -> bi.mwra01.text.toString()
             else -> "-1"

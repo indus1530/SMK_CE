@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
-import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
+import edu.aku.hassannaqvi.smk_ce.contracts.HHInfoContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.form
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.hhinfo
@@ -39,12 +39,12 @@ class Section01BActivity : AppCompatActivity() {
 
     private fun updateDB(): Boolean {
         val db = MainApp.appInfo.dbHelper
-        val updcount = db.addForm(form)
+        val updcount = db.addHHInfo(hhinfo)
         return if (updcount > 0) {
-            form.id = updcount.toString()
-            form.uid = form.deviceId + form.id
-            var count = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_UID, form.uid)
-            if (count > 0) count = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_SA, form.sAtoString())
+            hhinfo.id = updcount.toString()
+            hhinfo.uid = hhinfo.deviceId + hhinfo.id
+            var count = db.updatesHHInfoColumn(HHInfoContract.HHInfoTable.COLUMN_UID, hhinfo.uid)
+            if (count > 0) count = db.updatesHHInfoColumn(HHInfoContract.HHInfoTable.COLUMN_SA, hhinfo.sAtoString())
             if (count > 0) true else {
                 Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
                 false
@@ -74,8 +74,11 @@ class Section01BActivity : AppCompatActivity() {
         hhinfo.uuid = form.uid
         hhinfo.userName = MainApp.user.userName
         hhinfo.districtCode = form.districtCode
+        hhinfo.districtName = form.districtName
         hhinfo.tehsilCode = form.tehsilCode
+        hhinfo.tehsilName = form.tehsilName
         hhinfo.lhwCode = form.lhwCode
+        hhinfo.lhwName = form.lhwName
         hhinfo.khandanNumber = form.khandanNumber
         hhinfo.deviceId = MainApp.appInfo.deviceID
         hhinfo.deviceTag = MainApp.appInfo.tagName

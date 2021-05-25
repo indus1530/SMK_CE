@@ -53,9 +53,17 @@ class Section04Activity : AppCompatActivity() {
 
     private fun updateDB(): Boolean {
         val db = MainApp.appInfo.dbHelper
-        val count = db.updatesFormColumn(AdolescentContract.AdolescentTable.COLUMN_SA, adolescent.sAtoString())
-        return if (count > 0) true
-        else {
+        val updcount = db.addAdolscent(adolescent)
+        return if (updcount > 0) {
+            adolescent.id = updcount.toString()
+            adolescent.uid = adolescent.deviceId + adolescent.id
+            var count = db.updatesAdoleColumn(AdolescentContract.AdolescentTable.COLUMN_UID, adolescent.uid)
+            if (count > 0) count = db.updatesAdoleColumn(AdolescentContract.AdolescentTable.COLUMN_SA, adolescent.sAtoString())
+            if (count > 0) true else {
+                Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
+                false
+            }
+        } else {
             Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
             false
         }
