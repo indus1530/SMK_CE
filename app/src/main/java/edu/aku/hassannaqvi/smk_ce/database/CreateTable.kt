@@ -4,7 +4,7 @@ import edu.aku.hassannaqvi.smk_ce.contracts.*
 import edu.aku.hassannaqvi.smk_ce.models.*
 
 object CreateTable {
-    const val PROJECT_NAME = "SMKCE"
+    const val PROJECT_NAME = "SMKCE2021"
     const val DATABASE_NAME = "$PROJECT_NAME.db"
     const val DATABASE_COPY = "${PROJECT_NAME}_copy.db"
     const val DATABASE_VERSION = 1
@@ -24,17 +24,15 @@ object CreateTable {
             + FormsContract.FormsTable.COLUMN_SYNCED + " TEXT,"
             + FormsContract.FormsTable.COLUMN_SYNCED_DATE + " TEXT,"
             + FormsContract.FormsTable.COLUMN_APPVERSION + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_G5FLAG + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_HHFLAG + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_DCODE + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_UCODE + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_CLUSTER + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_HHNO + " TEXT,"
+            + FormsContract.FormsTable.COLUMN_DISTRICT_CODE + " TEXT,"
+            + FormsContract.FormsTable.COLUMN_DISTRICT_NAME + " TEXT,"
+            + FormsContract.FormsTable.COLUMN_TEHSIL_CODE + " TEXT,"
+            + FormsContract.FormsTable.COLUMN_TEHSIL_NAME + " TEXT,"
+            + FormsContract.FormsTable.COLUMN_LHW_CODE + " TEXT,"
+            + FormsContract.FormsTable.COLUMN_LHW_NAME + " TEXT,"
+            + FormsContract.FormsTable.COLUMN_KHANDAN_NUMBER + " TEXT,"
             + FormsContract.FormsTable.COLUMN_SA + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_SB + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_SC + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_SD + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_SE + " TEXT"
+            + FormsContract.FormsTable.COLUMN_SB + " TEXT"
             + " );")
 
     const val SQL_CREATE_CHILD_INFO = ("CREATE TABLE "

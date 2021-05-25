@@ -1,8 +1,5 @@
 package edu.aku.hassannaqvi.smk_ce.contracts;
 
-import android.content.ContentResolver;
-import android.content.ContentUris;
-import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
@@ -11,7 +8,7 @@ import android.provider.BaseColumns;
 
 public class FormsContract {
 
-    public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.naunehal";
+    public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.smk_ce";
 
     public static abstract class FormsTable implements BaseColumns {
         public static final String TABLE_NAME = "Forms";
@@ -21,17 +18,15 @@ public class FormsContract {
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_USERNAME = "username";
         public static final String COLUMN_SYSDATE = "sysdate";
-        public static final String COLUMN_DCODE = "districtCode";
-        public static final String COLUMN_UCODE = "ucCode";
-        public static final String COLUMN_CLUSTER = "clusterno";
-        public static final String COLUMN_HHNO = "hhno";
+        public static final String COLUMN_DISTRICT_CODE = "districtCode";
+        public static final String COLUMN_DISTRICT_NAME = "districtName";
+        public static final String COLUMN_TEHSIL_CODE = "tehsilCode";
+        public static final String COLUMN_TEHSIL_NAME = "tehsilName";
+        public static final String COLUMN_LHW_CODE = "lhwCode";
+        public static final String COLUMN_LHW_NAME = "lhwName";
+        public static final String COLUMN_KHANDAN_NUMBER = "khandanNumber";
         public static final String COLUMN_SA = "sA";
         public static final String COLUMN_SB = "sB";
-        public static final String COLUMN_SC = "sC";
-        public static final String COLUMN_SD = "sD";
-        public static final String COLUMN_SE = "sE";
-        public static final String COLUMN_G5FLAG = "g5FLAG";
-        public static final String COLUMN_HHFLAG = "hhFLAG";
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_ISTATUS96x = "istatus96x";
         public static final String COLUMN_ENDINGDATETIME = "endingdatetime";
@@ -40,21 +35,5 @@ public class FormsContract {
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";
         public static final String COLUMN_APPVERSION = "appversion";
-        public static String PATH = "forms";
-        public static final String CONTENT_TYPE =
-                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH;
-        public static final String CONTENT_ITEM_TYPE =
-                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH;
-        public static Uri CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY)
-                .buildUpon().appendPath(PATH).build();
-        public static String SERVER_URL = "sync.php";
-
-        public static String getMovieKeyFromUri(Uri uri) {
-            return uri.getPathSegments().get(1);
-        }
-
-        public static Uri buildUriWithId(long id) {
-            return ContentUris.withAppendedId(CONTENT_URI, id);
-        }
     }
 }

@@ -30,11 +30,11 @@ public class Form extends BaseObservable {
     private String userName = StringUtils.EMPTY;
     private String sysDate = StringUtils.EMPTY;
     private String districtCode = StringUtils.EMPTY;
-    private final String districtName = StringUtils.EMPTY;
+    private String districtName = StringUtils.EMPTY;
     private String tehsilCode = StringUtils.EMPTY;
-    private final String tehsilName = StringUtils.EMPTY;
+    private String tehsilName = StringUtils.EMPTY;
     private String lhwCode = StringUtils.EMPTY;
-    private final String lhwName = StringUtils.EMPTY;
+    private String lhwName = StringUtils.EMPTY;
     private String khandanNumber = StringUtils.EMPTY;
     private String deviceId = StringUtils.EMPTY;
     private String deviceTag = StringUtils.EMPTY;
@@ -44,8 +44,6 @@ public class Form extends BaseObservable {
     private String iStatus96x = StringUtils.EMPTY;
     private String synced = StringUtils.EMPTY;
     private String syncDate = StringUtils.EMPTY;
-    private String g5Flag = "-1";
-    private String hhflag = "-1";
 
 
     // SECTION VARIABLES
@@ -180,6 +178,18 @@ public class Form extends BaseObservable {
         return this;
     }
 
+
+    @Bindable
+    public String getDistrictName() {
+        return districtName;
+    }
+
+    public Form setDistrictName(String districtName) {
+        this.districtName = districtName;
+        return this;
+    }
+
+
     @Bindable
     public String getTehsilCode() {
         return tehsilCode;
@@ -189,6 +199,18 @@ public class Form extends BaseObservable {
         this.tehsilCode = tehsilCode;
         return this;
     }
+
+
+    @Bindable
+    public String getTehsilName() {
+        return tehsilName;
+    }
+
+    public Form setTehsilName(String tehsilName) {
+        this.tehsilName = tehsilName;
+        return this;
+    }
+
 
     @Bindable
     public String getLhwCode() {
@@ -200,6 +222,18 @@ public class Form extends BaseObservable {
         return this;
     }
 
+
+    @Bindable
+    public String getLhwName() {
+        return lhwName;
+    }
+
+    public Form setLhwName(String lhwName) {
+        this.lhwName = lhwName;
+        return this;
+    }
+
+
     @Bindable
     public String getKhandanNumber() {
         return khandanNumber;
@@ -209,6 +243,7 @@ public class Form extends BaseObservable {
         this.khandanNumber = khandanNumber;
         return this;
     }
+
 
     @Bindable
     public String getDeviceId() {
@@ -270,6 +305,7 @@ public class Form extends BaseObservable {
         return this;
     }
 
+
     @Bindable
     public String getSyncDate() {
         return syncDate;
@@ -280,22 +316,6 @@ public class Form extends BaseObservable {
         return this;
     }
 
-    public String getG5Flag() {
-        return g5Flag;
-    }
-
-    public void setG5Flag(String g5Flag) {
-        this.g5Flag = g5Flag;
-    }
-
-    public String getHhflag() {
-        return hhflag;
-    }
-
-    public Form setHhflag(String hhflag) {
-        this.hhflag = hhflag;
-        return this;
-    }
 
     public String getsA() {
         return sA;
@@ -664,10 +684,13 @@ public class Form extends BaseObservable {
         this.uid = jsonObject.getString(FormsContract.FormsTable.COLUMN_UID);
         this.userName = jsonObject.getString(FormsContract.FormsTable.COLUMN_USERNAME);
         this.sysDate = jsonObject.getString(FormsContract.FormsTable.COLUMN_SYSDATE);
-        this.districtCode = jsonObject.getString(FormsContract.FormsTable.COLUMN_DCODE);
-        this.tehsilCode = jsonObject.getString(FormsContract.FormsTable.COLUMN_UCODE);
-        this.lhwCode = jsonObject.getString(FormsContract.FormsTable.COLUMN_CLUSTER);
-        this.khandanNumber = jsonObject.getString(FormsContract.FormsTable.COLUMN_HHNO);
+        this.districtCode = jsonObject.getString(FormsContract.FormsTable.COLUMN_DISTRICT_CODE);
+        this.districtName = jsonObject.getString(FormsContract.FormsTable.COLUMN_DISTRICT_NAME);
+        this.tehsilCode = jsonObject.getString(FormsContract.FormsTable.COLUMN_TEHSIL_CODE);
+        this.tehsilName = jsonObject.getString(FormsContract.FormsTable.COLUMN_TEHSIL_NAME);
+        this.lhwCode = jsonObject.getString(FormsContract.FormsTable.COLUMN_LHW_CODE);
+        this.lhwName = jsonObject.getString(FormsContract.FormsTable.COLUMN_LHW_NAME);
+        this.khandanNumber = jsonObject.getString(FormsContract.FormsTable.COLUMN_KHANDAN_NUMBER);
         this.deviceId = jsonObject.getString(FormsContract.FormsTable.COLUMN_DEVICEID);
         this.deviceTag = jsonObject.getString(FormsContract.FormsTable.COLUMN_DEVICETAGID);
         this.appver = jsonObject.getString(FormsContract.FormsTable.COLUMN_APPVERSION);
@@ -677,8 +700,6 @@ public class Form extends BaseObservable {
         this.iStatus96x = jsonObject.getString(FormsContract.FormsTable.COLUMN_ISTATUS96x);
         this.synced = jsonObject.getString(FormsContract.FormsTable.COLUMN_SYNCED);
         this.syncDate = jsonObject.getString(FormsContract.FormsTable.COLUMN_SYNCED_DATE);
-        this.g5Flag = jsonObject.getString(FormsContract.FormsTable.COLUMN_G5FLAG);
-        this.hhflag = jsonObject.getString(FormsContract.FormsTable.COLUMN_HHFLAG);
 
         this.sA = jsonObject.getString(FormsContract.FormsTable.COLUMN_SA);
         this.sB = jsonObject.getString(FormsContract.FormsTable.COLUMN_SB);
@@ -693,10 +714,13 @@ public class Form extends BaseObservable {
         this.uid = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_UID));
         this.userName = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_USERNAME));
         this.sysDate = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_SYSDATE));
-        this.districtCode = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_DCODE));
-        this.tehsilCode = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_UCODE));
-        this.lhwCode = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_CLUSTER));
-        this.khandanNumber = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_HHNO));
+        this.districtCode = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_DISTRICT_CODE));
+        this.districtName = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_DISTRICT_NAME));
+        this.tehsilCode = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_TEHSIL_CODE));
+        this.tehsilName = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_TEHSIL_NAME));
+        this.lhwCode = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_LHW_CODE));
+        this.lhwName = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_LHW_NAME));
+        this.khandanNumber = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_KHANDAN_NUMBER));
         this.deviceId = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_DEVICEID));
         this.deviceTag = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_DEVICETAGID));
         this.appver = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_APPVERSION));
@@ -705,8 +729,6 @@ public class Form extends BaseObservable {
         this.iStatus96x = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_ISTATUS96x));
         this.synced = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_SYNCED));
         this.syncDate = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_SYNCED_DATE));
-        this.g5Flag = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_G5FLAG));
-        this.hhflag = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_HHFLAG));
 
         //For childCount
         //this.s01HH = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_S01HH));
@@ -790,10 +812,13 @@ public class Form extends BaseObservable {
             json.put(FormsContract.FormsTable.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
             json.put(FormsContract.FormsTable.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
             json.put(FormsContract.FormsTable.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
-            json.put(FormsContract.FormsTable.COLUMN_DCODE, this.districtCode == null ? JSONObject.NULL : this.districtCode);
-            json.put(FormsContract.FormsTable.COLUMN_UCODE, this.tehsilCode == null ? JSONObject.NULL : this.tehsilCode);
-            json.put(FormsContract.FormsTable.COLUMN_CLUSTER, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
-            json.put(FormsContract.FormsTable.COLUMN_HHNO, this.khandanNumber == null ? JSONObject.NULL : this.khandanNumber);
+            json.put(FormsContract.FormsTable.COLUMN_DISTRICT_CODE, this.districtCode == null ? JSONObject.NULL : this.districtCode);
+            json.put(FormsContract.FormsTable.COLUMN_DISTRICT_NAME, this.districtName == null ? JSONObject.NULL : this.districtName);
+            json.put(FormsContract.FormsTable.COLUMN_TEHSIL_CODE, this.tehsilCode == null ? JSONObject.NULL : this.tehsilCode);
+            json.put(FormsContract.FormsTable.COLUMN_TEHSIL_NAME, this.tehsilName == null ? JSONObject.NULL : this.tehsilName);
+            json.put(FormsContract.FormsTable.COLUMN_LHW_CODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
+            json.put(FormsContract.FormsTable.COLUMN_LHW_NAME, this.lhwName == null ? JSONObject.NULL : this.lhwName);
+            json.put(FormsContract.FormsTable.COLUMN_KHANDAN_NUMBER, this.khandanNumber == null ? JSONObject.NULL : this.khandanNumber);
             json.put(FormsContract.FormsTable.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
             json.put(FormsContract.FormsTable.COLUMN_DEVICETAGID, this.deviceTag == null ? JSONObject.NULL : this.deviceTag);
             json.put(FormsContract.FormsTable.COLUMN_APPVERSION, this.appver == null ? JSONObject.NULL : this.appver);
@@ -802,8 +827,6 @@ public class Form extends BaseObservable {
             json.put(FormsContract.FormsTable.COLUMN_ISTATUS96x, this.iStatus96x == null ? JSONObject.NULL : this.iStatus96x);
             json.put(FormsContract.FormsTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
             json.put(FormsContract.FormsTable.COLUMN_SYNCED_DATE, this.syncDate == null ? JSONObject.NULL : this.syncDate);
-            json.put(FormsContract.FormsTable.COLUMN_G5FLAG, this.g5Flag == null ? JSONObject.NULL : this.g5Flag);
-            json.put(FormsContract.FormsTable.COLUMN_HHFLAG, this.hhflag == null ? JSONObject.NULL : this.hhflag);
 
             json.put(FormsContract.FormsTable.COLUMN_SA, new JSONObject(sAtoString()));
             json.put(FormsContract.FormsTable.COLUMN_SB, new JSONObject(sBtoString()));

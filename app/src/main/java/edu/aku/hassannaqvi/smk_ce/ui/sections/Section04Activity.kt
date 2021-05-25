@@ -16,7 +16,10 @@ import edu.aku.hassannaqvi.smk_ce.contracts.AdolescentContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.adolescent
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection04Binding
+import edu.aku.hassannaqvi.smk_ce.models.AdolescentModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
+import java.text.SimpleDateFormat
+import java.util.*
 
 class Section04Activity : AppCompatActivity() {
 
@@ -72,6 +75,18 @@ class Section04Activity : AppCompatActivity() {
 
 
     private fun saveDraft() {
+
+        adolescent = AdolescentModel()
+        adolescent.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
+        adolescent.uuid = MainApp.form.uid
+        adolescent.userName = MainApp.user.userName
+        adolescent.districtCode = MainApp.form.districtCode
+        adolescent.tehsilCode = MainApp.form.tehsilCode
+        adolescent.lhwCode = MainApp.form.lhwCode
+        adolescent.khandanNumber = MainApp.form.khandanNumber
+        adolescent.deviceId = MainApp.appInfo.deviceID
+        adolescent.deviceTag = MainApp.appInfo.tagName
+        adolescent.appver = MainApp.appInfo.appVersion
 
         adolescent.adol01 = when {
             bi.adol01.text.toString().trim().isNotEmpty() -> bi.adol01.text.toString()

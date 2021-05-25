@@ -53,7 +53,7 @@ class Section05Activity : AppCompatActivity() {
 
     private fun updateDB(): Boolean {
         val db = MainApp.appInfo.dbHelper
-        val count = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_SE, MainApp.form.sEtoString())
+        val count = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_SB, MainApp.form.sBtoString())
         return if (count > 0) true
         else {
             Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
