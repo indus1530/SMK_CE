@@ -63,10 +63,10 @@
 
     <!--APP STRINGS-->
     <string name="lhwinfo">Section: LHW Information</string>
-    <string name="lhw01">Name of Taluka/Tehsil</string>
-    <string name="lhw02">Name of reporting health facility </string>
-    <string name="lhw03">Name/Code of LHW</string>
-    <string name="lhw04">Total Number of Active Household (Khandan)</string>
+    <string name="lhw01">Name of Taluka / Tehsil </string>
+    <string name="lhw02"> Name of Reporting Health Facility </string>
+    <string name="lhw03"> Name / Code of LHW </string>
+    <string name="lhw04"> Total Number of Active Household (Khandan) </string>
     <string name="hhidinfo">Section: Household Identification</string>
     <string name="hhi01">Serial No.</string>
     <string name="hhi02">Khandan Number</string>
@@ -81,14 +81,17 @@
     <string name="lhwphoto">LHW Register Photo</string>
     <string name="hhvinfo">Section: Household Verification</string>
     <string name="hhv01">Khandan Number</string>
-    <string name="hhv02">Name of Household Head</string>
-    <string name="hhv03">Residential Address</string>
-    <string name="hhv03a">Household Number</string>
-    <string name="hhv03b">Contact Number (Optional)</string>
-    <string name="hhv03c">Union Council Name</string>
-    <string name="hhv03d">Village Name</string>
-    <string name="hhv03e">Mohallah Name</string>
-    <string name="hhv03f">Street Number</string>
+    <string name="hhv02">Residential Address</string>
+    <string name="hhv02a">Name of Household Head</string>
+    <string name="hhv02b">Household Number</string>
+    <string name="hhv02c">Contact Number (Optional)</string>
+    <string name="hhv02d">Union Council Name</string>
+    <string name="hhv02e">Village Name</string>
+    <string name="hhv02f">Mohallah Name</string>
+    <string name="hhv02g">Street Number</string>
+    <string name="hhv03"> Is the above-mentioned information verified ? </string>
+    <string name="hhv03a"> Yes </string>
+    <string name="hhv03b"> No </string>
     <string name="hhinfo">Section: Household Member Information</string>
     <string name="hh01">Member Serial Number</string>
     <string name="hh02">Name</string>

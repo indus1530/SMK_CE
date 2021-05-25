@@ -14,13 +14,14 @@ import java.util.List;
 import edu.aku.hassannaqvi.smk_ce.models.Child;
 import edu.aku.hassannaqvi.smk_ce.models.ChildInformation;
 import edu.aku.hassannaqvi.smk_ce.models.Form;
+import edu.aku.hassannaqvi.smk_ce.models.HHInfoModel;
 import edu.aku.hassannaqvi.smk_ce.models.Immunization;
 import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
 import edu.aku.hassannaqvi.smk_ce.models.Users;
 
 public class MainApp extends Application {
 
-    public static final String PROJECT_NAME = "Naunehal Baseline Survey";
+    public static final String PROJECT_NAME = "SMK HH Community Engagement";
     public static final String DIST_ID = null;
     public static final String SYNC_LOGIN = "sync_login";
     //public static final String _IP = "https://vcoe1.aku.edu";// .LIVE server
@@ -34,6 +35,7 @@ public class MainApp extends Application {
     public static File sdDir;
     public static String[] downloadData;
     public static Form form;
+    public static HHInfoModel hhinfo;
     public static Child child;
     public static Immunization immunization;
     public static MobileHealth mobileHealth;

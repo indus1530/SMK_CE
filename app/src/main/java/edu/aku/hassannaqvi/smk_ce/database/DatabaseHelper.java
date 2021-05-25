@@ -105,10 +105,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_UID, form.getUid());
         values.put(FormsTable.COLUMN_USERNAME, form.getUserName());
         values.put(FormsTable.COLUMN_SYSDATE, form.getSysDate());
-        values.put(FormsTable.COLUMN_CLUSTER, form.getCluster());
-        values.put(FormsTable.COLUMN_HHNO, form.getHhno());
-        values.put(FormsTable.COLUMN_DCODE, form.getDcode());
-        values.put(FormsTable.COLUMN_UCODE, form.getUcode());
+        values.put(FormsTable.COLUMN_CLUSTER, form.getLhwCode());
+        values.put(FormsTable.COLUMN_HHNO, form.getKhandanNumber());
+        values.put(FormsTable.COLUMN_DCODE, form.getDistrictCode());
+        values.put(FormsTable.COLUMN_UCODE, form.getTehsilCode());
         values.put(FormsTable.COLUMN_SA, form.getsA());
         values.put(FormsTable.COLUMN_SB, form.getsB());
         values.put(FormsTable.COLUMN_SC, form.getsC());
@@ -1727,8 +1727,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 fc.setId(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
                 fc.setUid(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
                 fc.setSysDate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
-                fc.setCluster(c.getString(c.getColumnIndex(FormsTable.COLUMN_CLUSTER)));
-                fc.setHhno(c.getString(c.getColumnIndex(FormsTable.COLUMN_HHNO)));
+                fc.setLhwCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_CLUSTER)));
+                fc.setKhandanNumber(c.getString(c.getColumnIndex(FormsTable.COLUMN_HHNO)));
                 fc.setIStatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 fc.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
                 allFC.add(fc);

@@ -29,10 +29,13 @@ public class Form extends BaseObservable {
     private String uid = StringUtils.EMPTY;
     private String userName = StringUtils.EMPTY;
     private String sysDate = StringUtils.EMPTY;
-    private String dcode = StringUtils.EMPTY;
-    private String ucode = StringUtils.EMPTY;
-    private String cluster = StringUtils.EMPTY;
-    private String hhno = StringUtils.EMPTY;
+    private final String districtName = StringUtils.EMPTY;
+    private final String tehsilName = StringUtils.EMPTY;
+    private final String lhwName = StringUtils.EMPTY;
+    private String districtCode = StringUtils.EMPTY;
+    private String tehsilCode = StringUtils.EMPTY;
+    private String lhwCode = StringUtils.EMPTY;
+    private String khandanNumber = StringUtils.EMPTY;
     private String deviceId = StringUtils.EMPTY;
     private String deviceTag = StringUtils.EMPTY;
     private String appver = StringUtils.EMPTY;
@@ -55,10 +58,17 @@ public class Form extends BaseObservable {
     //Not saving in DB
     private LocalDate localDate = null;
     private boolean exist = false;
+
+
     // FIELD VARIABLES
     //L H W and HouseHold Information
     private String lhw01 = StringUtils.EMPTY;
+    private String lhw02 = StringUtils.EMPTY;
+    private String lhw03 = StringUtils.EMPTY;
     private String lhw04 = StringUtils.EMPTY;
+    private String hhi01 = StringUtils.EMPTY;
+    private String hhi02 = StringUtils.EMPTY;
+    private String hhi03 = StringUtils.EMPTY;
     private String hhi04a = StringUtils.EMPTY;
     private String hhi04b = StringUtils.EMPTY;
     private String hhi04c = StringUtils.EMPTY;
@@ -66,24 +76,183 @@ public class Form extends BaseObservable {
     private String hhi04e = StringUtils.EMPTY;
     private String hhi04f = StringUtils.EMPTY;
     private String lhwphoto = StringUtils.EMPTY;
-    private String hhv01 = StringUtils.EMPTY;
-    private String hhv02 = StringUtils.EMPTY;
-    private String hhv03a = StringUtils.EMPTY;
-    private String hhv03b = StringUtils.EMPTY;
-    private String hhv03c = StringUtils.EMPTY;
-    private String hhv03d = StringUtils.EMPTY;
-    private String hhv03e = StringUtils.EMPTY;
-    private String hhv03f = StringUtils.EMPTY;
+
     //HouseHold Information verify
     private String hh01 = StringUtils.EMPTY;
+    private String hh02 = StringUtils.EMPTY;
+    private String hh03 = StringUtils.EMPTY;
+    private String hh04a = StringUtils.EMPTY;
+    private String hh04b = StringUtils.EMPTY;
+    private String hh04c = StringUtils.EMPTY;
     private String hh05y = StringUtils.EMPTY;
     private String hh05m = StringUtils.EMPTY;
+    private String hh06 = StringUtils.EMPTY;
+    private String hh07 = StringUtils.EMPTY;
+    private String hh08 = StringUtils.EMPTY;
+    private String hh09 = StringUtils.EMPTY;
+    private String hh10 = StringUtils.EMPTY;
+    private String hh11 = StringUtils.EMPTY;
+
     //M W R A
     private String mwra01 = StringUtils.EMPTY;
+    private String mwra02 = StringUtils.EMPTY;
+    private String mwra03 = StringUtils.EMPTY;
+    private String mwra04 = StringUtils.EMPTY;
+    private String mwra05a = StringUtils.EMPTY;
+    private String mwra05b = StringUtils.EMPTY;
+    private String mwra06 = StringUtils.EMPTY;
+    private String mwra07 = StringUtils.EMPTY;
+    private String mwra08 = StringUtils.EMPTY;
+    private String mwra08a = StringUtils.EMPTY;
+    private String mwra08b = StringUtils.EMPTY;
+    private String mwra08c = StringUtils.EMPTY;
+    private String mwra08d = StringUtils.EMPTY;
+    private String mwra08e = StringUtils.EMPTY;
+    private String mwra08f = StringUtils.EMPTY;
+    private String mwra08g = StringUtils.EMPTY;
+    private String mwra0896 = StringUtils.EMPTY;
+    private String mwra0896x = StringUtils.EMPTY;
+    private String mwra09 = StringUtils.EMPTY;
+    private String mwra10 = StringUtils.EMPTY;
+    private String mwra11 = StringUtils.EMPTY;
+    private String mwra12 = StringUtils.EMPTY;
+    private String mwra12a = StringUtils.EMPTY;
+    private String mwra12b = StringUtils.EMPTY;
+    private String mwra12c = StringUtils.EMPTY;
+    private String mwra12d = StringUtils.EMPTY;
+    private String mwra12e = StringUtils.EMPTY;
+    private String mwra12f = StringUtils.EMPTY;
+    private String mwra12g = StringUtils.EMPTY;
+    private String mwra12h = StringUtils.EMPTY;
+    private String mwra12i = StringUtils.EMPTY;
+    private String mwra12j = StringUtils.EMPTY;
+    private String mwra12k = StringUtils.EMPTY;
+    private String mwra12l = StringUtils.EMPTY;
+    private String mwra12m = StringUtils.EMPTY;
+    private String mwra1296 = StringUtils.EMPTY;
+    private String mwra1296x = StringUtils.EMPTY;
+    private String mwra13 = StringUtils.EMPTY;
+    private String mwra14 = StringUtils.EMPTY;
+    private String mwra1496x = StringUtils.EMPTY;
+    private String mwra15 = StringUtils.EMPTY;
+    private String mwra16 = StringUtils.EMPTY;
+    private String mwra17 = StringUtils.EMPTY;
+    private String mwra17a = StringUtils.EMPTY;
+    private String mwra17b = StringUtils.EMPTY;
+    private String mwra17c = StringUtils.EMPTY;
+    private String mwra17d = StringUtils.EMPTY;
+    private String mwra17e = StringUtils.EMPTY;
+    private String mwra1796 = StringUtils.EMPTY;
+    private String mwra1796x = StringUtils.EMPTY;
+    private String mwra18 = StringUtils.EMPTY;
+    private String mwra18a = StringUtils.EMPTY;
+    private String mwra18b = StringUtils.EMPTY;
+    private String mwra18c = StringUtils.EMPTY;
+    private String mwra18d = StringUtils.EMPTY;
+    private String mwra18e = StringUtils.EMPTY;
+    private String mwra18f = StringUtils.EMPTY;
+    private String mwra18g = StringUtils.EMPTY;
+    private String mwra18h = StringUtils.EMPTY;
+    private String mwra1896 = StringUtils.EMPTY;
+    private String mwra1896x = StringUtils.EMPTY;
+    private String mwra19 = StringUtils.EMPTY;
+    private String mwra20 = StringUtils.EMPTY;
+    private String mwra2096x = StringUtils.EMPTY;
+    private String mwra21 = StringUtils.EMPTY;
+    private String mwra22 = StringUtils.EMPTY;
+    private String mwra23 = StringUtils.EMPTY;
+    private String mwra23a = StringUtils.EMPTY;
+    private String mwra23b = StringUtils.EMPTY;
+    private String mwra23c = StringUtils.EMPTY;
+    private String mwra23d = StringUtils.EMPTY;
+    private String mwra23e = StringUtils.EMPTY;
+    private String mwra23f = StringUtils.EMPTY;
+    private String mwra23g = StringUtils.EMPTY;
+    private String mwra23h = StringUtils.EMPTY;
+    private String mwra23i = StringUtils.EMPTY;
+    private String mwra23j = StringUtils.EMPTY;
+    private String mwra2396 = StringUtils.EMPTY;
+    private String mwra2396x = StringUtils.EMPTY;
+    private String mwra24 = StringUtils.EMPTY;
+
     //ADOLESCENT
     private String adol01 = StringUtils.EMPTY;
+    private String adol02 = StringUtils.EMPTY;
+    private String adol03 = StringUtils.EMPTY;
+    private String adol04 = StringUtils.EMPTY;
+    private String adol04a = StringUtils.EMPTY;
+    private String adol04b = StringUtils.EMPTY;
+    private String adol04c = StringUtils.EMPTY;
+    private String adol04d = StringUtils.EMPTY;
+    private String adol04e = StringUtils.EMPTY;
+    private String adol04f = StringUtils.EMPTY;
+    private String adol04g = StringUtils.EMPTY;
+    private String adol04h = StringUtils.EMPTY;
+    private String adol0496 = StringUtils.EMPTY;
+    private String adol0496x = StringUtils.EMPTY;
+    private String adol05 = StringUtils.EMPTY;
+    private String adol06 = StringUtils.EMPTY;
+    private String adol06a = StringUtils.EMPTY;
+    private String adol06b = StringUtils.EMPTY;
+    private String adol06c = StringUtils.EMPTY;
+    private String adol06d = StringUtils.EMPTY;
+    private String adol0696 = StringUtils.EMPTY;
+    private String adol0696x = StringUtils.EMPTY;
+    private String adol07 = StringUtils.EMPTY;
+    private String adol08 = StringUtils.EMPTY;
+    private String adol09 = StringUtils.EMPTY;
+    private String adol10 = StringUtils.EMPTY;
+    private String adol10a = StringUtils.EMPTY;
+    private String adol10b = StringUtils.EMPTY;
+    private String adol10c = StringUtils.EMPTY;
+    private String adol10d = StringUtils.EMPTY;
+    private String adol10e = StringUtils.EMPTY;
+    private String adol10f = StringUtils.EMPTY;
+    private String adol10g = StringUtils.EMPTY;
+    private String adol10h = StringUtils.EMPTY;
+    private String adol10i = StringUtils.EMPTY;
+    private String adol10j = StringUtils.EMPTY;
+    private String adol1096 = StringUtils.EMPTY;
+    private String adol1096x = StringUtils.EMPTY;
+    private String adol11 = StringUtils.EMPTY;
+    private String adol1196x = StringUtils.EMPTY;
+    private String adol12 = StringUtils.EMPTY;
+    private String adol12a = StringUtils.EMPTY;
+    private String adol12b = StringUtils.EMPTY;
+    private String adol12c = StringUtils.EMPTY;
+    private String adol12d = StringUtils.EMPTY;
+    private String adol1296 = StringUtils.EMPTY;
+    private String adol1296x = StringUtils.EMPTY;
+    private String adol13 = StringUtils.EMPTY;
+    private String adol14 = StringUtils.EMPTY;
+    private String adol15 = StringUtils.EMPTY;
+    private String adol15a = StringUtils.EMPTY;
+    private String adol15b = StringUtils.EMPTY;
+    private String adol15c = StringUtils.EMPTY;
+    private String adol15d = StringUtils.EMPTY;
+    private String adol15e = StringUtils.EMPTY;
+    private String adol1596 = StringUtils.EMPTY;
+    private String adol1596x = StringUtils.EMPTY;
+
     // V H C
     private String vhc01 = StringUtils.EMPTY;
+    private String vhc02 = StringUtils.EMPTY;
+    private String vhc03 = StringUtils.EMPTY;
+    private String vhc04 = StringUtils.EMPTY;
+    private String vhc05 = StringUtils.EMPTY;
+    private String vhc06 = StringUtils.EMPTY;
+    private String vhc06a = StringUtils.EMPTY;
+    private String vhc06b = StringUtils.EMPTY;
+    private String vhc06c = StringUtils.EMPTY;
+    private String vhc06d = StringUtils.EMPTY;
+    private String vhc06e = StringUtils.EMPTY;
+    private String vhc06f = StringUtils.EMPTY;
+    private String vhc06g = StringUtils.EMPTY;
+    private String vhc06h = StringUtils.EMPTY;
+    private String vhc06i = StringUtils.EMPTY;
+    private String vhc06j = StringUtils.EMPTY;
+    private String vhc0696 = StringUtils.EMPTY;
+    private String vhc0696x = StringUtils.EMPTY;
 
     public Form() {
 
@@ -108,10 +277,10 @@ public class Form extends BaseObservable {
     public void setForm(String userName, String sysDate, String dcode, String ucode, String cluster, String hhno, String deviceId, String deviceTag, String appver) {
         this.userName = userName;
         this.sysDate = sysDate;
-        this.dcode = dcode;
-        this.ucode = ucode;
-        this.cluster = cluster;
-        this.hhno = hhno;
+        this.districtCode = dcode;
+        this.tehsilCode = ucode;
+        this.lhwCode = cluster;
+        this.khandanNumber = hhno;
         this.deviceId = deviceId;
         this.deviceTag = deviceTag;
         this.appver = appver;
@@ -161,42 +330,42 @@ public class Form extends BaseObservable {
     }
 
     @Bindable
-    public String getDcode() {
-        return dcode;
+    public String getDistrictCode() {
+        return districtCode;
     }
 
-    public Form setDcode(String dcode) {
-        this.dcode = dcode;
+    public Form setDistrictCode(String districtCode) {
+        this.districtCode = districtCode;
         return this;
     }
 
     @Bindable
-    public String getUcode() {
-        return ucode;
+    public String getTehsilCode() {
+        return tehsilCode;
     }
 
-    public Form setUcode(String ucode) {
-        this.ucode = ucode;
+    public Form setTehsilCode(String tehsilCode) {
+        this.tehsilCode = tehsilCode;
         return this;
     }
 
     @Bindable
-    public String getCluster() {
-        return cluster;
+    public String getLhwCode() {
+        return lhwCode;
     }
 
-    public Form setCluster(String cluster) {
-        this.cluster = cluster;
+    public Form setLhwCode(String lhwCode) {
+        this.lhwCode = lhwCode;
         return this;
     }
 
     @Bindable
-    public String getHhno() {
-        return hhno;
+    public String getKhandanNumber() {
+        return khandanNumber;
     }
 
-    public Form setHhno(String hhno) {
-        this.hhno = hhno;
+    public Form setKhandanNumber(String khandanNumber) {
+        this.khandanNumber = khandanNumber;
         return this;
     }
 
@@ -250,17 +419,10 @@ public class Form extends BaseObservable {
         return this;
     }
 
-    private String lhw02 = StringUtils.EMPTY;
-    private String lhw03 = StringUtils.EMPTY;
-
     @Bindable
     public String getSynced() {
         return synced;
     }
-
-    private String hhi01 = StringUtils.EMPTY;
-    private String hhi02 = StringUtils.EMPTY;
-    private String hhi03 = StringUtils.EMPTY;
 
     public Form setSynced(String synced) {
         this.synced = synced;
@@ -500,99 +662,6 @@ public class Form extends BaseObservable {
     }
 
     @Bindable
-    public String getHhv01() {
-        return hhv01;
-    }
-
-    public void setHhv01(String hhv01) {
-        this.hhv01 = hhv01;
-        notifyPropertyChanged(BR.hhv01);
-    }
-
-    @Bindable
-    public String getHhv02() {
-        return hhv02;
-    }
-
-    public void setHhv02(String hhv02) {
-        this.hhv02 = hhv02;
-        notifyPropertyChanged(BR.hhv02);
-    }
-
-    @Bindable
-    public String getHhv03a() {
-        return hhv03a;
-    }
-
-    public void setHhv03a(String hhv03a) {
-        this.hhv03a = hhv03a;
-        notifyPropertyChanged(BR.hhv03a);
-    }
-
-    @Bindable
-    public String getHhv03b() {
-        return hhv03b;
-    }
-
-    public void setHhv03b(String hhv03b) {
-        this.hhv03b = hhv03b;
-        notifyPropertyChanged(BR.hhv03b);
-    }
-
-    @Bindable
-    public String getHhv03c() {
-        return hhv03c;
-    }
-
-    public void setHhv03c(String hhv03c) {
-        this.hhv03c = hhv03c;
-        notifyPropertyChanged(BR.hhv03c);
-    }
-
-    @Bindable
-    public String getHhv03d() {
-        return hhv03d;
-    }
-
-    private String hh02 = StringUtils.EMPTY;
-    private String hh03 = StringUtils.EMPTY;
-    private String hh04a = StringUtils.EMPTY;
-    private String hh04b = StringUtils.EMPTY;
-    private String hh04c = StringUtils.EMPTY;
-
-    public void setHhv03d(String hhv03d) {
-        this.hhv03d = hhv03d;
-        notifyPropertyChanged(BR.hhv03d);
-    }
-
-    @Bindable
-    public String getHhv03e() {
-        return hhv03e;
-    }
-
-    private String hh06 = StringUtils.EMPTY;
-    private String hh07 = StringUtils.EMPTY;
-    private String hh08 = StringUtils.EMPTY;
-    private String hh09 = StringUtils.EMPTY;
-    private String hh10 = StringUtils.EMPTY;
-    private String hh11 = StringUtils.EMPTY;
-
-    public void setHhv03e(String hhv03e) {
-        this.hhv03e = hhv03e;
-        notifyPropertyChanged(BR.hhv03e);
-    }
-
-    @Bindable
-    public String getHhv03f() {
-        return hhv03f;
-    }
-
-    public void setHhv03f(String hhv03f) {
-        this.hhv03f = hhv03f;
-        notifyPropertyChanged(BR.hhv03f);
-    }
-
-    @Bindable
     public String getHh01() {
         return hh01;
     }
@@ -721,86 +790,6 @@ public class Form extends BaseObservable {
         this.hh10 = hh10;
         notifyPropertyChanged(BR.hh10);
     }
-
-    private String mwra02 = StringUtils.EMPTY;
-    private String mwra03 = StringUtils.EMPTY;
-    private String mwra04 = StringUtils.EMPTY;
-    private String mwra05a = StringUtils.EMPTY;
-    private String mwra05b = StringUtils.EMPTY;
-    private String mwra06 = StringUtils.EMPTY;
-    private String mwra07 = StringUtils.EMPTY;
-    private String mwra08 = StringUtils.EMPTY;
-    private String mwra08a = StringUtils.EMPTY;
-    private String mwra08b = StringUtils.EMPTY;
-    private String mwra08c = StringUtils.EMPTY;
-    private String mwra08d = StringUtils.EMPTY;
-    private String mwra08e = StringUtils.EMPTY;
-    private String mwra08f = StringUtils.EMPTY;
-    private String mwra08g = StringUtils.EMPTY;
-    private String mwra0896 = StringUtils.EMPTY;
-    private String mwra0896x = StringUtils.EMPTY;
-    private String mwra09 = StringUtils.EMPTY;
-    private String mwra10 = StringUtils.EMPTY;
-    private String mwra11 = StringUtils.EMPTY;
-    private String mwra12 = StringUtils.EMPTY;
-    private String mwra12a = StringUtils.EMPTY;
-    private String mwra12b = StringUtils.EMPTY;
-    private String mwra12c = StringUtils.EMPTY;
-    private String mwra12d = StringUtils.EMPTY;
-    private String mwra12e = StringUtils.EMPTY;
-    private String mwra12f = StringUtils.EMPTY;
-    private String mwra12g = StringUtils.EMPTY;
-    private String mwra12h = StringUtils.EMPTY;
-    private String mwra12i = StringUtils.EMPTY;
-    private String mwra12j = StringUtils.EMPTY;
-    private String mwra12k = StringUtils.EMPTY;
-    private String mwra12l = StringUtils.EMPTY;
-    private String mwra12m = StringUtils.EMPTY;
-    private String mwra1296 = StringUtils.EMPTY;
-    private String mwra1296x = StringUtils.EMPTY;
-    private String mwra13 = StringUtils.EMPTY;
-    private String mwra14 = StringUtils.EMPTY;
-    private String mwra1496x = StringUtils.EMPTY;
-    private String mwra15 = StringUtils.EMPTY;
-    private String mwra16 = StringUtils.EMPTY;
-    private String mwra17 = StringUtils.EMPTY;
-    private String mwra17a = StringUtils.EMPTY;
-    private String mwra17b = StringUtils.EMPTY;
-    private String mwra17c = StringUtils.EMPTY;
-    private String mwra17d = StringUtils.EMPTY;
-    private String mwra17e = StringUtils.EMPTY;
-    private String mwra1796 = StringUtils.EMPTY;
-    private String mwra1796x = StringUtils.EMPTY;
-    private String mwra18 = StringUtils.EMPTY;
-    private String mwra18a = StringUtils.EMPTY;
-    private String mwra18b = StringUtils.EMPTY;
-    private String mwra18c = StringUtils.EMPTY;
-    private String mwra18d = StringUtils.EMPTY;
-    private String mwra18e = StringUtils.EMPTY;
-    private String mwra18f = StringUtils.EMPTY;
-    private String mwra18g = StringUtils.EMPTY;
-    private String mwra18h = StringUtils.EMPTY;
-    private String mwra1896 = StringUtils.EMPTY;
-    private String mwra1896x = StringUtils.EMPTY;
-    private String mwra19 = StringUtils.EMPTY;
-    private String mwra20 = StringUtils.EMPTY;
-    private String mwra2096x = StringUtils.EMPTY;
-    private String mwra21 = StringUtils.EMPTY;
-    private String mwra22 = StringUtils.EMPTY;
-    private String mwra23 = StringUtils.EMPTY;
-    private String mwra23a = StringUtils.EMPTY;
-    private String mwra23b = StringUtils.EMPTY;
-    private String mwra23c = StringUtils.EMPTY;
-    private String mwra23d = StringUtils.EMPTY;
-    private String mwra23e = StringUtils.EMPTY;
-    private String mwra23f = StringUtils.EMPTY;
-    private String mwra23g = StringUtils.EMPTY;
-    private String mwra23h = StringUtils.EMPTY;
-    private String mwra23i = StringUtils.EMPTY;
-    private String mwra23j = StringUtils.EMPTY;
-    private String mwra2396 = StringUtils.EMPTY;
-    private String mwra2396x = StringUtils.EMPTY;
-    private String mwra24 = StringUtils.EMPTY;
 
     @Bindable
     public String getHh11() {
@@ -1607,63 +1596,6 @@ public class Form extends BaseObservable {
         return mwra24;
     }
 
-    private String adol02 = StringUtils.EMPTY;
-    private String adol03 = StringUtils.EMPTY;
-    private String adol04 = StringUtils.EMPTY;
-    private String adol04a = StringUtils.EMPTY;
-    private String adol04b = StringUtils.EMPTY;
-    private String adol04c = StringUtils.EMPTY;
-    private String adol04d = StringUtils.EMPTY;
-    private String adol04e = StringUtils.EMPTY;
-    private String adol04f = StringUtils.EMPTY;
-    private String adol04g = StringUtils.EMPTY;
-    private String adol04h = StringUtils.EMPTY;
-    private String adol0496 = StringUtils.EMPTY;
-    private String adol0496x = StringUtils.EMPTY;
-    private String adol05 = StringUtils.EMPTY;
-    private String adol06 = StringUtils.EMPTY;
-    private String adol06a = StringUtils.EMPTY;
-    private String adol06b = StringUtils.EMPTY;
-    private String adol06c = StringUtils.EMPTY;
-    private String adol06d = StringUtils.EMPTY;
-    private String adol0696 = StringUtils.EMPTY;
-    private String adol0696x = StringUtils.EMPTY;
-    private String adol07 = StringUtils.EMPTY;
-    private String adol08 = StringUtils.EMPTY;
-    private String adol09 = StringUtils.EMPTY;
-    private String adol10 = StringUtils.EMPTY;
-    private String adol10a = StringUtils.EMPTY;
-    private String adol10b = StringUtils.EMPTY;
-    private String adol10c = StringUtils.EMPTY;
-    private String adol10d = StringUtils.EMPTY;
-    private String adol10e = StringUtils.EMPTY;
-    private String adol10f = StringUtils.EMPTY;
-    private String adol10g = StringUtils.EMPTY;
-    private String adol10h = StringUtils.EMPTY;
-    private String adol10i = StringUtils.EMPTY;
-    private String adol10j = StringUtils.EMPTY;
-    private String adol1096 = StringUtils.EMPTY;
-    private String adol1096x = StringUtils.EMPTY;
-    private String adol11 = StringUtils.EMPTY;
-    private String adol1196x = StringUtils.EMPTY;
-    private String adol12 = StringUtils.EMPTY;
-    private String adol12a = StringUtils.EMPTY;
-    private String adol12b = StringUtils.EMPTY;
-    private String adol12c = StringUtils.EMPTY;
-    private String adol12d = StringUtils.EMPTY;
-    private String adol1296 = StringUtils.EMPTY;
-    private String adol1296x = StringUtils.EMPTY;
-    private String adol13 = StringUtils.EMPTY;
-    private String adol14 = StringUtils.EMPTY;
-    private String adol15 = StringUtils.EMPTY;
-    private String adol15a = StringUtils.EMPTY;
-    private String adol15b = StringUtils.EMPTY;
-    private String adol15c = StringUtils.EMPTY;
-    private String adol15d = StringUtils.EMPTY;
-    private String adol15e = StringUtils.EMPTY;
-    private String adol1596 = StringUtils.EMPTY;
-    private String adol1596x = StringUtils.EMPTY;
-
     public void setMwra24(String mwra24) {
         this.mwra24 = mwra24;
         notifyPropertyChanged(BR.mwra24);
@@ -2239,24 +2171,6 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.adol1596x);
     }
 
-    private String vhc02 = StringUtils.EMPTY;
-    private String vhc03 = StringUtils.EMPTY;
-    private String vhc04 = StringUtils.EMPTY;
-    private String vhc05 = StringUtils.EMPTY;
-    private String vhc06 = StringUtils.EMPTY;
-    private String vhc06a = StringUtils.EMPTY;
-    private String vhc06b = StringUtils.EMPTY;
-    private String vhc06c = StringUtils.EMPTY;
-    private String vhc06d = StringUtils.EMPTY;
-    private String vhc06e = StringUtils.EMPTY;
-    private String vhc06f = StringUtils.EMPTY;
-    private String vhc06g = StringUtils.EMPTY;
-    private String vhc06h = StringUtils.EMPTY;
-    private String vhc06i = StringUtils.EMPTY;
-    private String vhc06j = StringUtils.EMPTY;
-    private String vhc0696 = StringUtils.EMPTY;
-    private String vhc0696x = StringUtils.EMPTY;
-
     @Bindable
     public String getVhc01() {
         return vhc01;
@@ -2443,10 +2357,10 @@ public class Form extends BaseObservable {
         this.uid = jsonObject.getString(FormsContract.FormsTable.COLUMN_UID);
         this.userName = jsonObject.getString(FormsContract.FormsTable.COLUMN_USERNAME);
         this.sysDate = jsonObject.getString(FormsContract.FormsTable.COLUMN_SYSDATE);
-        this.dcode = jsonObject.getString(FormsContract.FormsTable.COLUMN_DCODE);
-        this.ucode = jsonObject.getString(FormsContract.FormsTable.COLUMN_UCODE);
-        this.cluster = jsonObject.getString(FormsContract.FormsTable.COLUMN_CLUSTER);
-        this.hhno = jsonObject.getString(FormsContract.FormsTable.COLUMN_HHNO);
+        this.districtCode = jsonObject.getString(FormsContract.FormsTable.COLUMN_DCODE);
+        this.tehsilCode = jsonObject.getString(FormsContract.FormsTable.COLUMN_UCODE);
+        this.lhwCode = jsonObject.getString(FormsContract.FormsTable.COLUMN_CLUSTER);
+        this.khandanNumber = jsonObject.getString(FormsContract.FormsTable.COLUMN_HHNO);
         this.deviceId = jsonObject.getString(FormsContract.FormsTable.COLUMN_DEVICEID);
         this.deviceTag = jsonObject.getString(FormsContract.FormsTable.COLUMN_DEVICETAGID);
         this.appver = jsonObject.getString(FormsContract.FormsTable.COLUMN_APPVERSION);
@@ -2475,10 +2389,10 @@ public class Form extends BaseObservable {
         this.uid = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_UID));
         this.userName = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_USERNAME));
         this.sysDate = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_SYSDATE));
-        this.dcode = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_DCODE));
-        this.ucode = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_UCODE));
-        this.cluster = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_CLUSTER));
-        this.hhno = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_HHNO));
+        this.districtCode = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_DCODE));
+        this.tehsilCode = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_UCODE));
+        this.lhwCode = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_CLUSTER));
+        this.khandanNumber = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_HHNO));
         this.deviceId = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_DEVICEID));
         this.deviceTag = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_DEVICETAGID));
         this.appver = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_APPVERSION));
@@ -2526,15 +2440,7 @@ public class Form extends BaseObservable {
                     .put("hhi04d", hhi04d)
                     .put("hhi04e", hhi04e)
                     .put("hhio4f", hhi04f)
-                    .put("lhwphoto", lhwphoto)
-                    .put("hhv01", hhv01)
-                    .put("hhv02", hhv02)
-                    .put("hhv03a", hhv03a)
-                    .put("hhv03b", hhv03b)
-                    .put("hhv03c", hhv03c)
-                    .put("hhv03d", hhv03d)
-                    .put("hhv03e", hhv03e)
-                    .put("hhv03f", hhv03f);
+                    .put("lhwphoto", lhwphoto);
         } catch (JSONException e) {
             e.printStackTrace();
             return "\"error\":, \"" + e.getMessage() + "\"";
@@ -2773,10 +2679,10 @@ public class Form extends BaseObservable {
             json.put(FormsContract.FormsTable.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
             json.put(FormsContract.FormsTable.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
             json.put(FormsContract.FormsTable.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
-            json.put(FormsContract.FormsTable.COLUMN_DCODE, this.dcode == null ? JSONObject.NULL : this.dcode);
-            json.put(FormsContract.FormsTable.COLUMN_UCODE, this.ucode == null ? JSONObject.NULL : this.ucode);
-            json.put(FormsContract.FormsTable.COLUMN_CLUSTER, this.cluster == null ? JSONObject.NULL : this.cluster);
-            json.put(FormsContract.FormsTable.COLUMN_HHNO, this.hhno == null ? JSONObject.NULL : this.hhno);
+            json.put(FormsContract.FormsTable.COLUMN_DCODE, this.districtCode == null ? JSONObject.NULL : this.districtCode);
+            json.put(FormsContract.FormsTable.COLUMN_UCODE, this.tehsilCode == null ? JSONObject.NULL : this.tehsilCode);
+            json.put(FormsContract.FormsTable.COLUMN_CLUSTER, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
+            json.put(FormsContract.FormsTable.COLUMN_HHNO, this.khandanNumber == null ? JSONObject.NULL : this.khandanNumber);
             json.put(FormsContract.FormsTable.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
             json.put(FormsContract.FormsTable.COLUMN_DEVICETAGID, this.deviceTag == null ? JSONObject.NULL : this.deviceTag);
             json.put(FormsContract.FormsTable.COLUMN_APPVERSION, this.appver == null ? JSONObject.NULL : this.appver);
@@ -2844,14 +2750,6 @@ public class Form extends BaseObservable {
                 this.hhi04e = json.getString("hhi04e");
                 this.hhi04f = json.getString("hhio4f");
                 this.lhwphoto = json.getString("lhwphoto");
-                this.hhv01 = json.getString("hhv01");
-                this.hhv02 = json.getString("hhv02");
-                this.hhv03a = json.getString("hhv03a");
-                this.hhv03b = json.getString("hhv03b");
-                this.hhv03c = json.getString("hhv03c");
-                this.hhv03d = json.getString("hhv03d");
-                this.hhv03e = json.getString("hhv03e");
-                this.hhv03f = json.getString("hhv03f");
             } catch (JSONException e) {
                 e.printStackTrace();
             }

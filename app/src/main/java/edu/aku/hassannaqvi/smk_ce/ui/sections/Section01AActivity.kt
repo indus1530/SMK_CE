@@ -15,29 +15,29 @@ import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.form
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
-import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01Binding
+import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01ABinding
 import edu.aku.hassannaqvi.smk_ce.models.Districts
 import edu.aku.hassannaqvi.smk_ce.models.Form
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Section01Activity : AppCompatActivity() {
+class Section01AActivity : AppCompatActivity() {
 
-    lateinit var bi: ActivitySection01Binding
-    var district = mutableListOf("....")
-    var districtCode = mutableListOf<String>()
-    var uc = mutableListOf("....")
-    var ucCode = mutableListOf<String>()
-    var lhw = mutableListOf("....")
+    lateinit var bi: ActivitySection01ABinding
+    var tehsilName = mutableListOf("....")
+    var tehsilCode = mutableListOf<String>()
+    var hfName = mutableListOf("....")
+    var hfCode = mutableListOf<String>()
+    var lhwname = mutableListOf("....")
     var lhwCode = mutableListOf<String>()
-    lateinit var districtAdapter: ArrayAdapter<String>
-    lateinit var ucAdapter: ArrayAdapter<String>
+    lateinit var tehsilAdapter: ArrayAdapter<String>
+    lateinit var hfAdapter: ArrayAdapter<String>
     lateinit var db: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section01)
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section01_a)
         bi.callback = this
         setSupportActionBar(bi.toolbar)
         populateSpinner(this)
@@ -64,13 +64,13 @@ class Section01Activity : AppCompatActivity() {
         }
 */
 
-        district.add("DISTRICT")
+        tehsilName.add("Test Tehsil")
 
-        bi.lhw01.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, district)
+        bi.lhw01.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, tehsilName)
         //bi.lhw01.adapter = districtAdapter
-        ucAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, uc)
-        bi.lhw02.adapter = ucAdapter
-        bi.lhw03.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, lhw)
+        hfAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, hfName)
+        bi.lhw02.adapter = hfAdapter
+        bi.lhw03.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, lhwname)
 
         bi.lhw01.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
@@ -80,10 +80,10 @@ class Section01Activity : AppCompatActivity() {
                     return
                 }
                 bi.lhw02.isEnabled = true
-                uc.clear()
-                ucCode.clear()
-                uc.add("....")
-                uc.add("Union Council")
+                hfName.clear()
+                hfCode.clear()
+                hfName.add("....")
+                hfName.add("Test Health Facility")
                 //viewModel.getUCsDistrictFromDB(districtCode[position - 1])
             }
 
@@ -98,10 +98,10 @@ class Section01Activity : AppCompatActivity() {
                     return
                 }
                 bi.lhw03.isEnabled = true
-                lhw.clear()
+                lhwname.clear()
                 lhwCode.clear()
-                lhw.add("....")
-                lhw.add("Lady Health Worker")
+                lhwname.add("....")
+                lhwname.add("Test Lady Health Worker")
                 //viewModel.getUCsDistrictFromDB(districtCode[position - 1])
             }
 
@@ -146,10 +146,10 @@ class Section01Activity : AppCompatActivity() {
         form.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
         form.uid = form.uid
         form.userName = MainApp.user.userName
-        form.dcode = form.dcode
-        form.ucode = form.ucode
-        form.cluster = form.cluster
-        form.hhno = form.hhno
+        form.districtCode = form.districtCode
+        form.tehsilCode = form.tehsilCode
+        form.lhwCode = form.lhwCode
+        form.khandanNumber = form.khandanNumber
         form.deviceId = MainApp.appInfo.deviceID
         form.deviceTag = MainApp.appInfo.tagName
         form.appver = MainApp.appInfo.appVersion
@@ -210,46 +210,6 @@ class Section01Activity : AppCompatActivity() {
 
         form.lhwphoto = when {
             bi.lhwphoto.text.toString().trim().isNotEmpty() -> bi.lhwphoto.text.toString()
-            else -> "-1"
-        }
-
-        form.hhv01 = when {
-            bi.hhv01.text.toString().trim().isNotEmpty() -> bi.hhv01.text.toString()
-            else -> "-1"
-        }
-
-        form.hhv02 = when {
-            bi.hhv02.text.toString().trim().isNotEmpty() -> bi.hhv02.text.toString()
-            else -> "-1"
-        }
-
-        form.hhv03a = when {
-            bi.hhv03a.text.toString().trim().isNotEmpty() -> bi.hhv03a.text.toString()
-            else -> "-1"
-        }
-
-        form.hhv03b = when {
-            bi.hhv03b.text.toString().trim().isNotEmpty() -> bi.hhv03b.text.toString()
-            else -> "-1"
-        }
-
-        form.hhv03c = when {
-            bi.hhv03c.text.toString().trim().isNotEmpty() -> bi.hhv03c.text.toString()
-            else -> "-1"
-        }
-
-        form.hhv03d = when {
-            bi.hhv03d.text.toString().trim().isNotEmpty() -> bi.hhv03d.text.toString()
-            else -> "-1"
-        }
-
-        form.hhv03e = when {
-            bi.hhv03e.text.toString().trim().isNotEmpty() -> bi.hhv03e.text.toString()
-            else -> "-1"
-        }
-
-        form.hhv03f = when {
-            bi.hhv03f.text.toString().trim().isNotEmpty() -> bi.hhv03f.text.toString()
             else -> "-1"
         }
 
