@@ -71,7 +71,7 @@ class Section01BActivity : AppCompatActivity() {
     private fun saveDraft() {
         hhinfo = HHInfoModel()
         hhinfo.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
-        hhinfo.uid = form.uid
+        hhinfo.uuid = form.uid
         hhinfo.userName = MainApp.user.userName
         hhinfo.districtCode = form.districtCode
         hhinfo.tehsilCode = form.tehsilCode

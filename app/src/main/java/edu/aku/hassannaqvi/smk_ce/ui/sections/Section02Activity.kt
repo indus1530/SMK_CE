@@ -13,8 +13,12 @@ import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
+import edu.aku.hassannaqvi.smk_ce.core.MainApp.hhmem
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection02Binding
+import edu.aku.hassannaqvi.smk_ce.models.HHMembersModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
+import java.text.SimpleDateFormat
+import java.util.*
 
 class Section02Activity : AppCompatActivity() {
 
@@ -70,48 +74,60 @@ class Section02Activity : AppCompatActivity() {
 
     private fun saveDraft() {
 
-        MainApp.form.hh01 = when {
+        hhmem = HHMembersModel()
+        hhmem.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
+        hhmem.uuid = MainApp.form.uid
+        hhmem.userName = MainApp.user.userName
+        hhmem.districtCode = MainApp.form.districtCode
+        hhmem.tehsilCode = MainApp.form.tehsilCode
+        hhmem.lhwCode = MainApp.form.lhwCode
+        hhmem.khandanNumber = MainApp.form.khandanNumber
+        hhmem.deviceId = MainApp.appInfo.deviceID
+        hhmem.deviceTag = MainApp.appInfo.tagName
+        hhmem.appver = MainApp.appInfo.appVersion
+
+        hhmem.hh01 = when {
             bi.hh01.text.toString().trim().isNotEmpty() -> bi.hh01.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.hh02 = when {
+        hhmem.hh02 = when {
             bi.hh02.text.toString().trim().isNotEmpty() -> bi.hh02.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.hh03 = when {
+        hhmem.hh03 = when {
             bi.hh03a.isChecked -> "1"
             bi.hh03b.isChecked -> "2"
             else -> "-1"
         }
 
-        MainApp.form.hh04a = when {
+        hhmem.hh04a = when {
             bi.hh04a.text.toString().trim().isNotEmpty() -> bi.hh04a.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.hh04b = when {
+        hhmem.hh04b = when {
             bi.hh04b.text.toString().trim().isNotEmpty() -> bi.hh04b.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.hh04c = when {
+        hhmem.hh04c = when {
             bi.hh04c.text.toString().trim().isNotEmpty() -> bi.hh04c.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.hh05y = when {
+        hhmem.hh05y = when {
             bi.hh05y.text.toString().trim().isNotEmpty() -> bi.hh05y.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.hh05m = when {
+        hhmem.hh05m = when {
             bi.hh05m.text.toString().trim().isNotEmpty() -> bi.hh05m.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.hh06 = when {
+        hhmem.hh06 = when {
             bi.hh06a.isChecked -> "1"
             bi.hh06b.isChecked -> "2"
             bi.hh06c.isChecked -> "3"
@@ -119,17 +135,17 @@ class Section02Activity : AppCompatActivity() {
             else -> "-1"
         }
 
-        MainApp.form.hh07 = when {
+        hhmem.hh07 = when {
             bi.hh07.text.toString().trim().isNotEmpty() -> bi.hh07.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.hh08 = when {
+        hhmem.hh08 = when {
             bi.hh08.text.toString().trim().isNotEmpty() -> bi.hh08.text.toString()
             else -> "-1"
         }
 
-        MainApp.form.hh09 = when {
+        hhmem.hh09 = when {
             bi.hh09a.isChecked -> "1"
             bi.hh09b.isChecked -> "2"
             bi.hh09c.isChecked -> "3"
@@ -146,7 +162,7 @@ class Section02Activity : AppCompatActivity() {
             else -> "-1"
         }
 
-        MainApp.form.hh10 = when {
+        hhmem.hh10 = when {
             bi.hh10a.isChecked -> "1"
             bi.hh10b.isChecked -> "2"
             bi.hh10c.isChecked -> "3"
@@ -160,7 +176,7 @@ class Section02Activity : AppCompatActivity() {
             else -> "-1"
         }
 
-        MainApp.form.hh11 = when {
+        hhmem.hh11 = when {
             bi.hh11a.isChecked -> "1"
             bi.hh11b.isChecked -> "2"
             else -> "-1"
