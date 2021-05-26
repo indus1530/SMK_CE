@@ -153,40 +153,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_PROJECT_NAME, model.getProjectName());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_UID, model.getUid());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_UUID, model.getUuid());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_SERIAL_NO, model.getSerialNo());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_USERNAME, model.getUserName());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_SYSDATE, model.getSysDate());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_DISTRICT_CODE, model.getDistrictCode());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_DISTRICT_NAME, model.getDistrictName());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_TEHSIL_CODE, model.getTehsilCode());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_TEHSIL_NAME, model.getTehsilName());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_LHW_CODE, model.getLhwCode());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_LHW_NAME, model.getLhwName());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_KHANDAN_NUMBER, model.getKhandanNumber());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_SA, model.getsA());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_STATUS, model.getStatus());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_ENDINGDATETIME, model.getEndTime());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_DEVICETAGID, model.getDeviceTag());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_DEVICEID, model.getDeviceId());
-        values.put(HHVerifyContract.HHVerifyTable.COLUMN_APPVERSION, model.getAppver());
-
-        long newRowId;
-        newRowId = db.insert(
-                HHVerifyContract.HHVerifyTable.TABLE_NAME,
-                HHVerifyContract.HHVerifyTable.COLUMN_NAME_NULLABLE,
-                values);
-        return newRowId;
-    }
-
-
-    //HHVERIFY
-    public Long addHHVerify(HHVerifyModel model) {
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
         values.put(HHIdentifyContract.HHIdentifyTable.COLUMN_PROJECT_NAME, model.getProjectName());
         values.put(HHIdentifyContract.HHIdentifyTable.COLUMN_UID, model.getUid());
         values.put(HHIdentifyContract.HHIdentifyTable.COLUMN_UUID, model.getUuid());
@@ -206,6 +172,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(HHIdentifyContract.HHIdentifyTable.COLUMN_DEVICETAGID, model.getDeviceTag());
         values.put(HHIdentifyContract.HHIdentifyTable.COLUMN_DEVICEID, model.getDeviceId());
         values.put(HHIdentifyContract.HHIdentifyTable.COLUMN_APPVERSION, model.getAppver());
+
+        long newRowId;
+        newRowId = db.insert(
+                HHIdentifyContract.HHIdentifyTable.TABLE_NAME,
+                HHIdentifyContract.HHIdentifyTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+
+    //HHVERIFY
+    public Long addHHVerify(HHVerifyModel model) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_PROJECT_NAME, model.getProjectName());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_UID, model.getUid());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_UUID, model.getUuid());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_SERIAL_NO, model.getSerialNo());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_USERNAME, model.getUserName());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_SYSDATE, model.getSysDate());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_DISTRICT_CODE, model.getDistrictCode());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_DISTRICT_NAME, model.getDistrictName());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_TEHSIL_CODE, model.getTehsilCode());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_TEHSIL_NAME, model.getTehsilName());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_LHW_CODE, model.getLhwCode());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_LHW_NAME, model.getLhwName());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_KHANDAN_NUMBER, model.getKhandanNumber());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_SA, model.getsA());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_STATUS, model.getStatus());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_ENDINGDATETIME, model.getEndTime());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_DEVICETAGID, model.getDeviceTag());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_DEVICEID, model.getDeviceId());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_APPVERSION, model.getAppver());
 
         long newRowId;
         newRowId = db.insert(
