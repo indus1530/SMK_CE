@@ -286,12 +286,6 @@
                                 android:text="@string/adol04g" />
 
                             <CheckBox
-                                android:id="@+id/adol04h"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/adol04h" />
-
-                            <CheckBox
                                 android:id="@+id/adol0496"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -308,6 +302,13 @@
                                 android:visibility='@{adol0496.checked? View.VISIBLE : View.GONE}' />
 
                         </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/adol04h"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:tag="-1"
+                            android:text="@string/adol04h" />
 
                     </LinearLayout>
 
@@ -772,37 +773,41 @@
                         <RadioGroup
                             android:id="@+id/adol11"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <RadioButton
                                 android:id="@+id/adol11a"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:text="@string/adol11a" />
 
                             <RadioButton
                                 android:id="@+id/adol11b"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:text="@string/adol11b" />
 
                             <RadioButton
                                 android:id="@+id/adol1196"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:text="@string/adol1196" />
 
-                            <EditText
-                                android:id="@+id/adol1196x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
-                                android:hint="@string/adol1196"
-                                android:tag="adol1196"
-                                android:text='@{adol1196.checked ? adol1196x.getText().toString() : ""}'
-                                android:visibility='@{adol1196.checked? View.VISIBLE : View.GONE}' />
-
                         </RadioGroup>
+
+                        <EditText
+                            android:id="@+id/adol1196x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:hint="@string/adol1196"
+                            android:tag="adol1196"
+                            android:text='@{adol1196.checked ? adol1196x.getText().toString() : ""}'
+                            android:visibility='@{adol1196.checked ? View.VISIBLE : View.GONE}' />
 
                     </LinearLayout>
 
@@ -1066,18 +1071,6 @@
                                 android:text="@string/adol15c" />
 
                             <CheckBox
-                                android:id="@+id/adol15d"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/adol15d" />
-
-                            <CheckBox
-                                android:id="@+id/adol15e"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/adol15e" />
-
-                            <CheckBox
                                 android:id="@+id/adol1596"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -1094,6 +1087,20 @@
                                 android:visibility='@{adol1596.checked? View.VISIBLE : View.GONE}' />
 
                         </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/adol15d"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:tag="-1"
+                            android:text="@string/adol15d" />
+
+                        <CheckBox
+                            android:id="@+id/adol15e"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:tag="-1"
+                            android:text="@string/adol15e" />
 
                     </LinearLayout>
 

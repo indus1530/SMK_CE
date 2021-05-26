@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
@@ -36,6 +37,9 @@ class Section04Activity : AppCompatActivity() {
 
     private fun setupSkips() {
         rgLsnr(bi.adol05, bi.adol05b, arrayOf(bi.fldGrpCVadol06, bi.fldGrpCVadol07))
+        bi.adol04h.setOnCheckedChangeListener { compoundButton, b -> Clear.clearAllFields(bi.adol04check, !b) }
+        cbLsnr(bi.adol15d, bi.adol15e)
+        cbLsnr(bi.adol15e, bi.adol15d)
 
     }
 
@@ -46,6 +50,21 @@ class Section04Activity : AppCompatActivity() {
                 Clear.clearAllFields(it)
                 it.visibility = View.VISIBLE
                 if (i == rb.id) it.visibility = View.GONE
+            }
+        }
+    }
+
+
+    private fun cbLsnr(cb1: CheckBox, cb2: CheckBox) {
+        cb1.setOnCheckedChangeListener { compoundButton, b ->
+            if (b) {
+                Clear.clearAllFields(bi.adol15check, false)
+                cb2.isEnabled = false
+                cb2.isChecked = false
+            } else {
+                Clear.clearAllFields(bi.adol15check, true)
+                cb2.isEnabled = true
+                cb2.isChecked = false
             }
         }
     }
