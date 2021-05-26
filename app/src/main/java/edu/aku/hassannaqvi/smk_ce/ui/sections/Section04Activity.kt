@@ -60,11 +60,9 @@ class Section04Activity : AppCompatActivity() {
             if (b) {
                 Clear.clearAllFields(bi.adol15check, false)
                 cb2.isEnabled = false
-                cb2.isChecked = false
             } else {
                 Clear.clearAllFields(bi.adol15check, true)
                 cb2.isEnabled = true
-                cb2.isChecked = false
             }
         }
     }

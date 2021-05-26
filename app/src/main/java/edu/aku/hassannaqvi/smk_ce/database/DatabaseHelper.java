@@ -146,29 +146,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //HHINFO
-    public Long addHHInfo(HHInfoModel hhInfoModel) {
+    public Long addHHInfo(HHInfoModel model) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(HHInfoContract.HHInfoTable.COLUMN_PROJECT_NAME, hhInfoModel.getProjectName());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_UID, hhInfoModel.getUid());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_UUID, hhInfoModel.getUuid());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_SERIAL_NO, hhInfoModel.getSerialNo());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_USERNAME, hhInfoModel.getUserName());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_SYSDATE, hhInfoModel.getSysDate());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_DISTRICT_CODE, hhInfoModel.getDistrictCode());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_DISTRICT_NAME, hhInfoModel.getDistrictName());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_TEHSIL_CODE, hhInfoModel.getTehsilCode());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_TEHSIL_NAME, hhInfoModel.getTehsilName());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_LHW_CODE, hhInfoModel.getLhwCode());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_LHW_NAME, hhInfoModel.getLhwName());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_KHANDAN_NUMBER, hhInfoModel.getKhandanNumber());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_SA, hhInfoModel.getsA());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_STATUS, hhInfoModel.getStatus());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_ENDINGDATETIME, hhInfoModel.getEndTime());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_DEVICETAGID, hhInfoModel.getDeviceTag());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_DEVICEID, hhInfoModel.getDeviceId());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_APPVERSION, hhInfoModel.getAppver());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_PROJECT_NAME, model.getProjectName());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_UID, model.getUid());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_UUID, model.getUuid());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_SERIAL_NO, model.getSerialNo());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_USERNAME, model.getUserName());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_SYSDATE, model.getSysDate());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_DISTRICT_CODE, model.getDistrictCode());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_DISTRICT_NAME, model.getDistrictName());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_TEHSIL_CODE, model.getTehsilCode());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_TEHSIL_NAME, model.getTehsilName());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_LHW_CODE, model.getLhwCode());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_LHW_NAME, model.getLhwName());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_KHANDAN_NUMBER, model.getKhandanNumber());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_SA, model.getsA());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_STATUS, model.getStatus());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_ENDINGDATETIME, model.getEndTime());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_DEVICETAGID, model.getDeviceTag());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_DEVICEID, model.getDeviceId());
+        values.put(HHInfoContract.HHInfoTable.COLUMN_APPVERSION, model.getAppver());
 
         long newRowId;
         newRowId = db.insert(

@@ -76,7 +76,7 @@ class Section03Activity : AppCompatActivity() {
         }
 
 
-        rgLsnr(bi.mwra03, bi.mwra03b, arrayOf(bi.fldGrpCVmwra04))
+        rgLsnr(bi.mwra03, bi.mwra03b, arrayOf(bi.fldGrpCVmwra06))
         rgLsnr(bi.mwra07, bi.mwra07b, arrayOf(bi.fldGrpCVmwra08))
         rgLsnr(bi.mwra09, bi.mwra09b, arrayOf(bi.fldGrpCVmwra10, bi.fldGrpCVmwra11, bi.fldGrpCVmwra12))
         rgLsnr(bi.mwra11, bi.mwra11b, arrayOf(bi.fldGrpCVmwra12))
