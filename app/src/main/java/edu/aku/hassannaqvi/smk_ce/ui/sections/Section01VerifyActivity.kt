@@ -39,12 +39,12 @@ class Section01VerifyActivity : AppCompatActivity() {
 
     private fun updateDB(): Boolean {
         val db = MainApp.appInfo.dbHelper
-        val updcount = db.addHHInfo(hhverify)
+        val updcount = db.addHHVerify(hhverify)
         return if (updcount > 0) {
             hhverify.id = updcount.toString()
             hhverify.uid = hhverify.deviceId + hhverify.id
-            var count = db.updatesHHInfoColumn(HHVerifyContract.HHVerifyTable.COLUMN_UID, hhverify.uid)
-            if (count > 0) count = db.updatesHHInfoColumn(HHVerifyContract.HHVerifyTable.COLUMN_SA, hhverify.sAtoString())
+            var count = db.updatesHHVerifyColumn(HHVerifyContract.HHVerifyTable.COLUMN_UID, hhverify.uid)
+            if (count > 0) count = db.updatesHHVerifyColumn(HHVerifyContract.HHVerifyTable.COLUMN_SA, hhverify.sAtoString())
             if (count > 0) true else {
                 Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
                 false

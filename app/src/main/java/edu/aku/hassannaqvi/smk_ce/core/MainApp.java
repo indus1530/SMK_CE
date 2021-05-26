@@ -15,6 +15,7 @@ import edu.aku.hassannaqvi.smk_ce.models.AdolescentModel;
 import edu.aku.hassannaqvi.smk_ce.models.Child;
 import edu.aku.hassannaqvi.smk_ce.models.ChildInformation;
 import edu.aku.hassannaqvi.smk_ce.models.Form;
+import edu.aku.hassannaqvi.smk_ce.models.HHIdentifyModel;
 import edu.aku.hassannaqvi.smk_ce.models.HHMembersModel;
 import edu.aku.hassannaqvi.smk_ce.models.HHVerifyModel;
 import edu.aku.hassannaqvi.smk_ce.models.Immunization;
@@ -39,6 +40,7 @@ public class MainApp extends Application {
     public static String[] downloadData;
     public static Form form;
     public static HHVerifyModel hhverify;
+    public static HHIdentifyModel hhidentify;
     public static HHMembersModel hhmem;
     public static MwraModel mwra;
     public static AdolescentModel adolescent;
