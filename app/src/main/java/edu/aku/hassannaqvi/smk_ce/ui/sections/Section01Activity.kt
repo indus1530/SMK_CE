@@ -19,7 +19,6 @@ import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01Binding
 import edu.aku.hassannaqvi.smk_ce.models.Districts
 import edu.aku.hassannaqvi.smk_ce.models.Form
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
-import edu.aku.hassannaqvi.smk_ce.ui.TakePhoto
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -197,7 +196,7 @@ class Section01Activity : AppCompatActivity() {
     }
 
 
-    fun takePhoto(id: Int) {
+    /*fun takePhoto(id: Int) {
         val intent = Intent(this, TakePhoto::class.java)
         intent.putExtra("picID", form.uid.toString() + "_" + form.lhwCode + "_")
         intent.putExtra("LhwName", form.lhwName)
@@ -208,7 +207,7 @@ class Section01Activity : AppCompatActivity() {
             intent.putExtra("picView", "back".toUpperCase())
             startActivityForResult(intent, 2) // Activity is started with requestCode 2 = Back
         }
-    }
+    }*/
 
 
     // Call Back method  to get the Message form other Activity

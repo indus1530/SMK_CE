@@ -262,7 +262,7 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/action_button"
                                 android:fontFamily="@font/roboto"
-                                android:onClick="@{(v) -> callback.takePhoto()}"
+
                                 android:paddingStart="16dp"
                                 android:paddingEnd="16dp"
                                 android:text="Take Photo"
@@ -276,6 +276,7 @@
                                 android:enabled="false"
                                 android:textColor="#F40303"
                                 android:textSize="14sp" />
+                            <!--android:onClick="@{(v) -> callback.takePhoto()}"-->
 
                         </LinearLayout>
 
