@@ -24,8 +24,8 @@ import edu.aku.hassannaqvi.smk_ce.contracts.ChildInformationContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.ChildInformationContract.ChildInfoTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract.FormsTable;
-import edu.aku.hassannaqvi.smk_ce.contracts.HHInfoContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.HHMembersContract;
+import edu.aku.hassannaqvi.smk_ce.contracts.HHVerifyContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.IMContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.IMContract.IMTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.MHContract;
@@ -45,8 +45,8 @@ import edu.aku.hassannaqvi.smk_ce.models.Districts.TableDistricts;
 import edu.aku.hassannaqvi.smk_ce.models.Doctor;
 import edu.aku.hassannaqvi.smk_ce.models.Form;
 import edu.aku.hassannaqvi.smk_ce.models.FormIndicatorsModel;
-import edu.aku.hassannaqvi.smk_ce.models.HHInfoModel;
 import edu.aku.hassannaqvi.smk_ce.models.HHMembersModel;
+import edu.aku.hassannaqvi.smk_ce.models.HHVerifyModel;
 import edu.aku.hassannaqvi.smk_ce.models.Immunization;
 import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
 import edu.aku.hassannaqvi.smk_ce.models.MwraModel;
@@ -146,34 +146,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //HHINFO
-    public Long addHHInfo(HHInfoModel model) {
+    public Long addHHInfo(HHVerifyModel model) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(HHInfoContract.HHInfoTable.COLUMN_PROJECT_NAME, model.getProjectName());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_UID, model.getUid());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_UUID, model.getUuid());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_SERIAL_NO, model.getSerialNo());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_USERNAME, model.getUserName());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_SYSDATE, model.getSysDate());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_DISTRICT_CODE, model.getDistrictCode());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_DISTRICT_NAME, model.getDistrictName());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_TEHSIL_CODE, model.getTehsilCode());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_TEHSIL_NAME, model.getTehsilName());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_LHW_CODE, model.getLhwCode());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_LHW_NAME, model.getLhwName());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_KHANDAN_NUMBER, model.getKhandanNumber());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_SA, model.getsA());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_STATUS, model.getStatus());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_ENDINGDATETIME, model.getEndTime());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_DEVICETAGID, model.getDeviceTag());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_DEVICEID, model.getDeviceId());
-        values.put(HHInfoContract.HHInfoTable.COLUMN_APPVERSION, model.getAppver());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_PROJECT_NAME, model.getProjectName());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_UID, model.getUid());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_UUID, model.getUuid());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_SERIAL_NO, model.getSerialNo());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_USERNAME, model.getUserName());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_SYSDATE, model.getSysDate());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_DISTRICT_CODE, model.getDistrictCode());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_DISTRICT_NAME, model.getDistrictName());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_TEHSIL_CODE, model.getTehsilCode());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_TEHSIL_NAME, model.getTehsilName());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_LHW_CODE, model.getLhwCode());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_LHW_NAME, model.getLhwName());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_KHANDAN_NUMBER, model.getKhandanNumber());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_SA, model.getsA());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_STATUS, model.getStatus());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_ENDINGDATETIME, model.getEndTime());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_DEVICETAGID, model.getDeviceTag());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_DEVICEID, model.getDeviceId());
+        values.put(HHVerifyContract.HHVerifyTable.COLUMN_APPVERSION, model.getAppver());
 
         long newRowId;
         newRowId = db.insert(
-                HHInfoContract.HHInfoTable.TABLE_NAME,
-                HHInfoContract.HHInfoTable.COLUMN_NAME_NULLABLE,
+                HHVerifyContract.HHVerifyTable.TABLE_NAME,
+                HHVerifyContract.HHVerifyTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
     }
@@ -1098,10 +1098,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(column, value);
 
-        String selection = HHInfoContract.HHInfoTable._ID + " =? ";
-        String[] selectionArgs = {String.valueOf(MainApp.hhinfo.getId())};
+        String selection = HHVerifyContract.HHVerifyTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.hhverify.getId())};
 
-        return db.update(HHInfoContract.HHInfoTable.TABLE_NAME,
+        return db.update(HHVerifyContract.HHVerifyTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);

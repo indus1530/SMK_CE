@@ -8,13 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
-import edu.aku.hassannaqvi.smk_ce.contracts.HHInfoContract
+import edu.aku.hassannaqvi.smk_ce.contracts.HHVerifyContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.form
-import edu.aku.hassannaqvi.smk_ce.core.MainApp.hhinfo
+import edu.aku.hassannaqvi.smk_ce.core.MainApp.hhverify
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01VerifyBinding
-import edu.aku.hassannaqvi.smk_ce.models.HHInfoModel
+import edu.aku.hassannaqvi.smk_ce.models.HHVerifyModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
@@ -39,12 +39,12 @@ class Section01VerifyActivity : AppCompatActivity() {
 
     private fun updateDB(): Boolean {
         val db = MainApp.appInfo.dbHelper
-        val updcount = db.addHHInfo(hhinfo)
+        val updcount = db.addHHInfo(hhverify)
         return if (updcount > 0) {
-            hhinfo.id = updcount.toString()
-            hhinfo.uid = hhinfo.deviceId + hhinfo.id
-            var count = db.updatesHHInfoColumn(HHInfoContract.HHInfoTable.COLUMN_UID, hhinfo.uid)
-            if (count > 0) count = db.updatesHHInfoColumn(HHInfoContract.HHInfoTable.COLUMN_SA, hhinfo.sAtoString())
+            hhverify.id = updcount.toString()
+            hhverify.uid = hhverify.deviceId + hhverify.id
+            var count = db.updatesHHInfoColumn(HHVerifyContract.HHVerifyTable.COLUMN_UID, hhverify.uid)
+            if (count > 0) count = db.updatesHHInfoColumn(HHVerifyContract.HHVerifyTable.COLUMN_SA, hhverify.sAtoString())
             if (count > 0) true else {
                 Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
                 false
@@ -69,62 +69,62 @@ class Section01VerifyActivity : AppCompatActivity() {
 
 
     private fun saveDraft() {
-        hhinfo = HHInfoModel()
-        hhinfo.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
-        hhinfo.uuid = form.uid
-        hhinfo.userName = MainApp.user.userName
-        hhinfo.districtCode = form.districtCode
-        hhinfo.districtName = form.districtName
-        hhinfo.tehsilCode = form.tehsilCode
-        hhinfo.tehsilName = form.tehsilName
-        hhinfo.lhwCode = form.lhwCode
-        hhinfo.lhwName = form.lhwName
-        hhinfo.khandanNumber = form.khandanNumber
-        hhinfo.deviceId = MainApp.appInfo.deviceID
-        hhinfo.deviceTag = MainApp.appInfo.tagName
-        hhinfo.appver = MainApp.appInfo.appVersion
+        hhverify = HHVerifyModel()
+        hhverify.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
+        hhverify.uuid = form.uid
+        hhverify.userName = MainApp.user.userName
+        hhverify.districtCode = form.districtCode
+        hhverify.districtName = form.districtName
+        hhverify.tehsilCode = form.tehsilCode
+        hhverify.tehsilName = form.tehsilName
+        hhverify.lhwCode = form.lhwCode
+        hhverify.lhwName = form.lhwName
+        hhverify.khandanNumber = form.khandanNumber
+        hhverify.deviceId = MainApp.appInfo.deviceID
+        hhverify.deviceTag = MainApp.appInfo.tagName
+        hhverify.appver = MainApp.appInfo.appVersion
 
-        hhinfo.hhv01 = when {
+        hhverify.hhv01 = when {
             bi.hhv01.text.toString().trim().isNotEmpty() -> bi.hhv01.text.toString()
             else -> "-1"
         }
 
-        hhinfo.hhv02a = when {
+        hhverify.hhv02a = when {
             bi.hhv02a.text.toString().trim().isNotEmpty() -> bi.hhv02a.text.toString()
             else -> "-1"
         }
 
-        hhinfo.hhv02b = when {
+        hhverify.hhv02b = when {
             bi.hhv02b.text.toString().trim().isNotEmpty() -> bi.hhv02b.text.toString()
             else -> "-1"
         }
 
-        hhinfo.hhv02c = when {
+        hhverify.hhv02c = when {
             bi.hhv02c.text.toString().trim().isNotEmpty() -> bi.hhv02c.text.toString()
             else -> "-1"
         }
 
-        hhinfo.hhv02d = when {
+        hhverify.hhv02d = when {
             bi.hhv02d.text.toString().trim().isNotEmpty() -> bi.hhv02d.text.toString()
             else -> "-1"
         }
 
-        hhinfo.hhv02e = when {
+        hhverify.hhv02e = when {
             bi.hhv02e.text.toString().trim().isNotEmpty() -> bi.hhv02e.text.toString()
             else -> "-1"
         }
 
-        hhinfo.hhv02f = when {
+        hhverify.hhv02f = when {
             bi.hhv02f.text.toString().trim().isNotEmpty() -> bi.hhv02f.text.toString()
             else -> "-1"
         }
 
-        hhinfo.hhv02g = when {
+        hhverify.hhv02g = when {
             bi.hhv02g.text.toString().trim().isNotEmpty() -> bi.hhv02g.text.toString()
             else -> "-1"
         }
 
-        hhinfo.hhv03 = when {
+        hhverify.hhv03 = when {
             bi.hhv03a.isChecked -> "1"
             bi.hhv03b.isChecked -> "2"
             else -> "-1"

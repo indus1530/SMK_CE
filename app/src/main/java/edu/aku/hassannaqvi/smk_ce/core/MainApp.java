@@ -15,8 +15,8 @@ import edu.aku.hassannaqvi.smk_ce.models.AdolescentModel;
 import edu.aku.hassannaqvi.smk_ce.models.Child;
 import edu.aku.hassannaqvi.smk_ce.models.ChildInformation;
 import edu.aku.hassannaqvi.smk_ce.models.Form;
-import edu.aku.hassannaqvi.smk_ce.models.HHInfoModel;
 import edu.aku.hassannaqvi.smk_ce.models.HHMembersModel;
+import edu.aku.hassannaqvi.smk_ce.models.HHVerifyModel;
 import edu.aku.hassannaqvi.smk_ce.models.Immunization;
 import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
 import edu.aku.hassannaqvi.smk_ce.models.MwraModel;
@@ -38,7 +38,7 @@ public class MainApp extends Application {
     public static File sdDir;
     public static String[] downloadData;
     public static Form form;
-    public static HHInfoModel hhinfo;
+    public static HHVerifyModel hhverify;
     public static HHMembersModel hhmem;
     public static MwraModel mwra;
     public static AdolescentModel adolescent;
