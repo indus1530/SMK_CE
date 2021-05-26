@@ -1,10 +1,8 @@
 package edu.aku.hassannaqvi.smk_ce.ui.sections
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,16 +13,12 @@ import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.form
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
-import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01ABinding
-import edu.aku.hassannaqvi.smk_ce.models.Districts
-import edu.aku.hassannaqvi.smk_ce.models.Form
+import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01IdentifyBinding
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
-import java.text.SimpleDateFormat
-import java.util.*
 
-class Section01AActivity : AppCompatActivity() {
+class Section01IdentifyActivity : AppCompatActivity() {
 
-    lateinit var bi: ActivitySection01ABinding
+    lateinit var bi: ActivitySection01IdentifyBinding
     var tehsilName = mutableListOf("....")
     var tehsilCode = mutableListOf<String>()
     var hfName = mutableListOf("....")
@@ -37,76 +31,15 @@ class Section01AActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section01_a)
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section01_identify)
         bi.callback = this
         setSupportActionBar(bi.toolbar)
-        populateSpinner(this)
         setupSkips()
 
     }
 
+
     private fun setupSkips() {
-    }
-
-
-    private fun populateSpinner(context: Context) {
-        db = MainApp.appInfo.dbHelper
-
-        var dcs: ArrayList<Districts> = db.allDistricts
-        /*for (dc in dcs) {
-            district.add(dc.districtName)
-            districtCode.add(dc.districtCode)
-        }*/
-
-        /*dcs.forEach {
-            district.add(it.districtName)
-            districtCode.add(it.districtCode)
-        }
-*/
-
-        tehsilName.add("Test Tehsil")
-
-        bi.lhw01.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, tehsilName)
-        //bi.lhw01.adapter = districtAdapter
-        hfAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, hfName)
-        bi.lhw02.adapter = hfAdapter
-        bi.lhw03.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, lhwname)
-
-        bi.lhw01.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
-                bi.lhw02.setSelection(0)
-                if (position == 0) {
-                    bi.lhw02.isEnabled = false
-                    return
-                }
-                bi.lhw02.isEnabled = true
-                hfName.clear()
-                hfCode.clear()
-                hfName.add("....")
-                hfName.add("Test Health Facility")
-                //viewModel.getUCsDistrictFromDB(districtCode[position - 1])
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-        bi.lhw02.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
-                bi.lhw03.setSelection(0)
-                if (position == 0) {
-                    bi.lhw03.isEnabled = false
-                    return
-                }
-                bi.lhw03.isEnabled = true
-                lhwname.clear()
-                lhwCode.clear()
-                lhwname.add("....")
-                lhwname.add("Test Lady Health Worker")
-                //viewModel.getUCsDistrictFromDB(districtCode[position - 1])
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
     }
 
 
@@ -134,7 +67,7 @@ class Section01AActivity : AppCompatActivity() {
         saveDraft()
         if (updateDB()) {
             finish()
-            startActivity(Intent(this, Section01BActivity::class.java))
+            startActivity(Intent(this, Section01VerifyActivity::class.java))
         } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show()
         }
@@ -142,7 +75,7 @@ class Section01AActivity : AppCompatActivity() {
 
 
     private fun saveDraft() {
-        form = Form()
+        /*form = Form()
         form.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
         form.userName = MainApp.user.userName
         form.districtCode = bi.lhw01.selectedItem.toString()
@@ -150,23 +83,13 @@ class Section01AActivity : AppCompatActivity() {
         form.tehsilCode = bi.lhw02.selectedItem.toString()
         form.tehsilName = bi.lhw02.selectedItem.toString()
         form.lhwCode = bi.lhw03.selectedItem.toString()
-        form.lhwName = bi.lhw03.selectedItem.toString()
-
-        form.khandanNumber = when {
-            bi.hhi02.text.toString().trim().isNotEmpty() -> bi.hhi02.text.toString()
-            else -> "-1"
-        }
-
+        form.lhwName = bi.lhw03.selectedItem.toString()*/
         form.deviceId = MainApp.appInfo.deviceID
         form.deviceTag = MainApp.appInfo.tagName
         form.appver = MainApp.appInfo.appVersion
 
-        form.lhw01 = bi.lhw01.selectedItem.toString()
-        form.lhw02 = bi.lhw02.selectedItem.toString()
-        form.lhw03 = bi.lhw03.selectedItem.toString()
-
-        form.lhw04 = when {
-            bi.lhw04.text.toString().trim().isNotEmpty() -> bi.lhw04.text.toString()
+        form.khandanNumber = when {
+            bi.hhi02.text.toString().trim().isNotEmpty() -> bi.hhi02.text.toString()
             else -> "-1"
         }
 
@@ -215,11 +138,6 @@ class Section01AActivity : AppCompatActivity() {
             else -> "-1"
         }
 
-        form.lhwphoto = when {
-            bi.lhwphoto.text.toString().trim().isNotEmpty() -> bi.lhwphoto.text.toString()
-            else -> "-1"
-        }
-
     }
 
 
@@ -233,6 +151,7 @@ class Section01AActivity : AppCompatActivity() {
     private fun formValidation(): Boolean {
         return Validator.emptyCheckingContainer(this, bi.GrpName)
     }
+
 
     override fun onBackPressed() {
         Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show()

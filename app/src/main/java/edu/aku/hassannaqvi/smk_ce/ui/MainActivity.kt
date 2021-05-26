@@ -261,8 +261,10 @@ class MainActivity : AppCompatActivity() {
         when (v.id) {
             R.id.formA -> {
                 //SharedStorage.setSelectedCampData(this, Gson().toJson(camp))
-                gotoActivity(Section01AActivity::class.java)
+                gotoActivity(Section01Activity::class.java)
             }
+            R.id.formAI -> gotoActivity(Section01IdentifyActivity::class.java)
+            R.id.formAV -> gotoActivity(Section01VerifyActivity::class.java)
             R.id.formB -> gotoActivity(Section02Activity::class.java)
             R.id.formC -> gotoActivity(Section03Activity::class.java)
             R.id.formD -> gotoActivity(Section04Activity::class.java)

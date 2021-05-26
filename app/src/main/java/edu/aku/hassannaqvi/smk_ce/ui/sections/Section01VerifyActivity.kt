@@ -13,20 +13,20 @@ import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.form
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.hhinfo
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
-import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01BBinding
+import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01VerifyBinding
 import edu.aku.hassannaqvi.smk_ce.models.HHInfoModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Section01BActivity : AppCompatActivity() {
+class Section01VerifyActivity : AppCompatActivity() {
 
-    lateinit var bi: ActivitySection01BBinding
+    lateinit var bi: ActivitySection01VerifyBinding
     lateinit var db: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section01_b)
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section01_verify)
         bi.callback = this
         setSupportActionBar(bi.toolbar)
         setupSkips()
