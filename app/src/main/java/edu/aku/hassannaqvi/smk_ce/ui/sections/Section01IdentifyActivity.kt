@@ -85,52 +85,52 @@ class Section01IdentifyActivity : AppCompatActivity() {
         hhidentify.deviceTag = MainApp.appInfo.tagName
         hhidentify.appver = MainApp.appInfo.appVersion
 
-        form.khandanNumber = when {
+        hhidentify.khandanNumber = when {
             bi.hhi02.text.toString().trim().isNotEmpty() -> bi.hhi02.text.toString()
             else -> "-1"
         }
 
-        form.hhi01 = when {
+        hhidentify.hhi01 = when {
             bi.hhi01.text.toString().trim().isNotEmpty() -> bi.hhi01.text.toString()
             else -> "-1"
         }
 
-        form.hhi02 = when {
+        hhidentify.hhi02 = when {
             bi.hhi02.text.toString().trim().isNotEmpty() -> bi.hhi02.text.toString()
             else -> "-1"
         }
 
-        form.hhi03 = when {
+        hhidentify.hhi03 = when {
             bi.hhi03.text.toString().trim().isNotEmpty() -> bi.hhi03.text.toString()
             else -> "-1"
         }
 
-        form.hhi04a = when {
+        hhidentify.hhi04a = when {
             bi.hhi04a.text.toString().trim().isNotEmpty() -> bi.hhi04a.text.toString()
             else -> "-1"
         }
 
-        form.hhi04b = when {
+        hhidentify.hhi04b = when {
             bi.hhi04b.text.toString().trim().isNotEmpty() -> bi.hhi04b.text.toString()
             else -> "-1"
         }
 
-        form.hhi04c = when {
+        hhidentify.hhi04c = when {
             bi.hhi04c.text.toString().trim().isNotEmpty() -> bi.hhi04c.text.toString()
             else -> "-1"
         }
 
-        form.hhi04d = when {
+        hhidentify.hhi04d = when {
             bi.hhi04d.text.toString().trim().isNotEmpty() -> bi.hhi04d.text.toString()
             else -> "-1"
         }
 
-        form.hhi04e = when {
+        hhidentify.hhi04e = when {
             bi.hhi04e.text.toString().trim().isNotEmpty() -> bi.hhi04e.text.toString()
             else -> "-1"
         }
 
-        form.hhi04f = when {
+        hhidentify.hhi04f = when {
             bi.hhi04f.text.toString().trim().isNotEmpty() -> bi.hhi04f.text.toString()
             else -> "-1"
         }

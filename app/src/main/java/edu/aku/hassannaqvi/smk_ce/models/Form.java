@@ -61,15 +61,6 @@ public class Form extends BaseObservable {
     private String lhw02 = StringUtils.EMPTY;
     private String lhw03 = StringUtils.EMPTY;
     private String lhw04 = StringUtils.EMPTY;
-    private String hhi01 = StringUtils.EMPTY;
-    private String hhi02 = StringUtils.EMPTY;
-    private String hhi03 = StringUtils.EMPTY;
-    private String hhi04a = StringUtils.EMPTY;
-    private String hhi04b = StringUtils.EMPTY;
-    private String hhi04c = StringUtils.EMPTY;
-    private String hhi04d = StringUtils.EMPTY;
-    private String hhi04e = StringUtils.EMPTY;
-    private String hhi04f = StringUtils.EMPTY;
     private String lhwphoto = StringUtils.EMPTY;
 
     // V H C
@@ -396,95 +387,7 @@ public class Form extends BaseObservable {
         notifyPropertyChanged(BR.lhw04);
     }
 
-    @Bindable
-    public String getHhi01() {
-        return hhi01;
-    }
 
-    public void setHhi01(String hhi01) {
-        this.hhi01 = hhi01;
-        notifyPropertyChanged(BR.hhi01);
-    }
-
-    @Bindable
-    public String getHhi02() {
-        return hhi02;
-    }
-
-    public void setHhi02(String hhi02) {
-        this.hhi02 = hhi02;
-        notifyPropertyChanged(BR.hhi02);
-    }
-
-    @Bindable
-    public String getHhi03() {
-        return hhi03;
-    }
-
-    public void setHhi03(String hhi03) {
-        this.hhi03 = hhi03;
-        notifyPropertyChanged(BR.hhi03);
-    }
-
-    @Bindable
-    public String getHhi04a() {
-        return hhi04a;
-    }
-
-    public void setHhi04a(String hhi04a) {
-        this.hhi04a = hhi04a;
-        notifyPropertyChanged(BR.hhi04a);
-    }
-
-    @Bindable
-    public String getHhi04b() {
-        return hhi04b;
-    }
-
-    public void setHhi04b(String hhi04b) {
-        this.hhi04b = hhi04b;
-        notifyPropertyChanged(BR.hhi04b);
-    }
-
-    @Bindable
-    public String getHhi04c() {
-        return hhi04c;
-    }
-
-    public void setHhi04c(String hhi04c) {
-        this.hhi04c = hhi04c;
-        notifyPropertyChanged(BR.hhi04c);
-    }
-
-    @Bindable
-    public String getHhi04d() {
-        return hhi04d;
-    }
-
-    public void setHhi04d(String hhi04d) {
-        this.hhi04d = hhi04d;
-        notifyPropertyChanged(BR.hhi04d);
-    }
-
-    @Bindable
-    public String getHhi04e() {
-        return hhi04e;
-    }
-
-    public void setHhi04e(String hhi04e) {
-        this.hhi04e = hhi04e;
-        notifyPropertyChanged(BR.hhi04e);
-    }
-
-    @Bindable
-    public String getHhi04f() {
-        return hhi04f;
-    }
-
-    public void setHhi04f(String hhi04f) {
-        this.hhi04f = hhi04f;
-        notifyPropertyChanged(BR.hhi04f);
-    }
 
     @Bindable
     public String getLhwphoto() {
@@ -746,6 +649,7 @@ public class Form extends BaseObservable {
         return new GsonBuilder().create().toJson(this, Form.class);
     }
 
+
     public String sAtoString() {
         JSONObject json = new JSONObject();
 
@@ -754,15 +658,6 @@ public class Form extends BaseObservable {
                     .put("lhw02", lhw02)
                     .put("lhw03", lhw03)
                     .put("lhw04", lhw04)
-                    .put("hhi01", hhi01)
-                    .put("hhi02", hhi02)
-                    .put("hhi03", hhi03)
-                    .put("hhi04a", hhi04a)
-                    .put("hhi04b", hhi04b)
-                    .put("hhi04c", hhi04c)
-                    .put("hhi04d", hhi04d)
-                    .put("hhi04e", hhi04e)
-                    .put("hhio4f", hhi04f)
                     .put("lhwphoto", lhwphoto);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -859,15 +754,6 @@ public class Form extends BaseObservable {
                 this.lhw02 = json.getString("lhw02");
                 this.lhw03 = json.getString("lhw03");
                 this.lhw04 = json.getString("lhw04");
-                this.hhi01 = json.getString("hhi01");
-                this.hhi02 = json.getString("hhi02");
-                this.hhi03 = json.getString("hhi03");
-                this.hhi04a = json.getString("hhi04a");
-                this.hhi04b = json.getString("hhi04b");
-                this.hhi04c = json.getString("hhi04c");
-                this.hhi04d = json.getString("hhi04d");
-                this.hhi04e = json.getString("hhi04e");
-                this.hhi04f = json.getString("hhio4f");
                 this.lhwphoto = json.getString("lhwphoto");
             } catch (JSONException e) {
                 e.printStackTrace();
