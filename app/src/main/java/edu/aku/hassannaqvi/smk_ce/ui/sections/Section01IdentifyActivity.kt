@@ -3,30 +3,25 @@ package edu.aku.hassannaqvi.smk_ce.ui.sections
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
-import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
+import edu.aku.hassannaqvi.smk_ce.contracts.HHIdentifyContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.form
+import edu.aku.hassannaqvi.smk_ce.core.MainApp.hhidentify
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01IdentifyBinding
+import edu.aku.hassannaqvi.smk_ce.models.HHIdentifyModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
+import java.text.SimpleDateFormat
+import java.util.*
 
 class Section01IdentifyActivity : AppCompatActivity() {
 
     lateinit var bi: ActivitySection01IdentifyBinding
-    var tehsilName = mutableListOf("....")
-    var tehsilCode = mutableListOf<String>()
-    var hfName = mutableListOf("....")
-    var hfCode = mutableListOf<String>()
-    var lhwname = mutableListOf("....")
-    var lhwCode = mutableListOf<String>()
-    lateinit var tehsilAdapter: ArrayAdapter<String>
-    lateinit var hfAdapter: ArrayAdapter<String>
     lateinit var db: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,12 +40,12 @@ class Section01IdentifyActivity : AppCompatActivity() {
 
     private fun updateDB(): Boolean {
         val db = MainApp.appInfo.dbHelper
-        val updcount = db.addForm(form)
+        val updcount = db.addHHIdentify(hhidentify)
         return if (updcount > 0) {
-            form.id = updcount.toString()
-            form.uid = form.deviceId + form.id
-            var count = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_UID, form.uid)
-            if (count > 0) count = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_SA, form.sAtoString())
+            hhidentify.id = updcount.toString()
+            hhidentify.uid = hhidentify.deviceId + hhidentify.id
+            var count = db.updatesHHIdentifyColumn(HHIdentifyContract.HHIdentifyTable.COLUMN_UID, hhidentify.uid)
+            if (count > 0) count = db.updatesHHIdentifyColumn(HHIdentifyContract.HHIdentifyTable.COLUMN_SA, hhidentify.sAtoString())
             if (count > 0) true else {
                 Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
                 false
@@ -75,18 +70,20 @@ class Section01IdentifyActivity : AppCompatActivity() {
 
 
     private fun saveDraft() {
-        /*form = Form()
-        form.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
-        form.userName = MainApp.user.userName
-        form.districtCode = bi.lhw01.selectedItem.toString()
-        form.districtName = bi.lhw01.selectedItem.toString()
-        form.tehsilCode = bi.lhw02.selectedItem.toString()
-        form.tehsilName = bi.lhw02.selectedItem.toString()
-        form.lhwCode = bi.lhw03.selectedItem.toString()
-        form.lhwName = bi.lhw03.selectedItem.toString()*/
-        form.deviceId = MainApp.appInfo.deviceID
-        form.deviceTag = MainApp.appInfo.tagName
-        form.appver = MainApp.appInfo.appVersion
+        hhidentify = HHIdentifyModel()
+        hhidentify.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
+        hhidentify.uuid = form.uid
+        hhidentify.userName = MainApp.user.userName
+        hhidentify.districtCode = form.districtCode
+        hhidentify.districtName = form.districtName
+        hhidentify.tehsilCode = form.tehsilCode
+        hhidentify.tehsilName = form.tehsilName
+        hhidentify.lhwCode = form.lhwCode
+        hhidentify.lhwName = form.lhwName
+        hhidentify.khandanNumber = form.khandanNumber
+        hhidentify.deviceId = MainApp.appInfo.deviceID
+        hhidentify.deviceTag = MainApp.appInfo.tagName
+        hhidentify.appver = MainApp.appInfo.appVersion
 
         form.khandanNumber = when {
             bi.hhi02.text.toString().trim().isNotEmpty() -> bi.hhi02.text.toString()
