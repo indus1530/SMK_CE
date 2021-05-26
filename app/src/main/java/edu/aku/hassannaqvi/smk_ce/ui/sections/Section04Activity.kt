@@ -89,8 +89,11 @@ class Section04Activity : AppCompatActivity() {
         adolescent.uuid = MainApp.form.uid
         adolescent.userName = MainApp.user.userName
         adolescent.districtCode = MainApp.form.districtCode
+        adolescent.districtName = MainApp.form.districtName
         adolescent.tehsilCode = MainApp.form.tehsilCode
+        adolescent.tehsilName = MainApp.form.tehsilName
         adolescent.lhwCode = MainApp.form.lhwCode
+        adolescent.lhwName = MainApp.form.lhwName
         adolescent.khandanNumber = MainApp.form.khandanNumber
         adolescent.deviceId = MainApp.appInfo.deviceID
         adolescent.deviceTag = MainApp.appInfo.tagName

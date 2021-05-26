@@ -30,7 +30,7 @@ android {
         versionProps.store(versionPropsFile.newWriter(), null)
 
         defaultConfig {
-            applicationId "edu.aku.hassannaqvi.naunehal_mhs"
+            applicationId "edu.aku.hassannaqvi.smk_ce"
             minSdkVersion 21
             targetSdkVersion 30
             versionCode code

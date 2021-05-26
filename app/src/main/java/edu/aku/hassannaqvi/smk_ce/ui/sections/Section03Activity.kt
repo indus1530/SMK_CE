@@ -137,8 +137,11 @@ class Section03Activity : AppCompatActivity() {
         mwra.uuid = MainApp.form.uid
         mwra.userName = MainApp.user.userName
         mwra.districtCode = MainApp.form.districtCode
+        mwra.districtName = MainApp.form.districtName
         mwra.tehsilCode = MainApp.form.tehsilCode
+        mwra.tehsilName = MainApp.form.tehsilName
         mwra.lhwCode = MainApp.form.lhwCode
+        mwra.lhwName = MainApp.form.lhwName
         mwra.khandanNumber = MainApp.form.khandanNumber
         mwra.deviceId = MainApp.appInfo.deviceID
         mwra.deviceTag = MainApp.appInfo.tagName

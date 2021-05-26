@@ -144,12 +144,19 @@ class Section01AActivity : AppCompatActivity() {
     private fun saveDraft() {
         form = Form()
         form.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
-        form.uid = form.uid
         form.userName = MainApp.user.userName
-        form.districtCode = form.districtCode
-        form.tehsilCode = form.tehsilCode
-        form.lhwCode = form.lhwCode
-        form.khandanNumber = form.khandanNumber
+        form.districtCode = bi.lhw01.selectedItem.toString()
+        form.districtName = bi.lhw01.selectedItem.toString()
+        form.tehsilCode = bi.lhw02.selectedItem.toString()
+        form.tehsilName = bi.lhw02.selectedItem.toString()
+        form.lhwCode = bi.lhw03.selectedItem.toString()
+        form.lhwName = bi.lhw03.selectedItem.toString()
+
+        form.khandanNumber = when {
+            bi.hhi02.text.toString().trim().isNotEmpty() -> bi.hhi02.text.toString()
+            else -> "-1"
+        }
+
         form.deviceId = MainApp.appInfo.deviceID
         form.deviceTag = MainApp.appInfo.tagName
         form.appver = MainApp.appInfo.appVersion
