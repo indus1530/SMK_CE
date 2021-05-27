@@ -457,10 +457,13 @@
     <string name='Q_vhc05'>vhc05</string>
     <string name='Q_vhc06'>vhc06</string>
 
-    <string name='Q_hh26'>//TODO:</string>
-    <string name='hh26hint'>//TODO:</string>
-    <string name='hh2602'>//TODO:</string>
-    <string name='hh2601'>//TODO:</string>
-    <string name='hh2603'>//TODO:</string>
+    <string name='io001'> Outcome of the Interview </string>
+    <string name='Q_io001'> io001 </string>
+    <string name='io001hint'> Interview Outcome </string>
+    <string name='io001a'> Complete </string>
+    <string name='io001b'> Incomplete </string>
+    <string name='io001c'> Refused </string>
+    <string name='io001d'> Household Vacant </string>
+    <string name='io001e'> Household Not Found </string>
 
 </resources>

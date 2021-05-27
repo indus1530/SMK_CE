@@ -53,15 +53,18 @@
             android:name=".ui.SyncActivity"
             android:label="Download and Upload Data Activity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".ui.EndingActivity"
-            android:label="ِانٹرویو اسٹیٹس"
+            android:label="@string/io001hint"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />
+
         <activity
             android:name=".ui.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
+
         <activity
             android:name=".database.AndroidDatabaseManager"
             android:screenOrientation="portrait"
@@ -72,11 +75,13 @@
             android:hardwareAccelerated="true"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".ui.list_activity.FormsReportCluster"
             android:label="Forms Report"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
+
         <activity
             android:name=".ui.list_activity.FormsReportDate"
             android:label="Forms Report"
