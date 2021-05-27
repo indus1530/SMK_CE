@@ -30,7 +30,9 @@ class Section01IdentifyActivity : AppCompatActivity() {
         bi.callback = this
         setSupportActionBar(bi.toolbar)
         setupSkips()
-
+        val hhsno: Int = MainApp.randHHNo[MainApp.randHHNoIndex];
+        bi.hhi01.setText(hhsno);
+        bi.hhsno.setText(hhsno);
     }
 
 
@@ -61,6 +63,9 @@ class Section01IdentifyActivity : AppCompatActivity() {
         if (!formValidation()) return
         saveDraft()
         if (updateDB()) {
+
+
+
             finish()
             startActivity(Intent(this, Section01VerifyActivity::class.java))
         } else {

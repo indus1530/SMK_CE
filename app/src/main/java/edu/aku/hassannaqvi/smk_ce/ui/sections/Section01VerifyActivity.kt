@@ -37,23 +37,7 @@ class Section01VerifyActivity : AppCompatActivity() {
     }
 
 
-    private fun updateDB(): Boolean {
-        val db = MainApp.appInfo.dbHelper
-        val updcount = db.addHHVerify(hhverify)
-        return if (updcount > 0) {
-            hhverify.id = updcount.toString()
-            hhverify.uid = hhverify.deviceId + hhverify.id
-            var count = db.updatesHHVerifyColumn(HHVerifyContract.HHVerifyTable.COLUMN_UID, hhverify.uid)
-            if (count > 0) count = db.updatesHHVerifyColumn(HHVerifyContract.HHVerifyTable.COLUMN_SA, hhverify.sAtoString())
-            if (count > 0) true else {
-                Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
-                false
-            }
-        } else {
-            Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
-            false
-        }
-    }
+
 
 
     fun BtnContinue(view: View) {
@@ -129,8 +113,23 @@ class Section01VerifyActivity : AppCompatActivity() {
             bi.hhv03b.isChecked -> "2"
             else -> "-1"
         }
-
+        hhverify.setsA(hhverify.sAtoString());
     }
+
+    private fun updateDB(): Boolean {
+        val db = MainApp.appInfo.dbHelper
+        val rowId = db.addHHVerify(hhverify)
+        return if (rowId > 0) {
+            hhverify.id = rowId.toString()
+            hhverify.uid = hhverify.deviceId + hhverify.id
+            var count = db.updatesHHVerifyColumn(HHVerifyContract.HHVerifyTable.COLUMN_UID, hhverify.uid)
+           true
+        } else {
+            Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
+            false
+        }
+    }
+
 
 
     fun BtnEnd(view: View) {

@@ -14,6 +14,7 @@ import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.form
+import edu.aku.hassannaqvi.smk_ce.core.MainApp.genRandNum
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01Binding
 import edu.aku.hassannaqvi.smk_ce.models.Districts
@@ -40,6 +41,7 @@ class Section01Activity : AppCompatActivity() {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section01)
         bi.callback = this
         setSupportActionBar(bi.toolbar)
+        setTitle(R.string.lhwinfo)
         populateSpinner(this)
         setupSkips()
 
@@ -111,29 +113,11 @@ class Section01Activity : AppCompatActivity() {
     }
 
 
-    private fun updateDB(): Boolean {
-        val db = MainApp.appInfo.dbHelper
-        val updcount = db.addForm(form)
-        return if (updcount > 0) {
-            form.id = updcount.toString()
-            form.uid = form.deviceId + form.id
-            var count = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_UID, form.uid)
-            if (count > 0) count = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_SA, form.sAtoString())
-            if (count > 0) true else {
-                Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
-                false
-            }
-        } else {
-            Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
-            false
-        }
-    }
-
-
     fun BtnContinue(view: View) {
         if (!formValidation()) return
         saveDraft()
         if (updateDB()) {
+            MainApp.randHHNoIndex = 0;
             finish()
             startActivity(Intent(this, Section01IdentifyActivity::class.java))
         } else {
@@ -143,6 +127,9 @@ class Section01Activity : AppCompatActivity() {
 
 
     private fun saveDraft() {
+
+        MainApp.genRandNum(bi.lhw04.text.toString().toInt())
+
         form = Form()
         form.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
         form.userName = MainApp.user.userName
@@ -171,13 +158,30 @@ class Section01Activity : AppCompatActivity() {
             else -> "-1"
         }
 
+        form.lhw04sno = MainApp.randHHNo.toString();
+        Toast.makeText(this, "Rand HHNo: "+form.lhw04sno, Toast.LENGTH_SHORT).show()
+
         form.lhwphoto = when {
             bi.lhwphoto.text.toString().trim().isNotEmpty() -> bi.lhwphoto.text.toString()
             else -> "-1"
         }
-
+        form.setsA(form.sAtoString())
     }
 
+
+    private fun updateDB(): Boolean {
+        val db = MainApp.appInfo.dbHelper
+        val rowId = db.addForm(form)
+        return if (rowId > 0) {
+            form.id = rowId.toString()
+            form.uid = form.deviceId + form.id
+            var count = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_UID, form.uid)
+            true
+        } else {
+            Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
+            false
+        }
+    }
 
     fun BtnEnd(view: View) {
         //openSectionMainActivity(this, "G")
@@ -247,3 +251,5 @@ class Section01Activity : AppCompatActivity() {
     }*/
 
 }
+
+

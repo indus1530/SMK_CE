@@ -4,6 +4,8 @@ import android.database.Cursor;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.Observable;
+import androidx.databinding.PropertyChangeRegistry;
 
 import com.google.gson.GsonBuilder;
 
@@ -16,7 +18,7 @@ import edu.aku.hassannaqvi.smk_ce.BR;
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 
-public class Form extends BaseObservable {
+public class Form extends BaseObservable implements Observable {
 
     private final String TAG = "Form";
 
@@ -61,6 +63,16 @@ public class Form extends BaseObservable {
     private String lhw02 = StringUtils.EMPTY;
     private String lhw03 = StringUtils.EMPTY;
     private String lhw04 = StringUtils.EMPTY;
+    private String lhw04sno = StringUtils.EMPTY;
+    private String hhi01 = StringUtils.EMPTY;
+    private String hhi02 = StringUtils.EMPTY;
+    private String hhi03 = StringUtils.EMPTY;
+    private String hhi04a = StringUtils.EMPTY;
+    private String hhi04b = StringUtils.EMPTY;
+    private String hhi04c = StringUtils.EMPTY;
+    private String hhi04d = StringUtils.EMPTY;
+    private String hhi04e = StringUtils.EMPTY;
+    private String hhi04f = StringUtils.EMPTY;
     private String lhwphoto = StringUtils.EMPTY;
 
     // V H C
@@ -82,6 +94,7 @@ public class Form extends BaseObservable {
     private String vhc06j = StringUtils.EMPTY;
     private String vhc0696 = StringUtils.EMPTY;
     private String vhc0696x = StringUtils.EMPTY;
+    private transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
 
     public Form() {
 
@@ -400,7 +413,6 @@ public class Form extends BaseObservable {
     }
 
 
-
     @Bindable
     public String getVhc01() {
         return vhc01;
@@ -649,7 +661,6 @@ public class Form extends BaseObservable {
         return new GsonBuilder().create().toJson(this, Form.class);
     }
 
-
     public String sAtoString() {
         JSONObject json = new JSONObject();
 
@@ -658,6 +669,7 @@ public class Form extends BaseObservable {
                     .put("lhw02", lhw02)
                     .put("lhw03", lhw03)
                     .put("lhw04", lhw04)
+                    .put("lhw04sno", lhw04sno)
                     .put("lhwphoto", lhwphoto);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -754,6 +766,7 @@ public class Form extends BaseObservable {
                 this.lhw02 = json.getString("lhw02");
                 this.lhw03 = json.getString("lhw03");
                 this.lhw04 = json.getString("lhw04");
+                this.lhw04sno = json.getString("lhw04sno");
                 this.lhwphoto = json.getString("lhwphoto");
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -790,6 +803,39 @@ public class Form extends BaseObservable {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    @Bindable
+    public String getLhw04sno() {
+        return lhw04sno;
+    }
+
+    public void setLhw04sno(String lhw04sno) {
+        this.lhw04sno = lhw04sno;
+        notifyChange(BR.lhw04sno);
+    }
+
+    private synchronized void notifyChange(int propertyId) {
+        if (propertyChangeRegistry == null) {
+            propertyChangeRegistry = new PropertyChangeRegistry();
+        }
+        propertyChangeRegistry.notifyChange(this, propertyId);
+    }
+
+    @Override
+    public synchronized void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
+        if (propertyChangeRegistry == null) {
+            propertyChangeRegistry = new PropertyChangeRegistry();
+        }
+        propertyChangeRegistry.add(callback);
+
+    }
+
+    @Override
+    public synchronized void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
+        if (propertyChangeRegistry != null) {
+            propertyChangeRegistry.remove(callback);
         }
     }
 }
