@@ -35,8 +35,10 @@ public class SyncModel {
         this.status = StringUtils.EMPTY;
         this.statusID = 0;
         this.message = StringUtils.EMPTY;
-        this.select = select;
-        this.filter = filter;
+        if (select != null)
+            this.select = select;
+        if (filter != null)
+            this.filter = filter;
 
     }
 

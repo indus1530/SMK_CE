@@ -34,13 +34,14 @@ import static edu.aku.hassannaqvi.smk_ce.core.MainApp.PROJECT_NAME;
 public class DataDownWorkerALL extends Worker {
 
     private static final Object APP_NAME = PROJECT_NAME;
-    private final String TAG = "DataWorkerEN()";
+    private final String TAG = "DataDownloadWorkerEN()";
 
     private final int position;
     private final String uploadTable;
+    private final String uploadColumns;
     private final String uploadWhere;
     private final URL serverURL = null;
-    private final String nTitle = "Naunehal: Data Download";
+    private final String nTitle = "SMKCE: Data Download";
     HttpURLConnection urlConnection;
     private ProgressDialog pd;
     private int length;
@@ -52,8 +53,8 @@ public class DataDownWorkerALL extends Worker {
         uploadTable = workerParams.getInputData().getString("table");
         position = workerParams.getInputData().getInt("position", -2);
         Log.d(TAG, "DataDownWorkerALL: position " + position);
-        //uploadColumns = workerParams.getInputData().getString("columns");
-        uploadWhere = workerParams.getInputData().getString("where");
+        uploadColumns = workerParams.getInputData().getString("select");
+        uploadWhere = workerParams.getInputData().getString("filter");
 
 
     }
@@ -105,7 +106,7 @@ public class DataDownWorkerALL extends Worker {
             JSONArray jsonParam = new JSONArray();
 
             jsonTable.put("table", uploadTable);
-            //jsonTable.put("select", uploadColumns);
+            jsonTable.put("select", uploadColumns);
             jsonTable.put("filter", uploadWhere);
             //jsonTable.put("limit", "3");
             //jsonTable.put("orderby", "rand()");

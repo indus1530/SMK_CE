@@ -34,7 +34,7 @@ import static edu.aku.hassannaqvi.smk_ce.database.CreateTable.PROJECT_NAME;
 public class DataUpWorkerALL extends Worker {
 
     private static final Object APP_NAME = PROJECT_NAME;
-    private final String TAG = "DataWorkerEN()";
+    private final String TAG = "DataUploadWorkerEN()";
 
     // to be initialised by workParams
     private final Context mContext;

@@ -1446,6 +1446,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return (int) count;
     }
 
+
     public int syncUser(JSONArray userList) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(UsersTable.TABLE_NAME, null, null);
