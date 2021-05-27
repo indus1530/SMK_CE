@@ -70,12 +70,12 @@ class Section04Activity : AppCompatActivity() {
 
     private fun updateDB(): Boolean {
         val db = MainApp.appInfo.dbHelper
-        val updcount = db.addAdolscent(adol)
+        val updcount = db.addADOL(adol)
         return if (updcount > 0) {
             adol.id = updcount.toString()
             adol.uid = adol.deviceId + adol.id
-            var count = db.updatesAdoleColumn(ADOLContract.ADOLTable.COLUMN_UID, adol.uid)
-            if (count > 0) count = db.updatesAdoleColumn(ADOLContract.ADOLTable.COLUMN_SA, adol.sAtoString())
+            var count = db.updatesADOLColumn(ADOLContract.ADOLTable.COLUMN_UID, adol.uid)
+            if (count > 0) count = db.updatesADOLColumn(ADOLContract.ADOLTable.COLUMN_SA, adol.sAtoString())
             if (count > 0) true else {
                 Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
                 false

@@ -105,8 +105,8 @@ class Section03Activity : AppCompatActivity() {
         return if (updcount > 0) {
             mwra.id = updcount.toString()
             mwra.uid = mwra.deviceId + mwra.id
-            var count = db.updatesMwraColumn(MWRAContract.MWRATable.COLUMN_UID, mwra.uid)
-            if (count > 0) count = db.updatesMwraColumn(MWRAContract.MWRATable.COLUMN_SA, mwra.sAtoString())
+            var count = db.updatesMWRAColumn(MWRAContract.MWRATable.COLUMN_UID, mwra.uid)
+            if (count > 0) count = db.updatesMWRAColumn(MWRAContract.MWRATable.COLUMN_SA, mwra.sAtoString())
             if (count > 0) true else {
                 Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
                 false

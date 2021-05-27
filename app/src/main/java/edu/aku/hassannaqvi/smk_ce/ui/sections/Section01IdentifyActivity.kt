@@ -42,12 +42,12 @@ class Section01IdentifyActivity : AppCompatActivity() {
 
     private fun updateDB(): Boolean {
         val db = MainApp.appInfo.dbHelper
-        val updcount = db.addHHIdentify(hhid)
+        val updcount = db.addHHID(hhid)
         return if (updcount > 0) {
             hhid.id = updcount.toString()
             hhid.uid = hhid.deviceId + hhid.id
-            var count = db.updatesHHIdentifyColumn(HHIDContract.HHIDTable.COLUMN_UID, hhid.uid)
-            if (count > 0) count = db.updatesHHIdentifyColumn(HHIDContract.HHIDTable.COLUMN_SA, hhid.sAtoString())
+            var count = db.updatesHHIDColumn(HHIDContract.HHIDTable.COLUMN_UID, hhid.uid)
+            if (count > 0) count = db.updatesHHIDColumn(HHIDContract.HHIDTable.COLUMN_SA, hhid.sAtoString())
             if (count > 0) true else {
                 Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
                 false

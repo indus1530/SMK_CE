@@ -148,8 +148,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    //HHIDENTIFY
-    public Long addHHIdentify(HHIDModel model) {
+    //HHID
+    public Long addHHID(HHIDModel model) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -182,8 +182,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    //HHVERIFY
-    public Long addHHVerify(LHWModel model) {
+    //LHW
+    public Long addLHW(LHWModel model) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -285,7 +285,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //ADOLESCENT
-    public Long addAdolscent(ADOLModel model) {
+    public Long addADOL(ADOLModel model) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -1129,7 +1129,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
-    public int updatesHHIdentifyColumn(String column, String value) {
+    public int updatesHHIDColumn(String column, String value) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         ContentValues values = new ContentValues();
@@ -1144,7 +1144,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
-    public int updatesHHVerifyColumn(String column, String value) {
+    public int updatesLHWColumn(String column, String value) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         ContentValues values = new ContentValues();
@@ -1159,7 +1159,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
-    public int updatesHHMemColumn(String column, String value) {
+    public int updatesHHMEMColumn(String column, String value) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         ContentValues values = new ContentValues();
@@ -1174,7 +1174,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
-    public int updatesMwraColumn(String column, String value) {
+    public int updatesMWRAColumn(String column, String value) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         ContentValues values = new ContentValues();
@@ -1189,7 +1189,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
-    public int updatesAdoleColumn(String column, String value) {
+    public int updatesADOLColumn(String column, String value) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         ContentValues values = new ContentValues();
