@@ -140,7 +140,7 @@ class Section01IdentifyActivity : AppCompatActivity() {
         return if (rowId > 0) {
             hhid.id = rowId.toString()
             hhid.uid = hhid.deviceId + hhid.id
-            db.updatesHHIdentifyColumn(HHIDContract.HHIDTable.COLUMN_UID, hhid.uid)
+            db.updatesHHIDColumn(HHIDContract.HHIDTable.COLUMN_UID, hhid.uid)
            true
         } else {
             Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()

@@ -14,7 +14,6 @@ import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
 import edu.aku.hassannaqvi.smk_ce.contracts.LHWContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
-import edu.aku.hassannaqvi.smk_ce.core.MainApp.form
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.lhw
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01Binding

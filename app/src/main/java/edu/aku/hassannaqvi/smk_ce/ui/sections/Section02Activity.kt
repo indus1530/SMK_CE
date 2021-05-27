@@ -55,8 +55,8 @@ class Section02Activity : AppCompatActivity() {
         return if (updcount > 0) {
             hhmem.id = updcount.toString()
             hhmem.uid = hhmem.deviceId + hhmem.id
-            var count = db.updatesHHMemColumn(HHMembersContract.HHMembersTable.COLUMN_UID, hhmem.uid)
-            if (count > 0) count = db.updatesHHMemColumn(HHMembersContract.HHMembersTable.COLUMN_SA, hhmem.sAtoString())
+            var count = db.updatesHHMEMColumn(HHMembersContract.HHMembersTable.COLUMN_UID, hhmem.uid)
+            if (count > 0) count = db.updatesHHMEMColumn(HHMembersContract.HHMembersTable.COLUMN_SA, hhmem.sAtoString())
             if (count > 0) true else {
                 Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
                 false
