@@ -66,6 +66,7 @@
             android:name=".database.AndroidDatabaseManager"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light" />
+
         <activity
             android:name=".ui.TakePhoto"
             android:hardwareAccelerated="true"
@@ -84,7 +85,7 @@
 
         <activity
             android:name=".ui.sections.Section01Activity"
-            android:label="@string/hhidinfo"
+            android:label="@string/lhwinfo"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />
 
@@ -105,21 +106,25 @@
             android:label="@string/hhinfo"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />
+
         <activity
             android:name=".ui.sections.Section03Activity"
             android:label="@string/mwratitle"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />
+
         <activity
             android:name=".ui.sections.Section04Activity"
             android:label="@string/adoltitle"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />
+
         <activity
             android:name=".ui.sections.Section05Activity"
             android:label="@string/vhctitle"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />
+
     </application>
 
 </manifest>
