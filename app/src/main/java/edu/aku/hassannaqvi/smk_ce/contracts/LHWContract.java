@@ -27,7 +27,6 @@ public class LHWContract {
         public static final String COLUMN_LHW_CODE = "lhwCode";
         public static final String COLUMN_LHW_NAME = "lhwName";
         public static final String COLUMN_KHANDAN_NUMBER = "khandanNumber";
-        public static final String COLUMN_SA = "sA";
         public static final String COLUMN_STATUS = "status";
         public static final String COLUMN_ENDINGDATETIME = "endingdatetime";
         public static final String COLUMN_DEVICEID = "deviceid";

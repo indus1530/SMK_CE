@@ -42,7 +42,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
+                <TextView
+                    android:id="@+id/hhnoCount"
+                    style="@style/info"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
                 <!-- hhi01  Input-Numeric   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVhhi01"

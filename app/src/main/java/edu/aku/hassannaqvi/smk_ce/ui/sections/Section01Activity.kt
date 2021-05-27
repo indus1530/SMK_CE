@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
+import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
 import edu.aku.hassannaqvi.smk_ce.contracts.LHWContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.lhw
@@ -164,7 +165,7 @@ class Section01Activity : AppCompatActivity() {
             bi.lhwphoto.text.toString().trim().isNotEmpty() -> bi.lhwphoto.text.toString()
             else -> "-1"
         }
-        lhw.setsA(lhw.sAtoString())
+     //   lhw.setsA(lhw.sAtoString())
     }
 
 
@@ -174,7 +175,7 @@ class Section01Activity : AppCompatActivity() {
         return if (rowId > 0) {
             lhw.id = rowId.toString()
             lhw.uid = lhw.deviceId + lhw.id
-            var count = db.updatesLHWColumn(LHWContract.LHWTable.COLUMN_UID, lhw.uid)
+            db.updatesLHWColumn(LHWContract.LHWTable.COLUMN_UID, lhw.uid)
             true
         } else {
             Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()

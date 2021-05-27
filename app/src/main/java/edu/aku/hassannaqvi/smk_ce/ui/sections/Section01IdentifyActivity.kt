@@ -10,8 +10,7 @@ import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.contracts.HHIDContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
-import edu.aku.hassannaqvi.smk_ce.core.MainApp.form
-import edu.aku.hassannaqvi.smk_ce.core.MainApp.hhid
+import edu.aku.hassannaqvi.smk_ce.core.MainApp.*
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01IdentifyBinding
 import edu.aku.hassannaqvi.smk_ce.models.HHIDModel
@@ -31,61 +30,52 @@ class Section01IdentifyActivity : AppCompatActivity() {
         setSupportActionBar(bi.toolbar)
         setupSkips()
         val hhsno: Int = MainApp.randHHNo[MainApp.randHHNoIndex]
-        bi.hhi01.setText(hhsno)
-        bi.hhsno.setText(hhsno)
-    }
 
+        bi.hhi01.setText(hhsno.toString())
+        bi.hhsno.text = hhsno.toString()
+        bi.hhnoCount.setText(Arrays.toString(MainApp.randHHNo))
+
+
+
+    }
 
     private fun setupSkips() {
     }
-
-
-    private fun updateDB(): Boolean {
-        val db = MainApp.appInfo.dbHelper
-        val updcount = db.addHHID(hhid)
-        return if (updcount > 0) {
-            hhid.id = updcount.toString()
-            hhid.uid = hhid.deviceId + hhid.id
-            var count = db.updatesHHIDColumn(HHIDContract.HHIDTable.COLUMN_UID, hhid.uid)
-            if (count > 0) count = db.updatesHHIDColumn(HHIDContract.HHIDTable.COLUMN_SA, hhid.sAtoString())
-            if (count > 0) true else {
-                Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
-                false
-            }
-        } else {
-            Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
-            false
-        }
-    }
-
 
     fun BtnContinue(view: View) {
         if (!formValidation()) return
         saveDraft()
         if (updateDB()) {
-
-
-
-            finish()
-            startActivity(Intent(this, Section01VerifyActivity::class.java))
+            // Loop this activity to record all random households
+            if (MainApp.randHHNoIndex < randHHNo.size) {
+                MainApp.randHHNoIndex++;
+                finish()
+                startActivity(Intent(this, Section01IdentifyActivity::class.java))
+            }
+            // If all random households recored; go to main activity
+            else {
+                MainApp.randHHNoIndex = 0;
+                randHHNo = IntArray(10)
+                finish()
+                startActivity(Intent(this, MainActivity::class.java))
+            }
         } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show()
         }
     }
 
-
     private fun saveDraft() {
         hhid = HHIDModel()
         hhid.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
-        hhid.uuid = form.uid
+        hhid.uuid = lhw.uid
         hhid.userName = MainApp.user.userName
-        hhid.districtCode = form.districtCode
-        hhid.districtName = form.districtName
-        hhid.tehsilCode = form.tehsilCode
-        hhid.tehsilName = form.tehsilName
-        hhid.lhwCode = form.lhwCode
-        hhid.lhwName = form.lhwName
-        hhid.khandanNumber = form.khandanNumber
+        hhid.districtCode = lhw.districtCode
+        hhid.districtName = lhw.districtName
+        hhid.tehsilCode = lhw.tehsilCode
+        hhid.tehsilName = lhw.tehsilName
+        hhid.lhwCode = lhw.lhwCode
+        hhid.lhwName = lhw.lhwName
+        hhid.khandanNumber = lhw.khandanNumber
         hhid.deviceId = MainApp.appInfo.deviceID
         hhid.deviceTag = MainApp.appInfo.tagName
         hhid.appver = MainApp.appInfo.appVersion
@@ -140,8 +130,23 @@ class Section01IdentifyActivity : AppCompatActivity() {
             else -> "-1"
         }
 
+        hhid.setsA(hhid.sAtoString())
+
     }
 
+    private fun updateDB(): Boolean {
+        val db = MainApp.appInfo.dbHelper
+        val rowId = db.addHHIdentify(hhid)
+        return if (rowId > 0) {
+            hhid.id = rowId.toString()
+            hhid.uid = hhid.deviceId + hhid.id
+            db.updatesHHIDColumn(HHIDContract.HHIDTable.COLUMN_UID, hhid.uid)
+           true
+        } else {
+            Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
+            false
+        }
+    }
 
     fun BtnEnd(view: View) {
         //openSectionMainActivity(this, "G")

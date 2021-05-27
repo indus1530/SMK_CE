@@ -29,6 +29,7 @@ public class SyncModel {
         this.select = select;
     }
 
+
     public SyncModel(String tableName, String select, String filter) {
 
         this.tableName = tableName;
