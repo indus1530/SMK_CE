@@ -13,12 +13,12 @@ import org.json.JSONObject;
 import org.threeten.bp.LocalDate;
 
 import edu.aku.hassannaqvi.smk_ce.BR;
-import edu.aku.hassannaqvi.smk_ce.contracts.HHInfoContract;
+import edu.aku.hassannaqvi.smk_ce.contracts.HHVerifyContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 
-public class HHInfoModel extends BaseObservable {
+public class HHVerifyModel extends BaseObservable {
 
-    private final String TAG = "HHInfoModel";
+    private final String TAG = "HHVerifyModel";
 
     // APP VARIABLES
     private String projectName = MainApp.PROJECT_NAME;
@@ -68,7 +68,7 @@ public class HHInfoModel extends BaseObservable {
     private String hhv03 = StringUtils.EMPTY;
 
 
-    public HHInfoModel() {
+    public HHVerifyModel() {
     }
 
     public boolean isExist() {
@@ -127,7 +127,7 @@ public class HHInfoModel extends BaseObservable {
         return uid;
     }
 
-    public HHInfoModel setUid(String uid) {
+    public HHVerifyModel setUid(String uid) {
         this.uid = uid;
         return this;
     }
@@ -138,7 +138,7 @@ public class HHInfoModel extends BaseObservable {
         return uuid;
     }
 
-    public HHInfoModel setUuid(String uuid) {
+    public HHVerifyModel setUuid(String uuid) {
         this.uuid = uuid;
         return this;
     }
@@ -149,7 +149,7 @@ public class HHInfoModel extends BaseObservable {
         return serialNo;
     }
 
-    public HHInfoModel setSerialNo(String serialNo) {
+    public HHVerifyModel setSerialNo(String serialNo) {
         this.serialNo = serialNo;
         return this;
     }
@@ -160,7 +160,7 @@ public class HHInfoModel extends BaseObservable {
         return userName;
     }
 
-    public HHInfoModel setUserName(String userName) {
+    public HHVerifyModel setUserName(String userName) {
         this.userName = userName;
         return this;
     }
@@ -170,7 +170,7 @@ public class HHInfoModel extends BaseObservable {
         return districtCode;
     }
 
-    public HHInfoModel setDistrictCode(String districtCode) {
+    public HHVerifyModel setDistrictCode(String districtCode) {
         this.districtCode = districtCode;
         return this;
     }
@@ -181,7 +181,7 @@ public class HHInfoModel extends BaseObservable {
         return districtName;
     }
 
-    public HHInfoModel setDistrictName(String districtName) {
+    public HHVerifyModel setDistrictName(String districtName) {
         this.districtName = districtName;
         return this;
     }
@@ -192,7 +192,7 @@ public class HHInfoModel extends BaseObservable {
         return tehsilCode;
     }
 
-    public HHInfoModel setTehsilCode(String tehsilCode) {
+    public HHVerifyModel setTehsilCode(String tehsilCode) {
         this.tehsilCode = tehsilCode;
         return this;
     }
@@ -203,7 +203,7 @@ public class HHInfoModel extends BaseObservable {
         return tehsilName;
     }
 
-    public HHInfoModel setTehsilName(String tehsilName) {
+    public HHVerifyModel setTehsilName(String tehsilName) {
         this.tehsilName = tehsilName;
         return this;
     }
@@ -214,7 +214,7 @@ public class HHInfoModel extends BaseObservable {
         return lhwCode;
     }
 
-    public HHInfoModel setLhwCode(String lhwCode) {
+    public HHVerifyModel setLhwCode(String lhwCode) {
         this.lhwCode = lhwCode;
         return this;
     }
@@ -225,7 +225,7 @@ public class HHInfoModel extends BaseObservable {
         return lhwName;
     }
 
-    public HHInfoModel setLhwName(String lhwName) {
+    public HHVerifyModel setLhwName(String lhwName) {
         this.lhwName = lhwName;
         return this;
     }
@@ -236,7 +236,7 @@ public class HHInfoModel extends BaseObservable {
         return khandanNumber;
     }
 
-    public HHInfoModel setKhandanNumber(String khandanNumber) {
+    public HHVerifyModel setKhandanNumber(String khandanNumber) {
         this.khandanNumber = khandanNumber;
         return this;
     }
@@ -247,7 +247,7 @@ public class HHInfoModel extends BaseObservable {
         return deviceId;
     }
 
-    public HHInfoModel setDeviceId(String deviceId) {
+    public HHVerifyModel setDeviceId(String deviceId) {
         this.deviceId = deviceId;
         return this;
     }
@@ -257,7 +257,7 @@ public class HHInfoModel extends BaseObservable {
         return deviceTag;
     }
 
-    public HHInfoModel setDeviceTag(String deviceTag) {
+    public HHVerifyModel setDeviceTag(String deviceTag) {
         this.deviceTag = deviceTag;
         return this;
     }
@@ -267,7 +267,7 @@ public class HHInfoModel extends BaseObservable {
         return appver;
     }
 
-    public HHInfoModel setAppver(String appver) {
+    public HHVerifyModel setAppver(String appver) {
         this.appver = appver;
         return this;
     }
@@ -277,7 +277,7 @@ public class HHInfoModel extends BaseObservable {
         return sysDate;
     }
 
-    public HHInfoModel setSysDate(String sysDate) {
+    public HHVerifyModel setSysDate(String sysDate) {
         this.sysDate = sysDate;
         return this;
     }
@@ -287,7 +287,7 @@ public class HHInfoModel extends BaseObservable {
         return endTime;
     }
 
-    public HHInfoModel setEndTime(String endTime) {
+    public HHVerifyModel setEndTime(String endTime) {
         this.endTime = endTime;
         return this;
     }
@@ -297,7 +297,7 @@ public class HHInfoModel extends BaseObservable {
         return synced;
     }
 
-    public HHInfoModel setSynced(String synced) {
+    public HHVerifyModel setSynced(String synced) {
         this.synced = synced;
         return this;
     }
@@ -307,7 +307,7 @@ public class HHInfoModel extends BaseObservable {
         return syncDate;
     }
 
-    public HHInfoModel setSyncDate(String syncDate) {
+    public HHVerifyModel setSyncDate(String syncDate) {
         this.syncDate = syncDate;
         return this;
     }
@@ -317,7 +317,7 @@ public class HHInfoModel extends BaseObservable {
         return sA;
     }
 
-    public HHInfoModel setsA(String sA) {
+    public HHVerifyModel setsA(String sA) {
         this.sA = sA;
         return this;
     }
@@ -424,61 +424,61 @@ public class HHInfoModel extends BaseObservable {
     }
 
 
-    public HHInfoModel Sync(JSONObject jsonObject) throws JSONException {
-        this.id = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_ID);
-        this.uid = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_UID);
-        this.uuid = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_UUID);
-        this.serialNo = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_SERIAL_NO);
-        this.userName = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_USERNAME);
-        this.sysDate = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_SYSDATE);
-        this.districtCode = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_DISTRICT_CODE);
-        this.districtName = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_DISTRICT_NAME);
-        this.tehsilCode = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_TEHSIL_CODE);
-        this.tehsilName = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_TEHSIL_NAME);
-        this.lhwCode = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_LHW_CODE);
-        this.lhwName = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_LHW_NAME);
-        this.khandanNumber = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_KHANDAN_NUMBER);
-        this.deviceId = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_DEVICEID);
-        this.deviceTag = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_DEVICETAGID);
-        this.appver = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_APPVERSION);
-        this.endTime = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_ENDINGDATETIME);
-        this.status = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_STATUS);
-        this.synced = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_SYNCED);
-        this.syncDate = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_SYNCED_DATE);
+    public HHVerifyModel Sync(JSONObject jsonObject) throws JSONException {
+        this.id = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_ID);
+        this.uid = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_UID);
+        this.uuid = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_UUID);
+        this.serialNo = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_SERIAL_NO);
+        this.userName = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_USERNAME);
+        this.sysDate = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_SYSDATE);
+        this.districtCode = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_DISTRICT_CODE);
+        this.districtName = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_DISTRICT_NAME);
+        this.tehsilCode = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_TEHSIL_CODE);
+        this.tehsilName = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_TEHSIL_NAME);
+        this.lhwCode = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_LHW_CODE);
+        this.lhwName = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_LHW_NAME);
+        this.khandanNumber = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_KHANDAN_NUMBER);
+        this.deviceId = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_DEVICEID);
+        this.deviceTag = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_DEVICETAGID);
+        this.appver = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_APPVERSION);
+        this.endTime = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_ENDINGDATETIME);
+        this.status = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_STATUS);
+        this.synced = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_SYNCED);
+        this.syncDate = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_SYNCED_DATE);
 
-        this.sA = jsonObject.getString(HHInfoContract.HHInfoTable.COLUMN_SA);
+        this.sA = jsonObject.getString(HHVerifyContract.HHVerifyTable.COLUMN_SA);
 
         return this;
 
     }
 
 
-    public HHInfoModel Hydrate(Cursor cursor) {
-        this.id = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_ID));
-        this.uid = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_UID));
-        this.uuid = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_UUID));
-        this.serialNo = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_SERIAL_NO));
-        this.userName = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_USERNAME));
-        this.sysDate = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_SYSDATE));
-        this.districtCode = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_DISTRICT_CODE));
-        this.districtName = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_DISTRICT_NAME));
-        this.tehsilCode = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_TEHSIL_CODE));
-        this.tehsilName = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_TEHSIL_NAME));
-        this.lhwCode = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_LHW_CODE));
-        this.lhwName = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_LHW_NAME));
-        this.khandanNumber = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_KHANDAN_NUMBER));
-        this.deviceId = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_DEVICEID));
-        this.deviceTag = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_DEVICETAGID));
-        this.appver = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_APPVERSION));
-        this.endTime = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_ENDINGDATETIME));
-        this.status = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_STATUS));
-        this.synced = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_SYNCED));
-        this.syncDate = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_SYNCED_DATE));
+    public HHVerifyModel Hydrate(Cursor cursor) {
+        this.id = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_ID));
+        this.uid = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_UID));
+        this.uuid = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_UUID));
+        this.serialNo = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_SERIAL_NO));
+        this.userName = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_USERNAME));
+        this.sysDate = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_SYSDATE));
+        this.districtCode = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_DISTRICT_CODE));
+        this.districtName = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_DISTRICT_NAME));
+        this.tehsilCode = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_TEHSIL_CODE));
+        this.tehsilName = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_TEHSIL_NAME));
+        this.lhwCode = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_LHW_CODE));
+        this.lhwName = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_LHW_NAME));
+        this.khandanNumber = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_KHANDAN_NUMBER));
+        this.deviceId = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_DEVICEID));
+        this.deviceTag = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_DEVICETAGID));
+        this.appver = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_APPVERSION));
+        this.endTime = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_ENDINGDATETIME));
+        this.status = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_STATUS));
+        this.synced = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_SYNCED));
+        this.syncDate = cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_SYNCED_DATE));
 
         //For childCount
         //this.s01HH = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_S01HH));
 
-        sAHydrate(cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_SA)));
+        sAHydrate(cursor.getString(cursor.getColumnIndex(HHVerifyContract.HHVerifyTable.COLUMN_SA)));
 
         return this;
     }
@@ -487,8 +487,9 @@ public class HHInfoModel extends BaseObservable {
     //TODO: Try this instead of toJSONObject
     @Override
     public String toString() {
-        return new GsonBuilder().create().toJson(this, HHInfoModel.class);
+        return new GsonBuilder().create().toJson(this, HHVerifyModel.class);
     }
+
 
     public String sAtoString() {
         JSONObject json = new JSONObject();
@@ -516,32 +517,32 @@ public class HHInfoModel extends BaseObservable {
         JSONObject json = new JSONObject();
 
         try {
-            json.put(HHInfoContract.HHInfoTable.COLUMN_ID, this.id == null ? JSONObject.NULL : this.id);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_DISTRICT_CODE, this.districtCode == null ? JSONObject.NULL : this.districtCode);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_DISTRICT_NAME, this.districtName == null ? JSONObject.NULL : this.districtName);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_TEHSIL_CODE, this.tehsilCode == null ? JSONObject.NULL : this.tehsilCode);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_TEHSIL_NAME, this.tehsilName == null ? JSONObject.NULL : this.tehsilName);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_LHW_CODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_LHW_NAME, this.lhwName == null ? JSONObject.NULL : this.lhwName);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_KHANDAN_NUMBER, this.khandanNumber == null ? JSONObject.NULL : this.khandanNumber);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_DEVICETAGID, this.deviceTag == null ? JSONObject.NULL : this.deviceTag);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_APPVERSION, this.appver == null ? JSONObject.NULL : this.appver);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_ENDINGDATETIME, this.endTime == null ? JSONObject.NULL : this.endTime);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_STATUS, this.status == null ? JSONObject.NULL : this.status);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-            json.put(HHInfoContract.HHInfoTable.COLUMN_SYNCED_DATE, this.syncDate == null ? JSONObject.NULL : this.syncDate);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_ID, this.id == null ? JSONObject.NULL : this.id);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_DISTRICT_CODE, this.districtCode == null ? JSONObject.NULL : this.districtCode);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_DISTRICT_NAME, this.districtName == null ? JSONObject.NULL : this.districtName);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_TEHSIL_CODE, this.tehsilCode == null ? JSONObject.NULL : this.tehsilCode);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_TEHSIL_NAME, this.tehsilName == null ? JSONObject.NULL : this.tehsilName);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_LHW_CODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_LHW_NAME, this.lhwName == null ? JSONObject.NULL : this.lhwName);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_KHANDAN_NUMBER, this.khandanNumber == null ? JSONObject.NULL : this.khandanNumber);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_DEVICETAGID, this.deviceTag == null ? JSONObject.NULL : this.deviceTag);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_APPVERSION, this.appver == null ? JSONObject.NULL : this.appver);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_ENDINGDATETIME, this.endTime == null ? JSONObject.NULL : this.endTime);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_STATUS, this.status == null ? JSONObject.NULL : this.status);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_SYNCED_DATE, this.syncDate == null ? JSONObject.NULL : this.syncDate);
 
-            json.put(HHInfoContract.HHInfoTable.COLUMN_SA, new JSONObject(sAtoString()));
+            json.put(HHVerifyContract.HHVerifyTable.COLUMN_SA, new JSONObject(sAtoString()));
 
 
             if (this.sA != null && !this.sA.equals("")) {
-                json.put(HHInfoContract.HHInfoTable.COLUMN_SA, new JSONObject(this.sA));
+                json.put(HHVerifyContract.HHVerifyTable.COLUMN_SA, new JSONObject(this.sA));
             }
 
             return json;

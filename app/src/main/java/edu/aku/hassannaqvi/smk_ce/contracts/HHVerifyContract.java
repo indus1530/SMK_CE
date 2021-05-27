@@ -6,12 +6,12 @@ import android.provider.BaseColumns;
  * Created by hassan.naqvi on 11/30/2016.
  */
 
-public class HHInfoContract {
+public class HHVerifyContract {
 
     public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.smk_ce";
 
-    public static abstract class HHInfoTable implements BaseColumns {
-        public static final String TABLE_NAME = "HHInfo";
+    public static abstract class HHVerifyTable implements BaseColumns {
+        public static final String TABLE_NAME = "HHVerify";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
         public static final String COLUMN_PROJECT_NAME = "projectName";
         public static final String COLUMN_ID = "_id";
