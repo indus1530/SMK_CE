@@ -10,6 +10,7 @@ import org.json.JSONArray;
 
 import java.io.File;
 import java.util.List;
+import java.util.Random;
 
 import edu.aku.hassannaqvi.smk_ce.models.AdolescentModel;
 import edu.aku.hassannaqvi.smk_ce.models.Child;
@@ -53,6 +54,8 @@ public class MainApp extends Application {
     public static List<JSONArray> uploadData;
     SharedPreferences.Editor editor;
     SharedPreferences sharedPref;
+    public static int[] randHHNo;
+    public static int randHHNoIndex;
 
     public static void hideSystemUI(View decorView) {
         // Enables regular immersive mode.
@@ -78,6 +81,90 @@ public class MainApp extends Application {
         AndroidThreeTen.init(this);
         //Initializ App info
         appInfo = new AppInfo(this);
+    }
+
+    public static void genBlockRand() {
+
+        int total = 123;
+        Long blockSize = Long.valueOf(total/10);
+        int randQuat = new Random().nextInt((int) (blockSize-1))+1;
+
+        System.out.println("Q: "+blockSize+"\n");
+        int c =0;
+        for(int i=1;i<total;i+=blockSize){
+            c++;
+            Long high =  (blockSize *c);
+            int low = i;
+            System.out.println(c+" - "+high+"-"+low+"\r");
+            System.out.println(c+" -> "+(new Random().nextInt((int) (high-low))+low)+"\n");
+
+        }
+    }
+
+    public static void genSysRand() {
+
+
+        int total = 123;
+        Long blockSize = Long.valueOf(total/10);
+        int randQuat = new Random().nextInt((int) (blockSize-1))+1;
+
+
+        for(int i=1;i<=10;i++){
+
+
+            System.out.println(i+" -> "+randQuat+"\n");
+            //    System.out.println(c+" -> "+(new Random().nextInt((int) (high-low))+low)+"\n");
+            randQuat+=blockSize;
+
+        }
 
     }
+    public static int[] genNum3(int gn){
+        int total = gn;
+        System.out.println(" Total: "+total+"\n");
+
+
+        Long blockSize = Long.valueOf(total/10);
+        System.out.println(" blockSize: "+blockSize+"\n");
+
+        int randQuat = new Random().nextInt((int) (blockSize-1))+1;
+        System.out.println(" randQuat: "+randQuat+"\n");
+
+        int[] hhno = new int[10];
+        for(int i=0;i<10;i++){
+            hhno[i] =randQuat;
+
+
+            System.out.println(i+" -> "+randQuat+"\n");
+            //    System.out.println(c+" -> "+(new Random().nextInt((int) (high-low))+low)+"\n");
+            randQuat+=blockSize;
+
+        }
+        return hhno;
+    }
+    public static void genRandNum(int gn){
+        int total = gn;
+        System.out.println(" Total: "+total+"\n");
+
+
+        Double blockSize = Double.valueOf(total)/10.0;
+        System.out.println(" blockSize: "+blockSize+"\n");
+
+        int randQuat = new Random().nextInt((int) (blockSize-1))+1;
+        System.out.println(" randQuat: "+randQuat+"\n");
+
+        int[] hhno = new int[10];
+        int c =0;
+        for(int i=1;c<10;i+=blockSize){
+            c++;
+            int high =  (int) (blockSize *c);
+            int low = i;
+            hhno[c-1] = new Random().nextInt((int) (high-low))+low;
+            System.out.println(c+" - "+low+"-"+high+"\r");
+            System.out.println(c+" -> "+hhno[c-1]+"\n");
+
+        }
+        MainApp.randHHNo =  hhno;
+    }
+
 }

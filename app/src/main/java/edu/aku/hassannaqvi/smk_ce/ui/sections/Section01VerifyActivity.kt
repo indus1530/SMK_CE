@@ -37,23 +37,6 @@ class Section01VerifyActivity : AppCompatActivity() {
     }
 
 
-    private fun updateDB(): Boolean {
-        val db = MainApp.appInfo.dbHelper
-        val updcount = db.addHHInfo(hhinfo)
-        return if (updcount > 0) {
-            hhinfo.id = updcount.toString()
-            hhinfo.uid = hhinfo.deviceId + hhinfo.id
-            var count = db.updatesHHInfoColumn(HHInfoContract.HHInfoTable.COLUMN_UID, hhinfo.uid)
-            if (count > 0) count = db.updatesHHInfoColumn(HHInfoContract.HHInfoTable.COLUMN_SA, hhinfo.sAtoString())
-            if (count > 0) true else {
-                Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
-                false
-            }
-        } else {
-            Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
-            false
-        }
-    }
 
 
     fun BtnContinue(view: View) {
@@ -129,9 +112,22 @@ class Section01VerifyActivity : AppCompatActivity() {
             bi.hhv03b.isChecked -> "2"
             else -> "-1"
         }
-
+hhinfo.setsA(hhinfo.sAtoString());
     }
 
+    private fun updateDB(): Boolean {
+        val db = MainApp.appInfo.dbHelper
+        val rowId = db.addHHInfo(hhinfo)
+        return if (rowId > 0) {
+            hhinfo.id = rowId.toString()
+            hhinfo.uid = hhinfo.deviceId + hhinfo.id
+            var count = db.updatesHHInfoColumn(HHInfoContract.HHInfoTable.COLUMN_UID, hhinfo.uid)
+           true
+        } else {
+            Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
+            false
+        }
+    }
 
     fun BtnEnd(view: View) {
         //openSectionMainActivity(this, "G")

@@ -12,6 +12,7 @@ import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.form
+import edu.aku.hassannaqvi.smk_ce.core.MainApp.genRandNum
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01IdentifyBinding
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
@@ -35,7 +36,9 @@ class Section01IdentifyActivity : AppCompatActivity() {
         bi.callback = this
         setSupportActionBar(bi.toolbar)
         setupSkips()
-
+        val hhsno: Int = MainApp.randHHNo[MainApp.randHHNoIndex];
+        bi.hhi01.setText(hhsno);
+        bi.hhsno.setText(hhsno);
     }
 
 
@@ -66,6 +69,9 @@ class Section01IdentifyActivity : AppCompatActivity() {
         if (!formValidation()) return
         saveDraft()
         if (updateDB()) {
+
+
+
             finish()
             startActivity(Intent(this, Section01VerifyActivity::class.java))
         } else {
