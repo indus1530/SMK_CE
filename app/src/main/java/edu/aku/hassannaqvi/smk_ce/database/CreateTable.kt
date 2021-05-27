@@ -61,7 +61,7 @@ object CreateTable {
             + HHIDContract.HHIDTable.COLUMN_SA + " TEXT"
             + " );")
 
-    const val SQL_CREATE_HHVERIFY = ("CREATE TABLE "
+    const val SQL_CREATE_LHW = ("CREATE TABLE "
             + LHWContract.LHWTable.TABLE_NAME + "("
             + LHWContract.LHWTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + LHWContract.LHWTable.COLUMN_PROJECT_NAME + " TEXT,"
@@ -83,8 +83,7 @@ object CreateTable {
             + LHWContract.LHWTable.COLUMN_TEHSIL_NAME + " TEXT,"
             + LHWContract.LHWTable.COLUMN_LHW_CODE + " TEXT,"
             + LHWContract.LHWTable.COLUMN_LHW_NAME + " TEXT,"
-            + LHWContract.LHWTable.COLUMN_KHANDAN_NUMBER + " TEXT,"
-            + LHWContract.LHWTable.COLUMN_SA + " TEXT"
+            + LHWContract.LHWTable.COLUMN_KHANDAN_NUMBER + " TEXT"
             + " );")
 
     const val SQL_CREATE_HHMEMBERS = ("CREATE TABLE "

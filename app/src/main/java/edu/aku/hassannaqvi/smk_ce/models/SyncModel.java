@@ -29,14 +29,17 @@ public class SyncModel {
         this.select = select;
     }
 
+
     public SyncModel(String tableName, String select, String filter) {
 
         this.tableName = tableName;
         this.status = StringUtils.EMPTY;
         this.statusID = 0;
         this.message = StringUtils.EMPTY;
-        this.select = select;
-        this.filter = filter;
+        if (select != null)
+            this.select = select;
+        if (filter != null)
+            this.filter = filter;
 
     }
 

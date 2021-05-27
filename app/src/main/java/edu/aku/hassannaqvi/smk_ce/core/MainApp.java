@@ -58,6 +58,8 @@ public class MainApp extends Application {
     SharedPreferences sharedPref;
     public static int[] randHHNo;
     public static int randHHNoIndex;
+    String[] marker = new String[10];
+
 
     public static void hideSystemUI(View decorView) {
         // Enables regular immersive mode.
@@ -83,6 +85,7 @@ public class MainApp extends Application {
         AndroidThreeTen.init(this);
         //Initializ App info
         appInfo = new AppInfo(this);
+
     }
 
     public static void genBlockRand() {
@@ -166,6 +169,7 @@ public class MainApp extends Application {
             System.out.println(c+" -> "+hhno[c-1]+"\n");
 
         }
+        MainApp.randHHNo = new int[10];
         MainApp.randHHNo =  hhno;
     }
 

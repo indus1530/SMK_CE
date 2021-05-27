@@ -48,7 +48,7 @@ public class LHWModel extends BaseObservable {
 
 
     // SECTION VARIABLES
-    private String sA = StringUtils.EMPTY;
+    //private String sA = StringUtils.EMPTY;
 
     //Not saving in DB
     private LocalDate localDate = null;
@@ -308,6 +308,7 @@ public class LHWModel extends BaseObservable {
         return this;
     }
 
+/*
 
     public String getsA() {
         return sA;
@@ -317,6 +318,7 @@ public class LHWModel extends BaseObservable {
         this.sA = sA;
         return this;
     }
+*/
 
 
     @Bindable
@@ -413,7 +415,7 @@ public class LHWModel extends BaseObservable {
         this.synced = jsonObject.getString(LHWContract.LHWTable.COLUMN_SYNCED);
         this.syncDate = jsonObject.getString(LHWContract.LHWTable.COLUMN_SYNCED_DATE);
 
-        this.sA = jsonObject.getString(LHWContract.LHWTable.COLUMN_SA);
+        //this.sA = jsonObject.getString(LHWContract.LHWTable.COLUMN_SA);
 
         return this;
 
@@ -445,7 +447,7 @@ public class LHWModel extends BaseObservable {
         //For childCount
         //this.s01HH = cursor.getString(cursor.getColumnIndex(HHInfoContract.HHInfoTable.COLUMN_S01HH));
 
-        sAHydrate(cursor.getString(cursor.getColumnIndex(LHWContract.LHWTable.COLUMN_SA)));
+        //sAHydrate(cursor.getString(cursor.getColumnIndex(LHWContract.LHWTable.COLUMN_SA)));
 
         return this;
     }
@@ -458,7 +460,7 @@ public class LHWModel extends BaseObservable {
     }
 
 
-    public String sAtoString() {
+   /* public String sAtoString() {
         JSONObject json = new JSONObject();
 
         try {
@@ -474,7 +476,7 @@ public class LHWModel extends BaseObservable {
         }
         return json.toString();
     }
-
+*/
 
     public JSONObject toJSONObject() {
 
@@ -502,13 +504,13 @@ public class LHWModel extends BaseObservable {
             json.put(LHWContract.LHWTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
             json.put(LHWContract.LHWTable.COLUMN_SYNCED_DATE, this.syncDate == null ? JSONObject.NULL : this.syncDate);
 
-            json.put(LHWContract.LHWTable.COLUMN_SA, new JSONObject(sAtoString()));
+            /*json.put(LHWContract.LHWTable.COLUMN_SA, new JSONObject(sAtoString()));
 
 
             if (this.sA != null && !this.sA.equals("")) {
                 json.put(LHWContract.LHWTable.COLUMN_SA, new JSONObject(this.sA));
             }
-
+*/
             return json;
         } catch (JSONException e) {
             e.printStackTrace();
@@ -517,7 +519,7 @@ public class LHWModel extends BaseObservable {
     }
 
 
-    public void sAHydrate(String string) {
+/*    public void sAHydrate(String string) {
 
         if (string != null) {
 
@@ -534,5 +536,5 @@ public class LHWModel extends BaseObservable {
                 e.printStackTrace();
             }
         }
-    }
+    }*/
 }

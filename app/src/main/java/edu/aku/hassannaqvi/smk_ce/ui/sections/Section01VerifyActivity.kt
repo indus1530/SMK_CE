@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
-import edu.aku.hassannaqvi.smk_ce.contracts.LHWContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.form
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.lhw
@@ -118,11 +117,11 @@ class Section01VerifyActivity : AppCompatActivity() {
 
     private fun updateDB(): Boolean {
         val db = MainApp.appInfo.dbHelper
-        val rowId = db.addHHVerify(lhw)
+        val rowId = db.addLHW(lhw)
         return if (rowId > 0) {
             lhw.id = rowId.toString()
             lhw.uid = lhw.deviceId + lhw.id
-            var count = db.updatesHHVerifyColumn(LHWContract.LHWTable.COLUMN_UID, lhw.uid)
+         //   var count = db.updatesHHVerifyColumn(LHWContract.LHWTable.COLUMN_UID, lhw.uid)
             true
         } else {
             Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
