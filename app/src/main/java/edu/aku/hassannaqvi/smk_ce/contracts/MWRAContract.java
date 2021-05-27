@@ -6,12 +6,12 @@ import android.provider.BaseColumns;
  * Created by hassan.naqvi on 11/30/2016.
  */
 
-public class AdolescentContract {
+public class MWRAContract {
 
     public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.smk_ce";
 
-    public static abstract class AdolescentTable implements BaseColumns {
-        public static final String TABLE_NAME = "Adolescent";
+    public static abstract class MWRATable implements BaseColumns {
+        public static final String TABLE_NAME = "MWRA";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
         public static final String COLUMN_PROJECT_NAME = "projectName";
         public static final String COLUMN_ID = "_id";

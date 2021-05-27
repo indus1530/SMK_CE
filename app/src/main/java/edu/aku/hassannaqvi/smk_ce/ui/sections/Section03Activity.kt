@@ -15,11 +15,11 @@ import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Clear
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
-import edu.aku.hassannaqvi.smk_ce.contracts.MwraContract
+import edu.aku.hassannaqvi.smk_ce.contracts.MWRAContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.mwra
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection03Binding
-import edu.aku.hassannaqvi.smk_ce.models.MwraModel
+import edu.aku.hassannaqvi.smk_ce.models.MWRAModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
@@ -105,8 +105,8 @@ class Section03Activity : AppCompatActivity() {
         return if (updcount > 0) {
             mwra.id = updcount.toString()
             mwra.uid = mwra.deviceId + mwra.id
-            var count = db.updatesMwraColumn(MwraContract.MwraTable.COLUMN_UID, mwra.uid)
-            if (count > 0) count = db.updatesMwraColumn(MwraContract.MwraTable.COLUMN_SA, mwra.sAtoString())
+            var count = db.updatesMwraColumn(MWRAContract.MWRATable.COLUMN_UID, mwra.uid)
+            if (count > 0) count = db.updatesMwraColumn(MWRAContract.MWRATable.COLUMN_SA, mwra.sAtoString())
             if (count > 0) true else {
                 Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
                 false
@@ -132,7 +132,7 @@ class Section03Activity : AppCompatActivity() {
 
     private fun saveDraft() {
 
-        mwra = MwraModel()
+        mwra = MWRAModel()
         mwra.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
         mwra.uuid = MainApp.form.uid
         mwra.userName = MainApp.user.userName

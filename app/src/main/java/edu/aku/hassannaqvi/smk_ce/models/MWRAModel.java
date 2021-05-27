@@ -13,12 +13,12 @@ import org.json.JSONObject;
 import org.threeten.bp.LocalDate;
 
 import edu.aku.hassannaqvi.smk_ce.BR;
-import edu.aku.hassannaqvi.smk_ce.contracts.MwraContract;
+import edu.aku.hassannaqvi.smk_ce.contracts.MWRAContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 
-public class MwraModel extends BaseObservable {
+public class MWRAModel extends BaseObservable {
 
-    private final String TAG = "MwraModel";
+    private final String TAG = "MWRAModel";
 
     // APP VARIABLES
     private String projectName = MainApp.PROJECT_NAME;
@@ -140,7 +140,7 @@ public class MwraModel extends BaseObservable {
     private String mwra24 = StringUtils.EMPTY;
 
 
-    public MwraModel() {
+    public MWRAModel() {
     }
 
     public boolean isExist() {
@@ -199,7 +199,7 @@ public class MwraModel extends BaseObservable {
         return uid;
     }
 
-    public MwraModel setUid(String uid) {
+    public MWRAModel setUid(String uid) {
         this.uid = uid;
         return this;
     }
@@ -210,7 +210,7 @@ public class MwraModel extends BaseObservable {
         return uuid;
     }
 
-    public MwraModel setUuid(String uuid) {
+    public MWRAModel setUuid(String uuid) {
         this.uuid = uuid;
         return this;
     }
@@ -221,7 +221,7 @@ public class MwraModel extends BaseObservable {
         return serialNo;
     }
 
-    public MwraModel setSerialNo(String serialNo) {
+    public MWRAModel setSerialNo(String serialNo) {
         this.serialNo = serialNo;
         return this;
     }
@@ -232,7 +232,7 @@ public class MwraModel extends BaseObservable {
         return userName;
     }
 
-    public MwraModel setUserName(String userName) {
+    public MWRAModel setUserName(String userName) {
         this.userName = userName;
         return this;
     }
@@ -242,7 +242,7 @@ public class MwraModel extends BaseObservable {
         return districtCode;
     }
 
-    public MwraModel setDistrictCode(String districtCode) {
+    public MWRAModel setDistrictCode(String districtCode) {
         this.districtCode = districtCode;
         return this;
     }
@@ -253,7 +253,7 @@ public class MwraModel extends BaseObservable {
         return districtName;
     }
 
-    public MwraModel setDistrictName(String districtName) {
+    public MWRAModel setDistrictName(String districtName) {
         this.districtName = districtName;
         return this;
     }
@@ -264,7 +264,7 @@ public class MwraModel extends BaseObservable {
         return tehsilCode;
     }
 
-    public MwraModel setTehsilCode(String tehsilCode) {
+    public MWRAModel setTehsilCode(String tehsilCode) {
         this.tehsilCode = tehsilCode;
         return this;
     }
@@ -275,7 +275,7 @@ public class MwraModel extends BaseObservable {
         return tehsilName;
     }
 
-    public MwraModel setTehsilName(String tehsilName) {
+    public MWRAModel setTehsilName(String tehsilName) {
         this.tehsilName = tehsilName;
         return this;
     }
@@ -286,7 +286,7 @@ public class MwraModel extends BaseObservable {
         return lhwCode;
     }
 
-    public MwraModel setLhwCode(String lhwCode) {
+    public MWRAModel setLhwCode(String lhwCode) {
         this.lhwCode = lhwCode;
         return this;
     }
@@ -297,7 +297,7 @@ public class MwraModel extends BaseObservable {
         return lhwName;
     }
 
-    public MwraModel setLhwName(String lhwName) {
+    public MWRAModel setLhwName(String lhwName) {
         this.lhwName = lhwName;
         return this;
     }
@@ -308,7 +308,7 @@ public class MwraModel extends BaseObservable {
         return khandanNumber;
     }
 
-    public MwraModel setKhandanNumber(String khandanNumber) {
+    public MWRAModel setKhandanNumber(String khandanNumber) {
         this.khandanNumber = khandanNumber;
         return this;
     }
@@ -319,7 +319,7 @@ public class MwraModel extends BaseObservable {
         return deviceId;
     }
 
-    public MwraModel setDeviceId(String deviceId) {
+    public MWRAModel setDeviceId(String deviceId) {
         this.deviceId = deviceId;
         return this;
     }
@@ -329,7 +329,7 @@ public class MwraModel extends BaseObservable {
         return deviceTag;
     }
 
-    public MwraModel setDeviceTag(String deviceTag) {
+    public MWRAModel setDeviceTag(String deviceTag) {
         this.deviceTag = deviceTag;
         return this;
     }
@@ -339,7 +339,7 @@ public class MwraModel extends BaseObservable {
         return appver;
     }
 
-    public MwraModel setAppver(String appver) {
+    public MWRAModel setAppver(String appver) {
         this.appver = appver;
         return this;
     }
@@ -349,7 +349,7 @@ public class MwraModel extends BaseObservable {
         return sysDate;
     }
 
-    public MwraModel setSysDate(String sysDate) {
+    public MWRAModel setSysDate(String sysDate) {
         this.sysDate = sysDate;
         return this;
     }
@@ -359,7 +359,7 @@ public class MwraModel extends BaseObservable {
         return endTime;
     }
 
-    public MwraModel setEndTime(String endTime) {
+    public MWRAModel setEndTime(String endTime) {
         this.endTime = endTime;
         return this;
     }
@@ -369,7 +369,7 @@ public class MwraModel extends BaseObservable {
         return synced;
     }
 
-    public MwraModel setSynced(String synced) {
+    public MWRAModel setSynced(String synced) {
         this.synced = synced;
         return this;
     }
@@ -379,7 +379,7 @@ public class MwraModel extends BaseObservable {
         return syncDate;
     }
 
-    public MwraModel setSyncDate(String syncDate) {
+    public MWRAModel setSyncDate(String syncDate) {
         this.syncDate = syncDate;
         return this;
     }
@@ -389,7 +389,7 @@ public class MwraModel extends BaseObservable {
         return sA;
     }
 
-    public MwraModel setsA(String sA) {
+    public MWRAModel setsA(String sA) {
         this.sA = sA;
         return this;
     }
@@ -1207,61 +1207,61 @@ public class MwraModel extends BaseObservable {
     }
 
 
-    public MwraModel Sync(JSONObject jsonObject) throws JSONException {
-        this.id = jsonObject.getString(MwraContract.MwraTable.COLUMN_ID);
-        this.uid = jsonObject.getString(MwraContract.MwraTable.COLUMN_UID);
-        this.uuid = jsonObject.getString(MwraContract.MwraTable.COLUMN_UUID);
-        this.serialNo = jsonObject.getString(MwraContract.MwraTable.COLUMN_SERIAL_NO);
-        this.userName = jsonObject.getString(MwraContract.MwraTable.COLUMN_USERNAME);
-        this.sysDate = jsonObject.getString(MwraContract.MwraTable.COLUMN_SYSDATE);
-        this.districtCode = jsonObject.getString(MwraContract.MwraTable.COLUMN_DISTRICT_CODE);
-        this.districtName = jsonObject.getString(MwraContract.MwraTable.COLUMN_DISTRICT_NAME);
-        this.tehsilCode = jsonObject.getString(MwraContract.MwraTable.COLUMN_TEHSIL_CODE);
-        this.tehsilName = jsonObject.getString(MwraContract.MwraTable.COLUMN_TEHSIL_NAME);
-        this.lhwCode = jsonObject.getString(MwraContract.MwraTable.COLUMN_LHW_CODE);
-        this.lhwName = jsonObject.getString(MwraContract.MwraTable.COLUMN_LHW_NAME);
-        this.khandanNumber = jsonObject.getString(MwraContract.MwraTable.COLUMN_KHANDAN_NUMBER);
-        this.deviceId = jsonObject.getString(MwraContract.MwraTable.COLUMN_DEVICEID);
-        this.deviceTag = jsonObject.getString(MwraContract.MwraTable.COLUMN_DEVICETAGID);
-        this.appver = jsonObject.getString(MwraContract.MwraTable.COLUMN_APPVERSION);
-        this.endTime = jsonObject.getString(MwraContract.MwraTable.COLUMN_ENDINGDATETIME);
-        this.status = jsonObject.getString(MwraContract.MwraTable.COLUMN_STATUS);
-        this.synced = jsonObject.getString(MwraContract.MwraTable.COLUMN_SYNCED);
-        this.syncDate = jsonObject.getString(MwraContract.MwraTable.COLUMN_SYNCED_DATE);
+    public MWRAModel Sync(JSONObject jsonObject) throws JSONException {
+        this.id = jsonObject.getString(MWRAContract.MWRATable.COLUMN_ID);
+        this.uid = jsonObject.getString(MWRAContract.MWRATable.COLUMN_UID);
+        this.uuid = jsonObject.getString(MWRAContract.MWRATable.COLUMN_UUID);
+        this.serialNo = jsonObject.getString(MWRAContract.MWRATable.COLUMN_SERIAL_NO);
+        this.userName = jsonObject.getString(MWRAContract.MWRATable.COLUMN_USERNAME);
+        this.sysDate = jsonObject.getString(MWRAContract.MWRATable.COLUMN_SYSDATE);
+        this.districtCode = jsonObject.getString(MWRAContract.MWRATable.COLUMN_DISTRICT_CODE);
+        this.districtName = jsonObject.getString(MWRAContract.MWRATable.COLUMN_DISTRICT_NAME);
+        this.tehsilCode = jsonObject.getString(MWRAContract.MWRATable.COLUMN_TEHSIL_CODE);
+        this.tehsilName = jsonObject.getString(MWRAContract.MWRATable.COLUMN_TEHSIL_NAME);
+        this.lhwCode = jsonObject.getString(MWRAContract.MWRATable.COLUMN_LHW_CODE);
+        this.lhwName = jsonObject.getString(MWRAContract.MWRATable.COLUMN_LHW_NAME);
+        this.khandanNumber = jsonObject.getString(MWRAContract.MWRATable.COLUMN_KHANDAN_NUMBER);
+        this.deviceId = jsonObject.getString(MWRAContract.MWRATable.COLUMN_DEVICEID);
+        this.deviceTag = jsonObject.getString(MWRAContract.MWRATable.COLUMN_DEVICETAGID);
+        this.appver = jsonObject.getString(MWRAContract.MWRATable.COLUMN_APPVERSION);
+        this.endTime = jsonObject.getString(MWRAContract.MWRATable.COLUMN_ENDINGDATETIME);
+        this.status = jsonObject.getString(MWRAContract.MWRATable.COLUMN_STATUS);
+        this.synced = jsonObject.getString(MWRAContract.MWRATable.COLUMN_SYNCED);
+        this.syncDate = jsonObject.getString(MWRAContract.MWRATable.COLUMN_SYNCED_DATE);
 
-        this.sA = jsonObject.getString(MwraContract.MwraTable.COLUMN_SA);
+        this.sA = jsonObject.getString(MWRAContract.MWRATable.COLUMN_SA);
 
         return this;
 
     }
 
 
-    public MwraModel Hydrate(Cursor cursor) {
-        this.id = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_ID));
-        this.uid = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_UID));
-        this.uuid = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_UUID));
-        this.serialNo = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_SERIAL_NO));
-        this.userName = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_USERNAME));
-        this.sysDate = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_SYSDATE));
-        this.districtCode = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_DISTRICT_CODE));
-        this.districtName = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_DISTRICT_NAME));
-        this.tehsilCode = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_TEHSIL_CODE));
-        this.tehsilName = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_TEHSIL_NAME));
-        this.lhwCode = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_LHW_CODE));
-        this.lhwName = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_LHW_NAME));
-        this.khandanNumber = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_KHANDAN_NUMBER));
-        this.deviceId = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_DEVICEID));
-        this.deviceTag = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_DEVICETAGID));
-        this.appver = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_APPVERSION));
-        this.endTime = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_ENDINGDATETIME));
-        this.status = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_STATUS));
-        this.synced = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_SYNCED));
-        this.syncDate = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_SYNCED_DATE));
+    public MWRAModel Hydrate(Cursor cursor) {
+        this.id = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_ID));
+        this.uid = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_UID));
+        this.uuid = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_UUID));
+        this.serialNo = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_SERIAL_NO));
+        this.userName = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_USERNAME));
+        this.sysDate = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_SYSDATE));
+        this.districtCode = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_DISTRICT_CODE));
+        this.districtName = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_DISTRICT_NAME));
+        this.tehsilCode = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_TEHSIL_CODE));
+        this.tehsilName = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_TEHSIL_NAME));
+        this.lhwCode = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_LHW_CODE));
+        this.lhwName = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_LHW_NAME));
+        this.khandanNumber = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_KHANDAN_NUMBER));
+        this.deviceId = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_DEVICEID));
+        this.deviceTag = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_DEVICETAGID));
+        this.appver = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_APPVERSION));
+        this.endTime = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_ENDINGDATETIME));
+        this.status = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_STATUS));
+        this.synced = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_SYNCED));
+        this.syncDate = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_SYNCED_DATE));
 
         //For childCount
         //this.s01HH = cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_S01HH));
 
-        sAHydrate(cursor.getString(cursor.getColumnIndex(MwraContract.MwraTable.COLUMN_SA)));
+        sAHydrate(cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_SA)));
 
         return this;
     }
@@ -1270,7 +1270,7 @@ public class MwraModel extends BaseObservable {
     //TODO: Try this instead of toJSONObject
     @Override
     public String toString() {
-        return new GsonBuilder().create().toJson(this, MwraModel.class);
+        return new GsonBuilder().create().toJson(this, MWRAModel.class);
     }
 
     public String sAtoString() {
@@ -1370,32 +1370,32 @@ public class MwraModel extends BaseObservable {
         JSONObject json = new JSONObject();
 
         try {
-            json.put(MwraContract.MwraTable.COLUMN_ID, this.id == null ? JSONObject.NULL : this.id);
-            json.put(MwraContract.MwraTable.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
-            json.put(MwraContract.MwraTable.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
-            json.put(MwraContract.MwraTable.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
-            json.put(MwraContract.MwraTable.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
-            json.put(MwraContract.MwraTable.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
-            json.put(MwraContract.MwraTable.COLUMN_DISTRICT_CODE, this.districtCode == null ? JSONObject.NULL : this.districtCode);
-            json.put(MwraContract.MwraTable.COLUMN_DISTRICT_NAME, this.districtName == null ? JSONObject.NULL : this.districtName);
-            json.put(MwraContract.MwraTable.COLUMN_TEHSIL_CODE, this.tehsilCode == null ? JSONObject.NULL : this.tehsilCode);
-            json.put(MwraContract.MwraTable.COLUMN_TEHSIL_NAME, this.tehsilName == null ? JSONObject.NULL : this.tehsilName);
-            json.put(MwraContract.MwraTable.COLUMN_LHW_CODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
-            json.put(MwraContract.MwraTable.COLUMN_LHW_NAME, this.lhwName == null ? JSONObject.NULL : this.lhwName);
-            json.put(MwraContract.MwraTable.COLUMN_KHANDAN_NUMBER, this.khandanNumber == null ? JSONObject.NULL : this.khandanNumber);
-            json.put(MwraContract.MwraTable.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
-            json.put(MwraContract.MwraTable.COLUMN_DEVICETAGID, this.deviceTag == null ? JSONObject.NULL : this.deviceTag);
-            json.put(MwraContract.MwraTable.COLUMN_APPVERSION, this.appver == null ? JSONObject.NULL : this.appver);
-            json.put(MwraContract.MwraTable.COLUMN_ENDINGDATETIME, this.endTime == null ? JSONObject.NULL : this.endTime);
-            json.put(MwraContract.MwraTable.COLUMN_STATUS, this.status == null ? JSONObject.NULL : this.status);
-            json.put(MwraContract.MwraTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-            json.put(MwraContract.MwraTable.COLUMN_SYNCED_DATE, this.syncDate == null ? JSONObject.NULL : this.syncDate);
+            json.put(MWRAContract.MWRATable.COLUMN_ID, this.id == null ? JSONObject.NULL : this.id);
+            json.put(MWRAContract.MWRATable.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
+            json.put(MWRAContract.MWRATable.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
+            json.put(MWRAContract.MWRATable.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
+            json.put(MWRAContract.MWRATable.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
+            json.put(MWRAContract.MWRATable.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
+            json.put(MWRAContract.MWRATable.COLUMN_DISTRICT_CODE, this.districtCode == null ? JSONObject.NULL : this.districtCode);
+            json.put(MWRAContract.MWRATable.COLUMN_DISTRICT_NAME, this.districtName == null ? JSONObject.NULL : this.districtName);
+            json.put(MWRAContract.MWRATable.COLUMN_TEHSIL_CODE, this.tehsilCode == null ? JSONObject.NULL : this.tehsilCode);
+            json.put(MWRAContract.MWRATable.COLUMN_TEHSIL_NAME, this.tehsilName == null ? JSONObject.NULL : this.tehsilName);
+            json.put(MWRAContract.MWRATable.COLUMN_LHW_CODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
+            json.put(MWRAContract.MWRATable.COLUMN_LHW_NAME, this.lhwName == null ? JSONObject.NULL : this.lhwName);
+            json.put(MWRAContract.MWRATable.COLUMN_KHANDAN_NUMBER, this.khandanNumber == null ? JSONObject.NULL : this.khandanNumber);
+            json.put(MWRAContract.MWRATable.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
+            json.put(MWRAContract.MWRATable.COLUMN_DEVICETAGID, this.deviceTag == null ? JSONObject.NULL : this.deviceTag);
+            json.put(MWRAContract.MWRATable.COLUMN_APPVERSION, this.appver == null ? JSONObject.NULL : this.appver);
+            json.put(MWRAContract.MWRATable.COLUMN_ENDINGDATETIME, this.endTime == null ? JSONObject.NULL : this.endTime);
+            json.put(MWRAContract.MWRATable.COLUMN_STATUS, this.status == null ? JSONObject.NULL : this.status);
+            json.put(MWRAContract.MWRATable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+            json.put(MWRAContract.MWRATable.COLUMN_SYNCED_DATE, this.syncDate == null ? JSONObject.NULL : this.syncDate);
 
-            json.put(MwraContract.MwraTable.COLUMN_SA, new JSONObject(sAtoString()));
+            json.put(MWRAContract.MWRATable.COLUMN_SA, new JSONObject(sAtoString()));
 
 
             if (this.sA != null && !this.sA.equals("")) {
-                json.put(MwraContract.MwraTable.COLUMN_SA, new JSONObject(this.sA));
+                json.put(MWRAContract.MWRATable.COLUMN_SA, new JSONObject(this.sA));
             }
 
             return json;

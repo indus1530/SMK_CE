@@ -13,11 +13,11 @@ import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Clear
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
-import edu.aku.hassannaqvi.smk_ce.contracts.AdolescentContract
+import edu.aku.hassannaqvi.smk_ce.contracts.ADOLContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
-import edu.aku.hassannaqvi.smk_ce.core.MainApp.adolescent
+import edu.aku.hassannaqvi.smk_ce.core.MainApp.adol
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection04Binding
-import edu.aku.hassannaqvi.smk_ce.models.AdolescentModel
+import edu.aku.hassannaqvi.smk_ce.models.ADOLModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
@@ -70,12 +70,12 @@ class Section04Activity : AppCompatActivity() {
 
     private fun updateDB(): Boolean {
         val db = MainApp.appInfo.dbHelper
-        val updcount = db.addAdolscent(adolescent)
+        val updcount = db.addAdolscent(adol)
         return if (updcount > 0) {
-            adolescent.id = updcount.toString()
-            adolescent.uid = adolescent.deviceId + adolescent.id
-            var count = db.updatesAdoleColumn(AdolescentContract.AdolescentTable.COLUMN_UID, adolescent.uid)
-            if (count > 0) count = db.updatesAdoleColumn(AdolescentContract.AdolescentTable.COLUMN_SA, adolescent.sAtoString())
+            adol.id = updcount.toString()
+            adol.uid = adol.deviceId + adol.id
+            var count = db.updatesAdoleColumn(ADOLContract.ADOLTable.COLUMN_UID, adol.uid)
+            if (count > 0) count = db.updatesAdoleColumn(ADOLContract.ADOLTable.COLUMN_SA, adol.sAtoString())
             if (count > 0) true else {
                 Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
                 false
@@ -101,148 +101,148 @@ class Section04Activity : AppCompatActivity() {
 
     private fun saveDraft() {
 
-        adolescent = AdolescentModel()
-        adolescent.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
-        adolescent.uuid = MainApp.form.uid
-        adolescent.userName = MainApp.user.userName
-        adolescent.districtCode = MainApp.form.districtCode
-        adolescent.districtName = MainApp.form.districtName
-        adolescent.tehsilCode = MainApp.form.tehsilCode
-        adolescent.tehsilName = MainApp.form.tehsilName
-        adolescent.lhwCode = MainApp.form.lhwCode
-        adolescent.lhwName = MainApp.form.lhwName
-        adolescent.khandanNumber = MainApp.form.khandanNumber
-        adolescent.deviceId = MainApp.appInfo.deviceID
-        adolescent.deviceTag = MainApp.appInfo.tagName
-        adolescent.appver = MainApp.appInfo.appVersion
+        adol = ADOLModel()
+        adol.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
+        adol.uuid = MainApp.form.uid
+        adol.userName = MainApp.user.userName
+        adol.districtCode = MainApp.form.districtCode
+        adol.districtName = MainApp.form.districtName
+        adol.tehsilCode = MainApp.form.tehsilCode
+        adol.tehsilName = MainApp.form.tehsilName
+        adol.lhwCode = MainApp.form.lhwCode
+        adol.lhwName = MainApp.form.lhwName
+        adol.khandanNumber = MainApp.form.khandanNumber
+        adol.deviceId = MainApp.appInfo.deviceID
+        adol.deviceTag = MainApp.appInfo.tagName
+        adol.appver = MainApp.appInfo.appVersion
 
-        adolescent.adol01 = when {
+        adol.adol01 = when {
             bi.adol01.text.toString().trim().isNotEmpty() -> bi.adol01.text.toString()
             else -> "-1"
         }
 
-        adolescent.adol02 = when {
+        adol.adol02 = when {
             bi.adol02.text.toString().trim().isNotEmpty() -> bi.adol02.text.toString()
             else -> "-1"
         }
 
-        adolescent.adol03 = when {
+        adol.adol03 = when {
             bi.adol03a.isChecked -> "1"
             bi.adol03b.isChecked -> "2"
             else -> "-1"
         }
 
-        adolescent.adol04a = if (bi.adol04a.isChecked) "1" else "-1"
-        adolescent.adol04b = if (bi.adol04b.isChecked) "2" else "-1"
-        adolescent.adol04c = if (bi.adol04c.isChecked) "3" else "-1"
-        adolescent.adol04d = if (bi.adol04d.isChecked) "4" else "-1"
-        adolescent.adol04e = if (bi.adol04e.isChecked) "5" else "-1"
-        adolescent.adol04f = if (bi.adol04f.isChecked) "6" else "-1"
-        adolescent.adol04g = if (bi.adol04g.isChecked) "7" else "-1"
-        adolescent.adol04h = if (bi.adol04h.isChecked) "8" else "-1"
-        adolescent.adol0496 = if (bi.adol0496.isChecked) "96" else "-1"
+        adol.adol04a = if (bi.adol04a.isChecked) "1" else "-1"
+        adol.adol04b = if (bi.adol04b.isChecked) "2" else "-1"
+        adol.adol04c = if (bi.adol04c.isChecked) "3" else "-1"
+        adol.adol04d = if (bi.adol04d.isChecked) "4" else "-1"
+        adol.adol04e = if (bi.adol04e.isChecked) "5" else "-1"
+        adol.adol04f = if (bi.adol04f.isChecked) "6" else "-1"
+        adol.adol04g = if (bi.adol04g.isChecked) "7" else "-1"
+        adol.adol04h = if (bi.adol04h.isChecked) "8" else "-1"
+        adol.adol0496 = if (bi.adol0496.isChecked) "96" else "-1"
 
-        adolescent.adol0496x = when {
+        adol.adol0496x = when {
             bi.adol0496x.text.toString().trim().isNotEmpty() -> bi.adol0496x.text.toString()
             else -> "-1"
         }
 
-        adolescent.adol05 = when {
+        adol.adol05 = when {
             bi.adol05a.isChecked -> "1"
             bi.adol05b.isChecked -> "2"
             else -> "-1"
         }
 
-        adolescent.adol06a = if (bi.adol06a.isChecked) "1" else "-1"
-        adolescent.adol06b = if (bi.adol06b.isChecked) "2" else "-1"
-        adolescent.adol06c = if (bi.adol06c.isChecked) "3" else "-1"
-        adolescent.adol06d = if (bi.adol06d.isChecked) "4" else "-1"
-        adolescent.adol0696 = if (bi.adol0696.isChecked) "96" else "-1"
+        adol.adol06a = if (bi.adol06a.isChecked) "1" else "-1"
+        adol.adol06b = if (bi.adol06b.isChecked) "2" else "-1"
+        adol.adol06c = if (bi.adol06c.isChecked) "3" else "-1"
+        adol.adol06d = if (bi.adol06d.isChecked) "4" else "-1"
+        adol.adol0696 = if (bi.adol0696.isChecked) "96" else "-1"
 
-        adolescent.adol0696x = when {
+        adol.adol0696x = when {
             bi.adol0696x.text.toString().trim().isNotEmpty() -> bi.adol0696x.text.toString()
             else -> "-1"
         }
 
-        adolescent.adol07 = when {
+        adol.adol07 = when {
             bi.adol07a.isChecked -> "1"
             bi.adol07b.isChecked -> "2"
             else -> "-1"
         }
 
-        adolescent.adol08 = when {
+        adol.adol08 = when {
             bi.adol08a.isChecked -> "1"
             bi.adol08b.isChecked -> "2"
             else -> "-1"
         }
 
-        adolescent.adol09 = when {
+        adol.adol09 = when {
             bi.adol09a.isChecked -> "1"
             bi.adol09b.isChecked -> "2"
             else -> "-1"
         }
 
-        adolescent.adol10a = if (bi.adol10a.isChecked) "1" else "-1"
-        adolescent.adol10b = if (bi.adol10b.isChecked) "2" else "-1"
-        adolescent.adol10c = if (bi.adol10c.isChecked) "3" else "-1"
-        adolescent.adol10d = if (bi.adol10d.isChecked) "4" else "-1"
-        adolescent.adol10e = if (bi.adol10e.isChecked) "5" else "-1"
-        adolescent.adol10f = if (bi.adol10f.isChecked) "6" else "-1"
-        adolescent.adol10g = if (bi.adol10g.isChecked) "7" else "-1"
-        adolescent.adol10h = if (bi.adol10h.isChecked) "8" else "-1"
-        adolescent.adol10i = if (bi.adol10i.isChecked) "9" else "-1"
-        adolescent.adol10j = if (bi.adol10j.isChecked) "10" else "-1"
-        adolescent.adol1096 = if (bi.adol1096.isChecked) "96" else "-1"
+        adol.adol10a = if (bi.adol10a.isChecked) "1" else "-1"
+        adol.adol10b = if (bi.adol10b.isChecked) "2" else "-1"
+        adol.adol10c = if (bi.adol10c.isChecked) "3" else "-1"
+        adol.adol10d = if (bi.adol10d.isChecked) "4" else "-1"
+        adol.adol10e = if (bi.adol10e.isChecked) "5" else "-1"
+        adol.adol10f = if (bi.adol10f.isChecked) "6" else "-1"
+        adol.adol10g = if (bi.adol10g.isChecked) "7" else "-1"
+        adol.adol10h = if (bi.adol10h.isChecked) "8" else "-1"
+        adol.adol10i = if (bi.adol10i.isChecked) "9" else "-1"
+        adol.adol10j = if (bi.adol10j.isChecked) "10" else "-1"
+        adol.adol1096 = if (bi.adol1096.isChecked) "96" else "-1"
 
-        adolescent.adol1096x = when {
+        adol.adol1096x = when {
             bi.adol1096x.text.toString().trim().isNotEmpty() -> bi.adol1096x.text.toString()
             else -> "-1"
         }
 
-        adolescent.adol11 = when {
+        adol.adol11 = when {
             bi.adol11a.isChecked -> "1"
             bi.adol11b.isChecked -> "2"
             bi.adol1196.isChecked -> "96"
             else -> "-1"
         }
 
-        adolescent.adol1196x = when {
+        adol.adol1196x = when {
             bi.adol1196x.text.toString().trim().isNotEmpty() -> bi.adol1196x.text.toString()
             else -> "-1"
         }
 
-        adolescent.adol12a = if (bi.adol12a.isChecked) "1" else "-1"
-        adolescent.adol12b = if (bi.adol12b.isChecked) "2" else "-1"
-        adolescent.adol12c = if (bi.adol12c.isChecked) "3" else "-1"
-        adolescent.adol12d = if (bi.adol12d.isChecked) "4" else "-1"
-        adolescent.adol1296 = if (bi.adol1296.isChecked) "96" else "-1"
+        adol.adol12a = if (bi.adol12a.isChecked) "1" else "-1"
+        adol.adol12b = if (bi.adol12b.isChecked) "2" else "-1"
+        adol.adol12c = if (bi.adol12c.isChecked) "3" else "-1"
+        adol.adol12d = if (bi.adol12d.isChecked) "4" else "-1"
+        adol.adol1296 = if (bi.adol1296.isChecked) "96" else "-1"
 
-        adolescent.adol1296x = when {
+        adol.adol1296x = when {
             bi.adol1296x.text.toString().trim().isNotEmpty() -> bi.adol1296x.text.toString()
             else -> "-1"
         }
 
-        adolescent.adol13 = when {
+        adol.adol13 = when {
             bi.adol13a.isChecked -> "1"
             bi.adol13b.isChecked -> "2"
             else -> "-1"
         }
 
-        adolescent.adol14 = when {
+        adol.adol14 = when {
             bi.adol14a.isChecked -> "1"
             bi.adol14b.isChecked -> "2"
             bi.adol14c.isChecked -> "98"
             else -> "-1"
         }
 
-        adolescent.adol15a = if (bi.adol15a.isChecked) "1" else "-1"
-        adolescent.adol15b = if (bi.adol15b.isChecked) "2" else "-1"
-        adolescent.adol15c = if (bi.adol15c.isChecked) "3" else "-1"
-        adolescent.adol15d = if (bi.adol15d.isChecked) "4" else "-1"
-        adolescent.adol15e = if (bi.adol15e.isChecked) "98" else "-1"
-        adolescent.adol1596 = if (bi.adol1596.isChecked) "96" else "-1"
+        adol.adol15a = if (bi.adol15a.isChecked) "1" else "-1"
+        adol.adol15b = if (bi.adol15b.isChecked) "2" else "-1"
+        adol.adol15c = if (bi.adol15c.isChecked) "3" else "-1"
+        adol.adol15d = if (bi.adol15d.isChecked) "4" else "-1"
+        adol.adol15e = if (bi.adol15e.isChecked) "98" else "-1"
+        adol.adol1596 = if (bi.adol1596.isChecked) "96" else "-1"
 
-        adolescent.adol1596x = when {
+        adol.adol1596x = when {
             bi.adol1596x.text.toString().trim().isNotEmpty() -> bi.adol1596x.text.toString()
             else -> "-1"
         }

@@ -56,24 +56,17 @@ public class Form extends BaseObservable implements Observable {
     private LocalDate localDate = null;
     private boolean exist = false;
 
-
     // FIELD VARIABLES
     //L H W and HouseHold Information
-    private String lhw01 = StringUtils.EMPTY;
-    private String lhw02 = StringUtils.EMPTY;
-    private String lhw03 = StringUtils.EMPTY;
-    private String lhw04 = StringUtils.EMPTY;
-    private String lhw04sno = StringUtils.EMPTY;
-    private String hhi01 = StringUtils.EMPTY;
-    private String hhi02 = StringUtils.EMPTY;
-    private String hhi03 = StringUtils.EMPTY;
-    private String hhi04a = StringUtils.EMPTY;
-    private String hhi04b = StringUtils.EMPTY;
-    private String hhi04c = StringUtils.EMPTY;
-    private String hhi04d = StringUtils.EMPTY;
-    private String hhi04e = StringUtils.EMPTY;
-    private String hhi04f = StringUtils.EMPTY;
-    private String lhwphoto = StringUtils.EMPTY;
+    private String hhv01 = StringUtils.EMPTY;
+    private String hhv02a = StringUtils.EMPTY;
+    private String hhv02b = StringUtils.EMPTY;
+    private String hhv02c = StringUtils.EMPTY;
+    private String hhv02d = StringUtils.EMPTY;
+    private String hhv02e = StringUtils.EMPTY;
+    private String hhv02f = StringUtils.EMPTY;
+    private String hhv02g = StringUtils.EMPTY;
+    private String hhv03 = StringUtils.EMPTY;
 
     // V H C
     private String vhc01 = StringUtils.EMPTY;
@@ -360,56 +353,95 @@ public class Form extends BaseObservable implements Observable {
         notifyPropertyChanged(BR.iStatus96x);
     }
 
-    @Bindable
-    public String getLhw01() {
-        return lhw01;
-    }
-
-    public void setLhw01(String lhw01) {
-        this.lhw01 = lhw01;
-        notifyPropertyChanged(BR.lhw01);
-    }
 
     @Bindable
-    public String getLhw02() {
-        return lhw02;
+    public String getHhv01() {
+        return hhv01;
     }
 
-    public void setLhw02(String lhw02) {
-        this.lhw02 = lhw02;
-        notifyPropertyChanged(BR.lhw02);
+    public void setHhv01(String hhv01) {
+        this.hhv01 = hhv01;
+        notifyPropertyChanged(BR.hhv01);
     }
 
     @Bindable
-    public String getLhw03() {
-        return lhw03;
+    public String getHhv02a() {
+        return hhv02a;
     }
 
-    public void setLhw03(String lhw03) {
-        this.lhw03 = lhw03;
-        notifyPropertyChanged(BR.lhw03);
+    public void setHhv02a(String hhv02a) {
+        this.hhv02a = hhv02a;
+        notifyPropertyChanged(BR.hhv02a);
     }
 
     @Bindable
-    public String getLhw04() {
-        return lhw04;
+    public String getHhv02b() {
+        return hhv02b;
     }
 
-    public void setLhw04(String lhw04) {
-        this.lhw04 = lhw04;
-        notifyPropertyChanged(BR.lhw04);
+    public void setHhv02b(String hhv02b) {
+        this.hhv02b = hhv02b;
+        notifyPropertyChanged(BR.hhv02b);
     }
-
-
 
     @Bindable
-    public String getLhwphoto() {
-        return lhwphoto;
+    public String getHhv02c() {
+        return hhv02c;
     }
 
-    public void setLhwphoto(String lhwphoto) {
-        this.lhwphoto = lhwphoto;
-        notifyPropertyChanged(BR.lhwphoto);
+    public void setHhv02c(String hhv02c) {
+        this.hhv02c = hhv02c;
+        notifyPropertyChanged(BR.hhv02c);
+    }
+
+    @Bindable
+    public String getHhv02d() {
+        return hhv02d;
+    }
+
+    public void setHhv02d(String hhv02d) {
+        this.hhv02d = hhv02d;
+        notifyPropertyChanged(BR.hhv02d);
+    }
+
+    @Bindable
+    public String getHhv02e() {
+        return hhv02e;
+    }
+
+    public void setHhv02e(String hhv02e) {
+        this.hhv02e = hhv02e;
+        notifyPropertyChanged(BR.hhv02e);
+    }
+
+    @Bindable
+    public String getHhv02f() {
+        return hhv02f;
+    }
+
+    public void setHhv02f(String hhv02f) {
+        this.hhv02f = hhv02f;
+        notifyPropertyChanged(BR.hhv02f);
+    }
+
+    @Bindable
+    public String getHhv02g() {
+        return hhv02g;
+    }
+
+    public void setHhv02g(String hhv02g) {
+        this.hhv02g = hhv02g;
+        notifyPropertyChanged(BR.hhv02g);
+    }
+
+    @Bindable
+    public String getHhv03() {
+        return hhv03;
+    }
+
+    public void setHhv03(String hhv03) {
+        this.hhv03 = hhv03;
+        notifyPropertyChanged(BR.hhv03);
     }
 
 
@@ -665,12 +697,16 @@ public class Form extends BaseObservable implements Observable {
         JSONObject json = new JSONObject();
 
         try {
-            json.put("lhw01", lhw01)
-                    .put("lhw02", lhw02)
-                    .put("lhw03", lhw03)
-                    .put("lhw04", lhw04)
-                    .put("lhw04sno", lhw04sno)
-                    .put("lhwphoto", lhwphoto);
+            json.put("hhv01", hhv01)
+                    .put("hhv02a", hhv02a)
+                    .put("hhv02b", hhv02b)
+                    .put("hhv02c", hhv02c)
+                    .put("hhv02d", hhv02d)
+                    .put("hhv02e", hhv02e)
+                    .put("hhv02f", hhv02f)
+                    .put("hhv02g", hhv02g)
+                    .put("hhv03", hhv03);
+
         } catch (JSONException e) {
             e.printStackTrace();
             return "\"error\":, \"" + e.getMessage() + "\"";
@@ -762,12 +798,15 @@ public class Form extends BaseObservable implements Observable {
             try {
                 JSONObject json = null;
                 json = new JSONObject(string);
-                this.lhw01 = json.getString("lhw01");
-                this.lhw02 = json.getString("lhw02");
-                this.lhw03 = json.getString("lhw03");
-                this.lhw04 = json.getString("lhw04");
-                this.lhw04sno = json.getString("lhw04sno");
-                this.lhwphoto = json.getString("lhwphoto");
+                this.hhv01 = json.getString("hhv01");
+                this.hhv02a = json.getString("hhv02a");
+                this.hhv02b = json.getString("hhv02b");
+                this.hhv02c = json.getString("hhv02c");
+                this.hhv02d = json.getString("hhv02d");
+                this.hhv02e = json.getString("hhv02e");
+                this.hhv02f = json.getString("hhv02f");
+                this.hhv02g = json.getString("hhv02g");
+                this.hhv03 = json.getString("hhv03");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -804,16 +843,6 @@ public class Form extends BaseObservable implements Observable {
                 e.printStackTrace();
             }
         }
-    }
-
-    @Bindable
-    public String getLhw04sno() {
-        return lhw04sno;
-    }
-
-    public void setLhw04sno(String lhw04sno) {
-        this.lhw04sno = lhw04sno;
-        notifyChange(BR.lhw04sno);
     }
 
     private synchronized void notifyChange(int propertyId) {

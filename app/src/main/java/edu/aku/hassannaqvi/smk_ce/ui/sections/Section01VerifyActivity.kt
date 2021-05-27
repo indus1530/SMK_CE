@@ -8,13 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
-import edu.aku.hassannaqvi.smk_ce.contracts.HHVerifyContract
+import edu.aku.hassannaqvi.smk_ce.contracts.LHWContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.form
-import edu.aku.hassannaqvi.smk_ce.core.MainApp.hhverify
+import edu.aku.hassannaqvi.smk_ce.core.MainApp.lhw
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01VerifyBinding
-import edu.aku.hassannaqvi.smk_ce.models.HHVerifyModel
+import edu.aku.hassannaqvi.smk_ce.models.Form
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
@@ -53,77 +53,77 @@ class Section01VerifyActivity : AppCompatActivity() {
 
 
     private fun saveDraft() {
-        hhverify = HHVerifyModel()
-        hhverify.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
-        hhverify.uuid = form.uid
-        hhverify.userName = MainApp.user.userName
-        hhverify.districtCode = form.districtCode
-        hhverify.districtName = form.districtName
-        hhverify.tehsilCode = form.tehsilCode
-        hhverify.tehsilName = form.tehsilName
-        hhverify.lhwCode = form.lhwCode
-        hhverify.lhwName = form.lhwName
-        hhverify.khandanNumber = form.khandanNumber
-        hhverify.deviceId = MainApp.appInfo.deviceID
-        hhverify.deviceTag = MainApp.appInfo.tagName
-        hhverify.appver = MainApp.appInfo.appVersion
+        form = Form()
+        form.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
+        //form.uuid = form.uid
+        form.userName = MainApp.user.userName
+        form.districtCode = form.districtCode
+        form.districtName = form.districtName
+        form.tehsilCode = form.tehsilCode
+        form.tehsilName = form.tehsilName
+        form.lhwCode = form.lhwCode
+        form.lhwName = form.lhwName
+        form.khandanNumber = form.khandanNumber
+        form.deviceId = MainApp.appInfo.deviceID
+        form.deviceTag = MainApp.appInfo.tagName
+        form.appver = MainApp.appInfo.appVersion
 
-        hhverify.hhv01 = when {
+        form.hhv01 = when {
             bi.hhv01.text.toString().trim().isNotEmpty() -> bi.hhv01.text.toString()
             else -> "-1"
         }
 
-        hhverify.hhv02a = when {
+        form.hhv02a = when {
             bi.hhv02a.text.toString().trim().isNotEmpty() -> bi.hhv02a.text.toString()
             else -> "-1"
         }
 
-        hhverify.hhv02b = when {
+        form.hhv02b = when {
             bi.hhv02b.text.toString().trim().isNotEmpty() -> bi.hhv02b.text.toString()
             else -> "-1"
         }
 
-        hhverify.hhv02c = when {
+        form.hhv02c = when {
             bi.hhv02c.text.toString().trim().isNotEmpty() -> bi.hhv02c.text.toString()
             else -> "-1"
         }
 
-        hhverify.hhv02d = when {
+        form.hhv02d = when {
             bi.hhv02d.text.toString().trim().isNotEmpty() -> bi.hhv02d.text.toString()
             else -> "-1"
         }
 
-        hhverify.hhv02e = when {
+        form.hhv02e = when {
             bi.hhv02e.text.toString().trim().isNotEmpty() -> bi.hhv02e.text.toString()
             else -> "-1"
         }
 
-        hhverify.hhv02f = when {
+        form.hhv02f = when {
             bi.hhv02f.text.toString().trim().isNotEmpty() -> bi.hhv02f.text.toString()
             else -> "-1"
         }
 
-        hhverify.hhv02g = when {
+        form.hhv02g = when {
             bi.hhv02g.text.toString().trim().isNotEmpty() -> bi.hhv02g.text.toString()
             else -> "-1"
         }
 
-        hhverify.hhv03 = when {
+        form.hhv03 = when {
             bi.hhv03a.isChecked -> "1"
             bi.hhv03b.isChecked -> "2"
             else -> "-1"
         }
-        hhverify.setsA(hhverify.sAtoString());
+        form.setsA(form.sAtoString())
     }
 
     private fun updateDB(): Boolean {
         val db = MainApp.appInfo.dbHelper
-        val rowId = db.addHHVerify(hhverify)
+        val rowId = db.addHHVerify(lhw)
         return if (rowId > 0) {
-            hhverify.id = rowId.toString()
-            hhverify.uid = hhverify.deviceId + hhverify.id
-            var count = db.updatesHHVerifyColumn(HHVerifyContract.HHVerifyTable.COLUMN_UID, hhverify.uid)
-           true
+            lhw.id = rowId.toString()
+            lhw.uid = lhw.deviceId + lhw.id
+            var count = db.updatesHHVerifyColumn(LHWContract.LHWTable.COLUMN_UID, lhw.uid)
+            true
         } else {
             Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
             false

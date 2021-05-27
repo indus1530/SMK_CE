@@ -14,11 +14,11 @@ import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.form
-import edu.aku.hassannaqvi.smk_ce.core.MainApp.genRandNum
+import edu.aku.hassannaqvi.smk_ce.core.MainApp.lhw
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01Binding
 import edu.aku.hassannaqvi.smk_ce.models.Districts
-import edu.aku.hassannaqvi.smk_ce.models.Form
+import edu.aku.hassannaqvi.smk_ce.models.LHWModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
@@ -117,7 +117,7 @@ class Section01Activity : AppCompatActivity() {
         if (!formValidation()) return
         saveDraft()
         if (updateDB()) {
-            MainApp.randHHNoIndex = 0;
+            MainApp.randHHNoIndex = 0
             finish()
             startActivity(Intent(this, Section01IdentifyActivity::class.java))
         } else {
@@ -130,42 +130,42 @@ class Section01Activity : AppCompatActivity() {
 
         MainApp.genRandNum(bi.lhw04.text.toString().toInt())
 
-        form = Form()
-        form.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
-        form.userName = MainApp.user.userName
-        form.districtCode = bi.lhw01.selectedItem.toString()
-        form.districtName = bi.lhw01.selectedItem.toString()
-        form.tehsilCode = bi.lhw02.selectedItem.toString()
-        form.tehsilName = bi.lhw02.selectedItem.toString()
-        form.lhwCode = bi.lhw03.selectedItem.toString()
-        form.lhwName = bi.lhw03.selectedItem.toString()
+        lhw = LHWModel()
+        lhw.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
+        lhw.userName = MainApp.user.userName
+        lhw.districtCode = bi.lhw01.selectedItem.toString()
+        lhw.districtName = bi.lhw01.selectedItem.toString()
+        lhw.tehsilCode = bi.lhw02.selectedItem.toString()
+        lhw.tehsilName = bi.lhw02.selectedItem.toString()
+        lhw.lhwCode = bi.lhw03.selectedItem.toString()
+        lhw.lhwName = bi.lhw03.selectedItem.toString()
 
         /*form.khandanNumber = when {
             bi.hhi02.text.toString().trim().isNotEmpty() -> bi.hhi02.text.toString()
             else -> "-1"
         }*/
 
-        form.deviceId = MainApp.appInfo.deviceID
-        form.deviceTag = MainApp.appInfo.tagName
-        form.appver = MainApp.appInfo.appVersion
+        lhw.deviceId = MainApp.appInfo.deviceID
+        lhw.deviceTag = MainApp.appInfo.tagName
+        lhw.appver = MainApp.appInfo.appVersion
 
-        form.lhw01 = bi.lhw01.selectedItem.toString()
-        form.lhw02 = bi.lhw02.selectedItem.toString()
-        form.lhw03 = bi.lhw03.selectedItem.toString()
+        lhw.lhw01 = bi.lhw01.selectedItem.toString()
+        lhw.lhw02 = bi.lhw02.selectedItem.toString()
+        lhw.lhw03 = bi.lhw03.selectedItem.toString()
 
-        form.lhw04 = when {
+        lhw.lhw04 = when {
             bi.lhw04.text.toString().trim().isNotEmpty() -> bi.lhw04.text.toString()
             else -> "-1"
         }
 
-        form.lhw04sno = MainApp.randHHNo.toString();
-        Toast.makeText(this, "Rand HHNo: "+form.lhw04sno, Toast.LENGTH_SHORT).show()
+        lhw.lhw04sno = MainApp.randHHNo.toString()
+        Toast.makeText(this, "Rand HHNo: " + lhw.lhw04sno, Toast.LENGTH_SHORT).show()
 
-        form.lhwphoto = when {
+        lhw.lhwphoto = when {
             bi.lhwphoto.text.toString().trim().isNotEmpty() -> bi.lhwphoto.text.toString()
             else -> "-1"
         }
-        form.setsA(form.sAtoString())
+        lhw.setsA(lhw.sAtoString())
     }
 
 

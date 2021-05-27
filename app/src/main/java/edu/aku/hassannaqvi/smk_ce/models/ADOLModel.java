@@ -13,12 +13,12 @@ import org.json.JSONObject;
 import org.threeten.bp.LocalDate;
 
 import edu.aku.hassannaqvi.smk_ce.BR;
-import edu.aku.hassannaqvi.smk_ce.contracts.AdolescentContract;
+import edu.aku.hassannaqvi.smk_ce.contracts.ADOLContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 
-public class AdolescentModel extends BaseObservable {
+public class ADOLModel extends BaseObservable {
 
-    private final String TAG = "AdolescentModel";
+    private final String TAG = "ADOLModel";
 
     // APP VARIABLES
     private String projectName = MainApp.PROJECT_NAME;
@@ -117,7 +117,7 @@ public class AdolescentModel extends BaseObservable {
     private String adol1596x = StringUtils.EMPTY;
 
 
-    public AdolescentModel() {
+    public ADOLModel() {
     }
 
     public boolean isExist() {
@@ -176,7 +176,7 @@ public class AdolescentModel extends BaseObservable {
         return uid;
     }
 
-    public AdolescentModel setUid(String uid) {
+    public ADOLModel setUid(String uid) {
         this.uid = uid;
         return this;
     }
@@ -187,7 +187,7 @@ public class AdolescentModel extends BaseObservable {
         return uuid;
     }
 
-    public AdolescentModel setUuid(String uuid) {
+    public ADOLModel setUuid(String uuid) {
         this.uuid = uuid;
         return this;
     }
@@ -198,7 +198,7 @@ public class AdolescentModel extends BaseObservable {
         return serialNo;
     }
 
-    public AdolescentModel setSerialNo(String serialNo) {
+    public ADOLModel setSerialNo(String serialNo) {
         this.serialNo = serialNo;
         return this;
     }
@@ -209,7 +209,7 @@ public class AdolescentModel extends BaseObservable {
         return userName;
     }
 
-    public AdolescentModel setUserName(String userName) {
+    public ADOLModel setUserName(String userName) {
         this.userName = userName;
         return this;
     }
@@ -219,7 +219,7 @@ public class AdolescentModel extends BaseObservable {
         return districtCode;
     }
 
-    public AdolescentModel setDistrictCode(String districtCode) {
+    public ADOLModel setDistrictCode(String districtCode) {
         this.districtCode = districtCode;
         return this;
     }
@@ -230,7 +230,7 @@ public class AdolescentModel extends BaseObservable {
         return districtName;
     }
 
-    public AdolescentModel setDistrictName(String districtName) {
+    public ADOLModel setDistrictName(String districtName) {
         this.districtName = districtName;
         return this;
     }
@@ -241,7 +241,7 @@ public class AdolescentModel extends BaseObservable {
         return tehsilCode;
     }
 
-    public AdolescentModel setTehsilCode(String tehsilCode) {
+    public ADOLModel setTehsilCode(String tehsilCode) {
         this.tehsilCode = tehsilCode;
         return this;
     }
@@ -252,7 +252,7 @@ public class AdolescentModel extends BaseObservable {
         return tehsilName;
     }
 
-    public AdolescentModel setTehsilName(String tehsilName) {
+    public ADOLModel setTehsilName(String tehsilName) {
         this.tehsilName = tehsilName;
         return this;
     }
@@ -263,7 +263,7 @@ public class AdolescentModel extends BaseObservable {
         return lhwCode;
     }
 
-    public AdolescentModel setLhwCode(String lhwCode) {
+    public ADOLModel setLhwCode(String lhwCode) {
         this.lhwCode = lhwCode;
         return this;
     }
@@ -274,7 +274,7 @@ public class AdolescentModel extends BaseObservable {
         return lhwName;
     }
 
-    public AdolescentModel setLhwName(String lhwName) {
+    public ADOLModel setLhwName(String lhwName) {
         this.lhwName = lhwName;
         return this;
     }
@@ -285,7 +285,7 @@ public class AdolescentModel extends BaseObservable {
         return khandanNumber;
     }
 
-    public AdolescentModel setKhandanNumber(String khandanNumber) {
+    public ADOLModel setKhandanNumber(String khandanNumber) {
         this.khandanNumber = khandanNumber;
         return this;
     }
@@ -296,7 +296,7 @@ public class AdolescentModel extends BaseObservable {
         return deviceId;
     }
 
-    public AdolescentModel setDeviceId(String deviceId) {
+    public ADOLModel setDeviceId(String deviceId) {
         this.deviceId = deviceId;
         return this;
     }
@@ -306,7 +306,7 @@ public class AdolescentModel extends BaseObservable {
         return deviceTag;
     }
 
-    public AdolescentModel setDeviceTag(String deviceTag) {
+    public ADOLModel setDeviceTag(String deviceTag) {
         this.deviceTag = deviceTag;
         return this;
     }
@@ -316,7 +316,7 @@ public class AdolescentModel extends BaseObservable {
         return appver;
     }
 
-    public AdolescentModel setAppver(String appver) {
+    public ADOLModel setAppver(String appver) {
         this.appver = appver;
         return this;
     }
@@ -326,7 +326,7 @@ public class AdolescentModel extends BaseObservable {
         return sysDate;
     }
 
-    public AdolescentModel setSysDate(String sysDate) {
+    public ADOLModel setSysDate(String sysDate) {
         this.sysDate = sysDate;
         return this;
     }
@@ -336,7 +336,7 @@ public class AdolescentModel extends BaseObservable {
         return endTime;
     }
 
-    public AdolescentModel setEndTime(String endTime) {
+    public ADOLModel setEndTime(String endTime) {
         this.endTime = endTime;
         return this;
     }
@@ -346,7 +346,7 @@ public class AdolescentModel extends BaseObservable {
         return synced;
     }
 
-    public AdolescentModel setSynced(String synced) {
+    public ADOLModel setSynced(String synced) {
         this.synced = synced;
         return this;
     }
@@ -356,7 +356,7 @@ public class AdolescentModel extends BaseObservable {
         return syncDate;
     }
 
-    public AdolescentModel setSyncDate(String syncDate) {
+    public ADOLModel setSyncDate(String syncDate) {
         this.syncDate = syncDate;
         return this;
     }
@@ -366,7 +366,7 @@ public class AdolescentModel extends BaseObservable {
         return sA;
     }
 
-    public AdolescentModel setsA(String sA) {
+    public ADOLModel setsA(String sA) {
         this.sA = sA;
         return this;
     }
@@ -953,61 +953,61 @@ public class AdolescentModel extends BaseObservable {
     }
 
 
-    public AdolescentModel Sync(JSONObject jsonObject) throws JSONException {
-        this.id = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_ID);
-        this.uid = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_UID);
-        this.uuid = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_UUID);
-        this.serialNo = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_SERIAL_NO);
-        this.userName = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_USERNAME);
-        this.sysDate = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_SYSDATE);
-        this.districtCode = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_DISTRICT_CODE);
-        this.districtName = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_DISTRICT_NAME);
-        this.tehsilCode = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_TEHSIL_CODE);
-        this.tehsilName = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_TEHSIL_NAME);
-        this.lhwCode = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_LHW_CODE);
-        this.lhwName = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_LHW_NAME);
-        this.khandanNumber = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_KHANDAN_NUMBER);
-        this.deviceId = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_DEVICEID);
-        this.deviceTag = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_DEVICETAGID);
-        this.appver = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_APPVERSION);
-        this.endTime = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_ENDINGDATETIME);
-        this.status = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_STATUS);
-        this.synced = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_SYNCED);
-        this.syncDate = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_SYNCED_DATE);
+    public ADOLModel Sync(JSONObject jsonObject) throws JSONException {
+        this.id = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_ID);
+        this.uid = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_UID);
+        this.uuid = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_UUID);
+        this.serialNo = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_SERIAL_NO);
+        this.userName = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_USERNAME);
+        this.sysDate = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_SYSDATE);
+        this.districtCode = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_DISTRICT_CODE);
+        this.districtName = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_DISTRICT_NAME);
+        this.tehsilCode = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_TEHSIL_CODE);
+        this.tehsilName = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_TEHSIL_NAME);
+        this.lhwCode = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_LHW_CODE);
+        this.lhwName = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_LHW_NAME);
+        this.khandanNumber = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_KHANDAN_NUMBER);
+        this.deviceId = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_DEVICEID);
+        this.deviceTag = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_DEVICETAGID);
+        this.appver = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_APPVERSION);
+        this.endTime = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_ENDINGDATETIME);
+        this.status = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_STATUS);
+        this.synced = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_SYNCED);
+        this.syncDate = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_SYNCED_DATE);
 
-        this.sA = jsonObject.getString(AdolescentContract.AdolescentTable.COLUMN_SA);
+        this.sA = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_SA);
 
         return this;
 
     }
 
 
-    public AdolescentModel Hydrate(Cursor cursor) {
-        this.id = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_ID));
-        this.uid = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_UID));
-        this.uuid = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_UUID));
-        this.serialNo = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_SERIAL_NO));
-        this.userName = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_USERNAME));
-        this.sysDate = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_SYSDATE));
-        this.districtCode = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_DISTRICT_CODE));
-        this.districtName = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_DISTRICT_NAME));
-        this.tehsilCode = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_TEHSIL_CODE));
-        this.tehsilName = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_TEHSIL_NAME));
-        this.lhwCode = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_LHW_CODE));
-        this.lhwName = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_LHW_NAME));
-        this.khandanNumber = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_KHANDAN_NUMBER));
-        this.deviceId = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_DEVICEID));
-        this.deviceTag = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_DEVICETAGID));
-        this.appver = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_APPVERSION));
-        this.endTime = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_ENDINGDATETIME));
-        this.status = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_STATUS));
-        this.synced = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_SYNCED));
-        this.syncDate = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_SYNCED_DATE));
+    public ADOLModel Hydrate(Cursor cursor) {
+        this.id = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_ID));
+        this.uid = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_UID));
+        this.uuid = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_UUID));
+        this.serialNo = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_SERIAL_NO));
+        this.userName = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_USERNAME));
+        this.sysDate = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_SYSDATE));
+        this.districtCode = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_DISTRICT_CODE));
+        this.districtName = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_DISTRICT_NAME));
+        this.tehsilCode = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_TEHSIL_CODE));
+        this.tehsilName = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_TEHSIL_NAME));
+        this.lhwCode = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_LHW_CODE));
+        this.lhwName = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_LHW_NAME));
+        this.khandanNumber = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_KHANDAN_NUMBER));
+        this.deviceId = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_DEVICEID));
+        this.deviceTag = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_DEVICETAGID));
+        this.appver = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_APPVERSION));
+        this.endTime = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_ENDINGDATETIME));
+        this.status = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_STATUS));
+        this.synced = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_SYNCED));
+        this.syncDate = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_SYNCED_DATE));
 
         //For childCount
         //this.s01HH = cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_S01HH));
 
-        sAHydrate(cursor.getString(cursor.getColumnIndex(AdolescentContract.AdolescentTable.COLUMN_SA)));
+        sAHydrate(cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_SA)));
 
         return this;
     }
@@ -1016,7 +1016,7 @@ public class AdolescentModel extends BaseObservable {
     //TODO: Try this instead of toJSONObject
     @Override
     public String toString() {
-        return new GsonBuilder().create().toJson(this, AdolescentModel.class);
+        return new GsonBuilder().create().toJson(this, ADOLModel.class);
     }
 
 
@@ -1095,32 +1095,32 @@ public class AdolescentModel extends BaseObservable {
         JSONObject json = new JSONObject();
 
         try {
-            json.put(AdolescentContract.AdolescentTable.COLUMN_ID, this.id == null ? JSONObject.NULL : this.id);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_DISTRICT_CODE, this.districtCode == null ? JSONObject.NULL : this.districtCode);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_DISTRICT_NAME, this.districtName == null ? JSONObject.NULL : this.districtName);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_TEHSIL_CODE, this.tehsilCode == null ? JSONObject.NULL : this.tehsilCode);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_TEHSIL_NAME, this.tehsilName == null ? JSONObject.NULL : this.tehsilName);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_LHW_CODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_LHW_NAME, this.lhwName == null ? JSONObject.NULL : this.lhwName);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_KHANDAN_NUMBER, this.khandanNumber == null ? JSONObject.NULL : this.khandanNumber);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_DEVICETAGID, this.deviceTag == null ? JSONObject.NULL : this.deviceTag);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_APPVERSION, this.appver == null ? JSONObject.NULL : this.appver);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_ENDINGDATETIME, this.endTime == null ? JSONObject.NULL : this.endTime);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_STATUS, this.status == null ? JSONObject.NULL : this.status);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-            json.put(AdolescentContract.AdolescentTable.COLUMN_SYNCED_DATE, this.syncDate == null ? JSONObject.NULL : this.syncDate);
+            json.put(ADOLContract.ADOLTable.COLUMN_ID, this.id == null ? JSONObject.NULL : this.id);
+            json.put(ADOLContract.ADOLTable.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
+            json.put(ADOLContract.ADOLTable.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
+            json.put(ADOLContract.ADOLTable.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
+            json.put(ADOLContract.ADOLTable.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
+            json.put(ADOLContract.ADOLTable.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
+            json.put(ADOLContract.ADOLTable.COLUMN_DISTRICT_CODE, this.districtCode == null ? JSONObject.NULL : this.districtCode);
+            json.put(ADOLContract.ADOLTable.COLUMN_DISTRICT_NAME, this.districtName == null ? JSONObject.NULL : this.districtName);
+            json.put(ADOLContract.ADOLTable.COLUMN_TEHSIL_CODE, this.tehsilCode == null ? JSONObject.NULL : this.tehsilCode);
+            json.put(ADOLContract.ADOLTable.COLUMN_TEHSIL_NAME, this.tehsilName == null ? JSONObject.NULL : this.tehsilName);
+            json.put(ADOLContract.ADOLTable.COLUMN_LHW_CODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
+            json.put(ADOLContract.ADOLTable.COLUMN_LHW_NAME, this.lhwName == null ? JSONObject.NULL : this.lhwName);
+            json.put(ADOLContract.ADOLTable.COLUMN_KHANDAN_NUMBER, this.khandanNumber == null ? JSONObject.NULL : this.khandanNumber);
+            json.put(ADOLContract.ADOLTable.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
+            json.put(ADOLContract.ADOLTable.COLUMN_DEVICETAGID, this.deviceTag == null ? JSONObject.NULL : this.deviceTag);
+            json.put(ADOLContract.ADOLTable.COLUMN_APPVERSION, this.appver == null ? JSONObject.NULL : this.appver);
+            json.put(ADOLContract.ADOLTable.COLUMN_ENDINGDATETIME, this.endTime == null ? JSONObject.NULL : this.endTime);
+            json.put(ADOLContract.ADOLTable.COLUMN_STATUS, this.status == null ? JSONObject.NULL : this.status);
+            json.put(ADOLContract.ADOLTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+            json.put(ADOLContract.ADOLTable.COLUMN_SYNCED_DATE, this.syncDate == null ? JSONObject.NULL : this.syncDate);
 
-            json.put(AdolescentContract.AdolescentTable.COLUMN_SA, new JSONObject(sAtoString()));
+            json.put(ADOLContract.ADOLTable.COLUMN_SA, new JSONObject(sAtoString()));
 
 
             if (this.sA != null && !this.sA.equals("")) {
-                json.put(AdolescentContract.AdolescentTable.COLUMN_SA, new JSONObject(this.sA));
+                json.put(ADOLContract.ADOLTable.COLUMN_SA, new JSONObject(this.sA));
             }
 
             return json;
