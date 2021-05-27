@@ -63,6 +63,7 @@ public class Form extends BaseObservable implements Observable {
     private String lhw02 = StringUtils.EMPTY;
     private String lhw03 = StringUtils.EMPTY;
     private String lhw04 = StringUtils.EMPTY;
+    private String lhw04sno = StringUtils.EMPTY;
     private String hhi01 = StringUtils.EMPTY;
     private String hhi02 = StringUtils.EMPTY;
     private String hhi03 = StringUtils.EMPTY;
@@ -668,6 +669,7 @@ public class Form extends BaseObservable implements Observable {
                     .put("lhw02", lhw02)
                     .put("lhw03", lhw03)
                     .put("lhw04", lhw04)
+                    .put("lhw04sno", lhw04sno)
                     .put("lhwphoto", lhwphoto);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -764,6 +766,7 @@ public class Form extends BaseObservable implements Observable {
                 this.lhw02 = json.getString("lhw02");
                 this.lhw03 = json.getString("lhw03");
                 this.lhw04 = json.getString("lhw04");
+                this.lhw04sno = json.getString("lhw04sno");
                 this.lhwphoto = json.getString("lhwphoto");
             } catch (JSONException e) {
                 e.printStackTrace();
