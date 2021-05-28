@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
-import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
 import edu.aku.hassannaqvi.smk_ce.contracts.LHWContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.lhw
@@ -41,7 +40,7 @@ class Section01Activity : AppCompatActivity() {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section01)
         bi.callback = this
         setSupportActionBar(bi.toolbar)
-        setTitle(R.string.lhwinfo)
+        //setTitle(R.string.lhwinfo)
         populateSpinner(this)
         setupSkips()
 
