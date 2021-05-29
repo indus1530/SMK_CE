@@ -25,7 +25,7 @@ import edu.aku.hassannaqvi.smk_ce.contracts.ChildInformationContract.ChildInfoTa
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.HHIDContract;
-import edu.aku.hassannaqvi.smk_ce.contracts.HHMembersContract;
+import edu.aku.hassannaqvi.smk_ce.contracts.FemaleMembersContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.IMContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.IMContract.IMTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.LHWContract.LHWTable;
@@ -47,7 +47,7 @@ import edu.aku.hassannaqvi.smk_ce.models.Doctor;
 import edu.aku.hassannaqvi.smk_ce.models.Form;
 import edu.aku.hassannaqvi.smk_ce.models.FormIndicatorsModel;
 import edu.aku.hassannaqvi.smk_ce.models.HHIDModel;
-import edu.aku.hassannaqvi.smk_ce.models.HHMembersModel;
+import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
 import edu.aku.hassannaqvi.smk_ce.models.Immunization;
 import edu.aku.hassannaqvi.smk_ce.models.LHWModel;
 import edu.aku.hassannaqvi.smk_ce.models.MWRAModel;
@@ -218,34 +218,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //HHMEMBERS
-    public Long addHHMembers(HHMembersModel model) {
+    public Long addHHMembers(FemaleMembersModel model) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(HHMembersContract.HHMembersTable.COLUMN_PROJECT_NAME, model.getProjectName());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_UID, model.getUid());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_UUID, model.getUuid());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_SERIAL_NO, model.getSerialNo());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_USERNAME, model.getUserName());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_SYSDATE, model.getSysDate());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_DISTRICT_CODE, model.getDistrictCode());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_DISTRICT_NAME, model.getDistrictName());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_TEHSIL_CODE, model.getTehsilCode());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_TEHSIL_NAME, model.getTehsilName());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_LHW_CODE, model.getLhwCode());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_LHW_NAME, model.getLhwName());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_KHANDAN_NUMBER, model.getKhandanNumber());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_SA, model.getsA());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_STATUS, model.getStatus());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_ENDINGDATETIME, model.getEndTime());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_DEVICETAGID, model.getDeviceTag());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_DEVICEID, model.getDeviceId());
-        values.put(HHMembersContract.HHMembersTable.COLUMN_APPVERSION, model.getAppver());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_PROJECT_NAME, model.getProjectName());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_UID, model.getUid());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_UUID, model.getUuid());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_SERIAL_NO, model.getSerialNo());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_USERNAME, model.getUserName());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_SYSDATE, model.getSysDate());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_DISTRICT_CODE, model.getDistrictCode());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_DISTRICT_NAME, model.getDistrictName());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_TEHSIL_CODE, model.getTehsilCode());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_TEHSIL_NAME, model.getTehsilName());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_LHW_CODE, model.getLhwCode());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_LHW_NAME, model.getLhwName());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_KHANDAN_NUMBER, model.getKhandanNumber());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_SA, model.getsA());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_STATUS, model.getStatus());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_ENDINGDATETIME, model.getEndTime());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_DEVICETAGID, model.getDeviceTag());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_DEVICEID, model.getDeviceId());
+        values.put(FemaleMembersContract.HHMembersTable.COLUMN_APPVERSION, model.getAppver());
 
         long newRowId;
         newRowId = db.insert(
-                HHMembersContract.HHMembersTable.TABLE_NAME,
-                HHMembersContract.HHMembersTable.COLUMN_NAME_NULLABLE,
+                FemaleMembersContract.HHMembersTable.TABLE_NAME,
+                FemaleMembersContract.HHMembersTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
     }
@@ -1166,10 +1166,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(column, value);
 
-        String selection = HHMembersContract.HHMembersTable._ID + " =? ";
-        String[] selectionArgs = {String.valueOf(MainApp.hhmem.getId())};
+        String selection = FemaleMembersContract.HHMembersTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.femalemembers.getId())};
 
-        return db.update(HHMembersContract.HHMembersTable.TABLE_NAME,
+        return db.update(FemaleMembersContract.HHMembersTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);

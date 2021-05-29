@@ -12,11 +12,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.threeten.bp.LocalDate;
 
+import java.util.ArrayList;
+
 import edu.aku.hassannaqvi.smk_ce.BR;
-import edu.aku.hassannaqvi.smk_ce.contracts.HHMembersContract;
+import edu.aku.hassannaqvi.smk_ce.contracts.FemaleMembersContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 
-public class HHMembersModel extends BaseObservable {
+public class FemaleMembersModel extends BaseObservable {
 
     private final String TAG = "HHMembersModel";
 
@@ -74,7 +76,7 @@ public class HHMembersModel extends BaseObservable {
     private String hh11 = StringUtils.EMPTY;
 
 
-    public HHMembersModel() {
+    public FemaleMembersModel() {
     }
 
     public boolean isExist() {
@@ -133,7 +135,7 @@ public class HHMembersModel extends BaseObservable {
         return uid;
     }
 
-    public HHMembersModel setUid(String uid) {
+    public FemaleMembersModel setUid(String uid) {
         this.uid = uid;
         return this;
     }
@@ -144,7 +146,7 @@ public class HHMembersModel extends BaseObservable {
         return uuid;
     }
 
-    public HHMembersModel setUuid(String uuid) {
+    public FemaleMembersModel setUuid(String uuid) {
         this.uuid = uuid;
         return this;
     }
@@ -155,7 +157,7 @@ public class HHMembersModel extends BaseObservable {
         return serialNo;
     }
 
-    public HHMembersModel setSerialNo(String serialNo) {
+    public FemaleMembersModel setSerialNo(String serialNo) {
         this.serialNo = serialNo;
         return this;
     }
@@ -166,7 +168,7 @@ public class HHMembersModel extends BaseObservable {
         return userName;
     }
 
-    public HHMembersModel setUserName(String userName) {
+    public FemaleMembersModel setUserName(String userName) {
         this.userName = userName;
         return this;
     }
@@ -176,7 +178,7 @@ public class HHMembersModel extends BaseObservable {
         return districtCode;
     }
 
-    public HHMembersModel setDistrictCode(String districtCode) {
+    public FemaleMembersModel setDistrictCode(String districtCode) {
         this.districtCode = districtCode;
         return this;
     }
@@ -187,7 +189,7 @@ public class HHMembersModel extends BaseObservable {
         return districtName;
     }
 
-    public HHMembersModel setDistrictName(String districtName) {
+    public FemaleMembersModel setDistrictName(String districtName) {
         this.districtName = districtName;
         return this;
     }
@@ -198,7 +200,7 @@ public class HHMembersModel extends BaseObservable {
         return tehsilCode;
     }
 
-    public HHMembersModel setTehsilCode(String tehsilCode) {
+    public FemaleMembersModel setTehsilCode(String tehsilCode) {
         this.tehsilCode = tehsilCode;
         return this;
     }
@@ -209,7 +211,7 @@ public class HHMembersModel extends BaseObservable {
         return tehsilName;
     }
 
-    public HHMembersModel setTehsilName(String tehsilName) {
+    public FemaleMembersModel setTehsilName(String tehsilName) {
         this.tehsilName = tehsilName;
         return this;
     }
@@ -220,7 +222,7 @@ public class HHMembersModel extends BaseObservable {
         return lhwCode;
     }
 
-    public HHMembersModel setLhwCode(String lhwCode) {
+    public FemaleMembersModel setLhwCode(String lhwCode) {
         this.lhwCode = lhwCode;
         return this;
     }
@@ -231,7 +233,7 @@ public class HHMembersModel extends BaseObservable {
         return lhwName;
     }
 
-    public HHMembersModel setLhwName(String lhwName) {
+    public FemaleMembersModel setLhwName(String lhwName) {
         this.lhwName = lhwName;
         return this;
     }
@@ -242,7 +244,7 @@ public class HHMembersModel extends BaseObservable {
         return khandanNumber;
     }
 
-    public HHMembersModel setKhandanNumber(String khandanNumber) {
+    public FemaleMembersModel setKhandanNumber(String khandanNumber) {
         this.khandanNumber = khandanNumber;
         return this;
     }
@@ -253,7 +255,7 @@ public class HHMembersModel extends BaseObservable {
         return deviceId;
     }
 
-    public HHMembersModel setDeviceId(String deviceId) {
+    public FemaleMembersModel setDeviceId(String deviceId) {
         this.deviceId = deviceId;
         return this;
     }
@@ -263,7 +265,7 @@ public class HHMembersModel extends BaseObservable {
         return deviceTag;
     }
 
-    public HHMembersModel setDeviceTag(String deviceTag) {
+    public FemaleMembersModel setDeviceTag(String deviceTag) {
         this.deviceTag = deviceTag;
         return this;
     }
@@ -273,7 +275,7 @@ public class HHMembersModel extends BaseObservable {
         return appver;
     }
 
-    public HHMembersModel setAppver(String appver) {
+    public FemaleMembersModel setAppver(String appver) {
         this.appver = appver;
         return this;
     }
@@ -283,7 +285,7 @@ public class HHMembersModel extends BaseObservable {
         return sysDate;
     }
 
-    public HHMembersModel setSysDate(String sysDate) {
+    public FemaleMembersModel setSysDate(String sysDate) {
         this.sysDate = sysDate;
         return this;
     }
@@ -293,7 +295,7 @@ public class HHMembersModel extends BaseObservable {
         return endTime;
     }
 
-    public HHMembersModel setEndTime(String endTime) {
+    public FemaleMembersModel setEndTime(String endTime) {
         this.endTime = endTime;
         return this;
     }
@@ -303,7 +305,7 @@ public class HHMembersModel extends BaseObservable {
         return synced;
     }
 
-    public HHMembersModel setSynced(String synced) {
+    public FemaleMembersModel setSynced(String synced) {
         this.synced = synced;
         return this;
     }
@@ -313,7 +315,7 @@ public class HHMembersModel extends BaseObservable {
         return syncDate;
     }
 
-    public HHMembersModel setSyncDate(String syncDate) {
+    public FemaleMembersModel setSyncDate(String syncDate) {
         this.syncDate = syncDate;
         return this;
     }
@@ -323,7 +325,7 @@ public class HHMembersModel extends BaseObservable {
         return sA;
     }
 
-    public HHMembersModel setsA(String sA) {
+    public FemaleMembersModel setsA(String sA) {
         this.sA = sA;
         return this;
     }
@@ -481,61 +483,61 @@ public class HHMembersModel extends BaseObservable {
     }
 
 
-    public HHMembersModel Sync(JSONObject jsonObject) throws JSONException {
-        this.id = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_ID);
-        this.uid = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_UID);
-        this.uuid = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_UUID);
-        this.serialNo = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_SERIAL_NO);
-        this.userName = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_USERNAME);
-        this.sysDate = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_SYSDATE);
-        this.districtCode = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_DISTRICT_CODE);
-        this.districtName = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_DISTRICT_NAME);
-        this.tehsilCode = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_TEHSIL_CODE);
-        this.tehsilName = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_TEHSIL_NAME);
-        this.lhwCode = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_LHW_CODE);
-        this.lhwName = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_LHW_NAME);
-        this.khandanNumber = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_KHANDAN_NUMBER);
-        this.deviceId = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_DEVICEID);
-        this.deviceTag = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_DEVICETAGID);
-        this.appver = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_APPVERSION);
-        this.endTime = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_ENDINGDATETIME);
-        this.status = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_STATUS);
-        this.synced = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_SYNCED);
-        this.syncDate = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_SYNCED_DATE);
+    public FemaleMembersModel Sync(JSONObject jsonObject) throws JSONException {
+        this.id = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_ID);
+        this.uid = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_UID);
+        this.uuid = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_UUID);
+        this.serialNo = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_SERIAL_NO);
+        this.userName = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_USERNAME);
+        this.sysDate = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_SYSDATE);
+        this.districtCode = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_DISTRICT_CODE);
+        this.districtName = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_DISTRICT_NAME);
+        this.tehsilCode = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_TEHSIL_CODE);
+        this.tehsilName = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_TEHSIL_NAME);
+        this.lhwCode = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_LHW_CODE);
+        this.lhwName = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_LHW_NAME);
+        this.khandanNumber = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_KHANDAN_NUMBER);
+        this.deviceId = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_DEVICEID);
+        this.deviceTag = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_DEVICETAGID);
+        this.appver = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_APPVERSION);
+        this.endTime = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_ENDINGDATETIME);
+        this.status = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_STATUS);
+        this.synced = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_SYNCED);
+        this.syncDate = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_SYNCED_DATE);
 
-        this.sA = jsonObject.getString(HHMembersContract.HHMembersTable.COLUMN_SA);
+        this.sA = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_SA);
 
         return this;
 
     }
 
 
-    public HHMembersModel Hydrate(Cursor cursor) {
-        this.id = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_ID));
-        this.uid = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_UID));
-        this.uuid = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_UUID));
-        this.serialNo = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_SERIAL_NO));
-        this.userName = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_USERNAME));
-        this.sysDate = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_SYSDATE));
-        this.districtCode = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_DISTRICT_CODE));
-        this.districtName = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_DISTRICT_NAME));
-        this.tehsilCode = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_TEHSIL_CODE));
-        this.tehsilName = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_TEHSIL_NAME));
-        this.lhwCode = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_LHW_CODE));
-        this.lhwName = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_LHW_NAME));
-        this.khandanNumber = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_KHANDAN_NUMBER));
-        this.deviceId = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_DEVICEID));
-        this.deviceTag = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_DEVICETAGID));
-        this.appver = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_APPVERSION));
-        this.endTime = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_ENDINGDATETIME));
-        this.status = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_STATUS));
-        this.synced = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_SYNCED));
-        this.syncDate = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_SYNCED_DATE));
+    public FemaleMembersModel Hydrate(Cursor cursor) {
+        this.id = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_ID));
+        this.uid = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_UID));
+        this.uuid = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_UUID));
+        this.serialNo = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_SERIAL_NO));
+        this.userName = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_USERNAME));
+        this.sysDate = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_SYSDATE));
+        this.districtCode = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_DISTRICT_CODE));
+        this.districtName = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_DISTRICT_NAME));
+        this.tehsilCode = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_TEHSIL_CODE));
+        this.tehsilName = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_TEHSIL_NAME));
+        this.lhwCode = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_LHW_CODE));
+        this.lhwName = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_LHW_NAME));
+        this.khandanNumber = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_KHANDAN_NUMBER));
+        this.deviceId = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_DEVICEID));
+        this.deviceTag = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_DEVICETAGID));
+        this.appver = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_APPVERSION));
+        this.endTime = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_ENDINGDATETIME));
+        this.status = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_STATUS));
+        this.synced = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_SYNCED));
+        this.syncDate = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_SYNCED_DATE));
 
         //For childCount
         //this.s01HH = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_S01HH));
 
-        sAHydrate(cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_SA)));
+        sAHydrate(cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_SA)));
 
         return this;
     }
@@ -544,7 +546,7 @@ public class HHMembersModel extends BaseObservable {
     //TODO: Try this instead of toJSONObject
     @Override
     public String toString() {
-        return new GsonBuilder().create().toJson(this, HHMembersModel.class);
+        return new GsonBuilder().create().toJson(this, FemaleMembersModel.class);
     }
 
     public String sAtoString() {
@@ -578,32 +580,32 @@ public class HHMembersModel extends BaseObservable {
         JSONObject json = new JSONObject();
 
         try {
-            json.put(HHMembersContract.HHMembersTable.COLUMN_ID, this.id == null ? JSONObject.NULL : this.id);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_DISTRICT_CODE, this.districtCode == null ? JSONObject.NULL : this.districtCode);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_DISTRICT_NAME, this.districtName == null ? JSONObject.NULL : this.districtName);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_TEHSIL_CODE, this.tehsilCode == null ? JSONObject.NULL : this.tehsilCode);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_TEHSIL_NAME, this.tehsilName == null ? JSONObject.NULL : this.tehsilName);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_LHW_CODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_LHW_NAME, this.lhwName == null ? JSONObject.NULL : this.lhwName);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_KHANDAN_NUMBER, this.khandanNumber == null ? JSONObject.NULL : this.khandanNumber);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_DEVICETAGID, this.deviceTag == null ? JSONObject.NULL : this.deviceTag);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_APPVERSION, this.appver == null ? JSONObject.NULL : this.appver);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_ENDINGDATETIME, this.endTime == null ? JSONObject.NULL : this.endTime);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_STATUS, this.status == null ? JSONObject.NULL : this.status);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-            json.put(HHMembersContract.HHMembersTable.COLUMN_SYNCED_DATE, this.syncDate == null ? JSONObject.NULL : this.syncDate);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_ID, this.id == null ? JSONObject.NULL : this.id);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_DISTRICT_CODE, this.districtCode == null ? JSONObject.NULL : this.districtCode);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_DISTRICT_NAME, this.districtName == null ? JSONObject.NULL : this.districtName);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_TEHSIL_CODE, this.tehsilCode == null ? JSONObject.NULL : this.tehsilCode);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_TEHSIL_NAME, this.tehsilName == null ? JSONObject.NULL : this.tehsilName);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_LHW_CODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_LHW_NAME, this.lhwName == null ? JSONObject.NULL : this.lhwName);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_KHANDAN_NUMBER, this.khandanNumber == null ? JSONObject.NULL : this.khandanNumber);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_DEVICETAGID, this.deviceTag == null ? JSONObject.NULL : this.deviceTag);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_APPVERSION, this.appver == null ? JSONObject.NULL : this.appver);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_ENDINGDATETIME, this.endTime == null ? JSONObject.NULL : this.endTime);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_STATUS, this.status == null ? JSONObject.NULL : this.status);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_SYNCED_DATE, this.syncDate == null ? JSONObject.NULL : this.syncDate);
 
-            json.put(HHMembersContract.HHMembersTable.COLUMN_SA, new JSONObject(sAtoString()));
+            json.put(FemaleMembersContract.HHMembersTable.COLUMN_SA, new JSONObject(sAtoString()));
 
 
             if (this.sA != null && !this.sA.equals("")) {
-                json.put(HHMembersContract.HHMembersTable.COLUMN_SA, new JSONObject(this.sA));
+                json.put(FemaleMembersContract.HHMembersTable.COLUMN_SA, new JSONObject(this.sA));
             }
 
             return json;
@@ -639,5 +641,16 @@ public class HHMembersModel extends BaseObservable {
                 e.printStackTrace();
             }
         }
+    }
+
+
+    public static ArrayList<FemaleMembersModel> createFemaleMembersList(int numFemales) {
+        ArrayList<FemaleMembersModel> femaleMembersModels = new ArrayList<FemaleMembersModel>();
+
+        for (int i = 1; i <= numFemales; i++) {
+            femaleMembersModels.add(new FemaleMembersModel());
+        }
+
+        return femaleMembersModels;
     }
 }

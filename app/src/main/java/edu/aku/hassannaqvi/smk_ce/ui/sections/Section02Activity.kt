@@ -11,11 +11,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
-import edu.aku.hassannaqvi.smk_ce.contracts.HHMembersContract
+import edu.aku.hassannaqvi.smk_ce.contracts.FemaleMembersContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
-import edu.aku.hassannaqvi.smk_ce.core.MainApp.hhmem
+import edu.aku.hassannaqvi.smk_ce.core.MainApp.femalemembers
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection02Binding
-import edu.aku.hassannaqvi.smk_ce.models.HHMembersModel
+import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
@@ -51,12 +51,12 @@ class Section02Activity : AppCompatActivity() {
 
     private fun updateDB(): Boolean {
         val db = MainApp.appInfo.dbHelper
-        val updcount = db.addHHMembers(hhmem)
+        val updcount = db.addHHMembers(femalemembers)
         return if (updcount > 0) {
-            hhmem.id = updcount.toString()
-            hhmem.uid = hhmem.deviceId + hhmem.id
-            var count = db.updatesHHMEMColumn(HHMembersContract.HHMembersTable.COLUMN_UID, hhmem.uid)
-            if (count > 0) count = db.updatesHHMEMColumn(HHMembersContract.HHMembersTable.COLUMN_SA, hhmem.sAtoString())
+            femalemembers.id = updcount.toString()
+            femalemembers.uid = femalemembers.deviceId + femalemembers.id
+            var count = db.updatesHHMEMColumn(FemaleMembersContract.HHMembersTable.COLUMN_UID, femalemembers.uid)
+            if (count > 0) count = db.updatesHHMEMColumn(FemaleMembersContract.HHMembersTable.COLUMN_SA, femalemembers.sAtoString())
             if (count > 0) true else {
                 Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
                 false
@@ -82,63 +82,63 @@ class Section02Activity : AppCompatActivity() {
 
     private fun saveDraft() {
 
-        hhmem = HHMembersModel()
-        hhmem.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
-        hhmem.uuid = MainApp.form.uid
-        hhmem.userName = MainApp.user.userName
-        hhmem.districtCode = MainApp.form.districtCode
-        hhmem.districtName = MainApp.form.districtName
-        hhmem.tehsilCode = MainApp.form.tehsilCode
-        hhmem.tehsilName = MainApp.form.tehsilName
-        hhmem.lhwCode = MainApp.form.lhwCode
-        hhmem.lhwName = MainApp.form.lhwName
-        hhmem.khandanNumber = MainApp.form.khandanNumber
-        hhmem.deviceId = MainApp.appInfo.deviceID
-        hhmem.deviceTag = MainApp.appInfo.tagName
-        hhmem.appver = MainApp.appInfo.appVersion
+        femalemembers = FemaleMembersModel()
+        femalemembers.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
+        femalemembers.uuid = MainApp.form.uid
+        femalemembers.userName = MainApp.user.userName
+        femalemembers.districtCode = MainApp.form.districtCode
+        femalemembers.districtName = MainApp.form.districtName
+        femalemembers.tehsilCode = MainApp.form.tehsilCode
+        femalemembers.tehsilName = MainApp.form.tehsilName
+        femalemembers.lhwCode = MainApp.form.lhwCode
+        femalemembers.lhwName = MainApp.form.lhwName
+        femalemembers.khandanNumber = MainApp.form.khandanNumber
+        femalemembers.deviceId = MainApp.appInfo.deviceID
+        femalemembers.deviceTag = MainApp.appInfo.tagName
+        femalemembers.appver = MainApp.appInfo.appVersion
 
-        hhmem.hh01 = when {
+        femalemembers.hh01 = when {
             bi.hh01.text.toString().trim().isNotEmpty() -> bi.hh01.text.toString()
             else -> "-1"
         }
 
-        hhmem.hh02 = when {
+        femalemembers.hh02 = when {
             bi.hh02.text.toString().trim().isNotEmpty() -> bi.hh02.text.toString()
             else -> "-1"
         }
 
-        hhmem.hh03 = when {
+        femalemembers.hh03 = when {
             bi.hh03a.isChecked -> "1"
             bi.hh03b.isChecked -> "2"
             else -> "-1"
         }
 
-        hhmem.hh04a = when {
+        femalemembers.hh04a = when {
             bi.hh04a.text.toString().trim().isNotEmpty() -> bi.hh04a.text.toString()
             else -> "-1"
         }
 
-        hhmem.hh04b = when {
+        femalemembers.hh04b = when {
             bi.hh04b.text.toString().trim().isNotEmpty() -> bi.hh04b.text.toString()
             else -> "-1"
         }
 
-        hhmem.hh04c = when {
+        femalemembers.hh04c = when {
             bi.hh04c.text.toString().trim().isNotEmpty() -> bi.hh04c.text.toString()
             else -> "-1"
         }
 
-        hhmem.hh05y = when {
+        femalemembers.hh05y = when {
             bi.hh05y.text.toString().trim().isNotEmpty() -> bi.hh05y.text.toString()
             else -> "-1"
         }
 
-        hhmem.hh05m = when {
+        femalemembers.hh05m = when {
             bi.hh05m.text.toString().trim().isNotEmpty() -> bi.hh05m.text.toString()
             else -> "-1"
         }
 
-        hhmem.hh06 = when {
+        femalemembers.hh06 = when {
             bi.hh06a.isChecked -> "1"
             bi.hh06b.isChecked -> "2"
             bi.hh06c.isChecked -> "3"
@@ -146,17 +146,17 @@ class Section02Activity : AppCompatActivity() {
             else -> "-1"
         }
 
-        hhmem.hh07 = when {
+        femalemembers.hh07 = when {
             bi.hh07.text.toString().trim().isNotEmpty() -> bi.hh07.text.toString()
             else -> "-1"
         }
 
-        hhmem.hh08 = when {
+        femalemembers.hh08 = when {
             bi.hh08.text.toString().trim().isNotEmpty() -> bi.hh08.text.toString()
             else -> "-1"
         }
 
-        hhmem.hh09 = when {
+        femalemembers.hh09 = when {
             bi.hh09a.isChecked -> "1"
             bi.hh09b.isChecked -> "2"
             bi.hh09c.isChecked -> "3"
@@ -173,7 +173,7 @@ class Section02Activity : AppCompatActivity() {
             else -> "-1"
         }
 
-        hhmem.hh10 = when {
+        femalemembers.hh10 = when {
             bi.hh10a.isChecked -> "1"
             bi.hh10b.isChecked -> "2"
             bi.hh10c.isChecked -> "3"
@@ -187,7 +187,7 @@ class Section02Activity : AppCompatActivity() {
             else -> "-1"
         }
 
-        hhmem.hh11 = when {
+        femalemembers.hh11 = when {
             bi.hh11a.isChecked -> "1"
             bi.hh11b.isChecked -> "2"
             else -> "-1"

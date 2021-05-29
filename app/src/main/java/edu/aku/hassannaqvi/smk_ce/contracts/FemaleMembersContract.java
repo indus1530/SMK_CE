@@ -6,7 +6,7 @@ import android.provider.BaseColumns;
  * Created by hassan.naqvi on 11/30/2016.
  */
 
-public class HHMembersContract {
+public class FemaleMembersContract {
 
     public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.smk_ce";
 

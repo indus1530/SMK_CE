@@ -17,7 +17,7 @@ import edu.aku.hassannaqvi.smk_ce.models.Child;
 import edu.aku.hassannaqvi.smk_ce.models.ChildInformation;
 import edu.aku.hassannaqvi.smk_ce.models.Form;
 import edu.aku.hassannaqvi.smk_ce.models.HHIDModel;
-import edu.aku.hassannaqvi.smk_ce.models.HHMembersModel;
+import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
 import edu.aku.hassannaqvi.smk_ce.models.Immunization;
 import edu.aku.hassannaqvi.smk_ce.models.LHWModel;
 import edu.aku.hassannaqvi.smk_ce.models.MWRAModel;
@@ -42,7 +42,7 @@ public class MainApp extends Application {
     public static Form form;
     public static LHWModel lhw;
     public static HHIDModel hhid;
-    public static HHMembersModel hhmem;
+    public static FemaleMembersModel femalemembers;
     public static MWRAModel mwra;
     public static ADOLModel adol;
     public static Child child;
