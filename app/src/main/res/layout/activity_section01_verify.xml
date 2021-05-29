@@ -76,16 +76,12 @@
 
                         </LinearLayout>
 
-                        <com.edittextpicker.aliazaz.EditTextPicker
+                        <Spinner
                             android:id="@+id/hhv04"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/hhv04"
-                            android:inputType="number"
-                            android:maxLength="10"
-                            app:maxValue="9999999999"
-                            app:minValue="0"
-                            app:type="range" />
+                            android:minHeight="56dp" />
 
                     </LinearLayout>
 
@@ -121,20 +117,18 @@
 
                         </LinearLayout>
 
-                        <com.edittextpicker.aliazaz.EditTextPicker
+                        <Spinner
                             android:id="@+id/hhv05"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/hhv05"
-                            android:inputType="number"
-                            android:maxLength="10"
-                            app:maxValue="9999999999"
-                            app:minValue="0"
-                            app:type="range" />
+                            android:minHeight="56dp" />
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
+
                 <!-- hhv06  Input-Numeric   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVhhv06"
@@ -165,20 +159,17 @@
 
                         </LinearLayout>
 
-                        <com.edittextpicker.aliazaz.EditTextPicker
+                        <Spinner
                             android:id="@+id/hhv06"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/hhv06"
-                            android:inputType="number"
-                            android:maxLength="10"
-                            app:maxValue="9999999999"
-                            app:minValue="0"
-                            app:type="range" />
+                            android:minHeight="56dp" />
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
                 
                 <!-- hhv01  Input-Numeric   -->
                 <androidx.cardview.widget.CardView
@@ -210,16 +201,12 @@
 
                         </LinearLayout>
 
-                        <com.edittextpicker.aliazaz.EditTextPicker
+                        <Spinner
                             android:id="@+id/hhv01"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/hhv01"
-                            android:inputType="number"
-                            android:maxLength="10"
-                            app:maxValue="9999999999"
-                            app:minValue="0"
-                            app:type="range" />
+                            android:minHeight="56dp" />
 
                     </LinearLayout>
 
