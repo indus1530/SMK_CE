@@ -10,9 +10,9 @@
     <color name="colorAccentLight">#00B0FF</color>
     <color name="colorPrimaryBeta">#3d311b92</color>
 
-    <color name="colorPrimaryOverlay">#7f8E24AA</color>
-    <color name="colorPrimaryLightOverlay">#7fCE93D8</color>
-    <color name="colorAccentLightOverlay">#7f00B0FF</color>
+    <color name="colorPrimaryOverlay">#7f005b96</color>
+    <color name="colorPrimaryLightOverlay">#7f6497b1</color>
+    <color name="colorAccentLightOverlay">#7f0091EA</color>
 
 
     <!-- Standard App Colors -->

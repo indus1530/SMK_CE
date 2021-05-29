@@ -80,6 +80,9 @@
     <string name="hhi04f">Street Number</string>
     <string name="lhwphoto">LHW Register Photo</string>
     <string name="hhvinfo">Section: Household Verification</string>
+    <string name="hhv04">Name of Taluka/Tehsil</string>
+    <string name="hhv05">Name of reporting health facility </string>
+    <string name="hhv06">Name/Code of LHW</string>
     <string name="hhv01">Khandan Number</string>
     <string name="hhv02">Residential Address</string>
     <string name="hhv02a">Name of Household Head</string>
@@ -391,6 +394,9 @@
     <string name='Q_hhi03'>hhi03</string>
     <string name='Q_hhi04'>hhi04 </string>
     <string name='Q_hhvinfo'>hhvinfo</string>
+    <string name='Q_hhv04'>hhv04</string>
+    <string name='Q_hhv05'>hhv05</string>
+    <string name='Q_hhv06'>hhv06</string>
     <string name='Q_hhv01'>hhv01</string>
     <string name='Q_hhv02'>hhv02</string>
     <string name='Q_hhv03'>hhv03</string>
