@@ -221,23 +221,29 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                style="@style/sub_labels"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:layout_margin="2dp"
                                 android:gravity="center"
                                 android:text="@string/hh04a" />
 
                             <TextView
+                                style="@style/sub_labels"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:layout_margin="2dp"
                                 android:gravity="center"
                                 android:text="@string/hh04b" />
 
                             <TextView
+                                style="@style/sub_labels"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:layout_margin="2dp"
                                 android:gravity="center"
                                 android:text="@string/hh04c" />
 
@@ -331,17 +337,21 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                style="@style/sub_labels"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
+                                android:layout_margin="2dp"
                                 android:text="@string/hh05y" />
 
                             <TextView
+                                style="@style/sub_labels"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
+                                android:layout_margin="2dp"
                                 android:text="@string/hh05m" />
 
                         </LinearLayout>

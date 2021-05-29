@@ -40,7 +40,7 @@ public class DataDownWorkerALL extends Worker {
     private final String uploadTable;
     private final String uploadColumns;
     private final String uploadWhere;
-    private final String uploadColumns;
+    //private final String uploadColumns;
     private final URL serverURL = null;
     private final String nTitle = "SMKCE: Data Download";
     HttpURLConnection urlConnection;
