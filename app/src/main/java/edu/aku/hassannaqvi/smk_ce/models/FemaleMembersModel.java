@@ -4,6 +4,8 @@ import android.database.Cursor;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.Observable;
+import androidx.databinding.PropertyChangeRegistry;
 
 import com.google.gson.GsonBuilder;
 
@@ -18,7 +20,7 @@ import edu.aku.hassannaqvi.smk_ce.BR;
 import edu.aku.hassannaqvi.smk_ce.contracts.FemaleMembersContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 
-public class FemaleMembersModel extends BaseObservable {
+public class FemaleMembersModel extends BaseObservable implements Observable {
 
     private final String TAG = "HHMembersModel";
 
@@ -48,7 +50,7 @@ public class FemaleMembersModel extends BaseObservable {
     private String synced = StringUtils.EMPTY;
     private String syncDate = StringUtils.EMPTY;
 
-
+    private boolean expanded;
     // SECTION VARIABLES
     private String sA = StringUtils.EMPTY;
 
@@ -74,6 +76,7 @@ public class FemaleMembersModel extends BaseObservable {
     private String hh09 = StringUtils.EMPTY;
     private String hh10 = StringUtils.EMPTY;
     private String hh11 = StringUtils.EMPTY;
+    private transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
 
 
     public FemaleMembersModel() {
@@ -482,6 +485,15 @@ public class FemaleMembersModel extends BaseObservable {
         notifyPropertyChanged(BR.hh11);
     }
 
+    @Bindable
+    public boolean isExpanded() {
+        return expanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
+        notifyChange(BR.expanded);
+    }
 
     public FemaleMembersModel Sync(JSONObject jsonObject) throws JSONException {
         this.id = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_ID);
@@ -652,5 +664,29 @@ public class FemaleMembersModel extends BaseObservable {
         }
 
         return femaleMembersModels;
+    }
+
+
+    private synchronized void notifyChange(int propertyId) {
+        if (propertyChangeRegistry == null) {
+            propertyChangeRegistry = new PropertyChangeRegistry();
+        }
+        propertyChangeRegistry.notifyChange(this, propertyId);
+    }
+
+    @Override
+    public synchronized void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
+        if (propertyChangeRegistry == null) {
+            propertyChangeRegistry = new PropertyChangeRegistry();
+        }
+        propertyChangeRegistry.add(callback);
+
+    }
+
+    @Override
+    public synchronized void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
+        if (propertyChangeRegistry != null) {
+            propertyChangeRegistry.remove(callback);
+        }
     }
 }

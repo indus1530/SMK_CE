@@ -43,6 +43,7 @@ import java.util.concurrent.TimeUnit;
 import edu.aku.hassannaqvi.smk_ce.CONSTANTS;
 import edu.aku.hassannaqvi.smk_ce.R;
 import edu.aku.hassannaqvi.smk_ce.adapters.SyncListAdapter;
+import edu.aku.hassannaqvi.smk_ce.contracts.LHWHouseholdContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.MHContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper;
@@ -159,16 +160,18 @@ public class SyncActivity extends AppCompatActivity {
                 boolean sync_flag = getIntent().getBooleanExtra(CONSTANTS.SYNC_LOGIN, false);
                 if (sync_flag) {
                     //campCode = getIntent().getStringExtra(CONSTANTS.SYNC_CAMPID_LOGIN);
-                } else {
+                }
                     // Set tables to DOWNLOAD
                     downloadTables.add(new SyncModel(Users.UsersTable.TABLE_NAME));
                     downloadTables.add(new SyncModel(VersionApp.VersionAppTable.TABLE_NAME));
+                    downloadTables.add(new SyncModel(Districts.TableDistricts.TABLE_NAME));
+                    downloadTables.add(new SyncModel(LHWHouseholdContract.LHWTable.TABLE_NAME));
 
-                    String select = " idCamp, camp_no, dist_id, district, ucCode, ucName, area_name, plan_date ";
+/*                    String select = " idCamp, camp_no, dist_id, district, ucCode, ucName, area_name, plan_date ";
                     String filter = " camp_status = 'Planned' AND locked = 0 ";
                     downloadTables.add(new SyncModel(Camps.TableCamp.TABLE_NAME, select, filter));
-                    downloadTables.add(new SyncModel(Doctor.TableDoctor.TABLE_NAME));
-                }
+                    downloadTables.add(new SyncModel(Doctor.TableDoctor.TABLE_NAME));*/
+
                 MainApp.downloadData = new String[downloadTables.size()];
                 setAdapter(downloadTables);
                 BeginDownload();

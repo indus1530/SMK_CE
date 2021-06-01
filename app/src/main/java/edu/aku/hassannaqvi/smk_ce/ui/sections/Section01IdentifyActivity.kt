@@ -47,7 +47,7 @@ class Section01IdentifyActivity : AppCompatActivity() {
         saveDraft()
         if (updateDB()) {
             // Loop this activity to record all random households
-            if (MainApp.randHHNoIndex < randHHNo.size) {
+            if (MainApp.randHHNoIndex < randHHNo.size-1) {
                 MainApp.randHHNoIndex++;
                 finish()
                 startActivity(Intent(this, Section01IdentifyActivity::class.java))
@@ -55,7 +55,7 @@ class Section01IdentifyActivity : AppCompatActivity() {
             // If all random households recored; go to main activity
             else {
                 MainApp.randHHNoIndex = 0;
-                randHHNo = IntArray(10)
+                randHHNo = IntArray(HOUSEHOLDS_TO_RANDOMISE)
                 finish()
                 startActivity(Intent(this, MainActivity::class.java))
             }

@@ -258,19 +258,23 @@ class MainActivity : AppCompatActivity() {
     * For uploading/downloading data, the network needs to work
     * */
     fun openSpecificActivity(v: View) {
-        when (v.id) {
-            R.id.formA -> {
-                //SharedStorage.setSelectedCampData(this, Gson().toJson(camp))
-                gotoActivity(Section01Activity::class.java)
+        if(MainApp.user.userName!=null) {
+            when (v.id) {
+                R.id.formA -> {
+                    //SharedStorage.setSelectedCampData(this, Gson().toJson(camp))
+                    gotoActivity(Section01Activity::class.java)
+                }
+                R.id.formAI -> gotoActivity(Section01IdentifyActivity::class.java)
+                R.id.formAV -> gotoActivity(Section01VerifyActivity::class.java)
+                R.id.formB -> gotoActivity(Section02Activity::class.java)
+                R.id.formC -> gotoActivity(Section03Activity::class.java)
+                R.id.formD -> gotoActivity(Section04Activity::class.java)
+                R.id.formE -> gotoActivity(Section05Activity::class.java)
+                R.id.databaseBtn -> startActivity(Intent(this, AndroidDatabaseManager::class.java))
+                R.id.btn_check_camp -> populateCampDetails()
             }
-            R.id.formAI -> gotoActivity(Section01IdentifyActivity::class.java)
-            R.id.formAV -> gotoActivity(Section01VerifyActivity::class.java)
-            R.id.formB -> gotoActivity(Section02Activity::class.java)
-            R.id.formC -> gotoActivity(Section03Activity::class.java)
-            R.id.formD -> gotoActivity(Section04Activity::class.java)
-            R.id.formE -> gotoActivity(Section05Activity::class.java)
-            R.id.databaseBtn -> startActivity(Intent(this, AndroidDatabaseManager::class.java))
-            R.id.btn_check_camp -> populateCampDetails()
+        } else {
+            Toast.makeText(this, "* * * * * Invalid user! * * * * *", Toast.LENGTH_SHORT).show()
         }
     }
 

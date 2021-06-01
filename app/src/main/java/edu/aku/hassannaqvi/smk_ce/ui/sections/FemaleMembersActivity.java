@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.aku.hassannaqvi.smk_ce.R;
@@ -46,7 +47,7 @@ public class FemaleMembersActivity extends AppCompatActivity {
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         // There are no request codes
-                        Intent data = result.getData();
+                        //Intent data = result.getData();
                         fm.add(femalemembers);
                         fmAdapter.notifyItemInserted(fm.size() - 1);
                     }
@@ -64,8 +65,9 @@ public class FemaleMembersActivity extends AppCompatActivity {
 
         RecyclerView rvFemaleMembers = (RecyclerView) findViewById(R.id.rvFemaleMembers);
 
-        fm = null;
-
+        fm = new ArrayList<FemaleMembersModel>();;
+        fmAdapter = new FemaleMemberAdapter(fm);
+        rvFemaleMembers.setAdapter(fmAdapter);
         rvFemaleMembers.setLayoutManager(new LinearLayoutManager(this));
         //TODO: Implement startActivityForResult()
 
@@ -78,7 +80,6 @@ public class FemaleMembersActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
                 //TODO: Implement startActivityForResult()
                 addFemale();
-
             }
         });
 

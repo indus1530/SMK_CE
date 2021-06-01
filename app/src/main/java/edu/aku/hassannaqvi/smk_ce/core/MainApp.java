@@ -19,7 +19,7 @@ import edu.aku.hassannaqvi.smk_ce.models.Form;
 import edu.aku.hassannaqvi.smk_ce.models.HHIDModel;
 import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
 import edu.aku.hassannaqvi.smk_ce.models.Immunization;
-import edu.aku.hassannaqvi.smk_ce.models.LHWModel;
+import edu.aku.hassannaqvi.smk_ce.models.LHWHouseholdModel;
 import edu.aku.hassannaqvi.smk_ce.models.MWRAModel;
 import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
 import edu.aku.hassannaqvi.smk_ce.models.Users;
@@ -37,10 +37,15 @@ public class MainApp extends Application {
     public static final String _SERVER_GET_URL = "getData.php";
     public static final String _PHOTO_UPLOAD_URL = _HOST_URL + "uploads.php";
     public static final String _UPDATE_URL = MainApp._IP + "/naunehal/app/mhs/";
+    public static final String DeviceURL = "devices.php";
+
+    public static final int HOUSEHOLDS_TO_RANDOMISE = 2;
+
     public static File sdDir;
     public static String[] downloadData;
+
     public static Form form;
-    public static LHWModel lhw;
+    public static LHWHouseholdModel lhw;
     public static HHIDModel hhid;
     public static FemaleMembersModel femalemembers;
     public static MWRAModel mwra;
@@ -49,7 +54,6 @@ public class MainApp extends Application {
     public static Immunization immunization;
     public static MobileHealth mobileHealth;
     public static ChildInformation childInformation;
-    public static String DeviceURL = "devices.php";
     public static AppInfo appInfo;
     public static Users user;
     public static Boolean admin = false;
@@ -58,7 +62,8 @@ public class MainApp extends Application {
     SharedPreferences sharedPref;
     public static int[] randHHNo;
     public static int randHHNoIndex;
-    String[] marker = new String[10];
+    String[] marker = new String[HOUSEHOLDS_TO_RANDOMISE];
+
 
 
     public static void hideSystemUI(View decorView) {
@@ -152,15 +157,15 @@ public class MainApp extends Application {
         System.out.println(" Total: "+total+"\n");
 
 
-        Double blockSize = Double.valueOf(total)/10.0;
+        Double blockSize = Double.valueOf(total)/Double.valueOf(HOUSEHOLDS_TO_RANDOMISE);
         System.out.println(" blockSize: "+blockSize+"\n");
 
         int randQuat = new Random().nextInt((int) (blockSize-1))+1;
         System.out.println(" randQuat: "+randQuat+"\n");
 
-        int[] hhno = new int[10];
+        int[] hhno = new int[HOUSEHOLDS_TO_RANDOMISE];
         int c =0;
-        for(int i=1;c<10;i+=blockSize){
+        for(int i=1;c<HOUSEHOLDS_TO_RANDOMISE;i+=blockSize){
             c++;
             int high =  (int) (blockSize *c);
             int low = i;
@@ -169,7 +174,7 @@ public class MainApp extends Application {
             System.out.println(c+" -> "+hhno[c-1]+"\n");
 
         }
-        MainApp.randHHNo = new int[10];
+        MainApp.randHHNo = new int[HOUSEHOLDS_TO_RANDOMISE];
         MainApp.randHHNo =  hhno;
     }
 

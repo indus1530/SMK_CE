@@ -28,7 +28,7 @@ import edu.aku.hassannaqvi.smk_ce.contracts.HHIDContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.FemaleMembersContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.IMContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.IMContract.IMTable;
-import edu.aku.hassannaqvi.smk_ce.contracts.LHWContract.LHWTable;
+import edu.aku.hassannaqvi.smk_ce.contracts.LHWHouseholdContract.LHWTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.MHContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.MHContract.MHTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.MWRAContract;
@@ -49,7 +49,7 @@ import edu.aku.hassannaqvi.smk_ce.models.FormIndicatorsModel;
 import edu.aku.hassannaqvi.smk_ce.models.HHIDModel;
 import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
 import edu.aku.hassannaqvi.smk_ce.models.Immunization;
-import edu.aku.hassannaqvi.smk_ce.models.LHWModel;
+import edu.aku.hassannaqvi.smk_ce.models.LHWHouseholdModel;
 import edu.aku.hassannaqvi.smk_ce.models.MWRAModel;
 import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
 import edu.aku.hassannaqvi.smk_ce.models.UCs;
@@ -184,7 +184,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //HHVERIFY
-    public Long addLHW(LHWModel model) {
+    public Long addLHW(LHWHouseholdModel model) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.smk_ce.ui.sections
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -72,8 +73,14 @@ class Section02Activity : AppCompatActivity() {
         if (!formValidation()) return
         saveDraft()
         if (updateDB()) {
+/*            val data = Intent()
+            data.putExtra("streetkey", "streetname")
+            data.putExtra("citykey", "cityname")
+            data.putExtra("homekey", "homename")*/
+
+            setResult(Activity.RESULT_OK)
             finish()
-            startActivity(Intent(this, Section03Activity::class.java))
+           // startActivity(Intent(this, Section03Activity::class.java))
         } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show()
         }
@@ -84,7 +91,7 @@ class Section02Activity : AppCompatActivity() {
 
         femalemembers = FemaleMembersModel()
         femalemembers.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
-        femalemembers.uuid = MainApp.form.uid
+     /*   femalemembers.uuid = MainApp.form.uid
         femalemembers.userName = MainApp.user.userName
         femalemembers.districtCode = MainApp.form.districtCode
         femalemembers.districtName = MainApp.form.districtName
@@ -92,7 +99,7 @@ class Section02Activity : AppCompatActivity() {
         femalemembers.tehsilName = MainApp.form.tehsilName
         femalemembers.lhwCode = MainApp.form.lhwCode
         femalemembers.lhwName = MainApp.form.lhwName
-        femalemembers.khandanNumber = MainApp.form.khandanNumber
+        femalemembers.khandanNumber = MainApp.form.khandanNumber*/
         femalemembers.deviceId = MainApp.appInfo.deviceID
         femalemembers.deviceTag = MainApp.appInfo.tagName
         femalemembers.appver = MainApp.appInfo.appVersion

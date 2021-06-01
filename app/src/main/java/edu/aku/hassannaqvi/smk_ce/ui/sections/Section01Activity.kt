@@ -11,13 +11,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
-import edu.aku.hassannaqvi.smk_ce.contracts.LHWContract
+import edu.aku.hassannaqvi.smk_ce.contracts.LHWHouseholdContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
+import edu.aku.hassannaqvi.smk_ce.core.MainApp.HOUSEHOLDS_TO_RANDOMISE
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.lhw
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01Binding
 import edu.aku.hassannaqvi.smk_ce.models.Districts
-import edu.aku.hassannaqvi.smk_ce.models.LHWModel
+import edu.aku.hassannaqvi.smk_ce.models.LHWHouseholdModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
@@ -48,6 +49,9 @@ class Section01Activity : AppCompatActivity() {
 
 
     private fun setupSkips() {
+
+        bi.lhw04.minvalue = HOUSEHOLDS_TO_RANDOMISE.toFloat()+2;
+
     }
 
 
@@ -129,7 +133,7 @@ class Section01Activity : AppCompatActivity() {
 
         MainApp.genRandNum(bi.lhw04.text.toString().toInt())
 
-        lhw = LHWModel()
+        lhw = LHWHouseholdModel()
         lhw.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
         lhw.userName = MainApp.user.userName
         lhw.districtCode = bi.lhw01.selectedItem.toString()
@@ -174,7 +178,7 @@ class Section01Activity : AppCompatActivity() {
         return if (rowId > 0) {
             lhw.id = rowId.toString()
             lhw.uid = lhw.deviceId + lhw.id
-            db.updatesLHWColumn(LHWContract.LHWTable.COLUMN_UID, lhw.uid)
+            db.updatesLHWColumn(LHWHouseholdContract.LHWTable.COLUMN_UID, lhw.uid)
             true
         } else {
             Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
