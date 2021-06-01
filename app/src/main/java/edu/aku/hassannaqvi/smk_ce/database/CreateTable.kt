@@ -357,4 +357,13 @@ object CreateTable {
             + Province.TableProvince.COLUMN_PROVINCE + " TEXT,"
             + Province.TableProvince.COLUMN_PRO_ID + " TEXT"
             + " );")
+
+    const val SQL_CREATE_RSD_HF = ("CREATE TABLE " + RsdHF.TablersdHF.TABLE_NAME + "("
+            + RsdHF.TablersdHF.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + RsdHF.TablersdHF.COLUMN_PRO_ID + " TEXT,"
+            + RsdHF.TablersdHF.COLUMN_DIST_ID + " TEXT,"
+            + RsdHF.TablersdHF.COLUMN_TEHSIL_ID + " TEXT,"
+            + RsdHF.TablersdHF.COLUMN_UC_ID + " TEXT,"
+            + RsdHF.TablersdHF.COLUMN_HF_CODE + " TEXT"
+            + " );")
 }
