@@ -43,7 +43,7 @@ class Lhw {
         const val COLUMN_ID = "_ID"
         const val COLUMN_TEHSIL_ID = "tehsil_id"
         const val COLUMN_UC_ID = "uc_id"
-        const val COLUMN_HF_CODE = "hf_code"
+        const val COLUMN_HF_CODE = "hfcode"
         const val COLUMN_LHW_NAME = "lhw_name"
         const val COLUMN_LHW_CODE = "lhw_code"
     }

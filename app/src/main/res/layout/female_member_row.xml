@@ -95,7 +95,6 @@
         android:paddingEnd="24dp"
         android:background="@drawable/all_round_corners_stroke"
         android:textStyle="bold"
-        android:onClick="btnEnd"
         android:text="Add Section"
         android:textColor="@color/colorPrimary" />
 </LinearLayout>

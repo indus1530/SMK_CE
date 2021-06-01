@@ -28,7 +28,7 @@ import edu.aku.hassannaqvi.smk_ce.contracts.HHIDContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.FemaleMembersContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.IMContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.IMContract.IMTable;
-import edu.aku.hassannaqvi.smk_ce.contracts.LHWHouseholdContract.LHWTable;
+import edu.aku.hassannaqvi.smk_ce.contracts.LHWHouseholdContract.LHW_HOUSEHOLD_Table;
 import edu.aku.hassannaqvi.smk_ce.contracts.MHContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.MHContract.MHTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.MWRAContract;
@@ -190,29 +190,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(LHWTable.COLUMN_PROJECT_NAME, model.getProjectName());
-        values.put(LHWTable.COLUMN_UID, model.getUid());
-        values.put(LHWTable.COLUMN_UUID, model.getUuid());
-        values.put(LHWTable.COLUMN_SERIAL_NO, model.getSerialNo());
-        values.put(LHWTable.COLUMN_USERNAME, model.getUserName());
-        values.put(LHWTable.COLUMN_SYSDATE, model.getSysDate());
-        values.put(LHWTable.COLUMN_DISTRICT_CODE, model.getDistrictCode());
-        values.put(LHWTable.COLUMN_DISTRICT_NAME, model.getDistrictName());
-        values.put(LHWTable.COLUMN_TEHSIL_CODE, model.getTehsilCode());
-        values.put(LHWTable.COLUMN_TEHSIL_NAME, model.getTehsilName());
-        values.put(LHWTable.COLUMN_LHW_CODE, model.getLhwCode());
-        values.put(LHWTable.COLUMN_LHW_NAME, model.getLhwName());
-        values.put(LHWTable.COLUMN_KHANDAN_NUMBER, model.getKhandanNumber());
-        values.put(LHWTable.COLUMN_STATUS, model.getStatus());
-        values.put(LHWTable.COLUMN_ENDINGDATETIME, model.getEndTime());
-        values.put(LHWTable.COLUMN_DEVICETAGID, model.getDeviceTag());
-        values.put(LHWTable.COLUMN_DEVICEID, model.getDeviceId());
-        values.put(LHWTable.COLUMN_APPVERSION, model.getAppver());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_PROJECT_NAME, model.getProjectName());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_UID, model.getUid());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_UUID, model.getUuid());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_SERIAL_NO, model.getSerialNo());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_USERNAME, model.getUserName());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_SYSDATE, model.getSysDate());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_DISTRICT_CODE, model.getDistrictCode());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_DISTRICT_NAME, model.getDistrictName());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_TEHSIL_CODE, model.getTehsilCode());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_TEHSIL_NAME, model.getTehsilName());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_LHW_CODE, model.getLhwCode());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_LHW_NAME, model.getLhwName());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_KHANDAN_NUMBER, model.getKhandanNumber());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_STATUS, model.getStatus());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_ENDINGDATETIME, model.getEndTime());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_DEVICETAGID, model.getDeviceTag());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_DEVICEID, model.getDeviceId());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_APPVERSION, model.getAppver());
 
         long newRowId;
         newRowId = db.insert(
-                LHWTable.TABLE_NAME,
-                LHWTable.COLUMN_NAME_NULLABLE,
+                LHW_HOUSEHOLD_Table.TABLE_NAME,
+                LHW_HOUSEHOLD_Table.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
 
@@ -1147,16 +1147,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
-    public int updatesLHWColumn(String column, String value) {
+    public int updatesLHWHouseholdColumn(String column, String value) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(column, value);
 
-        String selection = LHWTable._ID + " =? ";
+        String selection = LHW_HOUSEHOLD_Table._ID + " =? ";
         String[] selectionArgs = {String.valueOf(MainApp.lhw.getId())};
 
-        return db.update(LHWTable.TABLE_NAME,
+        return db.update(LHW_HOUSEHOLD_Table.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);

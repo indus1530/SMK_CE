@@ -326,5 +326,7 @@ class MainActivity : AppCompatActivity() {
         bi.statisticLayout.loading.visibility = View.VISIBLE
     }
 
+    fun openForm(view: View) {}
+
 
 }

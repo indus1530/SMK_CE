@@ -178,7 +178,7 @@ class Section01Activity : AppCompatActivity() {
         return if (rowId > 0) {
             lhw.id = rowId.toString()
             lhw.uid = lhw.deviceId + lhw.id
-            db.updatesLHWColumn(LHWHouseholdContract.LHWTable.COLUMN_UID, lhw.uid)
+            db.updatesLHWHouseholdColumn(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_UID, lhw.uid)
             true
         } else {
             Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
