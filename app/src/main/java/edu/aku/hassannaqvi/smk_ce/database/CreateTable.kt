@@ -336,4 +336,11 @@ object CreateTable {
             + Lhw.TableLhw.COLUMN_TEHSIL_ID + " TEXT,"
             + Lhw.TableLhw.COLUMN_UC_ID + " TEXT"
             + " );")
+
+    const val SQL_CREATE_TEHSIL = ("CREATE TABLE " + Tehsil.TableTehsil.TABLE_NAME + "("
+            + Tehsil.TableTehsil.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + Tehsil.TableTehsil.COLUMN_DIST_ID + " TEXT,"
+            + Tehsil.TableTehsil.COLUMN_TEHSIL + " TEXT,"
+            + Tehsil.TableTehsil.COLUMN_TEHSIL_ID + " TEXT"
+            + " );")
 }

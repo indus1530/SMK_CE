@@ -53,6 +53,7 @@ import edu.aku.hassannaqvi.smk_ce.models.LHWHouseholdModel;
 import edu.aku.hassannaqvi.smk_ce.models.Lhw;
 import edu.aku.hassannaqvi.smk_ce.models.MWRAModel;
 import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
+import edu.aku.hassannaqvi.smk_ce.models.Tehsil;
 import edu.aku.hassannaqvi.smk_ce.models.UCs;
 import edu.aku.hassannaqvi.smk_ce.models.UCs.TableUCs;
 import edu.aku.hassannaqvi.smk_ce.models.Users;
@@ -97,6 +98,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CreateTable.SQL_CREATE_CAMP);
         db.execSQL(CreateTable.SQL_CREATE_DOCTOR);
         db.execSQL(CreateTable.SQL_CREATE_LHW);
+        db.execSQL(CreateTable.SQL_CREATE_TEHSIL);
     }
 
     @Override
@@ -1500,6 +1502,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(Lhw.TableLhw.COLUMN_UC_ID, lhw.getUc_Id());
 
                 long rowID = db.insert(Lhw.TableLhw.TABLE_NAME, null, values);
+                if (rowID != -1) insertCount++;
+            }
+            db.close();
+
+        } catch (Exception e) {
+            Log.d(TAG, "syncLhw(e): " + e);
+            db.close();
+        } finally {
+            db.close();
+        }
+        return insertCount;
+    }
+
+    //    Sync Tehsil
+    public int syncTehsil(JSONArray tehsilList) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(Tehsil.TableTehsil.TABLE_NAME, null, null);
+        int insertCount = 0;
+        try {
+
+            for (int i = 0; i < tehsilList.length(); i++) {
+                JSONObject json = tehsilList.getJSONObject(i);
+                Tehsil tehsil = new Tehsil();
+                tehsil.sync(json);
+                ContentValues values = new ContentValues();
+
+                values.put(Tehsil.TableTehsil.COLUMN_DIST_ID, tehsil.getDist_id());
+                values.put(Tehsil.TableTehsil.COLUMN_TEHSIL, tehsil.getTehsil());
+                values.put(Tehsil.TableTehsil.COLUMN_TEHSIL_ID, tehsil.getTehsilId());
+
+                long rowID = db.insert(Tehsil.TableTehsil.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
             db.close();
