@@ -55,7 +55,6 @@ android {
         includeInApk false
         includeInBundle false
     }
-    buildToolsVersion '29.0.3'
 }
 
 

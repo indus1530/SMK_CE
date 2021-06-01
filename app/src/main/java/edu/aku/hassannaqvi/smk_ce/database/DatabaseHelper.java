@@ -50,6 +50,7 @@ import edu.aku.hassannaqvi.smk_ce.models.HHIDModel;
 import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
 import edu.aku.hassannaqvi.smk_ce.models.Immunization;
 import edu.aku.hassannaqvi.smk_ce.models.LHWHouseholdModel;
+import edu.aku.hassannaqvi.smk_ce.models.Lhw;
 import edu.aku.hassannaqvi.smk_ce.models.MWRAModel;
 import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
 import edu.aku.hassannaqvi.smk_ce.models.UCs;
@@ -83,7 +84,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CreateTable.SQL_CREATE_CLUSTERS);
         db.execSQL(CreateTable.SQL_CREATE_FORMS);
         db.execSQL(CreateTable.SQL_CREATE_HHIDENTIFY);
-        db.execSQL(CreateTable.SQL_CREATE_LHW);
+        db.execSQL(CreateTable.SQL_CREATE_LHW_HOUSEHOLD);
         db.execSQL(CreateTable.SQL_CREATE_HHMEMBERS);
         db.execSQL(CreateTable.SQL_CREATE_MWRA);
         db.execSQL(CreateTable.SQL_CREATE_ADOLESCENT);
@@ -95,6 +96,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CreateTable.SQL_CREATE_BL_RANDOM);
         db.execSQL(CreateTable.SQL_CREATE_CAMP);
         db.execSQL(CreateTable.SQL_CREATE_DOCTOR);
+        db.execSQL(CreateTable.SQL_CREATE_LHW);
     }
 
     @Override
@@ -1471,6 +1473,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         } catch (Exception e) {
             Log.d(TAG, "syncUser(e): " + e);
+            db.close();
+        } finally {
+            db.close();
+        }
+        return insertCount;
+    }
+
+//    Sync LHW
+    public int syncLhw(JSONArray lhwList) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(Lhw.TableLhw.TABLE_NAME, null, null);
+        int insertCount = 0;
+        try {
+
+            for (int i = 0; i < lhwList.length(); i++) {
+                JSONObject json = lhwList.getJSONObject(i);
+                Lhw lhw = new Lhw();
+                lhw.sync(json);
+                ContentValues values = new ContentValues();
+
+                values.put(Lhw.TableLhw.COLUMN_HF_CODE, lhw.getHf_Code());
+                values.put(Lhw.TableLhw.COLUMN_LHW_CODE, lhw.getLhw_Code());
+                values.put(Lhw.TableLhw.COLUMN_LHW_NAME, lhw.getLhw_Name());
+                values.put(Lhw.TableLhw.COLUMN_TEHSIL_ID, lhw.getTehsilId());
+                values.put(Lhw.TableLhw.COLUMN_UC_ID, lhw.getUc_Id());
+
+                long rowID = db.insert(Lhw.TableLhw.TABLE_NAME, null, values);
+                if (rowID != -1) insertCount++;
+            }
+            db.close();
+
+        } catch (Exception e) {
+            Log.d(TAG, "syncLhw(e): " + e);
             db.close();
         } finally {
             db.close();

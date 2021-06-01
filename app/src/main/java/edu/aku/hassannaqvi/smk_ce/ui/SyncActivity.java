@@ -43,7 +43,6 @@ import java.util.concurrent.TimeUnit;
 import edu.aku.hassannaqvi.smk_ce.CONSTANTS;
 import edu.aku.hassannaqvi.smk_ce.R;
 import edu.aku.hassannaqvi.smk_ce.adapters.SyncListAdapter;
-import edu.aku.hassannaqvi.smk_ce.contracts.LHWHouseholdContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.MHContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper;
@@ -53,6 +52,7 @@ import edu.aku.hassannaqvi.smk_ce.models.Camps;
 import edu.aku.hassannaqvi.smk_ce.models.Clusters;
 import edu.aku.hassannaqvi.smk_ce.models.Districts;
 import edu.aku.hassannaqvi.smk_ce.models.Doctor;
+import edu.aku.hassannaqvi.smk_ce.models.Lhw;
 import edu.aku.hassannaqvi.smk_ce.models.SyncModel;
 import edu.aku.hassannaqvi.smk_ce.models.UCs;
 import edu.aku.hassannaqvi.smk_ce.models.Users;
@@ -161,11 +161,11 @@ public class SyncActivity extends AppCompatActivity {
                 if (sync_flag) {
                     //campCode = getIntent().getStringExtra(CONSTANTS.SYNC_CAMPID_LOGIN);
                 }
-                    // Set tables to DOWNLOAD
-                    downloadTables.add(new SyncModel(Users.UsersTable.TABLE_NAME));
-                    downloadTables.add(new SyncModel(VersionApp.VersionAppTable.TABLE_NAME));
-                    downloadTables.add(new SyncModel(Districts.TableDistricts.TABLE_NAME));
-                    downloadTables.add(new SyncModel(LHWHouseholdContract.LHWTable.TABLE_NAME));
+                // Set tables to DOWNLOAD
+                downloadTables.add(new SyncModel(Users.UsersTable.TABLE_NAME));
+                downloadTables.add(new SyncModel(VersionApp.VersionAppTable.TABLE_NAME));
+                downloadTables.add(new SyncModel(Districts.TableDistricts.TABLE_NAME));
+                downloadTables.add(new SyncModel(Lhw.TableLhw.TABLE_NAME));
 
 /*                    String select = " idCamp, camp_no, dist_id, district, ucCode, ucName, area_name, plan_date ";
                     String filter = " camp_status = 'Planned' AND locked = 0 ";
@@ -278,6 +278,11 @@ public class SyncActivity extends AppCompatActivity {
                                         case BLRandom.TableRandom.TABLE_NAME:
                                             jsonArray = new JSONArray(result);
                                             insertCount = db.syncBLRandom(jsonArray);
+                                            Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
+                                            break;
+                                        case Lhw.TableLhw.TABLE_NAME:
+                                            jsonArray = new JSONArray(result);
+                                            insertCount = db.syncLhw(jsonArray);
                                             Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
                                             break;
 
@@ -700,7 +705,6 @@ public class SyncActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
 }
