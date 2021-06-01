@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
+        android:background="@drawable/app_bg_gray"
         android:orientation="vertical">
 
 
@@ -26,6 +27,8 @@
             android:layout_height="?attr/actionBarSize"
             android:layoutDirection="ltr"
             android:textAlignment="center"
+            android:backgroundTint="@color/colorPrimary"
+            android:backgroundTintMode="multiply"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:titleTextColor="@color/black" />
@@ -71,6 +74,124 @@
                     layout="@layout/statistic_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="110dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="110dp"
+                    android:padding="12dp"
+                    app:cardCornerRadius="24dp"
+
+                    >
+
+                    <LinearLayout
+                        android:clickable="true"
+                        android:id="@+id/registerLHW"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="sectionPress"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="24dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:drawableStart="@drawable/new_form"
+                                android:drawablePadding="12dp"
+                                android:gravity="center_vertical"
+                                android:minWidth="460dp"
+                                android:text="@string/register_lhw"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="24dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="64dp"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:text="Open to register LHW and record Khandan information"
+                                android:textColor="@color/gray"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/ic_arrow_forward"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:textColor="@color/colorAccent"
+                            android:layout_margin="12dp"
+                            android:textSize="56dp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="110dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="110dp"
+                    android:padding="12dp"
+                    app:cardCornerRadius="24dp"
+
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/openForm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="sectionPress"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="24dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/btnOnHold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:drawableStart="@drawable/onhold_forms"
+                                android:drawablePadding="12dp"
+                                android:gravity="center_vertical"
+                                android:minWidth="460dp"
+                                android:text="@string/open_new_form"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="24dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="64dp"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:text="Open new form to enter household information"
+                                android:textColor="@color/gray"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/ic_arrow_forward"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:textColor="@color/colorAccent"
+                            android:layout_margin="12dp"
+                            android:textSize="56dp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
