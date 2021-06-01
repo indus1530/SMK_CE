@@ -351,4 +351,10 @@ object CreateTable {
             + LhwHF.TableLhwHF.COLUMN_HF_NAME + " TEXT,"
             + LhwHF.TableLhwHF.COLUMN_TEHSIL_ID + " TEXT"
             + " );")
+
+    const val SQL_CREATE_PROVINCE = ("CREATE TABLE " + Province.TableProvince.TABLE_NAME + "("
+            + Province.TableProvince.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + Province.TableProvince.COLUMN_PROVINCE + " TEXT,"
+            + Province.TableProvince.COLUMN_PRO_ID + " TEXT"
+            + " );")
 }

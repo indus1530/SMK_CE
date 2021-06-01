@@ -54,6 +54,7 @@ import edu.aku.hassannaqvi.smk_ce.models.Lhw;
 import edu.aku.hassannaqvi.smk_ce.models.LhwHF;
 import edu.aku.hassannaqvi.smk_ce.models.MWRAModel;
 import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
+import edu.aku.hassannaqvi.smk_ce.models.Province;
 import edu.aku.hassannaqvi.smk_ce.models.Tehsil;
 import edu.aku.hassannaqvi.smk_ce.models.UCs;
 import edu.aku.hassannaqvi.smk_ce.models.UCs.TableUCs;
@@ -101,6 +102,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CreateTable.SQL_CREATE_LHW);
         db.execSQL(CreateTable.SQL_CREATE_TEHSIL);
         db.execSQL(CreateTable.SQL_CREATE_LHW_HF);
+        db.execSQL(CreateTable.SQL_CREATE_PROVINCE);
     }
 
     @Override
@@ -1567,6 +1569,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(LhwHF.TableLhwHF.COLUMN_UC_ID, lhwHF.getUc_Id());
 
                 long rowID = db.insert(LhwHF.TableLhwHF.TABLE_NAME, null, values);
+                if (rowID != -1) insertCount++;
+            }
+            db.close();
+
+        } catch (Exception e) {
+            Log.d(TAG, "syncLhw(e): " + e);
+            db.close();
+        } finally {
+            db.close();
+        }
+        return insertCount;
+    }
+
+    //    Sync PROVINCE
+    public int syncProvince(JSONArray provinceList) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(Province.TableProvince.TABLE_NAME, null, null);
+        int insertCount = 0;
+        try {
+
+            for (int i = 0; i < provinceList.length(); i++) {
+                JSONObject json = provinceList.getJSONObject(i);
+                Province province = new Province();
+                province.sync(json);
+                ContentValues values = new ContentValues();
+
+                values.put(Province.TableProvince.COLUMN_PROVINCE, province.getProvince());
+                values.put(Province.TableProvince.COLUMN_PRO_ID, province.getPro_Id());
+
+                long rowID = db.insert(Province.TableProvince.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
             db.close();
