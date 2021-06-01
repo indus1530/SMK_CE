@@ -343,4 +343,12 @@ object CreateTable {
             + Tehsil.TableTehsil.COLUMN_TEHSIL + " TEXT,"
             + Tehsil.TableTehsil.COLUMN_TEHSIL_ID + " TEXT"
             + " );")
+
+    const val SQL_CREATE_LHW_HF = ("CREATE TABLE " + LhwHF.TableLhwHF.TABLE_NAME + "("
+            + LhwHF.TableLhwHF.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + LhwHF.TableLhwHF.COLUMN_HF_CODE + " TEXT,"
+            + LhwHF.TableLhwHF.COLUMN_UC_ID + " TEXT,"
+            + LhwHF.TableLhwHF.COLUMN_HF_NAME + " TEXT,"
+            + LhwHF.TableLhwHF.COLUMN_TEHSIL_ID + " TEXT"
+            + " );")
 }

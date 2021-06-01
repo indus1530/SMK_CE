@@ -53,6 +53,7 @@ import edu.aku.hassannaqvi.smk_ce.models.Clusters;
 import edu.aku.hassannaqvi.smk_ce.models.Districts;
 import edu.aku.hassannaqvi.smk_ce.models.Doctor;
 import edu.aku.hassannaqvi.smk_ce.models.Lhw;
+import edu.aku.hassannaqvi.smk_ce.models.LhwHF;
 import edu.aku.hassannaqvi.smk_ce.models.SyncModel;
 import edu.aku.hassannaqvi.smk_ce.models.Tehsil;
 import edu.aku.hassannaqvi.smk_ce.models.UCs;
@@ -168,6 +169,7 @@ public class SyncActivity extends AppCompatActivity {
                 downloadTables.add(new SyncModel(Districts.TableDistricts.TABLE_NAME));
                 downloadTables.add(new SyncModel(Lhw.TableLhw.TABLE_NAME));
                 downloadTables.add(new SyncModel(Tehsil.TableTehsil.TABLE_NAME));
+                downloadTables.add(new SyncModel(LhwHF.TableLhwHF.TABLE_NAME));
 
 /*                    String select = " idCamp, camp_no, dist_id, district, ucCode, ucName, area_name, plan_date ";
                     String filter = " camp_status = 'Planned' AND locked = 0 ";
@@ -290,6 +292,11 @@ public class SyncActivity extends AppCompatActivity {
                                         case Tehsil.TableTehsil.TABLE_NAME:
                                             jsonArray = new JSONArray(result);
                                             insertCount = db.syncTehsil(jsonArray);
+                                            Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
+                                            break;
+                                        case LhwHF.TableLhwHF.TABLE_NAME:
+                                            jsonArray = new JSONArray(result);
+                                            insertCount = db.syncLhwHF(jsonArray);
                                             Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
                                             break;
 

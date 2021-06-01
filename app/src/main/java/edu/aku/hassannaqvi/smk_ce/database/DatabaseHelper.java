@@ -51,6 +51,7 @@ import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
 import edu.aku.hassannaqvi.smk_ce.models.Immunization;
 import edu.aku.hassannaqvi.smk_ce.models.LHWHouseholdModel;
 import edu.aku.hassannaqvi.smk_ce.models.Lhw;
+import edu.aku.hassannaqvi.smk_ce.models.LhwHF;
 import edu.aku.hassannaqvi.smk_ce.models.MWRAModel;
 import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
 import edu.aku.hassannaqvi.smk_ce.models.Tehsil;
@@ -99,6 +100,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CreateTable.SQL_CREATE_DOCTOR);
         db.execSQL(CreateTable.SQL_CREATE_LHW);
         db.execSQL(CreateTable.SQL_CREATE_TEHSIL);
+        db.execSQL(CreateTable.SQL_CREATE_LHW_HF);
     }
 
     @Override
@@ -1533,6 +1535,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(Tehsil.TableTehsil.COLUMN_TEHSIL_ID, tehsil.getTehsilId());
 
                 long rowID = db.insert(Tehsil.TableTehsil.TABLE_NAME, null, values);
+                if (rowID != -1) insertCount++;
+            }
+            db.close();
+
+        } catch (Exception e) {
+            Log.d(TAG, "syncLhw(e): " + e);
+            db.close();
+        } finally {
+            db.close();
+        }
+        return insertCount;
+    }
+
+    //    Sync LHWHF
+    public int syncLhwHF(JSONArray lhwHFList) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(LhwHF.TableLhwHF.TABLE_NAME, null, null);
+        int insertCount = 0;
+        try {
+
+            for (int i = 0; i < lhwHFList.length(); i++) {
+                JSONObject json = lhwHFList.getJSONObject(i);
+                LhwHF lhwHF = new LhwHF();
+                lhwHF.sync(json);
+                ContentValues values = new ContentValues();
+
+                values.put(LhwHF.TableLhwHF.COLUMN_HF_CODE, lhwHF.getHfcode());
+                values.put(LhwHF.TableLhwHF.COLUMN_HF_NAME, lhwHF.getHf_name());
+                values.put(LhwHF.TableLhwHF.COLUMN_TEHSIL_ID, lhwHF.getTehsilId());
+                values.put(LhwHF.TableLhwHF.COLUMN_UC_ID, lhwHF.getUc_Id());
+
+                long rowID = db.insert(LhwHF.TableLhwHF.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
             db.close();
