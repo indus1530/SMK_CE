@@ -59,7 +59,7 @@ android {
         versionProps.store(versionPropsFile.newWriter(), null)
 
         defaultConfig {
-            applicationId "edu.aku.hassannaqvi.psbitrial"
+            applicationId "edu.aku.hassannaqvi.smk_ce"
             versionCode versionBuild
             versionName "${versionNumber}.${versionPatch}${versionType}"
             minSdkVersion 29

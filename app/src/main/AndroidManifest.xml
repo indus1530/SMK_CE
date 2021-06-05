@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:installLocation="preferExternal"
     package="edu.aku.hassannaqvi.smk_ce">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission
+   <!-- <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />
+        tools:ignore="ScopedStorage" />-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission
         android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
@@ -17,7 +18,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />
+      tools:ignore="ScopedStorage"/>
 
     <application
         android:name=".core.MainApp"
@@ -26,6 +27,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
@@ -44,11 +46,11 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.Design.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateHidden">
-<!--            <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
         <activity
             android:name=".ui.login_activity.LoginActivity"
@@ -67,11 +69,11 @@
             android:name=".ui.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" >
-            <intent-filter>
+<!--            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".database.AndroidDatabaseManager"
@@ -93,37 +95,37 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".ui.sections.Section01Activity"
+            android:name=".ui.sections.SectionLHWActivity"
             android:label="@string/lhwinfo"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />
         <activity
-            android:name=".ui.sections.Section01IdentifyActivity"
+            android:name=".ui.sections.SectionHHIdentifyActivity"
             android:label="@string/hhidinfo"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />
         <activity
-            android:name=".ui.sections.Section01VerifyActivity"
+            android:name=".ui.sections.SectionHHVerifyActivity"
             android:label="@string/hhvinfo"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />
         <activity
-            android:name=".ui.sections.Section02Activity"
+            android:name=".ui.sections.SectionMemberInfoActivity"
             android:label="@string/hhinfo"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />
         <activity
-            android:name=".ui.sections.Section03Activity"
+            android:name=".ui.sections.SectionMWRAActivity"
             android:label="@string/mwratitle"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />
         <activity
-            android:name=".ui.sections.Section04Activity"
+            android:name=".ui.sections.SectionAdolActivity"
             android:label="@string/adoltitle"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />
         <activity
-            android:name=".ui.sections.Section05Activity"
+            android:name=".ui.sections.SectionVHCActivity"
             android:label="@string/vhctitle"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1" />

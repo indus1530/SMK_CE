@@ -76,6 +76,7 @@ public class FemaleMembersModel extends BaseObservable implements Observable {
     private String hh09 = StringUtils.EMPTY;
     private String hh10 = StringUtils.EMPTY;
     private String hh11 = StringUtils.EMPTY;
+    private String memCategory = StringUtils.EMPTY;
     private transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
 
 
@@ -486,6 +487,16 @@ public class FemaleMembersModel extends BaseObservable implements Observable {
     }
 
     @Bindable
+    public String getMemCategory() {
+        return memCategory;
+    }
+
+    public void setMemCategory(String memCategory) {
+        this.memCategory = memCategory;
+        notifyPropertyChanged(BR.memCategory);
+    }
+
+    @Bindable
     public boolean isExpanded() {
         return expanded;
     }
@@ -578,7 +589,8 @@ public class FemaleMembersModel extends BaseObservable implements Observable {
                     .put("hh08", hh08)
                     .put("hh09", hh09)
                     .put("hh10", hh10)
-                    .put("hh11", hh11);
+                    .put("hh11", hh11)
+                    .put("memCategory", memCategory);
         } catch (JSONException e) {
             e.printStackTrace();
             return "\"error\":, \"" + e.getMessage() + "\"";
@@ -649,6 +661,7 @@ public class FemaleMembersModel extends BaseObservable implements Observable {
                 this.hh09 = json.getString("hh09");
                 this.hh10 = json.getString("hh10");
                 this.hh11 = json.getString("hh11");
+                this.memCategory = json.getString("memCategory");
             } catch (JSONException e) {
                 e.printStackTrace();
             }

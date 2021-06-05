@@ -9,7 +9,7 @@
             type="edu.aku.hassannaqvi.sk.models.Form" />-->
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.smk_ce.ui.sections.Section05Activity" />
+            type="edu.aku.hassannaqvi.smk_ce.ui.sections.SectionVHCActivity" />
     </data>
 
 

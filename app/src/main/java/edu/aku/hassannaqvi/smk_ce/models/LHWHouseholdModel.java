@@ -27,22 +27,18 @@ public class LHWHouseholdModel extends BaseObservable {
     // APP VARIABLES
     private String id = StringUtils.EMPTY;
     private String uid = StringUtils.EMPTY;
-    private String uuid = StringUtils.EMPTY;
-    private String serialNo = StringUtils.EMPTY;
     private String userName = StringUtils.EMPTY;
     private String sysDate = StringUtils.EMPTY;
-    private String districtCode = StringUtils.EMPTY;
-    private String districtName = StringUtils.EMPTY;
     private String tehsilCode = StringUtils.EMPTY;
     private String tehsilName = StringUtils.EMPTY;
+    private String hfCode = StringUtils.EMPTY;
+    private String hfName = StringUtils.EMPTY;
     private String lhwCode = StringUtils.EMPTY;
     private String lhwName = StringUtils.EMPTY;
     private String khandanNumber = StringUtils.EMPTY;
     private String deviceId = StringUtils.EMPTY;
     private String deviceTag = StringUtils.EMPTY;
     private String appver = StringUtils.EMPTY;
-    private String endTime = StringUtils.EMPTY;
-    private String status = StringUtils.EMPTY;
     private String synced = StringUtils.EMPTY;
     private String syncDate = StringUtils.EMPTY;
 
@@ -60,7 +56,6 @@ public class LHWHouseholdModel extends BaseObservable {
     private String lhw02 = StringUtils.EMPTY;
     private String lhw03 = StringUtils.EMPTY;
     private String lhw04 = StringUtils.EMPTY;
-    private String lhw04sno = StringUtils.EMPTY;
     private String lhwphoto = StringUtils.EMPTY;
 
 
@@ -86,7 +81,7 @@ public class LHWHouseholdModel extends BaseObservable {
     public void setForm(String userName, String sysDate, String dcode, String ucode, String cluster, String hhno, String deviceId, String deviceTag, String appver) {
         this.userName = userName;
         this.sysDate = sysDate;
-        this.districtCode = dcode;
+  //      this.districtCode = dcode;
         this.tehsilCode = ucode;
         this.lhwCode = cluster;
         this.khandanNumber = hhno;
@@ -129,6 +124,7 @@ public class LHWHouseholdModel extends BaseObservable {
     }
 
 
+/*
     @Bindable
     public String getUuid() {
         return uuid;
@@ -149,6 +145,7 @@ public class LHWHouseholdModel extends BaseObservable {
         this.serialNo = serialNo;
         return this;
     }
+*/
 
 
     @Bindable
@@ -161,7 +158,7 @@ public class LHWHouseholdModel extends BaseObservable {
         return this;
     }
 
-    @Bindable
+ /*   @Bindable
     public String getDistrictCode() {
         return districtCode;
     }
@@ -181,7 +178,7 @@ public class LHWHouseholdModel extends BaseObservable {
         this.districtName = districtName;
         return this;
     }
-
+*/
 
     @Bindable
     public String getTehsilCode() {
@@ -206,13 +203,31 @@ public class LHWHouseholdModel extends BaseObservable {
 
 
     @Bindable
+    public String getHfCode() {
+        return hfCode;
+    }
+
+    public void setHfCode(String hfCode) {
+        this.hfCode = hfCode;
+    }
+
+
+    @Bindable
+    public String getHfName() {
+        return hfName;
+    }
+
+    public void setHfName(String hfName) {
+        this.hfName = hfName;
+    }
+
+    @Bindable
     public String getLhwCode() {
         return lhwCode;
     }
 
-    public LHWHouseholdModel setLhwCode(String lhwCode) {
+    public void setLhwCode(String lhwCode) {
         this.lhwCode = lhwCode;
-        return this;
     }
 
 
@@ -221,9 +236,8 @@ public class LHWHouseholdModel extends BaseObservable {
         return lhwName;
     }
 
-    public LHWHouseholdModel setLhwName(String lhwName) {
+    public void setLhwName(String lhwName) {
         this.lhwName = lhwName;
-        return this;
     }
 
 
@@ -232,9 +246,8 @@ public class LHWHouseholdModel extends BaseObservable {
         return khandanNumber;
     }
 
-    public LHWHouseholdModel setKhandanNumber(String khandanNumber) {
+    public void setKhandanNumber(String khandanNumber) {
         this.khandanNumber = khandanNumber;
-        return this;
     }
 
 
@@ -243,9 +256,8 @@ public class LHWHouseholdModel extends BaseObservable {
         return deviceId;
     }
 
-    public LHWHouseholdModel setDeviceId(String deviceId) {
+    public void setDeviceId(String deviceId) {
         this.deviceId = deviceId;
-        return this;
     }
 
     @Bindable
@@ -253,9 +265,8 @@ public class LHWHouseholdModel extends BaseObservable {
         return deviceTag;
     }
 
-    public LHWHouseholdModel setDeviceTag(String deviceTag) {
+    public void setDeviceTag(String deviceTag) {
         this.deviceTag = deviceTag;
-        return this;
     }
 
     @Bindable
@@ -263,9 +274,8 @@ public class LHWHouseholdModel extends BaseObservable {
         return appver;
     }
 
-    public LHWHouseholdModel setAppver(String appver) {
+    public void setAppver(String appver) {
         this.appver = appver;
-        return this;
     }
 
     @Bindable
@@ -273,29 +283,26 @@ public class LHWHouseholdModel extends BaseObservable {
         return sysDate;
     }
 
-    public LHWHouseholdModel setSysDate(String sysDate) {
+    public void setSysDate(String sysDate) {
         this.sysDate = sysDate;
-        return this;
     }
 
-    @Bindable
+ /*   @Bindable
     public String getEndTime() {
         return endTime;
     }
 
-    public LHWHouseholdModel setEndTime(String endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
-        return this;
     }
-
+*/
     @Bindable
     public String getSynced() {
         return synced;
     }
 
-    public LHWHouseholdModel setSynced(String synced) {
+    public void setSynced(String synced) {
         this.synced = synced;
-        return this;
     }
 
     @Bindable
@@ -303,9 +310,8 @@ public class LHWHouseholdModel extends BaseObservable {
         return syncDate;
     }
 
-    public LHWHouseholdModel setSyncDate(String syncDate) {
+    public void setSyncDate(String syncDate) {
         this.syncDate = syncDate;
-        return this;
     }
 
 /*
@@ -321,7 +327,7 @@ public class LHWHouseholdModel extends BaseObservable {
 */
 
 
-    @Bindable
+  /*  @Bindable
     public String getStatus() {
         return status;
     }
@@ -331,7 +337,7 @@ public class LHWHouseholdModel extends BaseObservable {
         notifyPropertyChanged(BR.status);
     }
 
-
+*/
     @Bindable
     public String getLhw01() {
         return lhw01;
@@ -382,7 +388,7 @@ public class LHWHouseholdModel extends BaseObservable {
         notifyPropertyChanged(BR.lhwphoto);
     }
 
-    @Bindable
+  /*  @Bindable
     public String getLhw04sno() {
         return lhw04sno;
     }
@@ -391,27 +397,29 @@ public class LHWHouseholdModel extends BaseObservable {
         this.lhw04sno = lhw04sno;
         notifyPropertyChanged(BR.lhw04sno);
     }
-
+*/
 
     public LHWHouseholdModel Sync(JSONObject jsonObject) throws JSONException {
         this.id = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_ID);
         this.uid = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_UID);
-        this.uuid = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_UUID);
-        this.serialNo = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SERIAL_NO);
+     /*   this.uuid = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_UUID);
+        this.serialNo = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SERIAL_NO);*/
         this.userName = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_USERNAME);
         this.sysDate = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SYSDATE);
-        this.districtCode = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DISTRICT_CODE);
-        this.districtName = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DISTRICT_NAME);
+   /*     this.districtCode = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DISTRICT_CODE);
+        this.districtName = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DISTRICT_NAME);*/
         this.tehsilCode = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_TEHSIL_CODE);
         this.tehsilName = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_TEHSIL_NAME);
         this.lhwCode = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_CODE);
         this.lhwName = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_NAME);
+        this.hfCode = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_CODE);
+        this.hfName = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_NAME);
         this.khandanNumber = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_KHANDAN_NUMBER);
         this.deviceId = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICEID);
         this.deviceTag = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICETAGID);
         this.appver = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_APPVERSION);
-        this.endTime = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_ENDINGDATETIME);
-        this.status = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_STATUS);
+       /* this.endTime = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_ENDINGDATETIME);
+        this.status = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_STATUS);*/
         this.synced = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SYNCED);
         this.syncDate = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SYNCED_DATE);
 
@@ -425,12 +433,12 @@ public class LHWHouseholdModel extends BaseObservable {
     public LHWHouseholdModel Hydrate(Cursor cursor) {
         this.id = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_ID));
         this.uid = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_UID));
-        this.uuid = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_UUID));
-        this.serialNo = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SERIAL_NO));
+      /*  this.uuid = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_UUID));
+        this.serialNo = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SERIAL_NO));*/
         this.userName = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_USERNAME));
         this.sysDate = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SYSDATE));
-        this.districtCode = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DISTRICT_CODE));
-        this.districtName = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DISTRICT_NAME));
+    /*    this.districtCode = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DISTRICT_CODE));
+        this.districtName = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DISTRICT_NAME));*/
         this.tehsilCode = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_TEHSIL_CODE));
         this.tehsilName = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_TEHSIL_NAME));
         this.lhwCode = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_CODE));
@@ -439,8 +447,8 @@ public class LHWHouseholdModel extends BaseObservable {
         this.deviceId = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICEID));
         this.deviceTag = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICETAGID));
         this.appver = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_APPVERSION));
-        this.endTime = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_ENDINGDATETIME));
-        this.status = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_STATUS));
+    /*    this.endTime = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_ENDINGDATETIME));
+        this.status = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_STATUS));*/
         this.synced = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SYNCED));
         this.syncDate = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SYNCED_DATE));
 
@@ -485,12 +493,12 @@ public class LHWHouseholdModel extends BaseObservable {
         try {
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_ID, this.id == null ? JSONObject.NULL : this.id);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
-            json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
-            json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
+/*            json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
+            json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);*/
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
-            json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DISTRICT_CODE, this.districtCode == null ? JSONObject.NULL : this.districtCode);
-            json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DISTRICT_NAME, this.districtName == null ? JSONObject.NULL : this.districtName);
+/*            json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DISTRICT_CODE, this.districtCode == null ? JSONObject.NULL : this.districtCode);
+            json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DISTRICT_NAME, this.districtName == null ? JSONObject.NULL : this.districtName);*/
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_TEHSIL_CODE, this.tehsilCode == null ? JSONObject.NULL : this.tehsilCode);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_TEHSIL_NAME, this.tehsilName == null ? JSONObject.NULL : this.tehsilName);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_CODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
@@ -499,8 +507,8 @@ public class LHWHouseholdModel extends BaseObservable {
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICETAGID, this.deviceTag == null ? JSONObject.NULL : this.deviceTag);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_APPVERSION, this.appver == null ? JSONObject.NULL : this.appver);
-            json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_ENDINGDATETIME, this.endTime == null ? JSONObject.NULL : this.endTime);
-            json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_STATUS, this.status == null ? JSONObject.NULL : this.status);
+/*            json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_ENDINGDATETIME, this.endTime == null ? JSONObject.NULL : this.endTime);
+            json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_STATUS, this.status == null ? JSONObject.NULL : this.status);*/
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SYNCED_DATE, this.syncDate == null ? JSONObject.NULL : this.syncDate);
 

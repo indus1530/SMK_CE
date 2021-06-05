@@ -31,8 +31,8 @@ public class Form extends BaseObservable implements Observable {
     private String uid = StringUtils.EMPTY;
     private String userName = StringUtils.EMPTY;
     private String sysDate = StringUtils.EMPTY;
-    private String districtCode = StringUtils.EMPTY;
-    private String districtName = StringUtils.EMPTY;
+    private String hfCode = StringUtils.EMPTY;
+    private String hfName = StringUtils.EMPTY;
     private String tehsilCode = StringUtils.EMPTY;
     private String tehsilName = StringUtils.EMPTY;
     private String lhwCode = StringUtils.EMPTY;
@@ -67,6 +67,9 @@ public class Form extends BaseObservable implements Observable {
     private String hhv02f = StringUtils.EMPTY;
     private String hhv02g = StringUtils.EMPTY;
     private String hhv03 = StringUtils.EMPTY;
+    private String hhv04 = StringUtils.EMPTY;
+    private String hhv05 = StringUtils.EMPTY;
+    private String hhv06 = StringUtils.EMPTY;
 
     // V H C
     private String vhc01 = StringUtils.EMPTY;
@@ -112,7 +115,7 @@ public class Form extends BaseObservable implements Observable {
     public void setForm(String userName, String sysDate, String dcode, String ucode, String cluster, String hhno, String deviceId, String deviceTag, String appver) {
         this.userName = userName;
         this.sysDate = sysDate;
-        this.districtCode = dcode;
+        this.hfCode = dcode;
         this.tehsilCode = ucode;
         this.lhwCode = cluster;
         this.khandanNumber = hhno;
@@ -166,23 +169,23 @@ public class Form extends BaseObservable implements Observable {
 
 
     @Bindable
-    public String getDistrictCode() {
-        return districtCode;
+    public String getHfCode() {
+        return hfCode;
     }
 
-    public Form setDistrictCode(String districtCode) {
-        this.districtCode = districtCode;
+    public Form setHfCode(String hfCode) {
+        this.hfCode = hfCode;
         return this;
     }
 
 
     @Bindable
-    public String getDistrictName() {
-        return districtName;
+    public String getHfName() {
+        return hfName;
     }
 
-    public Form setDistrictName(String districtName) {
-        this.districtName = districtName;
+    public Form setHfName(String hfName) {
+        this.hfName = hfName;
         return this;
     }
 
@@ -443,6 +446,36 @@ public class Form extends BaseObservable implements Observable {
         this.hhv03 = hhv03;
         notifyPropertyChanged(BR.hhv03);
     }
+    
+    
+    @Bindable
+    public String getHhv04() {
+        return hhv04;
+    }
+
+    public void setHhv04(String hhv04) {
+        this.hhv04 = hhv04;
+        notifyPropertyChanged(BR.hhv04);
+    }
+    @Bindable
+    public String getHhv05() {
+        return hhv05;
+    }
+
+    public void setHhv05(String hhv05) {
+        this.hhv05 = hhv05;
+        notifyPropertyChanged(BR.hhv05);
+    }
+
+    @Bindable
+    public String getHhv06() {
+        return hhv06;
+    }
+
+    public void setHhv06(String hhv06) {
+        this.hhv06 = hhv06;
+        notifyPropertyChanged(BR.hhv06);
+    }
 
 
     @Bindable
@@ -631,8 +664,8 @@ public class Form extends BaseObservable implements Observable {
         this.uid = jsonObject.getString(FormsContract.FormsTable.COLUMN_UID);
         this.userName = jsonObject.getString(FormsContract.FormsTable.COLUMN_USERNAME);
         this.sysDate = jsonObject.getString(FormsContract.FormsTable.COLUMN_SYSDATE);
-        this.districtCode = jsonObject.getString(FormsContract.FormsTable.COLUMN_DISTRICT_CODE);
-        this.districtName = jsonObject.getString(FormsContract.FormsTable.COLUMN_DISTRICT_NAME);
+        this.hfCode = jsonObject.getString(FormsContract.FormsTable.COLUMN_HF_CODE);
+        this.hfName = jsonObject.getString(FormsContract.FormsTable.COLUMN_HF_NAME);
         this.tehsilCode = jsonObject.getString(FormsContract.FormsTable.COLUMN_TEHSIL_CODE);
         this.tehsilName = jsonObject.getString(FormsContract.FormsTable.COLUMN_TEHSIL_NAME);
         this.lhwCode = jsonObject.getString(FormsContract.FormsTable.COLUMN_LHW_CODE);
@@ -661,8 +694,8 @@ public class Form extends BaseObservable implements Observable {
         this.uid = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_UID));
         this.userName = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_USERNAME));
         this.sysDate = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_SYSDATE));
-        this.districtCode = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_DISTRICT_CODE));
-        this.districtName = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_DISTRICT_NAME));
+        this.hfCode = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_HF_CODE));
+        this.hfName = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_HF_NAME));
         this.tehsilCode = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_TEHSIL_CODE));
         this.tehsilName = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_TEHSIL_NAME));
         this.lhwCode = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_LHW_CODE));
@@ -755,8 +788,8 @@ public class Form extends BaseObservable implements Observable {
             json.put(FormsContract.FormsTable.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
             json.put(FormsContract.FormsTable.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
             json.put(FormsContract.FormsTable.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
-            json.put(FormsContract.FormsTable.COLUMN_DISTRICT_CODE, this.districtCode == null ? JSONObject.NULL : this.districtCode);
-            json.put(FormsContract.FormsTable.COLUMN_DISTRICT_NAME, this.districtName == null ? JSONObject.NULL : this.districtName);
+            json.put(FormsContract.FormsTable.COLUMN_HF_CODE, this.hfCode == null ? JSONObject.NULL : this.hfCode);
+            json.put(FormsContract.FormsTable.COLUMN_HF_NAME, this.hfName == null ? JSONObject.NULL : this.hfName);
             json.put(FormsContract.FormsTable.COLUMN_TEHSIL_CODE, this.tehsilCode == null ? JSONObject.NULL : this.tehsilCode);
             json.put(FormsContract.FormsTable.COLUMN_TEHSIL_NAME, this.tehsilName == null ? JSONObject.NULL : this.tehsilName);
             json.put(FormsContract.FormsTable.COLUMN_LHW_CODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);

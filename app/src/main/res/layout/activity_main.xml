@@ -90,7 +90,7 @@
                         android:id="@+id/registerLHW"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:onClick="sectionPress"
+                        android:onClick="@{callback::openSpecificActivity}"
                         android:orientation="horizontal">
 
                         <LinearLayout
@@ -148,7 +148,7 @@
                         android:id="@+id/openForm"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:onClick="sectionPress"
+                        android:onClick="@{callback::openSpecificActivity}"
                         android:orientation="horizontal">
 
                         <LinearLayout

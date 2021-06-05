@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -48,10 +49,16 @@ public class FemaleMembersActivity extends AppCompatActivity {
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         // There are no request codes
                         //Intent data = result.getData();
+                        Intent data = result.getData();
+
                         fm.add(femalemembers);
                         fmAdapter.notifyItemInserted(fm.size() - 1);
                     }
-                }
+                    if (result.getResultCode() == Activity.RESULT_CANCELED) {
+                        Toast.makeText(FemaleMembersActivity.this, "No family member added.", Toast.LENGTH_SHORT).show();
+                    }
+
+                    }
             });
     private DatabaseHelper db;
 
@@ -87,7 +94,7 @@ public class FemaleMembersActivity extends AppCompatActivity {
     }
 
     public void addFemale() {
-        Intent intent = new Intent(this, Section02Activity.class);
+        Intent intent = new Intent(this, SectionMemberInfoActivity.class);
         someActivityResultLauncher.launch(intent);
     }
 }

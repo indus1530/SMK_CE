@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import edu.aku.hassannaqvi.smk_ce.R;
+import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
 
 public class FemaleMemberAdapter extends RecyclerView.Adapter<FemaleMemberAdapter.ViewHolder> {
@@ -40,6 +41,7 @@ public class FemaleMemberAdapter extends RecyclerView.Adapter<FemaleMemberAdapte
         private TextView fMatitalStatus;
         private TextView addSec;
         private LinearLayout subItem;
+
 
 
         public ViewHolder(View v) {
@@ -96,30 +98,51 @@ FemaleMembersModel femaleMember = this.femaleMembers.get(position);        // Ge
         TextView fName = viewHolder.fName;
         TextView fAge = viewHolder.fAge;
         LinearLayout subItem = viewHolder.subItem;
+        TextView addSec = viewHolder.addSec;
         TextView fMaritalStatus = viewHolder.fMatitalStatus;
+
+        int mStatus = Integer.parseInt(femaleMember.getHh06());
+        int age = Integer.valueOf(femaleMember.getHh05y());
+        int mCate = 0;  // 1 = MWRA : 2 = Adol
+
+        // Set MWRA
+        if ( mStatus != 2 && age >= MainApp.MIN_MWRA && age < MainApp.MAX_MWRA){
+            mCate = 1;
+        }
+        if ( mStatus == 2 && age >= MainApp.MIN_ADOL && age < MainApp.MAX_ADOL){
+            mCate = 2;
+        }
+
+
+
         fName.setText(femaleMember.getHh02());
         fAge.setText(femaleMember.getHh05y());
 
-        String mStatus = "";
+        String marStatus = "";
         switch(femaleMember.getHh06()){
             case "1":
-                mStatus = "Marrid";
+                marStatus = "Married";
                 break;
             case "2":
-                mStatus = "Unmarried";
+                marStatus = "Unmarried";
                 break;
             case "3":
-                mStatus = "Widow";
+                marStatus = "Widow";
                 break;
             case "4":
-                mStatus = "Divorced/Seperated";
+                marStatus = "Divorced/Seperated";
                 break;
             default:
-                mStatus = "Value Unknown";
+                marStatus = "Value Unknown";
                 break;
         }
 
-        fMaritalStatus.setText(mStatus);
+        fMaritalStatus.setText(marStatus);
+        addSec.setClickable(mCate!=0);
+        addSec.setText(mCate==1?"Add MWRA Information":mCate==2?"Add Adolescent Information":"No Additional Information Required");
+
+
+
         AtomicBoolean expanded = new AtomicBoolean(femaleMember.isExpanded());
         // Set the visibility based on state
         subItem.setVisibility(expanded.get() ? View.VISIBLE : View.GONE);

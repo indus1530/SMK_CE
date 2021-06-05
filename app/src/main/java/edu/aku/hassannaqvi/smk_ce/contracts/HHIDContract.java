@@ -20,8 +20,8 @@ public class HHIDContract {
         public static final String COLUMN_SERIAL_NO = "serialNo";
         public static final String COLUMN_USERNAME = "username";
         public static final String COLUMN_SYSDATE = "sysdate";
-        public static final String COLUMN_DISTRICT_CODE = "districtCode";
-        public static final String COLUMN_DISTRICT_NAME = "districtName";
+        public static final String COLUMN_HF_CODE = "hfcode";
+        public static final String COLUMN_HF_NAME = "districtName";
         public static final String COLUMN_TEHSIL_CODE = "tehsilCode";
         public static final String COLUMN_TEHSIL_NAME = "tehsilName";
         public static final String COLUMN_LHW_CODE = "lhwCode";
@@ -29,11 +29,11 @@ public class HHIDContract {
         public static final String COLUMN_KHANDAN_NUMBER = "khandanNumber";
         public static final String COLUMN_SA = "sA";
         public static final String COLUMN_STATUS = "status";
-        public static final String COLUMN_ENDINGDATETIME = "endingdatetime";
+        public static final String COLUMN_ENDINGDATETIME = "endingDateTime";
         public static final String COLUMN_DEVICEID = "deviceid";
         public static final String COLUMN_DEVICETAGID = "devicetagid";
         public static final String COLUMN_SYNCED = "synced";
-        public static final String COLUMN_SYNCED_DATE = "synced_date";
+        public static final String COLUMN_SYNCED_DATE = "syncDate";
         public static final String COLUMN_APPVERSION = "appversion";
     }
 }

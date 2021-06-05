@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 
 import java.io.File;
@@ -38,13 +39,18 @@ public class MainApp extends Application {
     public static final String _UPDATE_URL = MainApp._IP + "/smk_hfa/smk_fi/app/mhs/";
     public static final String DeviceURL = "devices.php";
 
-    public static final int HOUSEHOLDS_TO_RANDOMISE = 2;
+    public static final int HOUSEHOLDS_TO_RANDOMISE = 5;
+    public static final int MIN_MWRA = 14;
+    public static final int MAX_MWRA = 50;
+
+    public static final int MIN_ADOL = 10;
+    public static final int MAX_ADOL = 19;
 
     public static File sdDir;
     public static String[] downloadData;
 
     public static Form form;
-    public static LHWHouseholdModel lhw;
+    public static LHWHouseholdModel lhwHousehold;
     public static HHIDModel hhid;
     public static FemaleMembersModel femalemembers;
     public static MWRAModel mwra;
@@ -62,7 +68,8 @@ public class MainApp extends Application {
     public static int[] randHHNo;
     public static int randHHNoIndex;
     String[] marker = new String[HOUSEHOLDS_TO_RANDOMISE];
-
+    @NotNull
+    public static HHIDModel selectedHH;
 
 
     public static void hideSystemUI(View decorView) {

@@ -14,17 +14,17 @@ import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
-import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection05Binding
+import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySectionVhcBinding
 import edu.aku.hassannaqvi.smk_ce.ui.EndingActivity
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 
-class Section05Activity : AppCompatActivity() {
+class SectionVHCActivity : AppCompatActivity() {
 
-    lateinit var bi: ActivitySection05Binding
+    lateinit var bi: ActivitySectionVhcBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section05)
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_vhc)
         bi.callback = this
         setSupportActionBar(bi.toolbar)
         setupSkips()

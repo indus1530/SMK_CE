@@ -262,14 +262,16 @@ class MainActivity : AppCompatActivity() {
             when (v.id) {
                 R.id.formA -> {
                     //SharedStorage.setSelectedCampData(this, Gson().toJson(camp))
-                    gotoActivity(Section01Activity::class.java)
+                    gotoActivity(SectionLHWActivity::class.java)
                 }
-                R.id.formAI -> gotoActivity(Section01IdentifyActivity::class.java)
-                R.id.formAV -> gotoActivity(Section01VerifyActivity::class.java)
-                R.id.formB -> gotoActivity(Section02Activity::class.java)
-                R.id.formC -> gotoActivity(Section03Activity::class.java)
-                R.id.formD -> gotoActivity(Section04Activity::class.java)
-                R.id.formE -> gotoActivity(Section05Activity::class.java)
+                R.id.registerLHW -> gotoActivity(SectionLHWActivity::class.java)
+                R.id.openForm -> gotoActivity(SectionHHVerifyActivity::class.java)
+                R.id.formAI -> gotoActivity(SectionHHIdentifyActivity::class.java)
+                R.id.formAV -> gotoActivity(SectionHHVerifyActivity::class.java)
+                R.id.formB -> gotoActivity(SectionMemberInfoActivity::class.java)
+                R.id.formC -> gotoActivity(SectionMWRAActivity::class.java)
+                R.id.formD -> gotoActivity(SectionAdolActivity::class.java)
+                R.id.formE -> gotoActivity(SectionVHCActivity::class.java)
                 R.id.databaseBtn -> startActivity(Intent(this, AndroidDatabaseManager::class.java))
                 R.id.btn_check_camp -> populateCampDetails()
             }

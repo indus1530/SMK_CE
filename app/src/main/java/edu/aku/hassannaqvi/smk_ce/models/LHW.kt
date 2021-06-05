@@ -10,7 +10,7 @@ import org.json.JSONObject
  * Created by hussain.siddiqui on 01/06/2021.
  */
 
-class Lhw {
+class LHW {
     var tehsilId: String = StringUtils.EMPTY
     var uc_Id: String = StringUtils.EMPTY
     var hf_Code: String = StringUtils.EMPTY
@@ -18,7 +18,7 @@ class Lhw {
     var lhw_Code: String = StringUtils.EMPTY
 
     @Throws(JSONException::class)
-    fun sync(jsonObject: JSONObject): Lhw {
+    fun sync(jsonObject: JSONObject): LHW {
         tehsilId = jsonObject.getString(TableLhw.COLUMN_TEHSIL_ID)
         uc_Id = jsonObject.getString(TableLhw.COLUMN_UC_ID)
         hf_Code = jsonObject.getString(TableLhw.COLUMN_HF_CODE)
@@ -27,7 +27,7 @@ class Lhw {
         return this
     }
 
-    fun hydrate(cursor: Cursor): Lhw {
+    fun hydrate(cursor: Cursor): LHW {
         tehsilId = cursor.getString(cursor.getColumnIndex(TableLhw.COLUMN_TEHSIL_ID))
         uc_Id = cursor.getString(cursor.getColumnIndex(TableLhw.COLUMN_UC_ID))
         hf_Code = cursor.getString(cursor.getColumnIndex(TableLhw.COLUMN_HF_CODE))

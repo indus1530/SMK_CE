@@ -31,8 +31,8 @@ public class HHIDModel extends BaseObservable {
     private String serialNo = StringUtils.EMPTY;
     private String userName = StringUtils.EMPTY;
     private String sysDate = StringUtils.EMPTY;
-    private String districtCode = StringUtils.EMPTY;
-    private String districtName = StringUtils.EMPTY;
+    private String hfCode = StringUtils.EMPTY;
+    private String hfName = StringUtils.EMPTY;
     private String tehsilCode = StringUtils.EMPTY;
     private String tehsilName = StringUtils.EMPTY;
     private String lhwCode = StringUtils.EMPTY;
@@ -90,7 +90,7 @@ public class HHIDModel extends BaseObservable {
     public void setForm(String userName, String sysDate, String dcode, String ucode, String cluster, String hhno, String deviceId, String deviceTag, String appver) {
         this.userName = userName;
         this.sysDate = sysDate;
-        this.districtCode = dcode;
+        this.hfCode = dcode;
         this.tehsilCode = ucode;
         this.lhwCode = cluster;
         this.khandanNumber = hhno;
@@ -166,23 +166,23 @@ public class HHIDModel extends BaseObservable {
     }
 
     @Bindable
-    public String getDistrictCode() {
-        return districtCode;
+    public String getHfCode() {
+        return hfCode;
     }
 
-    public HHIDModel setDistrictCode(String districtCode) {
-        this.districtCode = districtCode;
+    public HHIDModel setHfCode(String hfCode) {
+        this.hfCode = hfCode;
         return this;
     }
 
 
     @Bindable
-    public String getDistrictName() {
-        return districtName;
+    public String getHfName() {
+        return hfName;
     }
 
-    public HHIDModel setDistrictName(String districtName) {
-        this.districtName = districtName;
+    public HHIDModel setHfName(String hfName) {
+        this.hfName = hfName;
         return this;
     }
 
@@ -431,8 +431,8 @@ public class HHIDModel extends BaseObservable {
         this.serialNo = jsonObject.getString(HHIDContract.HHIDTable.COLUMN_SERIAL_NO);
         this.userName = jsonObject.getString(HHIDContract.HHIDTable.COLUMN_USERNAME);
         this.sysDate = jsonObject.getString(HHIDContract.HHIDTable.COLUMN_SYSDATE);
-        this.districtCode = jsonObject.getString(HHIDContract.HHIDTable.COLUMN_DISTRICT_CODE);
-        this.districtName = jsonObject.getString(HHIDContract.HHIDTable.COLUMN_DISTRICT_NAME);
+        this.hfCode = jsonObject.getString(HHIDContract.HHIDTable.COLUMN_HF_CODE);
+        this.hfName = jsonObject.getString(HHIDContract.HHIDTable.COLUMN_HF_NAME);
         this.tehsilCode = jsonObject.getString(HHIDContract.HHIDTable.COLUMN_TEHSIL_CODE);
         this.tehsilName = jsonObject.getString(HHIDContract.HHIDTable.COLUMN_TEHSIL_NAME);
         this.lhwCode = jsonObject.getString(HHIDContract.HHIDTable.COLUMN_LHW_CODE);
@@ -453,15 +453,15 @@ public class HHIDModel extends BaseObservable {
     }
 
 
-    public HHIDModel Hydrate(Cursor cursor) {
+    public HHIDModel hydrate(Cursor cursor) {
         this.id = cursor.getString(cursor.getColumnIndex(HHIDContract.HHIDTable.COLUMN_ID));
         this.uid = cursor.getString(cursor.getColumnIndex(HHIDContract.HHIDTable.COLUMN_UID));
         this.uuid = cursor.getString(cursor.getColumnIndex(HHIDContract.HHIDTable.COLUMN_UUID));
         this.serialNo = cursor.getString(cursor.getColumnIndex(HHIDContract.HHIDTable.COLUMN_SERIAL_NO));
         this.userName = cursor.getString(cursor.getColumnIndex(HHIDContract.HHIDTable.COLUMN_USERNAME));
         this.sysDate = cursor.getString(cursor.getColumnIndex(HHIDContract.HHIDTable.COLUMN_SYSDATE));
-        this.districtCode = cursor.getString(cursor.getColumnIndex(HHIDContract.HHIDTable.COLUMN_DISTRICT_CODE));
-        this.districtName = cursor.getString(cursor.getColumnIndex(HHIDContract.HHIDTable.COLUMN_DISTRICT_NAME));
+        this.hfCode = cursor.getString(cursor.getColumnIndex(HHIDContract.HHIDTable.COLUMN_HF_CODE));
+        this.hfName = cursor.getString(cursor.getColumnIndex(HHIDContract.HHIDTable.COLUMN_HF_NAME));
         this.tehsilCode = cursor.getString(cursor.getColumnIndex(HHIDContract.HHIDTable.COLUMN_TEHSIL_CODE));
         this.tehsilName = cursor.getString(cursor.getColumnIndex(HHIDContract.HHIDTable.COLUMN_TEHSIL_NAME));
         this.lhwCode = cursor.getString(cursor.getColumnIndex(HHIDContract.HHIDTable.COLUMN_LHW_CODE));
@@ -523,8 +523,8 @@ public class HHIDModel extends BaseObservable {
             json.put(HHIDContract.HHIDTable.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
             json.put(HHIDContract.HHIDTable.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
             json.put(HHIDContract.HHIDTable.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
-            json.put(HHIDContract.HHIDTable.COLUMN_DISTRICT_CODE, this.districtCode == null ? JSONObject.NULL : this.districtCode);
-            json.put(HHIDContract.HHIDTable.COLUMN_DISTRICT_NAME, this.districtName == null ? JSONObject.NULL : this.districtName);
+            json.put(HHIDContract.HHIDTable.COLUMN_HF_CODE, this.hfCode == null ? JSONObject.NULL : this.hfCode);
+            json.put(HHIDContract.HHIDTable.COLUMN_HF_NAME, this.hfName == null ? JSONObject.NULL : this.hfName);
             json.put(HHIDContract.HHIDTable.COLUMN_TEHSIL_CODE, this.tehsilCode == null ? JSONObject.NULL : this.tehsilCode);
             json.put(HHIDContract.HHIDTable.COLUMN_TEHSIL_NAME, this.tehsilName == null ? JSONObject.NULL : this.tehsilName);
             json.put(HHIDContract.HHIDTable.COLUMN_LHW_CODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);

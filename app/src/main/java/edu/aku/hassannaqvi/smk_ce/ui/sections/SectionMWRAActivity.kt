@@ -18,19 +18,19 @@ import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.contracts.MWRAContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.mwra
-import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection03Binding
+import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySectionMwraBinding
 import edu.aku.hassannaqvi.smk_ce.models.MWRAModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Section03Activity : AppCompatActivity() {
+class SectionMWRAActivity : AppCompatActivity() {
 
-    lateinit var bi: ActivitySection03Binding
+    lateinit var bi: ActivitySectionMwraBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section03)
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_mwra)
         bi.callback
         setSupportActionBar(bi.toolbar)
         setupSkips()
@@ -123,7 +123,7 @@ class Section03Activity : AppCompatActivity() {
         saveDraft()
         if (updateDB()) {
             finish()
-            startActivity(Intent(this, Section04Activity::class.java))
+            startActivity(Intent(this, SectionAdolActivity::class.java))
         } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show()
         }
@@ -136,8 +136,8 @@ class Section03Activity : AppCompatActivity() {
         mwra.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
         mwra.uuid = MainApp.form.uid
         mwra.userName = MainApp.user.userName
-        mwra.districtCode = MainApp.form.districtCode
-        mwra.districtName = MainApp.form.districtName
+        mwra.districtCode = MainApp.form.hfCode
+        mwra.districtName = MainApp.form.hfName
         mwra.tehsilCode = MainApp.form.tehsilCode
         mwra.tehsilName = MainApp.form.tehsilName
         mwra.lhwCode = MainApp.form.lhwCode

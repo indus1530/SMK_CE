@@ -12,20 +12,20 @@ import edu.aku.hassannaqvi.smk_ce.contracts.HHIDContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.*
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
-import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection01IdentifyBinding
+import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySectionHhidentifyBinding
 import edu.aku.hassannaqvi.smk_ce.models.HHIDModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Section01IdentifyActivity : AppCompatActivity() {
+class SectionHHIdentifyActivity : AppCompatActivity() {
 
-    lateinit var bi: ActivitySection01IdentifyBinding
+    lateinit var bi: ActivitySectionHhidentifyBinding
     lateinit var db: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section01_identify)
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_hhidentify)
         bi.callback = this
         setSupportActionBar(bi.toolbar)
         setupSkips()
@@ -50,7 +50,7 @@ class Section01IdentifyActivity : AppCompatActivity() {
             if (MainApp.randHHNoIndex < randHHNo.size-1) {
                 MainApp.randHHNoIndex++;
                 finish()
-                startActivity(Intent(this, Section01IdentifyActivity::class.java))
+                startActivity(Intent(this, SectionHHIdentifyActivity::class.java))
             }
             // If all random households recored; go to main activity
             else {
@@ -67,15 +67,15 @@ class Section01IdentifyActivity : AppCompatActivity() {
     private fun saveDraft() {
         hhid = HHIDModel()
         hhid.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
-        hhid.uuid = lhw.uid
+        hhid.uuid = lhwHousehold.uid
         hhid.userName = MainApp.user.userName
-        hhid.districtCode = lhw.districtCode
-        hhid.districtName = lhw.districtName
-        hhid.tehsilCode = lhw.tehsilCode
-        hhid.tehsilName = lhw.tehsilName
-        hhid.lhwCode = lhw.lhwCode
-        hhid.lhwName = lhw.lhwName
-        hhid.khandanNumber = lhw.khandanNumber
+        hhid.hfCode = lhwHousehold.hfCode
+        hhid.hfName = lhwHousehold.hfName
+        hhid.tehsilCode = lhwHousehold.tehsilCode
+        hhid.tehsilName = lhwHousehold.tehsilName
+        hhid.lhwCode = lhwHousehold.lhwCode
+        hhid.lhwName = lhwHousehold.lhwName
+        hhid.khandanNumber = lhwHousehold.khandanNumber
         hhid.deviceId = MainApp.appInfo.deviceID
         hhid.deviceTag = MainApp.appInfo.tagName
         hhid.appver = MainApp.appInfo.appVersion

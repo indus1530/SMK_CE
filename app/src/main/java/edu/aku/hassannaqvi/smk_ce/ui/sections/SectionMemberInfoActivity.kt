@@ -15,20 +15,20 @@ import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.contracts.FemaleMembersContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.femalemembers
-import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySection02Binding
+import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySectionMemeberinfoBinding
 import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Section02Activity : AppCompatActivity() {
+class SectionMemberInfoActivity : AppCompatActivity() {
 
-    lateinit var bi: ActivitySection02Binding
+    lateinit var bi: ActivitySectionMemeberinfoBinding
     var dtFlag = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section02)
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_memeberinfo)
         bi.callback = this
         setSupportActionBar(bi.toolbar)
 
@@ -80,7 +80,7 @@ class Section02Activity : AppCompatActivity() {
 
             setResult(Activity.RESULT_OK)
             finish()
-           // startActivity(Intent(this, Section03Activity::class.java))
+           // startActivity(Intent(this, SectionMWRAActivity::class.java))
         } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show()
         }
@@ -206,8 +206,8 @@ class Section02Activity : AppCompatActivity() {
 
     fun BtnEnd(view: View) {
         //openSectionMainActivity(this, "G")
+        setResult(Activity.RESULT_CANCELED)
         finish()
-        startActivity(Intent(this, MainActivity::class.java))
     }
 
 

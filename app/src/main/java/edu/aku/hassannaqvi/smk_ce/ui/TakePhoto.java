@@ -285,7 +285,7 @@ public class TakePhoto extends Activity implements SurfaceHolder.Callback, Camer
             tmpFile = null;
             Intent intent = new Intent();
             intent.putExtra("FileName", "");
-            setResult(0, intent);
+            setResult(Activity.RESULT_OK, intent);
             finish();//finishing activity
         }
     }
@@ -301,7 +301,7 @@ public class TakePhoto extends Activity implements SurfaceHolder.Callback, Camer
             tmpFile = null;
             Intent intent = new Intent();
             intent.putExtra("FileName", fileName);
-            setResult(1, intent);
+            setResult(Activity.RESULT_OK, intent);
             finish();//finishing activity
             //previewFlag = false;
         }
@@ -456,7 +456,7 @@ public class TakePhoto extends Activity implements SurfaceHolder.Callback, Camer
         }
         Intent intent = new Intent();
         intent.putExtra("FileName", "");
-        setResult(0, intent);
+        setResult(Activity.RESULT_CANCELED, intent);
         finish();//finishing activity
     }
 
