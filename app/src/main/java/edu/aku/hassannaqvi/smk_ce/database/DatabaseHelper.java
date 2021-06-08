@@ -229,30 +229,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_PROJECT_NAME, model.getProjectName());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_UID, model.getUid());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_UUID, model.getUuid());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_SERIAL_NO, model.getSerialNo());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_USERNAME, model.getUserName());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_SYSDATE, model.getSysDate());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_DISTRICT_CODE, model.getDistrictCode());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_DISTRICT_NAME, model.getDistrictName());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_TEHSIL_CODE, model.getTehsilCode());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_TEHSIL_NAME, model.getTehsilName());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_LHW_CODE, model.getLhwCode());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_LHW_NAME, model.getLhwName());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_KHANDAN_NUMBER, model.getKhandanNumber());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_SA, model.getsA());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_STATUS, model.getStatus());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_ENDINGDATETIME, model.getEndTime());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_DEVICETAGID, model.getDeviceTag());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_DEVICEID, model.getDeviceId());
-        values.put(FemaleMembersContract.HHMembersTable.COLUMN_APPVERSION, model.getAppver());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_PROJECT_NAME, model.getProjectName());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_UID, model.getUid());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_UUID, model.getUuid());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_SERIAL_NO, model.getSerialNo());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_USERNAME, model.getUserName());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_SYSDATE, model.getSysDate());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_HF_CODE, model.getHfCode());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_HF_NAME, model.getHfName());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_TEHSIL_CODE, model.getTehsilCode());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_TEHSIL_NAME, model.getTehsilName());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_LHW_CODE, model.getLhwCode());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_LHW_NAME, model.getLhwName());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_KHANDAN_NUMBER, model.getKhandanNumber());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_SA, model.getsA());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_STATUS, model.getStatus());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_ENDINGDATETIME, model.getEndTime());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_DEVICETAGID, model.getDeviceTag());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_DEVICEID, model.getDeviceId());
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_APPVERSION, model.getAppver());
 
         long newRowId;
         newRowId = db.insert(
-                FemaleMembersContract.HHMembersTable.TABLE_NAME,
-                FemaleMembersContract.HHMembersTable.COLUMN_NAME_NULLABLE,
+                FemaleMembersContract.FemaleMembersTable.TABLE_NAME,
+                FemaleMembersContract.FemaleMembersTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
     }
@@ -638,6 +638,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allForms;
     }
 
+    public ArrayList<FemaleMembersModel> getFamilyMembersBYUID(String lhwcode, String khandannumber) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String whereClause = FemaleMembersContract.FemaleMembersTable.COLUMN_LHW_CODE + " = ? AND "+ FemaleMembersContract.FemaleMembersTable.COLUMN_KHANDAN_NUMBER + " = ? " ;
+        String[] whereArgs = {lhwcode, khandannumber};
+        String groupBy = null;
+        String having = null;
+        String orderBy = FemaleMembersContract.FemaleMembersTable.COLUMN_ID + " ASC";
+        ArrayList<FemaleMembersModel> FemalesByHH = new ArrayList<>();
+        try {
+            c = db.query(
+                    FemaleMembersContract.FemaleMembersTable.TABLE_NAME,  // The table to query
+                    null,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FemalesByHH.add(new FemaleMembersModel().Hydrate(c));
+
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return FemalesByHH;
+    }
+
     public ArrayList<ChildInformation> getSelectedChildrenFromDB(String cluster, String hhno, String uuid) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -822,8 +856,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 hf.add(new HealthFacilities().hydrate(c));
-                while (c.moveToNext()) {
-                }
             }
         } finally {
             if (c != null) {
@@ -861,8 +893,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 lhw.add(new LHW().hydrate(c));
-                while (c.moveToNext()) {
-                }
             }
         } finally {
             if (c != null) {
@@ -900,8 +930,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 hhid.add(new HHIDModel().hydrate(c));
-                while (c.moveToNext()) {
-                }
             }
         } finally {
             if (c != null) {
@@ -1331,10 +1359,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(column, value);
 
-        String selection = FemaleMembersContract.HHMembersTable._ID + " =? ";
+        String selection = FemaleMembersContract.FemaleMembersTable._ID + " =? ";
         String[] selectionArgs = {String.valueOf(MainApp.femalemembers.getId())};
 
-        return db.update(FemaleMembersContract.HHMembersTable.TABLE_NAME,
+        return db.update(FemaleMembersContract.FemaleMembersTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);

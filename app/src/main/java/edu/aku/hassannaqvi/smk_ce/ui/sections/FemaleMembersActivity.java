@@ -33,8 +33,10 @@ import edu.aku.hassannaqvi.smk_ce.adapters.FemaleMemberAdapter;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper;
 import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
+import edu.aku.hassannaqvi.smk_ce.ui.MainActivity;
 
 import static edu.aku.hassannaqvi.smk_ce.core.MainApp.femalemembers;
+import static edu.aku.hassannaqvi.smk_ce.core.MainApp.form;
 
 public class FemaleMembersActivity extends AppCompatActivity {
 
@@ -52,6 +54,7 @@ public class FemaleMembersActivity extends AppCompatActivity {
                         Intent data = result.getData();
 
                         fm.add(femalemembers);
+                        MainApp.fmCount++;
                         fmAdapter.notifyItemInserted(fm.size() - 1);
                     }
                     if (result.getResultCode() == Activity.RESULT_CANCELED) {
@@ -72,7 +75,8 @@ public class FemaleMembersActivity extends AppCompatActivity {
 
         RecyclerView rvFemaleMembers = (RecyclerView) findViewById(R.id.rvFemaleMembers);
 
-        fm = new ArrayList<FemaleMembersModel>();;
+        fm = db.getFamilyMembersBYUID(form.getLhwCode(), form.getKhandanNumber());
+        MainApp.fmCount = fm.size();
         fmAdapter = new FemaleMemberAdapter(fm);
         rvFemaleMembers.setAdapter(fmAdapter);
         rvFemaleMembers.setLayoutManager(new LinearLayoutManager(this));
@@ -95,6 +99,7 @@ public class FemaleMembersActivity extends AppCompatActivity {
 
     public void addFemale() {
         Intent intent = new Intent(this, SectionMemberInfoActivity.class);
+
         someActivityResultLauncher.launch(intent);
     }
 }

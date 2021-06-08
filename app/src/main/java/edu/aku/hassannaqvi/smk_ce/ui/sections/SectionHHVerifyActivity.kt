@@ -33,17 +33,18 @@ class SectionHHVerifyActivity : AppCompatActivity() {
     var lhwCode = mutableListOf<String>()
     var knum = mutableListOf("....")*/
 
-    val tehsilName: MutableList<String> = ArrayList(listOf("...."))
-    val tehsilCode: MutableList<String> = ArrayList(listOf("...."))
-    val hfName: MutableList<String> = ArrayList(listOf("...."))
-    val hfCode: MutableList<String> = ArrayList(listOf("...."))
-    val lhwName: MutableList<String> = ArrayList(listOf("...."))
-    val hhidList: MutableList<String> = ArrayList(listOf("...."))
-    val lhwCode: MutableList<String> = ArrayList(listOf("...."))
+    var tehsilName: MutableList<String> = ArrayList(listOf("...."))
+    var tehsilCode: MutableList<String> = ArrayList(listOf("...."))
+    var hfName: MutableList<String> = ArrayList(listOf("...."))
+    var hfCode: MutableList<String> = ArrayList(listOf("...."))
+    var lhwName: MutableList<String> = ArrayList(listOf("...."))
+    var lhwCode: MutableList<String> = ArrayList(listOf("...."))
+    var hhidList: MutableList<String> = ArrayList(listOf("...."))
     var hhid: ArrayList<HHIDModel> = ArrayList()
-/*
-    lateinit var tehsilAdapter: ArrayAdapter<String>
-    lateinit var hfAdapter: ArrayAdapter<String>*/
+
+    /*
+        lateinit var tehsilAdapter: ArrayAdapter<String>
+        lateinit var hfAdapter: ArrayAdapter<String>*/
     lateinit var db: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,7 +83,11 @@ class SectionHHVerifyActivity : AppCompatActivity() {
                 if (position == 0) return
 
                 var hf: ArrayList<HealthFacilities> = db.getHFByTehsil(tehsilCode[position].toString())
+                Log.d(TAG, "onItemSelected: hf: " + hf.size)
+                hfName = ArrayList(listOf("...."))
+                hfCode = ArrayList(listOf("...."))
                 for (h in hf) {
+                    Log.d(TAG, "onItemSelected: HF " + h.hf_name)
                     hfName.add(h.hf_name)
                     hfCode.add(h.hfcode)
                 }
@@ -102,7 +107,12 @@ class SectionHHVerifyActivity : AppCompatActivity() {
                 if (position == 0) return
 
                 var lhw: ArrayList<LHW> = db.getLHWByHF(hfCode[position].toString())
+                Log.d(TAG, "onItemSelected: lhw: " + lhw.size)
+                lhwName = ArrayList(listOf("...."))
+                lhwCode = ArrayList(listOf("...."))
                 for (l in lhw) {
+                    Log.d(TAG, "onItemSelected: LHW " + l.lhw_Name)
+
                     lhwName.add(l.lhw_Name)
                     lhwCode.add(l.lhw_Code)
                 }
@@ -122,7 +132,10 @@ class SectionHHVerifyActivity : AppCompatActivity() {
                 if (position == 0) return
 
                  hhid = db.getKhandanNumberByLHW(lhwCode[position].toString())
+                 hhidList = ArrayList(listOf("...."))
+                Log.d(TAG, "onItemSelected: HHID: " + hhid.size)
                 for (h in hhid) {
+                    Log.d(TAG, "onItemSelected: hh " + h.khandanNumber)
                     hhidList.add(h.khandanNumber)
                 }
 
@@ -141,7 +154,8 @@ class SectionHHVerifyActivity : AppCompatActivity() {
 
              //   var hhid: ArrayList<HHIDModel> = db.getKhandanNumberByLHW(lhwCode[position].toString())
 
-                MainApp.selectedHH = hhid[position-1]
+                MainApp.selectedHH = hhid[position]
+                hhid = ArrayList()
 
 
                 // Update HH Info
@@ -176,12 +190,12 @@ class SectionHHVerifyActivity : AppCompatActivity() {
     fun BtnContinue(view: View) {
         if (!formValidation()) return
         saveDraft()
-        if (updateDB()) {
+   //     if (updateDB()) {
             finish()
             startActivity(Intent(this, FemaleMembersActivity::class.java))
-        } else {
+     /*   } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show()
-        }
+        }*/
     }
 
 

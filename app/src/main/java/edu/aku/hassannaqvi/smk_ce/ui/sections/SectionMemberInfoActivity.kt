@@ -1,7 +1,6 @@
 package edu.aku.hassannaqvi.smk_ce.ui.sections
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -17,7 +16,6 @@ import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.femalemembers
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySectionMemeberinfoBinding
 import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel
-import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -31,7 +29,7 @@ class SectionMemberInfoActivity : AppCompatActivity() {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_memeberinfo)
         bi.callback = this
         setSupportActionBar(bi.toolbar)
-
+        bi.hh01.setText((MainApp.fmCount+1).toString())
 
         val txtListener = arrayOf<EditText>(bi.hh04a, bi.hh04b)
         for (txtItem in txtListener) {
@@ -56,8 +54,8 @@ class SectionMemberInfoActivity : AppCompatActivity() {
         return if (updcount > 0) {
             femalemembers.id = updcount.toString()
             femalemembers.uid = femalemembers.deviceId + femalemembers.id
-            var count = db.updatesHHMEMColumn(FemaleMembersContract.HHMembersTable.COLUMN_UID, femalemembers.uid)
-            if (count > 0) count = db.updatesHHMEMColumn(FemaleMembersContract.HHMembersTable.COLUMN_SA, femalemembers.sAtoString())
+            var count = db.updatesHHMEMColumn(FemaleMembersContract.FemaleMembersTable.COLUMN_UID, femalemembers.uid)
+            if (count > 0) count = db.updatesHHMEMColumn(FemaleMembersContract.FemaleMembersTable.COLUMN_SA, femalemembers.sAtoString())
             if (count > 0) true else {
                 Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
                 false
@@ -71,6 +69,7 @@ class SectionMemberInfoActivity : AppCompatActivity() {
 
     fun BtnContinue(view: View) {
         if (!formValidation()) return
+        if (!addForm()) return
         saveDraft()
         if (updateDB()) {
 /*            val data = Intent()
@@ -80,26 +79,39 @@ class SectionMemberInfoActivity : AppCompatActivity() {
 
             setResult(Activity.RESULT_OK)
             finish()
-           // startActivity(Intent(this, SectionMWRAActivity::class.java))
+            // startActivity(Intent(this, SectionMWRAActivity::class.java))
         } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show()
         }
     }
 
+    private fun addForm(): Boolean {
+        if(bi.hh01.text.toString().equals("1")){
+        val db = MainApp.appInfo.dbHelper
+        val rowId = db.addForm(MainApp.form)
+        return if (rowId > 0) {
+            MainApp.form.id = rowId.toString()
+            MainApp.form.uid = MainApp.form.deviceId + MainApp.form.id
+            true
+        } else {
+            Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
+            false
+        }} else {return true}
+    }
 
     private fun saveDraft() {
 
         femalemembers = FemaleMembersModel()
-        femalemembers.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
-     /*   femalemembers.uuid = MainApp.form.uid
+        femalemembers.sysDate = MainApp.form.sysDate
+        femalemembers.uuid = MainApp.form.uid
         femalemembers.userName = MainApp.user.userName
-        femalemembers.districtCode = MainApp.form.districtCode
-        femalemembers.districtName = MainApp.form.districtName
+        femalemembers.hfCode = MainApp.form.hfCode
+        femalemembers.hfName = MainApp.form.hfName
         femalemembers.tehsilCode = MainApp.form.tehsilCode
         femalemembers.tehsilName = MainApp.form.tehsilName
         femalemembers.lhwCode = MainApp.form.lhwCode
         femalemembers.lhwName = MainApp.form.lhwName
-        femalemembers.khandanNumber = MainApp.form.khandanNumber*/
+        femalemembers.khandanNumber = MainApp.form.khandanNumber
         femalemembers.deviceId = MainApp.appInfo.deviceID
         femalemembers.deviceTag = MainApp.appInfo.tagName
         femalemembers.appver = MainApp.appInfo.appVersion

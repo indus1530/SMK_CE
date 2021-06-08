@@ -10,8 +10,8 @@ public class FemaleMembersContract {
 
     public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.smk_ce";
 
-    public static abstract class HHMembersTable implements BaseColumns {
-        public static final String TABLE_NAME = "HHMembers";
+    public static abstract class FemaleMembersTable implements BaseColumns {
+        public static final String TABLE_NAME = "FemaleMembers";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
         public static final String COLUMN_PROJECT_NAME = "projectName";
         public static final String COLUMN_ID = "_id";
@@ -20,8 +20,8 @@ public class FemaleMembersContract {
         public static final String COLUMN_SERIAL_NO = "serialNo";
         public static final String COLUMN_USERNAME = "username";
         public static final String COLUMN_SYSDATE = "sysdate";
-        public static final String COLUMN_DISTRICT_CODE = "districtCode";
-        public static final String COLUMN_DISTRICT_NAME = "districtName";
+        public static final String COLUMN_HF_CODE = "hfCode";
+        public static final String COLUMN_HF_NAME = "hfName";
         public static final String COLUMN_TEHSIL_CODE = "tehsilCode";
         public static final String COLUMN_TEHSIL_NAME = "tehsilName";
         public static final String COLUMN_LHW_CODE = "lhwCode";

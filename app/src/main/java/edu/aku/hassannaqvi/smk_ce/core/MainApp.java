@@ -63,6 +63,7 @@ public class MainApp extends Application {
     public static Users user;
     public static Boolean admin = false;
     public static List<JSONArray> uploadData;
+    public static int fmCount;
     SharedPreferences.Editor editor;
     SharedPreferences sharedPref;
     public static int[] randHHNo;

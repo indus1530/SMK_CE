@@ -35,8 +35,8 @@ public class FemaleMembersModel extends BaseObservable implements Observable {
     private String serialNo = StringUtils.EMPTY;
     private String userName = StringUtils.EMPTY;
     private String sysDate = StringUtils.EMPTY;
-    private String districtCode = StringUtils.EMPTY;
-    private String districtName = StringUtils.EMPTY;
+    private String hfCode = StringUtils.EMPTY;
+    private String hfName = StringUtils.EMPTY;
     private String tehsilCode = StringUtils.EMPTY;
     private String tehsilName = StringUtils.EMPTY;
     private String lhwCode = StringUtils.EMPTY;
@@ -102,7 +102,7 @@ public class FemaleMembersModel extends BaseObservable implements Observable {
     public void setForm(String userName, String sysDate, String dcode, String ucode, String cluster, String hhno, String deviceId, String deviceTag, String appver) {
         this.userName = userName;
         this.sysDate = sysDate;
-        this.districtCode = dcode;
+        this.hfCode = dcode;
         this.tehsilCode = ucode;
         this.lhwCode = cluster;
         this.khandanNumber = hhno;
@@ -178,23 +178,23 @@ public class FemaleMembersModel extends BaseObservable implements Observable {
     }
 
     @Bindable
-    public String getDistrictCode() {
-        return districtCode;
+    public String getHfCode() {
+        return hfCode;
     }
 
-    public FemaleMembersModel setDistrictCode(String districtCode) {
-        this.districtCode = districtCode;
+    public FemaleMembersModel setHfCode(String hfCode) {
+        this.hfCode = hfCode;
         return this;
     }
 
 
     @Bindable
-    public String getDistrictName() {
-        return districtName;
+    public String getHfName() {
+        return hfName;
     }
 
-    public FemaleMembersModel setDistrictName(String districtName) {
-        this.districtName = districtName;
+    public FemaleMembersModel setHfName(String hfName) {
+        this.hfName = hfName;
         return this;
     }
 
@@ -507,28 +507,28 @@ public class FemaleMembersModel extends BaseObservable implements Observable {
     }
 
     public FemaleMembersModel Sync(JSONObject jsonObject) throws JSONException {
-        this.id = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_ID);
-        this.uid = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_UID);
-        this.uuid = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_UUID);
-        this.serialNo = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_SERIAL_NO);
-        this.userName = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_USERNAME);
-        this.sysDate = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_SYSDATE);
-        this.districtCode = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_DISTRICT_CODE);
-        this.districtName = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_DISTRICT_NAME);
-        this.tehsilCode = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_TEHSIL_CODE);
-        this.tehsilName = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_TEHSIL_NAME);
-        this.lhwCode = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_LHW_CODE);
-        this.lhwName = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_LHW_NAME);
-        this.khandanNumber = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_KHANDAN_NUMBER);
-        this.deviceId = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_DEVICEID);
-        this.deviceTag = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_DEVICETAGID);
-        this.appver = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_APPVERSION);
-        this.endTime = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_ENDINGDATETIME);
-        this.status = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_STATUS);
-        this.synced = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_SYNCED);
-        this.syncDate = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_SYNCED_DATE);
+        this.id = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_ID);
+        this.uid = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_UID);
+        this.uuid = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_UUID);
+        this.serialNo = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_SERIAL_NO);
+        this.userName = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_USERNAME);
+        this.sysDate = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_SYSDATE);
+        this.hfCode = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_HF_CODE);
+        this.hfName = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_HF_NAME);
+        this.tehsilCode = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_TEHSIL_CODE);
+        this.tehsilName = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_TEHSIL_NAME);
+        this.lhwCode = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_LHW_CODE);
+        this.lhwName = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_LHW_NAME);
+        this.khandanNumber = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_KHANDAN_NUMBER);
+        this.deviceId = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_DEVICEID);
+        this.deviceTag = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_DEVICETAGID);
+        this.appver = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_APPVERSION);
+        this.endTime = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_ENDINGDATETIME);
+        this.status = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_STATUS);
+        this.synced = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_SYNCED);
+        this.syncDate = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_SYNCED_DATE);
 
-        this.sA = jsonObject.getString(FemaleMembersContract.HHMembersTable.COLUMN_SA);
+        this.sA = jsonObject.getString(FemaleMembersContract.FemaleMembersTable.COLUMN_SA);
 
         return this;
 
@@ -536,31 +536,31 @@ public class FemaleMembersModel extends BaseObservable implements Observable {
 
 
     public FemaleMembersModel Hydrate(Cursor cursor) {
-        this.id = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_ID));
-        this.uid = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_UID));
-        this.uuid = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_UUID));
-        this.serialNo = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_SERIAL_NO));
-        this.userName = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_USERNAME));
-        this.sysDate = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_SYSDATE));
-        this.districtCode = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_DISTRICT_CODE));
-        this.districtName = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_DISTRICT_NAME));
-        this.tehsilCode = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_TEHSIL_CODE));
-        this.tehsilName = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_TEHSIL_NAME));
-        this.lhwCode = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_LHW_CODE));
-        this.lhwName = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_LHW_NAME));
-        this.khandanNumber = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_KHANDAN_NUMBER));
-        this.deviceId = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_DEVICEID));
-        this.deviceTag = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_DEVICETAGID));
-        this.appver = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_APPVERSION));
-        this.endTime = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_ENDINGDATETIME));
-        this.status = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_STATUS));
-        this.synced = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_SYNCED));
-        this.syncDate = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_SYNCED_DATE));
+        this.id = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_ID));
+        this.uid = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_UID));
+        this.uuid = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_UUID));
+        this.serialNo = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_SERIAL_NO));
+        this.userName = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_USERNAME));
+        this.sysDate = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_SYSDATE));
+        this.hfCode = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_HF_CODE));
+        this.hfName = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_HF_NAME));
+        this.tehsilCode = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_TEHSIL_CODE));
+        this.tehsilName = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_TEHSIL_NAME));
+        this.lhwCode = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_LHW_CODE));
+        this.lhwName = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_LHW_NAME));
+        this.khandanNumber = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_KHANDAN_NUMBER));
+        this.deviceId = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_DEVICEID));
+        this.deviceTag = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_DEVICETAGID));
+        this.appver = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_APPVERSION));
+        this.endTime = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_ENDINGDATETIME));
+        this.status = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_STATUS));
+        this.synced = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_SYNCED));
+        this.syncDate = cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_SYNCED_DATE));
 
         //For childCount
         //this.s01HH = cursor.getString(cursor.getColumnIndex(HHMembersContract.HHMembersTable.COLUMN_S01HH));
 
-        sAHydrate(cursor.getString(cursor.getColumnIndex(FemaleMembersContract.HHMembersTable.COLUMN_SA)));
+        sAHydrate(cursor.getString(cursor.getColumnIndex(FemaleMembersContract.FemaleMembersTable.COLUMN_SA)));
 
         return this;
     }
@@ -604,32 +604,32 @@ public class FemaleMembersModel extends BaseObservable implements Observable {
         JSONObject json = new JSONObject();
 
         try {
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_ID, this.id == null ? JSONObject.NULL : this.id);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_DISTRICT_CODE, this.districtCode == null ? JSONObject.NULL : this.districtCode);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_DISTRICT_NAME, this.districtName == null ? JSONObject.NULL : this.districtName);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_TEHSIL_CODE, this.tehsilCode == null ? JSONObject.NULL : this.tehsilCode);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_TEHSIL_NAME, this.tehsilName == null ? JSONObject.NULL : this.tehsilName);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_LHW_CODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_LHW_NAME, this.lhwName == null ? JSONObject.NULL : this.lhwName);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_KHANDAN_NUMBER, this.khandanNumber == null ? JSONObject.NULL : this.khandanNumber);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_DEVICETAGID, this.deviceTag == null ? JSONObject.NULL : this.deviceTag);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_APPVERSION, this.appver == null ? JSONObject.NULL : this.appver);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_ENDINGDATETIME, this.endTime == null ? JSONObject.NULL : this.endTime);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_STATUS, this.status == null ? JSONObject.NULL : this.status);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_SYNCED_DATE, this.syncDate == null ? JSONObject.NULL : this.syncDate);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_ID, this.id == null ? JSONObject.NULL : this.id);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_HF_CODE, this.hfCode == null ? JSONObject.NULL : this.hfCode);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_HF_NAME, this.hfName == null ? JSONObject.NULL : this.hfName);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_TEHSIL_CODE, this.tehsilCode == null ? JSONObject.NULL : this.tehsilCode);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_TEHSIL_NAME, this.tehsilName == null ? JSONObject.NULL : this.tehsilName);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_LHW_CODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_LHW_NAME, this.lhwName == null ? JSONObject.NULL : this.lhwName);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_KHANDAN_NUMBER, this.khandanNumber == null ? JSONObject.NULL : this.khandanNumber);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_DEVICETAGID, this.deviceTag == null ? JSONObject.NULL : this.deviceTag);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_APPVERSION, this.appver == null ? JSONObject.NULL : this.appver);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_ENDINGDATETIME, this.endTime == null ? JSONObject.NULL : this.endTime);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_STATUS, this.status == null ? JSONObject.NULL : this.status);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_SYNCED_DATE, this.syncDate == null ? JSONObject.NULL : this.syncDate);
 
-            json.put(FemaleMembersContract.HHMembersTable.COLUMN_SA, new JSONObject(sAtoString()));
+            json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_SA, new JSONObject(sAtoString()));
 
 
             if (this.sA != null && !this.sA.equals("")) {
-                json.put(FemaleMembersContract.HHMembersTable.COLUMN_SA, new JSONObject(this.sA));
+                json.put(FemaleMembersContract.FemaleMembersTable.COLUMN_SA, new JSONObject(this.sA));
             }
 
             return json;
