@@ -48,8 +48,8 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_margin="24dp"
+            android:layout_height="46dp"
+            android:layout_margin="34dp"
             android:elevation="1dp"
             android:minWidth="64dp"
             android:onClick="dropPhoto"
@@ -60,8 +60,8 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_margin="24dp"
+            android:layout_height="46dp"
+            android:layout_margin="34dp"
             android:elevation="1dp"
             android:minWidth="64dp"
             android:onClick="savePhoto"

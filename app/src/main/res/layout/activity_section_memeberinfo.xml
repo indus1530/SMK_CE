@@ -123,6 +123,8 @@
                             android:id="@+id/hh02"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYy "
+                            android:inputType="textNoSuggestions"
                             android:hint="@string/hh02" />
 
                     </LinearLayout>
@@ -218,7 +220,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
                             android:orientation="horizontal">
 
                             <TextView
@@ -226,7 +227,6 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:layout_margin="2dp"
                                 android:gravity="center"
                                 android:text="@string/hh04a" />
 
@@ -235,7 +235,6 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:layout_margin="2dp"
                                 android:gravity="center"
                                 android:text="@string/hh04b" />
 
@@ -244,7 +243,6 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:layout_margin="2dp"
                                 android:gravity="center"
                                 android:text="@string/hh04c" />
 
@@ -253,7 +251,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
                             android:orientation="horizontal">
 
                             <com.edittextpicker.aliazaz.EditTextPicker
@@ -334,7 +331,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
                             android:orientation="horizontal">
 
                             <TextView
@@ -343,7 +339,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:layout_margin="2dp"
                                 android:text="@string/hh05y" />
 
                             <TextView
@@ -352,7 +347,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:layout_margin="2dp"
                                 android:text="@string/hh05m" />
 
                         </LinearLayout>
@@ -360,7 +354,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
                             android:orientation="horizontal">
 
                             <com.edittextpicker.aliazaz.EditTextPicker

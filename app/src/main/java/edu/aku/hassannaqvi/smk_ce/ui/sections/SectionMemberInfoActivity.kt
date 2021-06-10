@@ -3,23 +3,25 @@ package edu.aku.hassannaqvi.smk_ce.ui.sections
 import android.app.Activity
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.validatorcrawler.aliazaz.Clear
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.contracts.FemaleMembersContract
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
-import edu.aku.hassannaqvi.smk_ce.contracts.HHIDContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.femalemembers
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySectionMemeberinfoBinding
 import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel
-import java.text.SimpleDateFormat
-import java.util.*
+import kotlinx.android.synthetic.main.activity_section_memeberinfo.*
+
 
 class SectionMemberInfoActivity : AppCompatActivity() {
 
@@ -31,7 +33,14 @@ class SectionMemberInfoActivity : AppCompatActivity() {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_memeberinfo)
         bi.callback = this
         setSupportActionBar(bi.toolbar)
-        bi.hh01.setText((MainApp.fmCount+1).toString())
+        setupSkips()
+        bi.hh01.setText((MainApp.fmCount + 1).toString())
+
+    }
+
+
+
+    private fun setupSkips() {
 
         val txtListener = arrayOf<EditText>(bi.hh04a, bi.hh04b)
         for (txtItem in txtListener) {
@@ -47,6 +56,35 @@ class SectionMemberInfoActivity : AppCompatActivity() {
             })
         }
 
+        hh07.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if (TextUtils.isEmpty(hh07.text)) return
+                hh08.text = null
+                hh08.minvalue = hh07.text.toString().toFloat()
+            }
+
+            override fun afterTextChanged(s: Editable) {}
+        })
+
+        rglsnr(hh03)
+        rglsnr(hh06)
+
+
+    }
+
+
+    private fun rglsnr(rg: RadioGroup) {
+        rg.setOnCheckedChangeListener { radioGroup, i ->
+            Clear.clearAllFields(fldGrpCVhh07)
+            Clear.clearAllFields(fldGrpCVhh08)
+            fldGrpCVhh07.visibility = View.VISIBLE
+            fldGrpCVhh08.visibility = View.VISIBLE
+            if (hh03a.isChecked || hh06b.isChecked) {
+                fldGrpCVhh07.visibility = View.GONE
+                fldGrpCVhh08.visibility = View.GONE
+            }
+        }
     }
 
 
@@ -87,6 +125,7 @@ class SectionMemberInfoActivity : AppCompatActivity() {
         }
     }
 
+
     private fun addForm(): Boolean {
         if(bi.hh01.text.toString().equals("1")){
         val db = MainApp.appInfo.dbHelper
@@ -101,6 +140,7 @@ class SectionMemberInfoActivity : AppCompatActivity() {
             false
         }} else {return true}
     }
+
 
     private fun saveDraft() {
 
@@ -230,6 +270,7 @@ class SectionMemberInfoActivity : AppCompatActivity() {
         return Validator.emptyCheckingContainer(this, bi.GrpName)
     }
 
+
     override fun onBackPressed() {
         Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show()
     }
@@ -262,6 +303,7 @@ class SectionMemberInfoActivity : AppCompatActivity() {
             patientType = "Child"
         }*/
     }
+
 
     private fun segregate() {
 

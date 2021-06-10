@@ -100,9 +100,7 @@ class SectionLHWActivity : AppCompatActivity() {
 
 
     private fun setupSkips() {
-
         bi.lhw04.minvalue = HOUSEHOLDS_TO_RANDOMISE.toFloat() + 2
-
     }
 
 
@@ -212,18 +210,18 @@ class SectionLHWActivity : AppCompatActivity() {
         }
     }
 
+
+
     fun takePhoto(view: View) {
+        if(!Validator.emptyCheckingContainer(this, bi.GrpName)) return
         val intent = Intent(this, TakePhoto::class.java)
 
-        // Adjust Identification Information to uniquely identify every photo and link to form
-        //intent.putExtra("picID", MainApp.fc.getClusterCode() + "_" + MainApp.fc.getHhno() + "_" + MainApp.childData.getName()+ "_" + PhotoSerial);
-        intent.putExtra("picID", bi.lhw03.toString() + "_" + PhotoSerial)
+        intent.putExtra("picID", tehsilCode[bi.lhw01.selectedItemPosition] + "_" + PhotoSerial)
+        intent.putExtra("lhwName", bi.lhw03.selectedItem.toString())
 
-        // Provide information for which photo is being taken like ChildName
-        intent.putExtra("forInfo", bi.lhw03.toString())  // TODO: LHW NAME
-        //        intent.putExtra("forInfo", "This Household");
         if (view.id == bi.Photo.id) {
-            intent.putExtra("picView", "Child".toUpperCase())
+            //intent.putExtra("picView", bi.lhw03.selectedItem.toString().toUpperCase())
+            intent.putExtra("picView", PhotoSerial)
             sectionLHWActivityResultLauncher.launch(intent)
         }
     }
@@ -319,12 +317,13 @@ class SectionLHWActivity : AppCompatActivity() {
     }*/
 
 
-    /*  // Call Back method  to get the Message form other Activity
-      protected fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+
+      // Call Back method  to get the Message form other Activity
+      override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
           super.onActivityResult(requestCode, resultCode, data)
           if (resultCode != RESULT_CANCELED) {
               Toast.makeText(this, requestCode.toString() + "_" + resultCode, Toast.LENGTH_SHORT).show()
-              val fileName = data.getStringExtra("FileName")
+              val fileName = data?.getStringExtra("FileName")
 
               // Check if the requestCode 1 = Front : 2 = Back -- resultCode 1 = Success : 2 = Failure
               // Results received with requestCode 1 = Front
@@ -341,7 +340,7 @@ class SectionLHWActivity : AppCompatActivity() {
               }
 
               // Results received with requestCode 2 = Back
-              if (requestCode == 2 && resultCode == 1) {
+              /*if (requestCode == 2 && resultCode == 1) {
                   Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show()
                   bi.lhwphoto.setText(fileName)
                   bi.Photo.setEnabled(false)
@@ -351,9 +350,9 @@ class SectionLHWActivity : AppCompatActivity() {
                   //TODO: Implement functionality below when photo was not taken
                   // ...
                   bi.backFileName.setText("Photo not taken.")
-              }
+              }*/
           }
-      }*/
+      }
 
 }
 
