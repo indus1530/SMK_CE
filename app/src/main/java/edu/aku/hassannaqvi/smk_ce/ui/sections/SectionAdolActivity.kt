@@ -25,6 +25,7 @@ import java.util.*
 class SectionAdolActivity : AppCompatActivity() {
 
     lateinit var bi: ActivitySectionAdolBinding
+    var position: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,12 @@ class SectionAdolActivity : AppCompatActivity() {
         bi.callback
         setSupportActionBar(bi.toolbar)
         setupSkips()
+
+        position = MainApp.selectedFemale.toString()
+
+
+        bi.adol01.setText(MainApp.fm[position.toInt()].hh02.toString())
+        bi.adol02.setText(MainApp.fm[position.toInt()].hh05y.toString())
     }
 
 
@@ -74,12 +81,9 @@ class SectionAdolActivity : AppCompatActivity() {
         return if (updcount > 0) {
             adol.id = updcount.toString()
             adol.uid = adol.deviceId + adol.id
-            var count = db.updatesADOLColumn(ADOLContract.ADOLTable.COLUMN_UID, adol.uid)
-            if (count > 0) count = db.updatesADOLColumn(ADOLContract.ADOLTable.COLUMN_SA, adol.sAtoString())
-            if (count > 0) true else {
-                Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
-                false
-            }
+            db.updatesADOLColumn(ADOLContract.ADOLTable.COLUMN_UID, adol.uid) // updates UID in ADOL table
+            db.updatesFemaleMemberbyUUID(adol.fmid) // Updates status in Family members table
+            true
         } else {
             Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
             false
@@ -92,7 +96,7 @@ class SectionAdolActivity : AppCompatActivity() {
         saveDraft()
         if (updateDB()) {
             finish()
-            startActivity(Intent(this, SectionVHCActivity::class.java))
+            startActivity(Intent(this, FemaleMembersActivity::class.java))
         } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show()
         }
@@ -102,8 +106,12 @@ class SectionAdolActivity : AppCompatActivity() {
     private fun saveDraft() {
 
         adol = ADOLModel()
+
+        adol.position = position
+
         adol.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
         adol.uuid = MainApp.form.uid
+        adol.fmid = MainApp.fm.get(position.toInt()).uid
         adol.userName = MainApp.user.userName
         adol.districtCode = MainApp.form.hfCode
         adol.districtName = MainApp.form.hfName
@@ -115,6 +123,7 @@ class SectionAdolActivity : AppCompatActivity() {
         adol.deviceId = MainApp.appInfo.deviceID
         adol.deviceTag = MainApp.appInfo.tagName
         adol.appver = MainApp.appInfo.appVersion
+        adol.status = "1"
 
         adol.adol01 = when {
             bi.adol01.text.toString().trim().isNotEmpty() -> bi.adol01.text.toString()
@@ -253,7 +262,7 @@ class SectionAdolActivity : AppCompatActivity() {
     fun BtnEnd(view: View) {
         //openSectionMainActivity(this, "G")
         finish()
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, FemaleMembersActivity::class.java))
     }
 
 

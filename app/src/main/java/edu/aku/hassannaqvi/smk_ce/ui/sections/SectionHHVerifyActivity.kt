@@ -78,7 +78,20 @@ class SectionHHVerifyActivity : AppCompatActivity() {
 
         // Added Listener for change in selected Tehsil to update HF adapter
         bi.hhv04.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+
             override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+
+                bi.hhv05.setAdapter(null)
+                bi.hhv06.setAdapter(null)
+                bi.hhv01.setAdapter(null)
+                bi.hhv02a.setText(null);
+                bi.hhv02b.setText(null);
+                bi.hhv02c.setText(null);
+                bi.hhv02d.setText(null);
+                bi.hhv02e.setText(null);
+                bi.hhv02f.setText(null);
+                bi.hhv02g.setText(null);
 
                 if (position == 0) return
 
@@ -97,12 +110,24 @@ class SectionHHVerifyActivity : AppCompatActivity() {
 
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
+            override fun onNothingSelected(
+                    parent: AdapterView<*>?
+            ) {}
         }
 
         // Added Listener for change in selected HF to update LHW Adapter
         bi.hhv05.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+
+                bi.hhv06.setAdapter(null)
+                bi.hhv01.setAdapter(null)
+                bi.hhv02a.setText(null);
+                bi.hhv02b.setText(null);
+                bi.hhv02c.setText(null);
+                bi.hhv02d.setText(null);
+                bi.hhv02e.setText(null);
+                bi.hhv02f.setText(null);
+                bi.hhv02g.setText(null);
 
                 if (position == 0) return
 
@@ -129,6 +154,15 @@ class SectionHHVerifyActivity : AppCompatActivity() {
         bi.hhv06.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
 
+                bi.hhv01.setAdapter(null)
+                bi.hhv02a.setText(null);
+                bi.hhv02b.setText(null);
+                bi.hhv02c.setText(null);
+                bi.hhv02d.setText(null);
+                bi.hhv02e.setText(null);
+                bi.hhv02f.setText(null);
+                bi.hhv02g.setText(null);
+
                 if (position == 0) return
 
                  hhid = db.getKhandanNumberByLHW(lhwCode[position].toString())
@@ -150,12 +184,20 @@ class SectionHHVerifyActivity : AppCompatActivity() {
         bi.hhv01.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
 
+                bi.hhv02a.setText(null);
+                bi.hhv02b.setText(null);
+                bi.hhv02c.setText(null);
+                bi.hhv02d.setText(null);
+                bi.hhv02e.setText(null);
+                bi.hhv02f.setText(null);
+                bi.hhv02g.setText(null);
+
                 if (position == 0) return
 
              //   var hhid: ArrayList<HHIDModel> = db.getKhandanNumberByLHW(lhwCode[position].toString())
 
-                MainApp.selectedHH = hhid[position]
-                hhid = ArrayList()
+                MainApp.selectedHH = hhid[position-1]
+                //hhid = ArrayList()
 
 
                 // Update HH Info
@@ -189,13 +231,22 @@ class SectionHHVerifyActivity : AppCompatActivity() {
 
     fun BtnContinue(view: View) {
         if (!formValidation()) return
-        saveDraft()
-   //     if (updateDB()) {
-            finish()
-            startActivity(Intent(this, FemaleMembersActivity::class.java))
-     /*   } else {
-            Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show()
-        }*/
+        if (!hhExists()) {
+            saveDraft()
+        }
+        //     if (updateDB()) {
+        finish()
+        startActivity(Intent(this, FemaleMembersActivity::class.java))
+        /*   } else {
+               Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show()
+           }*/
+    }
+
+    private fun hhExists(): Boolean {
+        form = Form()
+        form = db.getFormByKhandanNumber(MainApp.selectedHH.lhwCode, MainApp.selectedHH.khandanNumber)
+
+        return form != null
     }
 
 

@@ -15,25 +15,33 @@ import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Clear
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
+import edu.aku.hassannaqvi.smk_ce.contracts.ADOLContract
 import edu.aku.hassannaqvi.smk_ce.contracts.MWRAContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.mwra
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySectionMwraBinding
 import edu.aku.hassannaqvi.smk_ce.models.MWRAModel
-import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
-import java.text.SimpleDateFormat
-import java.util.*
 
 class SectionMWRAActivity : AppCompatActivity() {
 
     lateinit var bi: ActivitySectionMwraBinding
-
+    var position: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_mwra)
         bi.callback
         setSupportActionBar(bi.toolbar)
         setupSkips()
+
+
+        position = MainApp.selectedFemale.toString()
+
+
+        bi.mwra01.setText(MainApp.fm[position.toInt()].hh02.toString())
+        bi.mwra02.setText(MainApp.fm[position.toInt()].hh05y.toString())
+        bi.mwra04.setText(MainApp.fm[position.toInt()].hh07.toString())
+
+
     }
 
 
@@ -105,12 +113,9 @@ class SectionMWRAActivity : AppCompatActivity() {
         return if (updcount > 0) {
             mwra.id = updcount.toString()
             mwra.uid = mwra.deviceId + mwra.id
-            var count = db.updatesMWRAColumn(MWRAContract.MWRATable.COLUMN_UID, mwra.uid)
-            if (count > 0) count = db.updatesMWRAColumn(MWRAContract.MWRATable.COLUMN_SA, mwra.sAtoString())
-            if (count > 0) true else {
-                Toast.makeText(this, "SORRY!! Failed to update DB", Toast.LENGTH_SHORT).show()
-                false
-            }
+            db.updatesMWRAColumn(MWRAContract.MWRATable.COLUMN_UID, mwra.uid)
+            db.updatesFemaleMemberbyUUID(MainApp.mwra.fmid) // Updates status in Family members table
+            true
         } else {
             Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
             false
@@ -123,7 +128,7 @@ class SectionMWRAActivity : AppCompatActivity() {
         saveDraft()
         if (updateDB()) {
             finish()
-            startActivity(Intent(this, SectionAdolActivity::class.java))
+            startActivity(Intent(this, FemaleMembersActivity::class.java))
         } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show()
         }
@@ -133,8 +138,13 @@ class SectionMWRAActivity : AppCompatActivity() {
     private fun saveDraft() {
 
         mwra = MWRAModel()
-        mwra.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
+
+        mwra.position = position
+
+
+        mwra.sysDate = MainApp.form.sysDate
         mwra.uuid = MainApp.form.uid
+        mwra.fmid = MainApp.fm.get(position.toInt()).uid
         mwra.userName = MainApp.user.userName
         mwra.districtCode = MainApp.form.hfCode
         mwra.districtName = MainApp.form.hfName
@@ -146,6 +156,7 @@ class SectionMWRAActivity : AppCompatActivity() {
         mwra.deviceId = MainApp.appInfo.deviceID
         mwra.deviceTag = MainApp.appInfo.tagName
         mwra.appver = MainApp.appInfo.appVersion
+        mwra.status = "1"
 
         mwra.mwra01 = when {
             bi.mwra01.text.toString().trim().isNotEmpty() -> bi.mwra01.text.toString()
@@ -386,7 +397,7 @@ class SectionMWRAActivity : AppCompatActivity() {
     fun BtnEnd(view: View) {
         //openSectionMainActivity(this, "G")
         finish()
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, FemaleMembersActivity::class.java))
     }
 
 

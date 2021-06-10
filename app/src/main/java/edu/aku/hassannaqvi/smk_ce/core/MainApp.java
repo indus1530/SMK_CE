@@ -64,6 +64,8 @@ public class MainApp extends Application {
     public static Boolean admin = false;
     public static List<JSONArray> uploadData;
     public static int fmCount;
+    public static List<FemaleMembersModel> fm;
+    public static String fmPosition;
     SharedPreferences.Editor editor;
     SharedPreferences sharedPref;
     public static int[] randHHNo;
@@ -71,6 +73,7 @@ public class MainApp extends Application {
     String[] marker = new String[HOUSEHOLDS_TO_RANDOMISE];
     @NotNull
     public static HHIDModel selectedHH;
+    public static int selectedFemale;
 
 
     public static void hideSystemUI(View decorView) {

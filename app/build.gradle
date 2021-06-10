@@ -69,7 +69,7 @@ android {
         applicationVariants.all { variant ->
             variant.outputs.each { output ->
 
-                def appName = "PSBITrial"
+                def appName = "SMK_CE"
                 def date = new Date()
                 def formattedDate = date.format('yyyy_MM_dd')
 

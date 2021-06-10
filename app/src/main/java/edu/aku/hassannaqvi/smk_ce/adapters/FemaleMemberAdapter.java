@@ -1,12 +1,18 @@
 package edu.aku.hassannaqvi.smk_ce.adapters;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -15,9 +21,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import edu.aku.hassannaqvi.smk_ce.R;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
+import edu.aku.hassannaqvi.smk_ce.ui.sections.SectionAdolActivity;
+import edu.aku.hassannaqvi.smk_ce.ui.sections.SectionMWRAActivity;
 
 public class FemaleMemberAdapter extends RecyclerView.Adapter<FemaleMemberAdapter.ViewHolder> {
     private static final String TAG = "CustomAdapter";
+    private final Context mContext;
 
     private List<FemaleMembersModel> femaleMembers;
     private int mExpandedPosition = -1;
@@ -27,66 +36,12 @@ public class FemaleMemberAdapter extends RecyclerView.Adapter<FemaleMemberAdapte
      *
      * @param femaleMembers List<FemaleMembersModel> containing the data to populate views to be used by RecyclerView.
      */
-    public FemaleMemberAdapter(List<FemaleMembersModel> femaleMembers) {
+    public FemaleMemberAdapter(Context mContext, List<FemaleMembersModel> femaleMembers) {
         this.femaleMembers = femaleMembers;
+        this.mContext = mContext;
     }
 
     // BEGIN_INCLUDE(recyclerViewSampleViewHolder)
-    /**
-     * Provide a reference to the type of views that you are using (custom ViewHolder)
-     */
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView fName;
-        private TextView fAge;
-        private TextView fMatitalStatus;
-        private TextView addSec;
-        private LinearLayout subItem;
-
-
-
-        public ViewHolder(View v) {
-            super(v);
-            // Define click listener for the ViewHolder's View.
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Log.d(TAG, "Element " + getBindingAdapterPosition() + " clicked.");
-                  /*  if (subItem.getVisibility()==View.VISIBLE)
-                        subItem.setVisibility(View.GONE);
-                    else
-                        subItem.setVisibility(View.VISIBLE);*/
-                }
-            });
-            fName=  v.findViewById(R.id.hh02);
-            fAge =  v.findViewById(R.id.hh05);
-            fMatitalStatus = v.findViewById(R.id.hh06);
-            addSec =  v.findViewById(R.id.add_section);
-            subItem =  v.findViewById(R.id.subitem);
-        }
-
-        public TextView getTextView() {
-            return fName;
-        }
-    }
-    // END_INCLUDE(recyclerViewSampleViewHolder)
-
-
-
-
-    // BEGIN_INCLUDE(recyclerViewOnCreateViewHolder)
-    // Create new views (invoked by the layout manager)
-    @Override
-    public FemaleMemberAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        // Create a new view.
-       // Context context = parent.getContext();
-        View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.female_member_row, viewGroup, false);
-
-        return new ViewHolder(v);
-    }
-    // END_INCLUDE(recyclerViewOnCreateViewHolder)
-
     // BEGIN_INCLUDE(recyclerViewOnBindViewHolder)
     // Replace the contents of a view (invoked by the layout manager)
     @Override
@@ -98,8 +53,10 @@ FemaleMembersModel femaleMember = this.femaleMembers.get(position);        // Ge
         TextView fName = viewHolder.fName;
         TextView fAge = viewHolder.fAge;
         LinearLayout subItem = viewHolder.subItem;
+        ImageView fmRow = viewHolder.fmRow;
         TextView addSec = viewHolder.addSec;
         TextView fMaritalStatus = viewHolder.fMatitalStatus;
+        TextView secStatus = viewHolder.secStatus;
 
         int mStatus = Integer.parseInt(femaleMember.getHh06());
         int age = Integer.valueOf(femaleMember.getHh05y());
@@ -112,8 +69,11 @@ FemaleMembersModel femaleMember = this.femaleMembers.get(position);        // Ge
         if ( mStatus == 2 && age >= MainApp.MIN_ADOL && age < MainApp.MAX_ADOL){
             mCate = 2;
         }
-
-
+        Log.d(TAG, "onBindViewHolder: Memeber - "+ femaleMember.getHh02() + " - "+femaleMember.getStatus() );
+        secStatus.setText(femaleMember.getStatus().equals("1")?"Complete":"Pending");
+        secStatus.setTextColor(femaleMember.getStatus().equals("1")?mContext.getResources().getColor(R.color.redDark):mContext.getResources().getColor(R.color.green));
+        addSec.setClickable(!femaleMember.getStatus().equals("1"));
+        if (femaleMember.getStatus().equals("1")){fmRow.setImageResource(R.drawable.ic_check_circle_big);}
 
         fName.setText(femaleMember.getHh02());
         fAge.setText(femaleMember.getHh05y());
@@ -149,12 +109,105 @@ FemaleMembersModel femaleMember = this.femaleMembers.get(position);        // Ge
 
         viewHolder.itemView.setOnClickListener(v -> {
             // Get the current state of the item
-             expanded.set(femaleMember.isExpanded());
+            if (!femaleMember.getStatus().equals("1")){
+                expanded.set(femaleMember.isExpanded());
             // Change the state
             femaleMember.setExpanded(!expanded.get());
             // Notify the adapter that item has changed
             notifyItemChanged(position);
+        } else {
+                Toast.makeText(mContext, "Form already filled for "+femaleMember.getHh02()+".", Toast.LENGTH_SHORT).show();
+            }
         });
+
+        int finalMCate = mCate;
+        viewHolder.addSec.setOnClickListener(v -> {
+            // Get the current state of the item
+            Intent intent = null;
+            switch (finalMCate) {
+                case 1:
+                    intent = new Intent(mContext, SectionMWRAActivity.class);
+                    intent.putExtra("position",position);
+                    break;
+                case 2:
+                    intent = new Intent(mContext, SectionAdolActivity.class);
+                    intent.putExtra("position",position);
+
+                    break;
+
+            }
+            MainApp.selectedFemale = position;
+if(intent!=null) {
+    mContext.startActivity(intent);
+} else {
+    Toast.makeText(mContext, " Member Category Unknown!", Toast.LENGTH_SHORT).show();
+}
+        });
+    }
+    // END_INCLUDE(recyclerViewSampleViewHolder)
+
+
+    // BEGIN_INCLUDE(recyclerViewOnCreateViewHolder)
+    // Create new views (invoked by the layout manager)
+    @Override
+    public FemaleMemberAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        // Create a new view.
+        // Context context = parent.getContext();
+        View v = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.female_member_row, viewGroup, false);
+
+        return new ViewHolder(v);
+    }
+    // END_INCLUDE(recyclerViewOnCreateViewHolder)
+
+    /**
+     * Provide a reference to the type of views that you are using (custom ViewHolder)
+     */
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView fName;
+        private final TextView fAge;
+        private final TextView fMatitalStatus;
+        private final TextView secStatus;
+        private final TextView addSec;
+        private final LinearLayout subItem;
+        private final ImageView fmRow;
+
+
+        public ViewHolder(View v) {
+            super(v);
+            fName = v.findViewById(R.id.hh02);
+            fAge = v.findViewById(R.id.hh05);
+            fMatitalStatus = v.findViewById(R.id.hh06);
+            secStatus = v.findViewById(R.id.secStatus);
+            addSec = v.findViewById(R.id.add_section);
+            subItem = v.findViewById(R.id.subitem);
+            fmRow = v.findViewById(R.id.fmRow);
+            // Define click listener for the ViewHolder's View.
+
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Log.d(TAG, "Element " + getBindingAdapterPosition() + " clicked.");
+                  /*  if (subItem.getVisibility()==View.VISIBLE)
+                        subItem.setVisibility(View.GONE);
+                    else
+                        subItem.setVisibility(View.VISIBLE);*/
+                }
+            });
+
+            v.findViewById(R.id.add_section).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
+        }
+
+        public TextView getTextView() {
+            return fName;
+        }
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 

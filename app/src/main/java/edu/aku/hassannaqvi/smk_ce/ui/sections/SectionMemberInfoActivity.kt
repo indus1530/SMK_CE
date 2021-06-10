@@ -12,6 +12,8 @@ import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.contracts.FemaleMembersContract
+import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract
+import edu.aku.hassannaqvi.smk_ce.contracts.HHIDContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.femalemembers
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySectionMemeberinfoBinding
@@ -92,6 +94,7 @@ class SectionMemberInfoActivity : AppCompatActivity() {
         return if (rowId > 0) {
             MainApp.form.id = rowId.toString()
             MainApp.form.uid = MainApp.form.deviceId + MainApp.form.id
+            db.updatesFormColumn(FormsContract.FormsTable.COLUMN_UID, MainApp.form.uid)
             true
         } else {
             Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()

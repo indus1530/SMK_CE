@@ -17,6 +17,7 @@ public class ADOLContract {
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
+        public static final String COLUMN_FMID = "_fmid";
         public static final String COLUMN_SERIAL_NO = "serialNo";
         public static final String COLUMN_USERNAME = "username";
         public static final String COLUMN_SYSDATE = "sysdate";

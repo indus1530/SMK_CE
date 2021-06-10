@@ -128,7 +128,6 @@
 
                 </androidx.cardview.widget.CardView>
 
-
                 <!-- hhv06  Input-Numeric   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVhhv06"

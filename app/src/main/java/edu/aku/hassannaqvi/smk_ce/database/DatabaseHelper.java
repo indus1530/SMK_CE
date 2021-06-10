@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -266,6 +267,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(MWRAContract.MWRATable.COLUMN_PROJECT_NAME, model.getProjectName());
         values.put(MWRAContract.MWRATable.COLUMN_UID, model.getUid());
         values.put(MWRAContract.MWRATable.COLUMN_UUID, model.getUuid());
+        values.put(MWRAContract.MWRATable.COLUMN_FMID, model.getFmid());
         values.put(MWRAContract.MWRATable.COLUMN_SERIAL_NO, model.getSerialNo());
         values.put(MWRAContract.MWRATable.COLUMN_USERNAME, model.getUserName());
         values.put(MWRAContract.MWRATable.COLUMN_SYSDATE, model.getSysDate());
@@ -300,6 +302,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ADOLContract.ADOLTable.COLUMN_PROJECT_NAME, model.getProjectName());
         values.put(ADOLContract.ADOLTable.COLUMN_UID, model.getUid());
         values.put(ADOLContract.ADOLTable.COLUMN_UUID, model.getUuid());
+        values.put(ADOLContract.ADOLTable.COLUMN_FMID, model.getFmid());
         values.put(ADOLContract.ADOLTable.COLUMN_SERIAL_NO, model.getSerialNo());
         values.put(ADOLContract.ADOLTable.COLUMN_USERNAME, model.getUserName());
         values.put(ADOLContract.ADOLTable.COLUMN_SYSDATE, model.getSysDate());
@@ -1133,6 +1136,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
+ public Form getFormByKhandanNumber(String lhwcode, String kno) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause;
+        whereClause =
+                FormsTable.COLUMN_LHW_CODE + "=? AND " +
+                FormsTable.COLUMN_KHANDAN_NUMBER + "=?";
+
+        String[] whereArgs = {lhwcode, kno};
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = FormsTable.COLUMN_ID + " ASC";
+
+        Form allFC = null;
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allFC = new Form().Hydrate(c);
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
     public ArrayList<Cursor> getDatabaseManagerData(String Query) {
         //get writable database
         SQLiteDatabase sqlDB = this.getWritableDatabase();
@@ -1293,16 +1338,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
-    public int updatesMHColumn(String column, String value) {
+    public int updatesFemaleMemberbyUUID(String uuid) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(column, value);
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_STATUS, "1");
 
-        String selection = MHContract.MHTable._ID + " =? ";
-        String[] selectionArgs = {String.valueOf(mobileHealth.getId())};
+        String selection = FemaleMembersContract.FemaleMembersTable.COLUMN_UID + " =? ";
+        String[] selectionArgs = {uuid};
 
-        return db.update(MHContract.MHTable.TABLE_NAME,
+        return db.update(FemaleMembersContract.FemaleMembersTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -2492,5 +2537,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             alc.set(1, Cursor2);
             return alc;
         }
+    }
+
+    public void getFormByID(@NotNull String lhwCode, @NotNull String khandanNumber) {
+
     }
 }

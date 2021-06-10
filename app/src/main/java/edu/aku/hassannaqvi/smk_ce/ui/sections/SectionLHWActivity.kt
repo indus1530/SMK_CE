@@ -136,6 +136,8 @@ class SectionLHWActivity : AppCompatActivity() {
         bi.lhw01.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
 
+                bi.lhw02.adapter = null
+                bi.lhw03.adapter = null
                 if (position == 0) return
 
                 var hf: ArrayList<HealthFacilities> = db.getHFByTehsil(tehsilCode[position].toString())
@@ -167,7 +169,7 @@ class SectionLHWActivity : AppCompatActivity() {
         // Added Listener for change in selected HF to update LHW Adapter
         bi.lhw02.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
-
+                bi.lhw03.adapter = null
                 if (position == 0) return
 
                 var lhw: ArrayList<LHW> = db.getLHWByHF(hfCode[position].toString())

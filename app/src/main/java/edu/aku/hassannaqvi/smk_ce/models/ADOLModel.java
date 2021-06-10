@@ -4,6 +4,8 @@ import android.database.Cursor;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.Observable;
+import androidx.databinding.PropertyChangeRegistry;
 
 import com.google.gson.GsonBuilder;
 
@@ -16,7 +18,7 @@ import edu.aku.hassannaqvi.smk_ce.BR;
 import edu.aku.hassannaqvi.smk_ce.contracts.ADOLContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 
-public class ADOLModel extends BaseObservable {
+public class ADOLModel extends BaseObservable implements Observable {
 
     private final String TAG = "ADOLModel";
 
@@ -28,6 +30,7 @@ public class ADOLModel extends BaseObservable {
     private String id = StringUtils.EMPTY;
     private String uid = StringUtils.EMPTY;
     private String uuid = StringUtils.EMPTY;
+    private String fmid = StringUtils.EMPTY;
     private String serialNo = StringUtils.EMPTY;
     private String userName = StringUtils.EMPTY;
     private String sysDate = StringUtils.EMPTY;
@@ -53,6 +56,7 @@ public class ADOLModel extends BaseObservable {
     //Not saving in DB
     private LocalDate localDate = null;
     private boolean exist = false;
+    private String position = "";
 
 
     // FIELD VARIABLES
@@ -115,6 +119,7 @@ public class ADOLModel extends BaseObservable {
     private String adol15e = StringUtils.EMPTY;
     private String adol1596 = StringUtils.EMPTY;
     private String adol1596x = StringUtils.EMPTY;
+    private transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
 
 
     public ADOLModel() {
@@ -124,8 +129,29 @@ public class ADOLModel extends BaseObservable {
         return exist;
     }
 
+
     public void setExist(boolean exist) {
         this.exist = exist;
+    }
+
+    @Bindable
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+
+    }
+
+    @Bindable
+    public String getFmid() {
+        return fmid;
+    }
+
+    public void setFmid(String fmid) {
+        this.fmid = fmid;
+
     }
 
     public LocalDate getLocalDate() {
@@ -161,15 +187,6 @@ public class ADOLModel extends BaseObservable {
         // notifyPropertyChanged(BR.layoutFieldName);
     }
 
-    @Bindable
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-
-    }
 
     @Bindable
     public String getUid() {
@@ -957,6 +974,7 @@ public class ADOLModel extends BaseObservable {
         this.id = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_ID);
         this.uid = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_UID);
         this.uuid = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_UUID);
+        this.fmid = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_FMID);
         this.serialNo = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_SERIAL_NO);
         this.userName = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_USERNAME);
         this.sysDate = jsonObject.getString(ADOLContract.ADOLTable.COLUMN_SYSDATE);
@@ -986,6 +1004,7 @@ public class ADOLModel extends BaseObservable {
         this.id = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_ID));
         this.uid = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_UID));
         this.uuid = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_UUID));
+        this.fmid = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_FMID));
         this.serialNo = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_SERIAL_NO));
         this.userName = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_USERNAME));
         this.sysDate = cursor.getString(cursor.getColumnIndex(ADOLContract.ADOLTable.COLUMN_SYSDATE));
@@ -1098,6 +1117,7 @@ public class ADOLModel extends BaseObservable {
             json.put(ADOLContract.ADOLTable.COLUMN_ID, this.id == null ? JSONObject.NULL : this.id);
             json.put(ADOLContract.ADOLTable.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
             json.put(ADOLContract.ADOLTable.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
+            json.put(ADOLContract.ADOLTable.COLUMN_FMID, this.fmid == null ? JSONObject.NULL : this.fmid);
             json.put(ADOLContract.ADOLTable.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
             json.put(ADOLContract.ADOLTable.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
             json.put(ADOLContract.ADOLTable.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
@@ -1198,6 +1218,39 @@ public class ADOLModel extends BaseObservable {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    @Bindable
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+        notifyChange(BR.id);
+    }
+
+    private synchronized void notifyChange(int propertyId) {
+        if (propertyChangeRegistry == null) {
+            propertyChangeRegistry = new PropertyChangeRegistry();
+        }
+        propertyChangeRegistry.notifyChange(this, propertyId);
+    }
+
+    @Override
+    public synchronized void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
+        if (propertyChangeRegistry == null) {
+            propertyChangeRegistry = new PropertyChangeRegistry();
+        }
+        propertyChangeRegistry.add(callback);
+
+    }
+
+    @Override
+    public synchronized void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
+        if (propertyChangeRegistry != null) {
+            propertyChangeRegistry.remove(callback);
         }
     }
 }

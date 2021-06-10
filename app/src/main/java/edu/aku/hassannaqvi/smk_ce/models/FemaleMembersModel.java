@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.smk_ce.models;
 
 import android.database.Cursor;
+import android.util.Log;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -337,10 +338,13 @@ public class FemaleMembersModel extends BaseObservable implements Observable {
 
     @Bindable
     public String getStatus() {
+        Log.d(TAG, "getStatus: "+this.hh02+" = "+this.status);
         return status;
     }
 
     public void setStatus(String status) {
+        Log.d(TAG, "setStatus: "+this.hh02+" = "+this.status);
+
         this.status = status;
         notifyPropertyChanged(BR.status);
     }

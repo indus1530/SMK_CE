@@ -28,6 +28,7 @@ public class MWRAModel extends BaseObservable {
     private String id = StringUtils.EMPTY;
     private String uid = StringUtils.EMPTY;
     private String uuid = StringUtils.EMPTY;
+    private String fmid = StringUtils.EMPTY;
     private String serialNo = StringUtils.EMPTY;
     private String userName = StringUtils.EMPTY;
     private String sysDate = StringUtils.EMPTY;
@@ -53,6 +54,7 @@ public class MWRAModel extends BaseObservable {
     //Not saving in DB
     private LocalDate localDate = null;
     private boolean exist = false;
+    private String position;
 
 
     // FIELD VARIABLES
@@ -150,7 +152,15 @@ public class MWRAModel extends BaseObservable {
     public void setExist(boolean exist) {
         this.exist = exist;
     }
+    @Bindable
+    public String getPosition() {
+        return position;
+    }
 
+    public void setPosition(String position) {
+        this.position = position;
+
+    }
     public LocalDate getLocalDate() {
         return localDate;
     }
@@ -159,17 +169,7 @@ public class MWRAModel extends BaseObservable {
         this.localDate = localDate;
     }
 
-    public void setForm(String userName, String sysDate, String dcode, String ucode, String cluster, String hhno, String deviceId, String deviceTag, String appver) {
-        this.userName = userName;
-        this.sysDate = sysDate;
-        this.districtCode = dcode;
-        this.tehsilCode = ucode;
-        this.lhwCode = cluster;
-        this.khandanNumber = hhno;
-        this.deviceId = deviceId;
-        this.deviceTag = deviceTag;
-        this.appver = appver;
-    }
+
 
     @Bindable
     public String getProjectName() {
@@ -212,6 +212,15 @@ public class MWRAModel extends BaseObservable {
 
     public MWRAModel setUuid(String uuid) {
         this.uuid = uuid;
+        return this;
+    }
+    @Bindable
+    public String getFmid() {
+        return fmid;
+    }
+
+    public MWRAModel setFmid(String fmid) {
+        this.fmid = fmid;
         return this;
     }
 
@@ -1211,6 +1220,7 @@ public class MWRAModel extends BaseObservable {
         this.id = jsonObject.getString(MWRAContract.MWRATable.COLUMN_ID);
         this.uid = jsonObject.getString(MWRAContract.MWRATable.COLUMN_UID);
         this.uuid = jsonObject.getString(MWRAContract.MWRATable.COLUMN_UUID);
+        this.fmid = jsonObject.getString(MWRAContract.MWRATable.COLUMN_FMID);
         this.serialNo = jsonObject.getString(MWRAContract.MWRATable.COLUMN_SERIAL_NO);
         this.userName = jsonObject.getString(MWRAContract.MWRATable.COLUMN_USERNAME);
         this.sysDate = jsonObject.getString(MWRAContract.MWRATable.COLUMN_SYSDATE);
@@ -1240,6 +1250,7 @@ public class MWRAModel extends BaseObservable {
         this.id = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_ID));
         this.uid = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_UID));
         this.uuid = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_UUID));
+        this.fmid = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_FMID));
         this.serialNo = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_SERIAL_NO));
         this.userName = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_USERNAME));
         this.sysDate = cursor.getString(cursor.getColumnIndex(MWRAContract.MWRATable.COLUMN_SYSDATE));
@@ -1373,6 +1384,7 @@ public class MWRAModel extends BaseObservable {
             json.put(MWRAContract.MWRATable.COLUMN_ID, this.id == null ? JSONObject.NULL : this.id);
             json.put(MWRAContract.MWRATable.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
             json.put(MWRAContract.MWRATable.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
+            json.put(MWRAContract.MWRATable.COLUMN_FMID, this.fmid == null ? JSONObject.NULL : this.fmid);
             json.put(MWRAContract.MWRATable.COLUMN_SERIAL_NO, this.serialNo == null ? JSONObject.NULL : this.serialNo);
             json.put(MWRAContract.MWRATable.COLUMN_USERNAME, this.userName == null ? JSONObject.NULL : this.userName);
             json.put(MWRAContract.MWRATable.COLUMN_SYSDATE, this.sysDate == null ? JSONObject.NULL : this.sysDate);
