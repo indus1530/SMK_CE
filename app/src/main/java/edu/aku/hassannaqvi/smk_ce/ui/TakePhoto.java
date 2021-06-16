@@ -67,7 +67,7 @@ public class TakePhoto extends Activity implements SurfaceHolder.Callback, Camer
     LinearLayout btnGrp;
     String picID;
     String picView;
-    String childName;
+    String lhwName;
     TextView picInfo;
     private boolean previewFlag;
     private String tmpFile = null;
@@ -80,14 +80,14 @@ public class TakePhoto extends Activity implements SurfaceHolder.Callback, Camer
         Intent intent = getIntent();
         picID = intent.getStringExtra("picID");
         picView = intent.getStringExtra("picView");
-        childName = intent.getStringExtra("childName");
+        lhwName = intent.getStringExtra("lhwName");
 
         picInfo = findViewById(R.id.picInfo);
         btnGrp = findViewById(R.id.btnGrp);
         btnGrp.setVisibility(View.GONE);
         hideSystemUI();
 
-        picInfo.setText(picView + "\r\n For: " + childName);
+        picInfo.setText(picView + "\r\n For: " + lhwName);
 
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 

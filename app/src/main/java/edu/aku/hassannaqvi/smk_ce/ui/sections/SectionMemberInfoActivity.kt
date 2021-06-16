@@ -32,7 +32,14 @@ class SectionMemberInfoActivity : AppCompatActivity() {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_memeberinfo)
         bi.callback = this
         setSupportActionBar(bi.toolbar)
+        setupSkips()
         bi.hh01.setText((MainApp.fmCount + 1).toString())
+
+    }
+
+
+
+    private fun setupSkips() {
 
         val txtListener = arrayOf<EditText>(bi.hh04a, bi.hh04b)
         for (txtItem in txtListener) {
