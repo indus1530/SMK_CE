@@ -115,6 +115,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:inputType="textPersonName|textCapWords|textNoSuggestions"
+                                android:digits="QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm"
                                 android:text="@string/hh02" />
 
                         </LinearLayout>
@@ -123,6 +124,7 @@
                             android:id="@+id/hh02"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="textCapWords|textPersonName"
                             android:hint="@string/hh02" />
 
                     </LinearLayout>
@@ -263,10 +265,12 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:hint="##"
+                                android:onTextChanged="@{callback::calculateAge}"
                                 android:inputType="number"
                                 android:maxLength="2"
                                 app:maxValue="31"
                                 app:minValue="1"
+                                app:defaultValue="98"
                                 app:type="range" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
@@ -276,10 +280,12 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:hint="##"
+                                android:onTextChanged="@{callback::calculateAge}"
                                 android:inputType="number"
                                 android:maxLength="2"
                                 app:maxValue="12"
                                 app:minValue="1"
+                                app:defaultValue="98"
                                 app:type="range" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
@@ -289,10 +295,12 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:hint="####"
+                                android:onTextChanged="@{callback::calculateAge}"
                                 android:inputType="number"
                                 android:maxLength="4"
                                 app:maxValue="2021"
                                 app:minValue="1900"
+                                app:defaultValue="9998"
                                 app:type="range" />
 
                         </LinearLayout>
@@ -464,6 +472,7 @@
                 <!-- hh07  Input-Numeric   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVhh07"
+                    android:visibility="@{hh03a.checked || (hh06b.checked &amp;&amp; hh03b.checked)?View.GONE:View.VISIBLE}"
                     style="@style/cardView">
 
                     <LinearLayout
@@ -498,6 +507,7 @@
                             android:hint="##"
                             android:inputType="number"
                             android:maxLength="2"
+                            android:text='@{hh03a.checked || (hh06b.checked &amp;&amp; hh03b.checked)?"":null}'
                             app:maxValue="10"
                             app:minValue="0"
                             app:type="range" />
@@ -509,6 +519,7 @@
 
                 <!-- hh08  Input-Numeric   -->
                 <androidx.cardview.widget.CardView
+                    android:visibility="@{hh03a.checked || (hh06b.checked &amp;&amp; hh03b.checked)?View.GONE:View.VISIBLE}"
                     android:id="@+id/fldGrpCVhh08"
                     style="@style/cardView">
 
@@ -543,6 +554,7 @@
                             android:gravity="center"
                             android:hint="##"
                             android:inputType="number"
+                            android:text='@{hh03a.checked || (hh06b.checked &amp;&amp; hh03b.checked)?"":null}'
                             android:maxLength="2"
                             app:maxValue="10"
                             app:minValue="0"
@@ -704,12 +716,14 @@
                         <RadioGroup
                             android:id="@+id/hh10"
                             android:layout_width="match_parent"
+                            android:checkedButton="@{hh03a.checked?-1:0}"
                             android:layout_height="wrap_content">
 
                             <RadioButton
                                 android:id="@+id/hh10a"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:enabled="@{hh03b.checked}"
                                 android:text="@string/hh10a" />
 
                             <RadioButton

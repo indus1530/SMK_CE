@@ -487,6 +487,11 @@ public class FemaleMembersModel extends BaseObservable implements Observable {
 
     public void setHh11(String hh11) {
         this.hh11 = hh11;
+        if (hh11.equals("2")) {
+            this.status = "1";
+        } else {
+            this.status = "";
+        }
         notifyPropertyChanged(BR.hh11);
     }
 

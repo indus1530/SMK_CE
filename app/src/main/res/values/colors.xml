@@ -36,4 +36,8 @@
     <color name="redDark">#990000</color>
     <color name="lightPink">#EEE4C4BA</color>
     <color name="lightPink1">#7fefd6d6</color>
+
+    <color name="colorPink">#9C27B0</color>
+    <color name="colorAdolMale">#005b96</color>
+
 </resources>

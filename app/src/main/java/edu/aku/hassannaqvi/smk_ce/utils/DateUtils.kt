@@ -5,6 +5,7 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.math.roundToInt
 
 fun monthsBetweenDates(startDate: Date, endDate: Date): Int {
     val start = Calendar.getInstance()
@@ -38,6 +39,13 @@ fun ageInYears(day: Int, month: Int, year: Int, minYear: Int): String {
     }
     val ageInt = age
     return Integer.toString(ageInt)
+}
+
+fun dobDiffInDays(cal: Calendar, cal2: Calendar): Int {
+    val dob = cal.time
+    val visitDate = cal2.time
+    val diff = (visitDate.time - dob.time).toFloat()
+    return (diff / (24 * 60 * 60 * 1000)).roundToInt()
 }
 
 fun ageInMonths(year: String, month: String): Long {

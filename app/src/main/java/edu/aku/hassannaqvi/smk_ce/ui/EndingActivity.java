@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.smk_ce.ui;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,6 +55,13 @@ public class EndingActivity extends AppCompatActivity {
             bi.btnEnd.setBackgroundColor(getResources().getColor(R.color.redLight));
         }
 
+        bi.istatusa.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Toast.makeText(EndingActivity.this, "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EndingActivity.this, "", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void saveDraft() {

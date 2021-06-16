@@ -137,6 +137,7 @@ public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> 
         public TextView istatus;
         public ImageView status;
         public TextView father;
+        public View indicator;
         // each data item is just a string in this case
 
         public ViewHolder(View v) {
@@ -148,6 +149,7 @@ public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> 
             istatus = v.findViewById(R.id.istatus);
             status = v.findViewById(R.id.status);
             father = v.findViewById(R.id.fathername);
+            indicator = v.findViewById(R.id.indicator);
 
         }
 

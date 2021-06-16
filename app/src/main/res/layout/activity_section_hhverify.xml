@@ -260,6 +260,7 @@
                                 android:id="@+id/hhv02a"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
+                                android:enabled="@{hhv03b.checked}"
                                 android:layout_weight="1"
                                 android:hint="@string/hhv02a" />
 
@@ -287,6 +288,8 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:hint="###"
+                                android:enabled="@{hhv03b.checked}"
+
                                 android:inputType="number"
                                 android:maxLength="3"
                                 app:maxValue="999"
@@ -318,6 +321,8 @@
                                 android:gravity="center"
                                 android:hint="###########"
                                 android:inputType="number"
+                                android:enabled="@{hhv03b.checked}"
+
                                 android:maxLength="11"
                                 app:maxValue="99999999999"
                                 app:minValue="0"
@@ -343,6 +348,7 @@
                             <EditText
                                 android:id="@+id/hhv02d"
                                 android:layout_width="0dp"
+                                android:enabled="@{hhv03b.checked}"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:hint="@string/hhv02d" />
@@ -368,6 +374,7 @@
                                 android:id="@+id/hhv02e"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
+                                android:enabled="@{hhv03b.checked}"
                                 android:layout_weight="1"
                                 android:hint="@string/hhv02e" />
 
@@ -392,6 +399,7 @@
                                 android:id="@+id/hhv02f"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
+                                android:enabled="@{hhv03b.checked}"
                                 android:layout_weight="1"
                                 android:hint="@string/hhv02f" />
 
@@ -416,6 +424,7 @@
                                 android:id="@+id/hhv02g"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
+                                android:enabled="@{hhv03b.checked}"
                                 android:layout_weight="1"
                                 android:hint="@string/hhv02g" />
 
@@ -466,6 +475,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:enabled="@{!hhv03b.checked}"
                                 android:text="@string/hhv03a" />
 
                             <RadioButton

@@ -66,6 +66,7 @@ import edu.aku.hassannaqvi.smk_ce.models.Users.UsersTable;
 import edu.aku.hassannaqvi.smk_ce.models.VersionApp;
 import edu.aku.hassannaqvi.smk_ce.models.VersionApp.VersionAppTable;
 
+import static edu.aku.hassannaqvi.smk_ce.core.MainApp.femalemembers;
 import static edu.aku.hassannaqvi.smk_ce.core.MainApp.mobileHealth;
 
 /*import edu.aku.hassannaqvi.naunehal.models.Immunization;*/
@@ -661,8 +662,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                FemalesByHH.add(new FemaleMembersModel().Hydrate(c));
+                FemaleMembersModel femalemembers = new FemaleMembersModel().Hydrate(c);
+                /* int age = Integer.parseInt(femalemembers.getHh05y());
+                boolean isFemale = femalemembers.getHh03().equals("2");
+                boolean notMarried = femalemembers.getHh06().equals("2");
+               if (
+                    // Adolescent: Male + Female - 10 to 19
+                        (age >= 10 && age < 20 && notMarried)
+                                ||
+                                // MWRA: Married females between 14 to 49
+                                (age >= 14 && age < 50 && !notMarried && isFemale)
 
+                ) {*/
+                    FemalesByHH.add(femalemembers);
+               // }
             }
         } finally {
             if (c != null) {
