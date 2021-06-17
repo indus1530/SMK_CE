@@ -36,7 +36,7 @@ public class MainApp extends Application {
     public static final String _SERVER_URL = "sync.php";
     public static final String _SERVER_GET_URL = "getData.php";
     public static final String _PHOTO_UPLOAD_URL = _HOST_URL + "uploads.php";
-    public static final String _UPDATE_URL = MainApp._IP + "/smk_hfa/smk_fi/app/mhs/";
+    public static final String _UPDATE_URL = MainApp._IP + "/smk_hfa/smk_fi/app/";
     public static final String DeviceURL = "devices.php";
 
     public static final int HOUSEHOLDS_TO_RANDOMISE = 5;
@@ -63,9 +63,11 @@ public class MainApp extends Application {
     public static Users user;
     public static Boolean admin = false;
     public static List<JSONArray> uploadData;
-    public static int fmCount;
+    public static int fmCount = 0;
+    public static int fmCountComplete = 0;
     public static List<FemaleMembersModel> fm;
     public static String fmPosition;
+    public static boolean fmComplete;
     SharedPreferences.Editor editor;
     SharedPreferences sharedPref;
     public static int[] randHHNo;

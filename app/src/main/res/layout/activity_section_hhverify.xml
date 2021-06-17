@@ -261,6 +261,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:enabled="@{hhv03b.checked}"
+                                android:inputType="textNoSuggestions|textCapWords"
+                                android:digits="qwertyuiopasdfghjklzxcvbnm QWERTYUIOPASDFGHJKLZXCVBNM"
                                 android:layout_weight="1"
                                 android:hint="@string/hhv02a" />
 

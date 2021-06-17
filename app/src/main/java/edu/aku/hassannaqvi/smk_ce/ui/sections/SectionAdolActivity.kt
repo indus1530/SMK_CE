@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.smk_ce.ui.sections
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -83,6 +84,7 @@ class SectionAdolActivity : AppCompatActivity() {
             adol.uid = adol.deviceId + adol.id
             db.updatesADOLColumn(ADOLContract.ADOLTable.COLUMN_UID, adol.uid) // updates UID in ADOL table
             db.updatesFemaleMemberbyUUID(adol.fmid) // Updates status in Family members table
+            MainApp.fm[position.toInt()].status = "1"
             true
         } else {
             Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
@@ -95,8 +97,9 @@ class SectionAdolActivity : AppCompatActivity() {
         if (!formValidation()) return
         saveDraft()
         if (updateDB()) {
+            setResult(Activity.RESULT_OK);
             finish()
-            startActivity(Intent(this, FemaleMembersActivity::class.java))
+            //startActivity(Intent(this, FemaleMembersActivity::class.java))
         } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show()
         }
@@ -261,8 +264,8 @@ class SectionAdolActivity : AppCompatActivity() {
 
     fun BtnEnd(view: View) {
         //openSectionMainActivity(this, "G")
+        setResult(Activity.RESULT_CANCELED)
         finish()
-        startActivity(Intent(this, FemaleMembersActivity::class.java))
     }
 
 

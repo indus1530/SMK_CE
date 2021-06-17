@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.smk_ce.ui.sections
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -115,6 +116,7 @@ class SectionMWRAActivity : AppCompatActivity() {
             mwra.uid = mwra.deviceId + mwra.id
             db.updatesMWRAColumn(MWRAContract.MWRATable.COLUMN_UID, mwra.uid)
             db.updatesFemaleMemberbyUUID(MainApp.mwra.fmid) // Updates status in Family members table
+            MainApp.fm[position.toInt()].status = "1"
             true
         } else {
             Toast.makeText(this, "SORRY! Failed to update DB", Toast.LENGTH_SHORT).show()
@@ -127,8 +129,9 @@ class SectionMWRAActivity : AppCompatActivity() {
         if (!formValidation()) return
         saveDraft()
         if (updateDB()) {
+            setResult(Activity.RESULT_OK)
             finish()
-            startActivity(Intent(this, FemaleMembersActivity::class.java))
+            //startActivity(Intent(this, FemaleMembersActivity::class.java))
         } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show()
         }
@@ -396,8 +399,9 @@ class SectionMWRAActivity : AppCompatActivity() {
 
     fun BtnEnd(view: View) {
         //openSectionMainActivity(this, "G")
+        setResult(Activity.RESULT_CANCELED)
         finish()
-        startActivity(Intent(this, FemaleMembersActivity::class.java))
+        //startActivity(Intent(this, FemaleMembersActivity::class.java))
     }
 
 

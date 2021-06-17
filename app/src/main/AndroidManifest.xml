@@ -35,6 +35,7 @@
             android:name=".ui.sections.FemaleMembersActivity"
             android:label="@string/title_activity_female_members"
             android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustPan"
             android:theme="@style/AppTheme.NoActionBar">
  <!--           <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

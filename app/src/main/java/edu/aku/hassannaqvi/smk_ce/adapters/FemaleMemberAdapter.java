@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.smk_ce.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -22,11 +23,13 @@ import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
 import edu.aku.hassannaqvi.smk_ce.ui.sections.SectionAdolActivity;
 import edu.aku.hassannaqvi.smk_ce.ui.sections.SectionMWRAActivity;
 
+
 public class FemaleMemberAdapter extends RecyclerView.Adapter<FemaleMemberAdapter.ViewHolder> {
     private static final String TAG = "CustomAdapter";
     private final Context mContext;
     private List<FemaleMembersModel> femaleMembers;
     private int mExpandedPosition = -1;
+    private int completeCount;
 
     /**
      * Initialize the dataset of the Adapter.
@@ -36,6 +39,11 @@ public class FemaleMemberAdapter extends RecyclerView.Adapter<FemaleMemberAdapte
     public FemaleMemberAdapter(Context mContext, List<FemaleMembersModel> femaleMembers) {
         this.femaleMembers = femaleMembers;
         this.mContext = mContext;
+        completeCount = 0;
+        MainApp.fmComplete = false;
+
+
+
     }
 
     // BEGIN_INCLUDE(recyclerViewSampleViewHolder)
@@ -76,17 +84,24 @@ public class FemaleMemberAdapter extends RecyclerView.Adapter<FemaleMemberAdapte
         }
         boolean mPresent = femaleMember.getHh11().equals("2");
         Log.d(TAG, "onBindViewHolder: Memeber - " + femaleMember.getHh02() + " - " + femaleMember.getStatus());
-        secStatus.setText(femaleMember.getStatus().equals("1") || mCate == 0 ? "Complete" : "Pending");
-        secStatus.setTextColor(femaleMember.getStatus().equals("1") || mCate == 0 ? mContext.getResources().getColor(R.color.redDark) : mContext.getResources().getColor(R.color.green));
+        secStatus.setText(femaleMember.getStatus().equals("1") || mCate == 0 ? "< Complete >"
+                                                                             : "< Pending! >");
+        completeCount += (femaleMember.getStatus().equals("1") || mCate == 0 ? 1 : 0);
+        //MainApp.fmCountComplete = completeCount;
+        MainApp.fmComplete = completeCount == MainApp.fmCount;
+        secStatus.setBackgroundColor(femaleMember.getStatus().equals("1") || mCate == 0 ? mContext.getResources().getColor(R.color.redDark) : mContext.getResources().getColor(R.color.green));
         addSec.setClickable((!femaleMember.getStatus().equals("1") || mCate == 0) && mPresent);
-        if (femaleMember.getStatus().equals("1") || mCate == 0) {
+
+/*        if (femaleMember.getStatus().equals("1") || mCate == 0) {
             Toast.makeText(mContext, femaleMember.getStatus() + " | " + mCate +" | "+position, Toast.LENGTH_SHORT).show();
             fmRow.setImageResource(R.drawable.ic_check_circle_big);
-        }
+        }*/
 
         fName.setText(femaleMember.getHh02());
         fAge.setText(femaleMember.getHh05y() + " | " + (femaleMember.getHh03().equals("1") ? "M" : "F"));
         indicator.setBackgroundColor(mCate == 1 ? mContext.getResources().getColor(R.color.redDark) : mCate == 2 ? mContext.getResources().getColor(R.color.colorPink) : mCate == 3 ? mContext.getResources().getColor(R.color.colorPrimary) : mContext.getResources().getColor(R.color.gray));
+     //   indicator.setBackgroundColor(femaleMember.getStatus().equals("1") || mCate == 0 ? mContext.getResources().getColor(R.color.gray):indicator.getDrawingCacheBackgroundColor());
+
         String marStatus = "";
         switch (femaleMember.getHh06()) {
             case "1":
@@ -146,12 +161,18 @@ public class FemaleMemberAdapter extends RecyclerView.Adapter<FemaleMemberAdapte
             }
             MainApp.selectedFemale = position;
             if (intent != null) {
-                mContext.startActivity(intent);
+             //   ((Activity)mContext).finish();
+                intent.putExtra("position",position);
+
+                ((Activity) mContext).startActivityForResult(intent, 2);
+
             } else {
                 Toast.makeText(mContext, "No Additional Information Required!", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+
     // END_INCLUDE(recyclerViewSampleViewHolder)
 
 

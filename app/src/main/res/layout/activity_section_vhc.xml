@@ -28,6 +28,9 @@
             android:background="@color/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ToolbarTheme"
+            app:subtitle="@string/vhchint"
+            app:titleTextColor="@color/white"
+            app:subtitleTextColor="@color/whiteOverlay"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:subtitleTextAppearance="@style/Toolbar.SubtitleText"
             app:titleTextAppearance="@style/Toolbar.TitleText" />
@@ -56,6 +59,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/sub_labels"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"

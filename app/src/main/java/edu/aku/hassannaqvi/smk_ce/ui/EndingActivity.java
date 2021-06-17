@@ -36,7 +36,7 @@ public class EndingActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_ending);
         bi.setForm(MainApp.form);
         setSupportActionBar(bi.toolbar);
-
+        setTitle("Interview Status");
         boolean check = getIntent().getBooleanExtra("complete", false);
         sectionMainCheck = getIntent().getIntExtra(SECTION_MAIN_CHECK_FOR_END, 0);
 

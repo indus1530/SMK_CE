@@ -417,6 +417,12 @@ public class FemaleMembersModel extends BaseObservable implements Observable {
 
     public void setHh05y(String hh05y) {
         this.hh05y = hh05y;
+        Log.d(TAG, "setHh05y: "+ hh03 +" || "+hh05y);
+        if((hh03.equals("1") && Integer.parseInt(hh05y) > 19)|| this.status.equals("1")){
+        setStatus("1");}
+        else {
+            setStatus("");
+    }
         notifyPropertyChanged(BR.hh05y);
     }
 
@@ -487,7 +493,7 @@ public class FemaleMembersModel extends BaseObservable implements Observable {
 
     public void setHh11(String hh11) {
         this.hh11 = hh11;
-        if (hh11.equals("2")) {
+        if (hh11.equals("2")|| this.status.equals("1")) {
             this.status = "1";
         } else {
             this.status = "";
