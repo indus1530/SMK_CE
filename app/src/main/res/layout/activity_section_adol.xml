@@ -213,6 +213,7 @@
                 <!-- adol04  CheckBox   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVadol04"
+                    android:visibility="@{adol03b.checked?View.VISIBLE:View.GONE}"
                     style="@style/cardView">
 
                     <LinearLayout
@@ -256,42 +257,49 @@
                                 android:id="@+id/adol04b"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+
                                 android:text="@string/adol04b" />
 
                             <CheckBox
                                 android:id="@+id/adol04c"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+
                                 android:text="@string/adol04c" />
 
                             <CheckBox
                                 android:id="@+id/adol04d"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+
                                 android:text="@string/adol04d" />
 
                             <CheckBox
                                 android:id="@+id/adol04e"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+
                                 android:text="@string/adol04e" />
 
                             <CheckBox
                                 android:id="@+id/adol04f"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+
                                 android:text="@string/adol04f" />
 
                             <CheckBox
                                 android:id="@+id/adol04g"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+
                                 android:text="@string/adol04g" />
 
                             <CheckBox
                                 android:id="@+id/adol0496"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+
                                 android:text="@string/adol0496" />
 
                             <EditText

@@ -57,6 +57,7 @@ public class HHIDModel extends BaseObservable {
 
     // FIELD VARIABLES
     //HouseHold Information
+    private String hhisno = StringUtils.EMPTY;
     private String hhi01 = StringUtils.EMPTY;
     private String hhi02 = StringUtils.EMPTY;
     private String hhi03 = StringUtils.EMPTY;
@@ -334,6 +335,15 @@ public class HHIDModel extends BaseObservable {
     }
 
     @Bindable
+    public String getHhisno() {
+        return hhisno;
+    }
+
+    public void setHhisno(String hhisno) {
+        this.hhisno = hhisno;
+        notifyPropertyChanged(BR.hhisno);
+    }
+ @Bindable
     public String getHhi01() {
         return hhi01;
     }
@@ -495,7 +505,9 @@ public class HHIDModel extends BaseObservable {
         JSONObject json = new JSONObject();
 
         try {
-            json.put("hhi01", hhi01)
+            json
+                    .put("hhisno", hhisno)
+                    .put("hhi01", hhi01)
                     .put("hhi02", hhi02)
                     .put("hhi03", hhi03)
                     .put("hhi04a", hhi04a)
@@ -560,6 +572,7 @@ public class HHIDModel extends BaseObservable {
             try {
                 JSONObject json = null;
                 json = new JSONObject(string);
+                this.hhisno = json.getString("hhisno");
                 this.hhi01 = json.getString("hhi01");
                 this.hhi02 = json.getString("hhi02");
                 this.hhi03 = json.getString("hhi03");

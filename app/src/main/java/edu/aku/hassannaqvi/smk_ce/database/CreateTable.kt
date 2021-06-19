@@ -79,6 +79,7 @@ object CreateTable {
             + LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_TEHSIL_NAME + " TEXT,"
             + LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_CODE + " TEXT,"
             + LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_NAME + " TEXT,"
+            + LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_RAND_NUMBERS + " TEXT,"
             + LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_KHANDAN_NUMBER + " TEXT"
             + " );")
 

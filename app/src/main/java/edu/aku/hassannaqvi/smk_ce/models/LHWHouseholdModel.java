@@ -36,6 +36,7 @@ public class LHWHouseholdModel extends BaseObservable {
     private String lhwCode = StringUtils.EMPTY;
     private String lhwName = StringUtils.EMPTY;
     private String khandanNumber = StringUtils.EMPTY;
+    private String randSNo = StringUtils.EMPTY;
     private String deviceId = StringUtils.EMPTY;
     private String deviceTag = StringUtils.EMPTY;
     private String appver = StringUtils.EMPTY;
@@ -250,6 +251,15 @@ public class LHWHouseholdModel extends BaseObservable {
         this.khandanNumber = khandanNumber;
     }
 
+ @Bindable
+    public String getRandSNo() {
+        return randSNo;
+    }
+
+    public void setRandSNo(String randSNo) {
+        this.randSNo = randSNo;
+    }
+
 
     @Bindable
     public String getDeviceId() {
@@ -415,6 +425,7 @@ public class LHWHouseholdModel extends BaseObservable {
         this.hfCode = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_CODE);
         this.hfName = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_NAME);
         this.khandanNumber = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_KHANDAN_NUMBER);
+        this.randSNo = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_RAND_NUMBERS);
         this.deviceId = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICEID);
         this.deviceTag = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICETAGID);
         this.appver = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_APPVERSION);
@@ -444,6 +455,7 @@ public class LHWHouseholdModel extends BaseObservable {
         this.lhwCode = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_CODE));
         this.lhwName = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_NAME));
         this.khandanNumber = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_KHANDAN_NUMBER));
+        this.randSNo = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_RAND_NUMBERS));
         this.deviceId = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICEID));
         this.deviceTag = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICETAGID));
         this.appver = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_APPVERSION));
@@ -504,6 +516,7 @@ public class LHWHouseholdModel extends BaseObservable {
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_CODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_NAME, this.lhwName == null ? JSONObject.NULL : this.lhwName);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_KHANDAN_NUMBER, this.khandanNumber == null ? JSONObject.NULL : this.khandanNumber);
+            json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_RAND_NUMBERS, this.randSNo == null ? JSONObject.NULL : this.randSNo);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICETAGID, this.deviceTag == null ? JSONObject.NULL : this.deviceTag);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_APPVERSION, this.appver == null ? JSONObject.NULL : this.appver);

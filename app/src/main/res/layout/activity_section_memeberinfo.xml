@@ -380,6 +380,7 @@
                                 android:hint="##"
                                 android:inputType="number"
                                 android:maxLength="2"
+                                android:text="0"
                                 app:maxValue="99"
                                 app:minValue="0"
                                 app:type="range" />
@@ -436,6 +437,7 @@
                         <RadioGroup
                             android:id="@+id/hh06"
                             android:layout_width="match_parent"
+                            android:checkedButton="@{Integer.parseInt(hh05y.text.toString())&lt;14?-1:0}"
                             android:layout_height="wrap_content">
 
                             <RadioButton
@@ -448,18 +450,21 @@
                                 android:id="@+id/hh06b"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:enabled="@{Integer.parseInt(hh05y.text.toString())>=14}"
                                 android:text="@string/hh06b" />
 
                             <RadioButton
                                 android:id="@+id/hh06c"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:enabled="@{Integer.parseInt(hh05y.text.toString())>=14}"
                                 android:text="@string/hh06c" />
 
                             <RadioButton
                                 android:id="@+id/hh06d"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:enabled="@{Integer.parseInt(hh05y.text.toString())>=14}"
                                 android:text="@string/hh06d" />
 
                         </RadioGroup>

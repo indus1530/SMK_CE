@@ -49,6 +49,8 @@ class SectionAdolActivity : AppCompatActivity() {
         cbLsnr(bi.adol15d, bi.adol15e)
         cbLsnr(bi.adol15e, bi.adol15d)
 
+
+
     }
 
 

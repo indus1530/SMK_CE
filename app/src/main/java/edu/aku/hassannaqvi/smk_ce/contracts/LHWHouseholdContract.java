@@ -25,6 +25,7 @@ public class LHWHouseholdContract {
         public static final String COLUMN_LHW_CODE = "lhwCode";
         public static final String COLUMN_LHW_NAME = "lhwName";
         public static final String COLUMN_KHANDAN_NUMBER = "khandanNumber";
+        public static final String COLUMN_RAND_NUMBERS = "randSno";
         public static final String COLUMN_DEVICEID = "deviceid";
         public static final String COLUMN_DEVICETAGID = "devicetagid";
         public static final String COLUMN_SYNCED = "synced";

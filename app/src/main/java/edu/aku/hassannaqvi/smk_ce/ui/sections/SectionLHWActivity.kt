@@ -57,7 +57,7 @@ class SectionLHWActivity : AppCompatActivity() {
 
             // TODO: update textview
 
-            Toast.makeText(this, result.resultCode, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, result.resultCode, Toast.LENGTH_SHORT).show()
 /*
             val fileName = data?.getStringExtra("filename")
 */
@@ -216,7 +216,7 @@ class SectionLHWActivity : AppCompatActivity() {
         if(!Validator.emptyCheckingContainer(this, bi.GrpName)) return
         val intent = Intent(this, TakePhoto::class.java)
 
-        intent.putExtra("picID", tehsilCode[bi.lhw01.selectedItemPosition] + "_" + PhotoSerial)
+        intent.putExtra("picID", lhwCode[bi.lhw01.selectedItemPosition] + "_" + PhotoSerial)
         intent.putExtra("lhwName", bi.lhw03.selectedItem.toString())
 
         if (view.id == bi.Photo.id) {
@@ -249,6 +249,7 @@ class SectionLHWActivity : AppCompatActivity() {
         lhwHousehold.lhw03 = lhwCode[bi.lhw03.selectedItemPosition]
         lhwHousehold.lhwCode = lhwCode[bi.lhw03.selectedItemPosition]
         lhwHousehold.lhwName = lhwName[bi.lhw03.selectedItemPosition]
+        lhwHousehold.randSNo = Arrays.toString(MainApp.randHHNo)
 
 
         lhwHousehold.khandanNumber = when {
@@ -329,14 +330,14 @@ class SectionLHWActivity : AppCompatActivity() {
               // Results received with requestCode 1 = Front
               if (requestCode == 1 && resultCode == 1) {
                   Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show()
-                  bi.lhwphoto.setText(fileName)
-                  bi.Photo.setEnabled(false)
+                  bi.lhwphoto.text = fileName
+                  bi.Photo.isEnabled = false
               } else if (requestCode == 1 && resultCode != 1) {
                   Toast.makeText(this, "Photo Cancelled", Toast.LENGTH_SHORT).show()
 
                   //TODO: Implement functionality below when photo was not taken
                   // ...
-                  bi.lhwphoto.setText("Photo not taken.")
+                  bi.lhwphoto.text = "Photo not taken."
               }
 
               // Results received with requestCode 2 = Back

@@ -182,8 +182,8 @@ public class MainApp extends Application {
             int high =  (int) (blockSize *c);
             int low = i;
             hhno[c - 1] = new Random().nextInt(high - low) + low;
-            System.out.println(c + " - " + low + "-" + high + "\r");
-            System.out.println(c+" -> "+hhno[c-1]+"\n");
+           /* System.out.println(c + " - " + low + "-" + high + "\r");
+            System.out.println(c+" -> "+hhno[c-1]+"\n");*/
 
         }
         MainApp.randHHNo = new int[HOUSEHOLDS_TO_RANDOMISE];

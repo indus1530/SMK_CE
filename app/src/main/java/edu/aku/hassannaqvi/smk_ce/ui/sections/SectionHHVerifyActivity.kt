@@ -71,7 +71,7 @@ class SectionHHVerifyActivity : AppCompatActivity() {
         for (t in tehsils) {
             tehsilName.add(t.tehsil)
             tehsilCode.add(t.tehsilId)
-            Log.d(TAG, "populateSpinner: tehsilName: "+tehsilName+ " || tehsilCode: "+tehsilCode +"\r\n")
+            Log.d(TAG, "populateSpinner: tehsilName: $tehsilName || tehsilCode: $tehsilCode\r\n")
         }
 
         bi.hhv04.adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, tehsilName)
@@ -92,6 +92,8 @@ class SectionHHVerifyActivity : AppCompatActivity() {
                 bi.hhv02e.setText(null);
                 bi.hhv02f.setText(null);
                 bi.hhv02g.setText(null);
+                bi.hhv03.clearCheck();
+                bi.hhv03a.isEnabled = true
 
                 if (position == 0) return
 
@@ -128,7 +130,8 @@ class SectionHHVerifyActivity : AppCompatActivity() {
                 bi.hhv02e.setText(null);
                 bi.hhv02f.setText(null);
                 bi.hhv02g.setText(null);
-
+                bi.hhv03.clearCheck();
+                bi.hhv03a.isEnabled = true
                 if (position == 0) return
 
                 var lhw: ArrayList<LHW> = db.getLHWByHF(hfCode[position].toString())
@@ -162,7 +165,8 @@ class SectionHHVerifyActivity : AppCompatActivity() {
                 bi.hhv02e.setText(null);
                 bi.hhv02f.setText(null);
                 bi.hhv02g.setText(null);
-
+                bi.hhv03.clearCheck();
+                bi.hhv03a.isEnabled = true
                 if (position == 0) return
 
                  hhid = db.getKhandanNumberByLHW(lhwCode[position].toString())
@@ -191,7 +195,8 @@ class SectionHHVerifyActivity : AppCompatActivity() {
                 bi.hhv02e.setText(null);
                 bi.hhv02f.setText(null);
                 bi.hhv02g.setText(null);
-
+                bi.hhv03.clearCheck();
+                bi.hhv03a.isEnabled = true
                 if (position == 0) return
 
              //   var hhid: ArrayList<HHIDModel> = db.getKhandanNumberByLHW(lhwCode[position].toString())

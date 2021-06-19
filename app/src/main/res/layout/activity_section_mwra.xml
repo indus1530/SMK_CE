@@ -368,7 +368,7 @@
                                 android:inputType="number"
                                 android:maxLength="2"
                                 app:maxValue="30"
-                                app:minValue="1"
+                                app:minValue="0"
                                 app:type="range" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
@@ -381,7 +381,7 @@
                                 android:inputType="number"
                                 android:maxLength="2"
                                 app:maxValue="11"
-                                app:minValue="1"
+                                app:minValue="0"
                                 app:type="range" />
 
                         </LinearLayout>

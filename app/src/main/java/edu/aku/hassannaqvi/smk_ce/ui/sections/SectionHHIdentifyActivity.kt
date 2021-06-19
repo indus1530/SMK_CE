@@ -13,8 +13,10 @@ import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.*
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySectionHhidentifyBinding
+import edu.aku.hassannaqvi.smk_ce.models.Form
 import edu.aku.hassannaqvi.smk_ce.models.HHIDModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
+import kotlinx.android.synthetic.main.activity_section_hhidentify.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -75,10 +77,14 @@ class SectionHHIdentifyActivity : AppCompatActivity() {
         hhid.tehsilName = lhwHousehold.tehsilName
         hhid.lhwCode = lhwHousehold.lhwCode
         hhid.lhwName = lhwHousehold.lhwName
-        hhid.khandanNumber = lhwHousehold.khandanNumber
+
+        // in LHWHousehold khandanNumber is total number of active households
+        //hhid.khandanNumber = lhwHousehold.khandanNumber
+
         hhid.deviceId = MainApp.appInfo.deviceID
         hhid.deviceTag = MainApp.appInfo.tagName
         hhid.appver = MainApp.appInfo.appVersion
+        hhid.hhisno = hhsno.text.toString()
 
         hhid.khandanNumber = when {
             bi.hhi02.text.toString().trim().isNotEmpty() -> bi.hhi02.text.toString()
@@ -156,7 +162,16 @@ class SectionHHIdentifyActivity : AppCompatActivity() {
 
 
     private fun formValidation(): Boolean {
-        return Validator.emptyCheckingContainer(this, bi.GrpName)
+        if(!Validator.emptyCheckingContainer(this, bi.GrpName)){
+            return false
+        }
+
+        if (hhExists()){
+            Validator.emptyCustomTextBox(this, bi.hhi02,  "Khandan Number already recorded." )
+            return false
+        }
+
+        return true
     }
 
 
@@ -164,4 +179,11 @@ class SectionHHIdentifyActivity : AppCompatActivity() {
         Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show()
     }
 
+
+    private fun hhExists(): Boolean {
+        form = Form()
+        form = db.getFormByKhandanNumber(MainApp.selectedHH.lhwCode, MainApp.selectedHH.khandanNumber)
+
+        return form != null
+    }
 }
