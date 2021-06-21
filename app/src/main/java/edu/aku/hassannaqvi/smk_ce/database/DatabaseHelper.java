@@ -1192,6 +1192,86 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
+    public int checkLHWHHNo(String lhwcode, String kno) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause;
+        whereClause =
+                HHIDContract.HHIDTable.COLUMN_LHW_CODE + "=? AND " +
+                        HHIDContract.HHIDTable.COLUMN_KHANDAN_NUMBER + "=?";
+
+        String[] whereArgs = {lhwcode, kno};
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = HHIDContract.HHIDTable.COLUMN_ID + " ASC";
+
+        int cCount;
+        try {
+            c = db.query(
+                    HHIDContract.HHIDTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            cCount = c.getCount();
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return cCount;
+    }
+
+    public int checkLHW(String lhwcode) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause;
+        whereClause =
+                LHW_HOUSEHOLD_Table.COLUMN_LHW_CODE + "=? ";
+
+        String[] whereArgs = {lhwcode};
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = LHW_HOUSEHOLD_Table.COLUMN_ID + " ASC";
+
+        int cCount;
+        try {
+            c = db.query(
+                    HHIDContract.HHIDTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            cCount = c.getCount();
+
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return cCount;
+    }
+
     public ArrayList<Cursor> getDatabaseManagerData(String Query) {
         //get writable database
         SQLiteDatabase sqlDB = this.getWritableDatabase();

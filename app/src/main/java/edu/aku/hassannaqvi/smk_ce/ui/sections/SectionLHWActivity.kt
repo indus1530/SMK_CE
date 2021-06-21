@@ -295,8 +295,16 @@ class SectionLHWActivity : AppCompatActivity() {
 
 
     private fun formValidation(): Boolean {
-        return Validator.emptyCheckingContainer(this, bi.GrpName)
+        if (!Validator.emptyCheckingContainer(this, bi.GrpName)) return false;
+
+        if (LHWRegistered()){
+            Validator.emptyCustomTextBox(this, bi.lhw04,"LHW already registered.")
+            return false
+        }
+        return true
     }
+
+
 
 
     override fun onBackPressed() {
@@ -355,6 +363,12 @@ class SectionLHWActivity : AppCompatActivity() {
           }
       }
 
+
+    private fun LHWRegistered(): Boolean {
+      //  Log.d(TAG, "LHWHHExists: LHW: "+ lhwHousehold.lhwCode+" | KNO: "+bi.hhi02.text.toString() )
+
+        return db.checkLHW(lhwCode[bi.lhw03.selectedItemPosition]) > 0
+    }
 }
 
 

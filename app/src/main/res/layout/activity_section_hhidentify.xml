@@ -177,8 +177,6 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:digits="qwertyuiopasdfghjklzxcvbnm QWERTYUIOPASDFGHJKLZXCVBNM"
-                                android:inputType="textCapWords|textNoSuggestions"
                                 android:text="@string/hhi03" />
 
                         </LinearLayout>
@@ -187,6 +185,8 @@
                             android:id="@+id/hhi03"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:digits="qwertyuiopasdfghjklzxcvbnm QWERTYUIOPASDFGHJKLZXCVBNM"
+                            android:inputType="textCapWords|textNoSuggestions"
                             android:hint="@string/hhi03" />
 
                     </LinearLayout>

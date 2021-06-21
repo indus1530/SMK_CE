@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.smk_ce.ui.sections
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,6 @@ import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.*
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySectionHhidentifyBinding
-import edu.aku.hassannaqvi.smk_ce.models.Form
 import edu.aku.hassannaqvi.smk_ce.models.HHIDModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_section_hhidentify.*
@@ -22,14 +22,16 @@ import java.util.*
 
 class SectionHHIdentifyActivity : AppCompatActivity() {
 
+    private val TAG: String = "SectionHHIdentifyActivity"
+    private lateinit var db: DatabaseHelper
     lateinit var bi: ActivitySectionHhidentifyBinding
-    lateinit var db: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_hhidentify)
         bi.callback = this
         setSupportActionBar(bi.toolbar)
+        db = MainApp.appInfo.dbHelper
         setupSkips()
         val hhsno: Int = MainApp.randHHNo[MainApp.randHHNoIndex]
 
@@ -141,7 +143,7 @@ class SectionHHIdentifyActivity : AppCompatActivity() {
     }
 
     private fun updateDB(): Boolean {
-        val db = MainApp.appInfo.dbHelper
+       // val db = MainApp.appInfo.dbHelper
         val rowId = db.addHHIdentify(hhid)
         return if (rowId > 0) {
             hhid.id = rowId.toString()
@@ -166,7 +168,7 @@ class SectionHHIdentifyActivity : AppCompatActivity() {
             return false
         }
 
-        if (hhExists()){
+        if (LHWHHExists()){
             Validator.emptyCustomTextBox(this, bi.hhi02,  "Khandan Number already recorded." )
             return false
         }
@@ -180,10 +182,9 @@ class SectionHHIdentifyActivity : AppCompatActivity() {
     }
 
 
-    private fun hhExists(): Boolean {
-        form = Form()
-        form = db.getFormByKhandanNumber(MainApp.selectedHH.lhwCode, MainApp.selectedHH.khandanNumber)
+    private fun LHWHHExists(): Boolean {
+        Log.d(TAG, "LHWHHExists: LHW: "+ lhwHousehold.lhwCode+" | KNO: "+bi.hhi02.text.toString() )
 
-        return form != null
+        return db.checkLHWHHNo(lhwHousehold.lhwCode, bi.hhi02.text.toString()) > 0
     }
 }
