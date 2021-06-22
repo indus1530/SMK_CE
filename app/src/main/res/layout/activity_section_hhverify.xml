@@ -169,7 +169,7 @@
 
                 </androidx.cardview.widget.CardView>
 
-                
+
                 <!-- hhv01  Input-Numeric   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVhhv01"
@@ -260,11 +260,11 @@
                                 android:id="@+id/hhv02a"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:enabled="@{hhv03b.checked}"
-                                android:inputType="textNoSuggestions|textCapWords"
-                                android:digits="qwertyuiopasdfghjklzxcvbnm QWERTYUIOPASDFGHJKLZXCVBNM"
                                 android:layout_weight="1"
-                                android:hint="@string/hhv02a" />
+                                android:digits="qwertyuiopasdfghjklzxcvbnm QWERTYUIOPASDFGHJKLZXCVBNM"
+                                android:enabled="@{hhv03b.checked}"
+                                android:hint="@string/hhv02a"
+                                android:inputType="textNoSuggestions|textCapWords" />
 
                         </LinearLayout>
 
@@ -288,9 +288,9 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
+                                android:enabled="@{hhv03b.checked}"
                                 android:gravity="center"
                                 android:hint="###"
-                                android:enabled="@{hhv03b.checked}"
 
                                 android:inputType="number"
                                 android:maxLength="3"
@@ -320,10 +320,10 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
+                                android:enabled="@{hhv03b.checked}"
                                 android:gravity="center"
                                 android:hint="###########"
                                 android:inputType="number"
-                                android:enabled="@{hhv03b.checked}"
 
                                 android:maxLength="11"
                                 app:maxValue="99999999999"
@@ -350,9 +350,10 @@
                             <EditText
                                 android:id="@+id/hhv02d"
                                 android:layout_width="0dp"
-                                android:enabled="@{hhv03b.checked}"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
+                                android:digits="QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm"
+                                android:enabled="@{hhv03b.checked}"
                                 android:hint="@string/hhv02d" />
 
                         </LinearLayout>
@@ -376,8 +377,9 @@
                                 android:id="@+id/hhv02e"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:enabled="@{hhv03b.checked}"
                                 android:layout_weight="1"
+                                android:digits="QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm"
+                                android:enabled="@{hhv03b.checked}"
                                 android:hint="@string/hhv02e" />
 
                         </LinearLayout>
@@ -401,8 +403,9 @@
                                 android:id="@+id/hhv02f"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:enabled="@{hhv03b.checked}"
                                 android:layout_weight="1"
+                                android:digits="QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm"
+                                android:enabled="@{hhv03b.checked}"
                                 android:hint="@string/hhv02f" />
 
                         </LinearLayout>
@@ -426,8 +429,8 @@
                                 android:id="@+id/hhv02g"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:enabled="@{hhv03b.checked}"
                                 android:layout_weight="1"
+                                android:enabled="@{hhv03b.checked}"
                                 android:hint="@string/hhv02g" />
 
                         </LinearLayout>
