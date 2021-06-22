@@ -1,7 +1,6 @@
 package edu.aku.hassannaqvi.smk_ce.ui.sections
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,6 @@ import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.adol
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySectionAdolBinding
 import edu.aku.hassannaqvi.smk_ce.models.ADOLModel
-import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -51,7 +49,8 @@ class SectionAdolActivity : AppCompatActivity() {
 
         rgLsnr(bi.adol03, bi.adol03b, arrayOf(bi.fldGrpCVadol04))
 
-
+        rgLsnr(bi.adol08, bi.adol08b, arrayOf(bi.fldGrpCVadol0801))
+        rgLsnr(bi.adol09, bi.adol09a, arrayOf(bi.fldGrpCVadol10))
 
     }
 
@@ -101,7 +100,7 @@ class SectionAdolActivity : AppCompatActivity() {
         if (!formValidation()) return
         saveDraft()
         if (updateDB()) {
-            setResult(Activity.RESULT_OK);
+            setResult(Activity.RESULT_OK)
             finish()
             //startActivity(Intent(this, FemaleMembersActivity::class.java))
         } else {
