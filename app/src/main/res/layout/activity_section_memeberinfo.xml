@@ -114,8 +114,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:inputType="textPersonName|textCapWords|textNoSuggestions"
-                                android:digits="QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm"
+
                                 android:text="@string/hh02" />
 
                         </LinearLayout>
@@ -124,7 +123,8 @@
                             android:id="@+id/hh02"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textCapWords|textPersonName"
+                            android:inputType="textPersonName|textCapWords|textNoSuggestions"
+                            android:digits="QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm"
                             android:hint="@string/hh02" />
 
                     </LinearLayout>
@@ -437,34 +437,34 @@
                         <RadioGroup
                             android:id="@+id/hh06"
                             android:layout_width="match_parent"
-                            android:checkedButton="@{Integer.parseInt(hh05y.text.toString())&lt;14?-1:0}"
+                            android:checkedButton='@{!hh05y.text.toString().equals("")?Integer.parseInt(hh05y.text.toString())&lt;14?-1:0:0}'
                             android:layout_height="wrap_content">
 
                             <RadioButton
                                 android:id="@+id/hh06a"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:enabled='@{!hh05y.text.toString().equals("")?Integer.parseInt(hh05y.text.toString())>=14:true}'
                                 android:text="@string/hh06a" />
 
                             <RadioButton
                                 android:id="@+id/hh06b"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:enabled="@{Integer.parseInt(hh05y.text.toString())>=14}"
                                 android:text="@string/hh06b" />
 
                             <RadioButton
                                 android:id="@+id/hh06c"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:enabled="@{Integer.parseInt(hh05y.text.toString())>=14}"
+                                android:enabled='@{!hh05y.text.toString().equals("")?Integer.parseInt(hh05y.text.toString())>=14:true}'
                                 android:text="@string/hh06c" />
 
                             <RadioButton
                                 android:id="@+id/hh06d"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:enabled="@{Integer.parseInt(hh05y.text.toString())>=14}"
+                                android:enabled='@{!hh05y.text.toString().equals("")?Integer.parseInt(hh05y.text.toString())>=14:true}'
                                 android:text="@string/hh06d" />
 
                         </RadioGroup>

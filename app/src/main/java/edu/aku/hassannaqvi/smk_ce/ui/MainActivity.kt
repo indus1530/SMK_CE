@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity() {
         * If it's null then return 0 otherwise return count
         * Show loading while data is fetching
         * */
-        viewModel.todayForms.observe(this) {
+/*        viewModel.todayForms.observe(this) {
             when (it.status) {
                 ResponseStatus.SUCCESS -> {
                     Log.d("Today's form count:", it.data.toString())
@@ -118,14 +118,14 @@ class MainActivity : AppCompatActivity() {
                     lifecycleScope.launch { delay(1000) }
                 }
             }
-        }
+        }*/
 
         /*
         * Get Form status from DB
         * If it's null then return 0 otherwise return count
         * Show loading while data is fetching
         * */
-        viewModel.formsStatus.observe(this) {
+/*        viewModel.formsStatus.observe(this) {
             when (it.status) {
                 ResponseStatus.SUCCESS -> {
                     it.data?.let { item ->
@@ -144,14 +144,14 @@ class MainActivity : AppCompatActivity() {
                     lifecycleScope.launch { delay(1000) }
                 }
             }
-        }
+        }*/
 
         /*
         * Get Upload & Download status of form from DB
         * If it's null then return 0 otherwise return count
         * Show loading while data is fetching
         * */
-        viewModel.uploadForms.observe(this) {
+/*        viewModel.uploadForms.observe(this) {
             when (it.status) {
                 ResponseStatus.SUCCESS -> {
                     it.data?.let { item ->
@@ -170,7 +170,7 @@ class MainActivity : AppCompatActivity() {
                     lifecycleScope.launch { delay(2000) }
                 }
             }
-        }
+        }*/
 
         bi.camps.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
@@ -248,7 +248,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        animateFadeIn()
+       // animateFadeIn()
         viewModel.getFormsStatusUploadStatus(sysdateToday)
     }
 
@@ -288,12 +288,12 @@ class MainActivity : AppCompatActivity() {
     /*
     * Stop animation on statistic Layout
     * */
-    private fun animateFadeOut() {
+ /*   private fun animateFadeOut() {
         val shortAnimationDuration = 2000
-        /*
+        *//*
         * Animate the content view to 100% opacity, and clear any animation
         * listener set on the view.
-        * */
+        * *//*
         bi.statisticLayout.syncLinearLayout.animate()
                 .alpha(1f)
                 .setDuration(shortAnimationDuration.toLong())
@@ -303,11 +303,11 @@ class MainActivity : AppCompatActivity() {
                 .setDuration(shortAnimationDuration.toLong())
                 .setListener(null)
 
-        /* 
+        *//*
         * Animate the loading view to 0% opacity. After the animation ends, 
         * set its visibility to GONE as an optimization step (it won't participate 
         * in layout passes, etc.)
-        * */
+        * *//*
         bi.statisticLayout.loading.animate()
                 .alpha(0f)
                 .setDuration(shortAnimationDuration.toLong())
@@ -318,15 +318,15 @@ class MainActivity : AppCompatActivity() {
                 })
     }
 
-    /*
+    *//*
     * Start animation on statistic Layout
-    * */
+    * *//*
     private fun animateFadeIn() {
         bi.statisticLayout.syncLinearLayout.alpha = 0f
         bi.statisticLayout.statusLinearLayout.alpha = 0f
         bi.statisticLayout.loading.alpha = 1f
         bi.statisticLayout.loading.visibility = View.VISIBLE
-    }
+    }*/
 
     fun openForm(view: View) {}
 

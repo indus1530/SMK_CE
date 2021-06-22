@@ -41,12 +41,12 @@ class SectionLHWActivity : AppCompatActivity() {
         var hfCode = mutableListOf<String>()
         var lhwname = mutableListOf("....")
         var lhwCode = mutableListOf<String>()*/
-    val tehsilName: MutableList<String> = ArrayList(listOf("...."))
-    val tehsilCode: MutableList<String> = ArrayList(listOf("...."))
-    val hfName: MutableList<String> = ArrayList(listOf("...."))
-    val hfCode: MutableList<String> = ArrayList(listOf("...."))
-    val lhwName: MutableList<String> = ArrayList(listOf("...."))
-    val lhwCode: MutableList<String> = ArrayList(listOf("...."))
+    var tehsilName: MutableList<String> = ArrayList(listOf("...."))
+    var tehsilCode: MutableList<String> = ArrayList(listOf("...."))
+    var hfName: MutableList<String> = ArrayList(listOf("...."))
+    var hfCode: MutableList<String> = ArrayList(listOf("...."))
+    var lhwName: MutableList<String> = ArrayList(listOf("...."))
+    var lhwCode: MutableList<String> = ArrayList(listOf("...."))
     var sectionLHWActivityResultLauncher = registerForActivityResult(StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
             // There are no request codes
@@ -111,6 +111,8 @@ class SectionLHWActivity : AppCompatActivity() {
         // Populating all Tehsils
         var tehsils: ArrayList<Tehsil> = db.allTehsils
         Log.d(TAG, "populateSpinner: Tehsils: " + tehsils.size)
+        tehsilName = ArrayList(listOf("...."))
+        tehsilCode = ArrayList(listOf("...."))
         for (t in tehsils) {
             tehsilName.add(t.tehsil)
             tehsilCode.add(t.tehsilId)
@@ -136,8 +138,13 @@ class SectionLHWActivity : AppCompatActivity() {
 
                 bi.lhw02.adapter = null
                 bi.lhw03.adapter = null
+                bi.lhw04.text = null
+                bi.lhwphoto.text = null
                 if (position == 0) return
 
+
+                hfName = ArrayList(listOf("...."))
+                hfCode = ArrayList(listOf("...."))
                 var hf: ArrayList<HealthFacilities> = db.getHFByTehsil(tehsilCode[position].toString())
                 for (h in hf) {
                     hfName.add(h.hf_name)
@@ -168,8 +175,12 @@ class SectionLHWActivity : AppCompatActivity() {
         bi.lhw02.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
                 bi.lhw03.adapter = null
+                bi.lhw04.text = null
+                bi.lhwphoto.text = null
                 if (position == 0) return
 
+                lhwName = ArrayList(listOf("...."))
+                lhwCode = ArrayList(listOf("...."))
                 var lhw: ArrayList<LHW> = db.getLHWByHF(hfCode[position].toString())
                 for (l in lhw) {
                     lhwName.add(l.lhw_Name)

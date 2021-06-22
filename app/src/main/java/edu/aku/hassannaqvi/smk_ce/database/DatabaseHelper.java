@@ -885,8 +885,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return hf;
     }
 
-    public ArrayList<LHW> getLHWByHF(String hfCode) {
-
+    public ArrayList<LHW> getLHWByHF(String hfCode){
+        Log.d(TAG, "getLHWByHF: hfcode "+ hfCode);
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = null;
