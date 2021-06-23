@@ -98,7 +98,7 @@ public class FemaleMemberAdapter extends RecyclerView.Adapter<FemaleMemberAdapte
         }*/
 
         fName.setText(femaleMember.getHh02());
-        fAge.setText(femaleMember.getHh05y() + " | " + (femaleMember.getHh03().equals("1") ? "M" : "F"));
+        fAge.setText(femaleMember.getHh05y() + " | " + (femaleMember.getHh03().equals("1") ? "M" : "F") + (!femaleMember.getHh11().equals("1")? "[Not Present]":""));
         indicator.setBackgroundColor(mCate == 1 ? mContext.getResources().getColor(R.color.redDark) : mCate == 2 ? mContext.getResources().getColor(R.color.colorPink) : mCate == 3 ? mContext.getResources().getColor(R.color.colorPrimary) : mContext.getResources().getColor(R.color.gray));
      //   indicator.setBackgroundColor(femaleMember.getStatus().equals("1") || mCate == 0 ? mContext.getResources().getColor(R.color.gray):indicator.getDrawingCacheBackgroundColor());
 
