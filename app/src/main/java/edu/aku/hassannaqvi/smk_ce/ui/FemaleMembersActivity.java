@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.smk_ce.ui.sections;
+package edu.aku.hassannaqvi.smk_ce.ui;
 
 
 /**
@@ -34,7 +34,8 @@ import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper;
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivityFemaleMembersBinding;
 import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
-import edu.aku.hassannaqvi.smk_ce.ui.MainActivity;
+import edu.aku.hassannaqvi.smk_ce.ui.sections.SectionMemberInfoActivity;
+import edu.aku.hassannaqvi.smk_ce.ui.sections.SectionVHCActivity;
 
 import static edu.aku.hassannaqvi.smk_ce.core.MainApp.femalemembers;
 import static edu.aku.hassannaqvi.smk_ce.core.MainApp.fm;

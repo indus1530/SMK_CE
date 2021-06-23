@@ -8,7 +8,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.smk_ce.ui.sections.FemaleMembersActivity" />
+            type="edu.aku.hassannaqvi.smk_ce.ui.FemaleMembersActivity" />
     </data>
 
     <LinearLayout
