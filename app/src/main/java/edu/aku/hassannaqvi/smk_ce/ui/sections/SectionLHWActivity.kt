@@ -227,7 +227,7 @@ class SectionLHWActivity : AppCompatActivity() {
         if(!Validator.emptyCheckingContainer(this, bi.GrpName)) return
         val intent = Intent(this, TakePhoto::class.java)
 
-        intent.putExtra("picID", lhwCode[bi.lhw01.selectedItemPosition] + "_" + PhotoSerial)
+        intent.putExtra("picID", lhwCode[bi.lhw03.selectedItemPosition] + "_" + PhotoSerial)
         intent.putExtra("lhwName", bi.lhw03.selectedItem.toString())
 
         if (view.id == bi.Photo.id) {
@@ -306,7 +306,7 @@ class SectionLHWActivity : AppCompatActivity() {
 
 
     private fun formValidation(): Boolean {
-        if (!Validator.emptyCheckingContainer(this, bi.GrpName)) return false;
+        if (!Validator.emptyCheckingContainer(this, bi.GrpName)) return false
 
         if (LHWRegistered()){
             Validator.emptyCustomTextBox(this, bi.lhw04,"LHW already registered.")

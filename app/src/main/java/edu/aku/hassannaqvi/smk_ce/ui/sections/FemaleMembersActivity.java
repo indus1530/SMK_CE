@@ -19,7 +19,6 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,7 +42,6 @@ import static edu.aku.hassannaqvi.smk_ce.core.MainApp.fmCount;
 import static edu.aku.hassannaqvi.smk_ce.core.MainApp.fmCountComplete;
 import static edu.aku.hassannaqvi.smk_ce.core.MainApp.form;
 import static edu.aku.hassannaqvi.smk_ce.core.MainApp.selectedFemale;
-import static edu.aku.hassannaqvi.smk_ce.utils.extension.ActivityExtKt.gotoActivity;
 
 public class FemaleMembersActivity extends AppCompatActivity {
 
@@ -225,14 +223,3 @@ public class FemaleMembersActivity extends AppCompatActivity {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
