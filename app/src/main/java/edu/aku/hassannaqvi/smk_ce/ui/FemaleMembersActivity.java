@@ -43,7 +43,6 @@ import static edu.aku.hassannaqvi.smk_ce.core.MainApp.fmCount;
 import static edu.aku.hassannaqvi.smk_ce.core.MainApp.fmCountComplete;
 import static edu.aku.hassannaqvi.smk_ce.core.MainApp.form;
 import static edu.aku.hassannaqvi.smk_ce.core.MainApp.selectedFemale;
-import static edu.aku.hassannaqvi.smk_ce.utils.extension.ActivityExtKt.gotoActivity;
 
 public class FemaleMembersActivity extends AppCompatActivity {
 
@@ -225,14 +224,3 @@ public class FemaleMembersActivity extends AppCompatActivity {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
