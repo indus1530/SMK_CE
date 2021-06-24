@@ -462,7 +462,7 @@
                                 android:id="@+id/vhc0696x"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                 android:hint="@string/vhc0696"
                                 android:tag="vhc0696"
                                 android:text='@{vhc0696.checked ? vhc0696x.getText().toString() : ""}'
