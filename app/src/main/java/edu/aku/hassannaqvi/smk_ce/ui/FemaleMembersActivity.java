@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.smk_ce.ui.sections;
+package edu.aku.hassannaqvi.smk_ce.ui;
 
 
 /**
@@ -19,7 +19,6 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,7 +34,9 @@ import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper;
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivityFemaleMembersBinding;
 import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
-import edu.aku.hassannaqvi.smk_ce.ui.MainActivity;
+import edu.aku.hassannaqvi.smk_ce.models.LHW;
+import edu.aku.hassannaqvi.smk_ce.ui.sections.SectionMemberInfoActivity;
+import edu.aku.hassannaqvi.smk_ce.ui.sections.SectionVHCActivity;
 
 import static edu.aku.hassannaqvi.smk_ce.core.MainApp.femalemembers;
 import static edu.aku.hassannaqvi.smk_ce.core.MainApp.fm;
@@ -43,7 +44,6 @@ import static edu.aku.hassannaqvi.smk_ce.core.MainApp.fmCount;
 import static edu.aku.hassannaqvi.smk_ce.core.MainApp.fmCountComplete;
 import static edu.aku.hassannaqvi.smk_ce.core.MainApp.form;
 import static edu.aku.hassannaqvi.smk_ce.core.MainApp.selectedFemale;
-import static edu.aku.hassannaqvi.smk_ce.utils.extension.ActivityExtKt.gotoActivity;
 
 public class FemaleMembersActivity extends AppCompatActivity {
 
@@ -81,7 +81,7 @@ public class FemaleMembersActivity extends AppCompatActivity {
 
                         //        }
 
-                        checkCompleteFm(1);
+                        checkCompleteFm();
                     }
                     if (result.getResultCode() == Activity.RESULT_CANCELED) {
                         Toast.makeText(FemaleMembersActivity.this, "No family member added.", Toast.LENGTH_SHORT).show();
@@ -91,16 +91,21 @@ public class FemaleMembersActivity extends AppCompatActivity {
             });
 
 
-    private void checkCompleteFm(int n) {
-        int compCount = 0;
-        for(FemaleMembersModel fm : fm){
-            compCount += fm.getStatus().equals("1") ? 1 : 0;
-            Log.d(TAG, "checkCompleteFm: fmName("+n+"): "+fm.getHh02() +" | Status: "+fm.getStatus());
+    private void checkCompleteFm() {
+        if (!MainApp.form.getIStatus().equals("1")) {
+            int compCount = 0;
+            for (FemaleMembersModel fm : fm) {
+                compCount += fm.getStatus().equals("1") ? 1 : 0;
+                Log.d(TAG, "checkCompleteFm: fmName: " + fm.getHh02() + " | Status: " + fm.getStatus());
+            }
+            fmCountComplete = compCount;
+            bi.btnContinue.setVisibility(compCount == fmCount ? View.VISIBLE : View.GONE);
+            bi.btnContinue.setEnabled(compCount == fmCount);
+
+        } else {
+            Toast.makeText(this, "Form has been completed and locked", Toast.LENGTH_LONG).show();
         }
-        fmCountComplete = compCount;
-        bi.btnContinue.setVisibility(compCount == fmCount? View.VISIBLE:View.GONE);
-        bi.btnContinue.setEnabled(compCount == fmCount && !MainApp.form.getIStatus().equals("1"));
-    }
+        }
 
 
     private DatabaseHelper db;
@@ -116,7 +121,8 @@ public class FemaleMembersActivity extends AppCompatActivity {
             //MainApp.fm.get(Integer.parseInt(String.valueOf(MainApp.selectedFemale))).setStatus("1");
             fmAdapter.notifyItemChanged(Integer.parseInt(String.valueOf(MainApp.selectedFemale)));
         }
-        checkCompleteFm(2);
+        checkCompleteFm();
+        //bi.fab.setClickable(!MainApp.form.getIStatus().equals("1"));
         bi.totalmember.setText(fm.size()+ " members added");
         bi.completedmember.setText(fmCountComplete+ " members completed");
     }
@@ -151,10 +157,11 @@ public class FemaleMembersActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                //TODO: Implement startActivityForResult()
-                addFemale();
+                if(!MainApp.form.getIStatus().equals("1")){
+                addFemale();}
+                else{
+                    Toast.makeText(FemaleMembersActivity.this, "This form has been locked. You cannot add new members to locked forms", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -214,7 +221,7 @@ public class FemaleMembersActivity extends AppCompatActivity {
         if (requestCode == 2) {
             if(resultCode == Activity.RESULT_OK){
                 MainApp.fm.get(selectedFemale).setExpanded(false);
-                checkCompleteFm(3);
+                checkCompleteFm();
                 fmAdapter.notifyItemChanged(selectedFemale);
             }
             if (resultCode == Activity.RESULT_CANCELED) {
@@ -225,14 +232,3 @@ public class FemaleMembersActivity extends AppCompatActivity {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
