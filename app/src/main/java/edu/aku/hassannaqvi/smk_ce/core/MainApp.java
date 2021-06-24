@@ -41,10 +41,10 @@ public class MainApp extends Application {
 
     public static final int HOUSEHOLDS_TO_RANDOMISE = 5;
     public static final int MIN_MWRA = 14;
-    public static final int MAX_MWRA = 50;
+    public static final int MAX_MWRA = 49+1;
 
     public static final int MIN_ADOL = 10;
-    public static final int MAX_ADOL = 19;
+    public static final int MAX_ADOL = 19+1;
 
     public static File sdDir;
     public static String[] downloadData;
