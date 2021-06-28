@@ -38,7 +38,6 @@ class SectionMemberInfoActivity : AppCompatActivity() {
     }
 
 
-
     private fun setupSkips() {
 
         val txtListener = arrayOf<EditText>(bi.hh04a, bi.hh04b)
@@ -237,7 +236,23 @@ class SectionMemberInfoActivity : AppCompatActivity() {
             bi.hh11b.isChecked -> "2"
             else -> "-1"
         }
+        //{"hh01":"6","hh02":"Adol fifteen Female ","hh03":"2","hh04a":"2","hh04b":"2","hh04c":"2006","hh05y":"15","hh05m":"4","hh06":"2","hh07":"-1","hh08":"-1","hh09":"2","hh10":"2","hh11":"1","memCategory":""}
 
+        // Setting status for Not present and Not Adol and Not MWRA
+        if (
+        // Not Present
+                femalemembers.hh11 == "2"
+                ||
+                // Not Adol
+                femalemembers.hh06.equals("2") && !(femalemembers.hh05y.toInt() >= MainApp.MIN_ADOL && femalemembers.hh05y.toInt() < MainApp.MAX_ADOL)
+                ||
+                // Not M-WRA
+                (!femalemembers.hh06.equals("2") && femalemembers.hh03.equals("2") && !(femalemembers.hh05y.toInt() >= MainApp.MIN_MWRA && femalemembers.hh05y.toInt() < MainApp.MAX_MWRA))
+
+
+        ) {
+            femalemembers.status = 1.toString()
+        }
 
     }
 
@@ -250,11 +265,11 @@ class SectionMemberInfoActivity : AppCompatActivity() {
 
 
     private fun formValidation(): Boolean {
-       if(!Validator.emptyCheckingContainer(this, bi.GrpName)){
-           return false
-       }
+        if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {
+            return false
+        }
 
-        if(bi.hh08.text.toString() <bi.hh07.text.toString()){
+        if (bi.hh08.text.toString() < bi.hh07.text.toString()) {
             Validator.emptyCustomTextBox(this, bi.hh08, "Pregnancies cannot be less than children in [Q. HH07].")
             return false
         }
