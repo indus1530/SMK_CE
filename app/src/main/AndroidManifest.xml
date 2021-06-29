@@ -78,7 +78,7 @@
             </intent-filter>-->
         </activity>
         <activity
-            android:name=".database.AndroidDatabaseManager"
+            android:name=".database.AndroidManager"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity

@@ -1,14 +1,11 @@
 package edu.aku.hassannaqvi.smk_ce.ui
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -23,7 +20,7 @@ import edu.aku.hassannaqvi.smk_ce.base.repository.GeneralRepository
 import edu.aku.hassannaqvi.smk_ce.base.repository.ResponseStatus
 import edu.aku.hassannaqvi.smk_ce.base.viewmodel.MainViewModel
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
-import edu.aku.hassannaqvi.smk_ce.database.AndroidDatabaseManager
+import edu.aku.hassannaqvi.smk_ce.database.AndroidManager
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivityMainBinding
 import edu.aku.hassannaqvi.smk_ce.models.Camps
@@ -238,7 +235,7 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
             R.id.action_database -> {
-                gotoActivity(AndroidDatabaseManager::class.java)
+                gotoActivity(AndroidManager::class.java)
                 return true
             }
         }
@@ -272,7 +269,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.formC -> gotoActivity(SectionMWRAActivity::class.java)
                 R.id.formD -> gotoActivity(SectionAdolActivity::class.java)
                 R.id.formE -> gotoActivity(SectionVHCActivity::class.java)
-                R.id.databaseBtn -> startActivity(Intent(this, AndroidDatabaseManager::class.java))
+                R.id.databaseBtn -> startActivity(Intent(this, AndroidManager::class.java))
                 R.id.btn_check_camp -> populateCampDetails()
             }
         } else {
