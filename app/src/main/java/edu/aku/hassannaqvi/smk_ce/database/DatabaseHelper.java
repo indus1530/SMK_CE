@@ -65,10 +65,6 @@ import edu.aku.hassannaqvi.smk_ce.models.Users.UsersTable;
 import edu.aku.hassannaqvi.smk_ce.models.VersionApp;
 import edu.aku.hassannaqvi.smk_ce.models.VersionApp.VersionAppTable;
 
-import static edu.aku.hassannaqvi.smk_ce.contracts.ADOLContract.ADOLTable.COLUMN_ID;
-import static edu.aku.hassannaqvi.smk_ce.contracts.ADOLContract.ADOLTable.COLUMN_SYNCED;
-import static edu.aku.hassannaqvi.smk_ce.contracts.ADOLContract.ADOLTable.TABLE_NAME;
-
 /*import edu.aku.hassannaqvi.naunehal.models.Immunization;*/
 
 /**
@@ -324,7 +320,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         long newRowId;
         newRowId = db.insert(
-                TABLE_NAME,
+                ADOLContract.ADOLTable.TABLE_NAME,
                 ADOLContract.ADOLTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
@@ -1568,7 +1564,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String selection = ADOLContract.ADOLTable._ID + " =? ";
         String[] selectionArgs = {String.valueOf(MainApp.adol.getId())};
 
-        return db.update(TABLE_NAME,
+        return db.update(ADOLContract.ADOLTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -2151,19 +2147,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] columns = null;
 
         String whereClause;
-        whereClause = COLUMN_SYNCED + " is null ";
+        whereClause = ADOLContract.ADOLTable.COLUMN_SYNCED + " is null ";
 
         String[] whereArgs = null;
 
         String groupBy = null;
         String having = null;
 
-        String orderBy = COLUMN_ID + " ASC";
+        String orderBy = ADOLContract.ADOLTable.COLUMN_ID + " ASC";
 
         JSONArray allAdol = new JSONArray();
         try {
             c = db.query(
-                    TABLE_NAME,  // The table to query
+                    ADOLContract.ADOLTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
