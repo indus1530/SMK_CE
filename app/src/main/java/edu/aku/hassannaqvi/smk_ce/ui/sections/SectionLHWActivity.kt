@@ -109,7 +109,8 @@ class SectionLHWActivity : AppCompatActivity() {
         db = MainApp.appInfo.dbHelper
 
         // Populating all Tehsils
-        var tehsils: ArrayList<Tehsil> = db.allTehsils
+        var tehsils: ArrayList<Tehsil> = db.getTehsilsByDistID(MainApp.user.dist_id)
+
         Log.d(TAG, "populateSpinner: Tehsils: " + tehsils.size)
         tehsilName = ArrayList(listOf("...."))
         tehsilCode = ArrayList(listOf("...."))

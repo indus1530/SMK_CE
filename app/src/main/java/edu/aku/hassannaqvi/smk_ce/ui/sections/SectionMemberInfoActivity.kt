@@ -241,16 +241,20 @@ class SectionMemberInfoActivity : AppCompatActivity() {
         // Setting status for Not present and Not Adol and Not MWRA
         if (
         // Not Present
-                femalemembers.hh11 == "2"
+                femalemembers.hh11 == "1"
+                &&(
+                // Not Adol: Unmarried but not within ADOL age rage
+                        ( femalemembers.hh06.equals("2")
+                    && (femalemembers.hh05y.toInt() >= MainApp.MIN_ADOL && femalemembers.hh05y.toInt() < MainApp.MAX_ADOL))
                 ||
-                // Not Adol
-                femalemembers.hh06.equals("2") && !(femalemembers.hh05y.toInt() >= MainApp.MIN_ADOL && femalemembers.hh05y.toInt() < MainApp.MAX_ADOL)
-                ||
-                // Not M-WRA
-                (!femalemembers.hh06.equals("2") && femalemembers.hh03.equals("2") && !(femalemembers.hh05y.toInt() >= MainApp.MIN_MWRA && femalemembers.hh05y.toInt() < MainApp.MAX_MWRA))
+                // NOT MWRA: Married, but...
+                (!femalemembers.hh06.equals("2") &&
+                        // Not female or Not in reproductive age range
+                        femalemembers.hh03.equals("2") && (femalemembers.hh05y.toInt() >= MainApp.MIN_MWRA && femalemembers.hh05y.toInt() < MainApp.MAX_MWRA)
+                        )
+                        )
 
-
-        ) {
+        ) { } else {
             femalemembers.status = 1.toString()
         }
 
