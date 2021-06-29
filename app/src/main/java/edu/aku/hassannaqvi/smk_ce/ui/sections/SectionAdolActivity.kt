@@ -42,16 +42,13 @@ class SectionAdolActivity : AppCompatActivity() {
 
 
     private fun setupSkips() {
-        rgLsnr(bi.adol05, bi.adol05b, arrayOf(bi.fldGrpCVadol06, bi.fldGrpCVadol07))
+        rgLsnr(bi.adol03, bi.adol03a, arrayOf(bi.fldGrpCVadol04))
         bi.adol04h.setOnCheckedChangeListener { compoundButton, b -> Clear.clearAllFields(bi.adol04check, !b) }
+        rgLsnr(bi.adol05, bi.adol05b, arrayOf(bi.fldGrpCVadol06, bi.fldGrpCVadol07))
+        rgLsnr(bi.adol08, bi.adol08b, arrayOf(bi.fldGrpCVadol09, bi.fldGrpCVadol10, bi.fldGrpCVadol11, bi.fldGrpCVadol12, bi.fldGrpCVadol13))
+        rgLsnr(bi.adol09, bi.adol09a, arrayOf(bi.fldGrpCVadol10))
         cbLsnr(bi.adol15d, bi.adol15e)
         cbLsnr(bi.adol15e, bi.adol15d)
-
-        rgLsnr(bi.adol03, bi.adol03b, arrayOf(bi.fldGrpCVadol04))
-
-        rgLsnr(bi.adol08, bi.adol08b, arrayOf(bi.fldGrpCVadol0801))
-        rgLsnr(bi.adol09, bi.adol09a, arrayOf(bi.fldGrpCVadol10))
-
     }
 
 
