@@ -43,7 +43,11 @@ import java.util.concurrent.TimeUnit;
 import edu.aku.hassannaqvi.smk_ce.CONSTANTS;
 import edu.aku.hassannaqvi.smk_ce.R;
 import edu.aku.hassannaqvi.smk_ce.adapters.SyncListAdapter;
-import edu.aku.hassannaqvi.smk_ce.contracts.MHContract;
+import edu.aku.hassannaqvi.smk_ce.contracts.ADOLContract;
+import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract;
+import edu.aku.hassannaqvi.smk_ce.contracts.HHIDContract;
+import edu.aku.hassannaqvi.smk_ce.contracts.LHWHouseholdContract;
+import edu.aku.hassannaqvi.smk_ce.contracts.MWRAContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper;
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySyncBinding;
@@ -52,10 +56,9 @@ import edu.aku.hassannaqvi.smk_ce.models.Camps;
 import edu.aku.hassannaqvi.smk_ce.models.Clusters;
 import edu.aku.hassannaqvi.smk_ce.models.Districts;
 import edu.aku.hassannaqvi.smk_ce.models.Doctor;
-import edu.aku.hassannaqvi.smk_ce.models.LHW;
 import edu.aku.hassannaqvi.smk_ce.models.HealthFacilities;
+import edu.aku.hassannaqvi.smk_ce.models.LHW;
 import edu.aku.hassannaqvi.smk_ce.models.Province;
-import edu.aku.hassannaqvi.smk_ce.models.RsdHF;
 import edu.aku.hassannaqvi.smk_ce.models.SyncModel;
 import edu.aku.hassannaqvi.smk_ce.models.Tehsil;
 import edu.aku.hassannaqvi.smk_ce.models.UCs;
@@ -147,9 +150,26 @@ public class SyncActivity extends AppCompatActivity {
                 uploadTables.clear();
                 MainApp.uploadData.clear();
 
-                // MobileHealth
-                uploadTables.add(new SyncModel(MHContract.MHTable.TABLE_NAME));
-                MainApp.uploadData.add(db.getUnsyncedMH());
+                // Forms
+                uploadTables.add(new SyncModel(FormsContract.FormsTable.TABLE_NAME));
+                MainApp.uploadData.add(db.getUnsyncedForms());
+
+                // LHW
+                uploadTables.add(new SyncModel(LHWHouseholdContract.LHW_HOUSEHOLD_Table.TABLE_NAME));
+                MainApp.uploadData.add(db.getUnsyncedLHW());
+
+                // HHID
+                uploadTables.add(new SyncModel(HHIDContract.HHIDTable.TABLE_NAME));
+                MainApp.uploadData.add(db.getUnsyncedHHID());
+
+                // ADOL
+                uploadTables.add(new SyncModel(ADOLContract.ADOLTable.TABLE_NAME));
+                MainApp.uploadData.add(db.getUnsyncedAdol());
+
+                // MWRA
+                uploadTables.add(new SyncModel(MWRAContract.MWRATable.TABLE_NAME));
+                MainApp.uploadData.add(db.getUnsyncedMwra());
+
                 setAdapter(uploadTables);
                 BeginUpload();
                 break;

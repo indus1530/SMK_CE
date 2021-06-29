@@ -21,12 +21,11 @@ import java.util.Date;
 import edu.aku.hassannaqvi.smk_ce.contracts.ADOLContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.ChildContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.ChildContract.ChildTable;
-import edu.aku.hassannaqvi.smk_ce.contracts.ChildInformationContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.ChildInformationContract.ChildInfoTable;
+import edu.aku.hassannaqvi.smk_ce.contracts.FemaleMembersContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.HHIDContract;
-import edu.aku.hassannaqvi.smk_ce.contracts.FemaleMembersContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.IMContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.IMContract.IMTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.LHWHouseholdContract.LHW_HOUSEHOLD_Table;
@@ -45,14 +44,14 @@ import edu.aku.hassannaqvi.smk_ce.models.Clusters.TableClusters;
 import edu.aku.hassannaqvi.smk_ce.models.Districts;
 import edu.aku.hassannaqvi.smk_ce.models.Districts.TableDistricts;
 import edu.aku.hassannaqvi.smk_ce.models.Doctor;
+import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
 import edu.aku.hassannaqvi.smk_ce.models.Form;
 import edu.aku.hassannaqvi.smk_ce.models.FormIndicatorsModel;
 import edu.aku.hassannaqvi.smk_ce.models.HHIDModel;
-import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
-import edu.aku.hassannaqvi.smk_ce.models.Immunization;
-import edu.aku.hassannaqvi.smk_ce.models.LHWHouseholdModel;
-import edu.aku.hassannaqvi.smk_ce.models.LHW;
 import edu.aku.hassannaqvi.smk_ce.models.HealthFacilities;
+import edu.aku.hassannaqvi.smk_ce.models.Immunization;
+import edu.aku.hassannaqvi.smk_ce.models.LHW;
+import edu.aku.hassannaqvi.smk_ce.models.LHWHouseholdModel;
 import edu.aku.hassannaqvi.smk_ce.models.MWRAModel;
 import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
 import edu.aku.hassannaqvi.smk_ce.models.Province;
@@ -66,8 +65,9 @@ import edu.aku.hassannaqvi.smk_ce.models.Users.UsersTable;
 import edu.aku.hassannaqvi.smk_ce.models.VersionApp;
 import edu.aku.hassannaqvi.smk_ce.models.VersionApp.VersionAppTable;
 
-import static edu.aku.hassannaqvi.smk_ce.core.MainApp.femalemembers;
-import static edu.aku.hassannaqvi.smk_ce.core.MainApp.mobileHealth;
+import static edu.aku.hassannaqvi.smk_ce.contracts.ADOLContract.ADOLTable.COLUMN_ID;
+import static edu.aku.hassannaqvi.smk_ce.contracts.ADOLContract.ADOLTable.COLUMN_SYNCED;
+import static edu.aku.hassannaqvi.smk_ce.contracts.ADOLContract.ADOLTable.TABLE_NAME;
 
 /*import edu.aku.hassannaqvi.naunehal.models.Immunization;*/
 
@@ -324,7 +324,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         long newRowId;
         newRowId = db.insert(
-                ADOLContract.ADOLTable.TABLE_NAME,
+                TABLE_NAME,
                 ADOLContract.ADOLTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
@@ -1568,7 +1568,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String selection = ADOLContract.ADOLTable._ID + " =? ";
         String[] selectionArgs = {String.valueOf(MainApp.adol.getId())};
 
-        return db.update(ADOLContract.ADOLTable.TABLE_NAME,
+        return db.update(TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -2057,49 +2057,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allForms;
     }
 
-    public JSONArray getUnsyncedChild() {
+    public JSONArray getUnsyncedLHW() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
-        String[] columns = {
-                ChildContract.ChildTable.COLUMN_ID,
-                ChildContract.ChildTable.COLUMN_UID,
-                ChildContract.ChildTable.COLUMN_UUID,
-                ChildContract.ChildTable.COLUMN_FMUID,
-                ChildContract.ChildTable.COLUMN_USERNAME,
-                ChildContract.ChildTable.COLUMN_SYSDATE,
-                ChildContract.ChildTable.COLUMN_DCODE,
-                ChildContract.ChildTable.COLUMN_UCODE,
-                ChildContract.ChildTable.COLUMN_CLUSTER,
-                ChildContract.ChildTable.COLUMN_HHNO,
-                ChildContract.ChildTable.COLUMN_DEVICEID,
-                ChildContract.ChildTable.COLUMN_DEVICETAGID,
-                ChildContract.ChildTable.COLUMN_APPVERSION,
-                ChildContract.ChildTable.COLUMN_SYNCED,
-                ChildContract.ChildTable.COLUMN_SYNCED_DATE,
-                ChildContract.ChildTable.COLUMN_STATUS,
-                ChildContract.ChildTable.COLUMN_MOTHER_NAME,
-                ChildContract.ChildTable.COLUMN_CHILD_NAME,
-                ChildContract.ChildTable.COLUMN_SERIAL,
-                ChildContract.ChildTable.COLUMN_SCS,
-
-        };
+        String[] columns = null;
 
         String whereClause;
-        whereClause = ChildContract.ChildTable.COLUMN_SYNCED + " is null ";
+        whereClause = LHW_HOUSEHOLD_Table.COLUMN_SYNCED + " is null ";
 
         String[] whereArgs = null;
 
         String groupBy = null;
         String having = null;
 
-        String orderBy = ChildContract.ChildTable.COLUMN_ID + " ASC";
+        String orderBy = LHW_HOUSEHOLD_Table.COLUMN_ID + " ASC";
 
-//        Collection<Child> allFC = new ArrayList<>();
-        JSONArray allFC = new JSONArray();
-
+        JSONArray allLHW = new JSONArray();
         try {
             c = db.query(
-                    ChildContract.ChildTable.TABLE_NAME,  // The table to query
+                    LHW_HOUSEHOLD_Table.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -2108,12 +2084,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-              /*  Child fc = new Child();
-                allFC.add(fc.Hydrate(c));*/
-                Log.d(TAG, "getUnsyncedChild: " + c.getCount());
-                Child form = new Child();
-                allFC.put(form.Hydrate(c).toJSONObject());
-
+                Log.d(TAG, "getUnsyncedLHW: " + c.getCount());
+                LHWHouseholdModel lhw = new LHWHouseholdModel();
+                allLHW.put(lhw.Hydrate(c).toJSONObject());
             }
         } finally {
             if (c != null) {
@@ -2123,51 +2096,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return allFC;
+        Log.d(TAG, "getUnsyncedLHW: " + allLHW.toString().length());
+        Log.d(TAG, "getUnsyncedLHW: " + allLHW);
+        return allLHW;
     }
 
-    public JSONArray getUnsyncedHHChildrens() {
+    public JSONArray getUnsyncedHHID() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
-        String[] columns = {
-                ChildInformationContract.ChildInfoTable.COLUMN_ID,
-                ChildInformationContract.ChildInfoTable.COLUMN_UID,
-                ChildInformationContract.ChildInfoTable.COLUMN_UUID,
-                ChildInformationContract.ChildInfoTable.COLUMN_USERNAME,
-                ChildInformationContract.ChildInfoTable.COLUMN_SYSDATE,
-                ChildInformationContract.ChildInfoTable.COLUMN_DCODE,
-                ChildInformationContract.ChildInfoTable.COLUMN_UCODE,
-                ChildInformationContract.ChildInfoTable.COLUMN_CLUSTER,
-                ChildInformationContract.ChildInfoTable.COLUMN_HHNO,
-                ChildInformationContract.ChildInfoTable.COLUMN_DEVICEID,
-                ChildInformationContract.ChildInfoTable.COLUMN_DEVICETAGID,
-                ChildInformationContract.ChildInfoTable.COLUMN_APPVERSION,
-                ChildInformationContract.ChildInfoTable.COLUMN_SYNCED,
-                ChildInformationContract.ChildInfoTable.COLUMN_SYNCED_DATE,
-                ChildInformationContract.ChildInfoTable.COLUMN_STATUS,
-                ChildInformationContract.ChildInfoTable.COLUMN_ISSELECTED,
-
-                ChildInformationContract.ChildInfoTable.COLUMN_SCB,
-
-        };
-
+        String[] columns = null;
 
         String whereClause;
-        whereClause = ChildInformationContract.ChildInfoTable.COLUMN_SYNCED + " is null ";
+        whereClause = HHIDContract.HHIDTable.COLUMN_SYNCED + " is null ";
 
         String[] whereArgs = null;
 
         String groupBy = null;
         String having = null;
 
-        String orderBy = ChildInformationContract.ChildInfoTable.COLUMN_ID + " ASC";
+        String orderBy = HHIDContract.HHIDTable.COLUMN_ID + " ASC";
 
-        /*      Collection<ChildInformation> allFC = new ArrayList<>();     */
-        JSONArray allFC = new JSONArray();
-
+        JSONArray allHHid = new JSONArray();
         try {
             c = db.query(
-                    ChildInformationContract.ChildInfoTable.TABLE_NAME,  // The table to query
+                    HHIDContract.HHIDTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -2176,12 +2128,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-             /*   ChildInformation fc = new ChildInformation();
-                allFC.add(fc.Hydrate(c));*/
-                Log.d(TAG, "getUnsyncedChildInfo: " + c.getCount());
-                ChildInformation childInfo = new ChildInformation();
-                allFC.put(childInfo.Hydrate(c).toJSONObject());
-
+                Log.d(TAG, "getUnsyncedHHID: " + c.getCount());
+                HHIDModel hhid = new HHIDModel();
+                allHHid.put(hhid.hydrate(c).toJSONObject());
             }
         } finally {
             if (c != null) {
@@ -2191,51 +2140,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return allFC;
+        Log.d(TAG, "getUnsyncedHHID: " + allHHid.toString().length());
+        Log.d(TAG, "getUnsyncedHHID: " + allHHid);
+        return allHHid;
     }
 
-    public JSONArray getUnsyncedIM() {
+    public JSONArray getUnsyncedAdol() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
-        String[] columns = {
-                IMContract.IMTable.COLUMN_ID,
-                IMContract.IMTable.COLUMN_UID,
-                IMContract.IMTable.COLUMN_UUID,
-                IMContract.IMTable.COLUMN_FMUID,
-                IMContract.IMTable.COLUMN_USERNAME,
-                IMContract.IMTable.COLUMN_SYSDATE,
-                IMContract.IMTable.COLUMN_DCODE,
-                IMContract.IMTable.COLUMN_UCODE,
-                IMContract.IMTable.COLUMN_CLUSTER,
-                IMContract.IMTable.COLUMN_HHNO,
-                IMContract.IMTable.COLUMN_DEVICEID,
-                IMContract.IMTable.COLUMN_DEVICETAGID,
-                IMContract.IMTable.COLUMN_APPVERSION,
-                IMContract.IMTable.COLUMN_SYNCED,
-                IMContract.IMTable.COLUMN_SYNCED_DATE,
-                IMContract.IMTable.COLUMN_STATUS,
-                IMContract.IMTable.COLUMN_MOTHER_NAME,
-                IMContract.IMTable.COLUMN_CHILD_NAME,
-                IMContract.IMTable.COLUMN_SERIAL,
-                IMContract.IMTable.COLUMN_SIM
-        };
+        String[] columns = null;
 
         String whereClause;
-        whereClause = IMContract.IMTable.COLUMN_SYNCED + " is null ";
+        whereClause = COLUMN_SYNCED + " is null ";
 
         String[] whereArgs = null;
 
         String groupBy = null;
         String having = null;
 
-        String orderBy = IMContract.IMTable.COLUMN_ID + " ASC";
+        String orderBy = COLUMN_ID + " ASC";
 
-//        Collection<Immunization> allFC = new ArrayList<>();
-        JSONArray allFC = new JSONArray();
-
+        JSONArray allAdol = new JSONArray();
         try {
             c = db.query(
-                    IMContract.IMTable.TABLE_NAME,  // The table to query
+                    TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -2244,11 +2172,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-               /* Immunization fc = new Immunization();
-                allFC.add(fc.Hydrate(c));*/
-                Log.d(TAG, "getUnsyncedIM: " + c.getCount());
-                Immunization form = new Immunization();
-                allFC.put(form.Hydrate(c).toJSONObject());
+                Log.d(TAG, "getUnsyncedAdol: " + c.getCount());
+                ADOLModel adol = new ADOLModel();
+                allAdol.put(adol.Hydrate(c).toJSONObject());
             }
         } finally {
             if (c != null) {
@@ -2258,49 +2184,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return allFC;
+        Log.d(TAG, "getUnsyncedAdol: " + allAdol.toString().length());
+        Log.d(TAG, "getUnsyncedAdol: " + allAdol);
+        return allAdol;
     }
 
-    public JSONArray getUnsyncedMH() {
+    public JSONArray getUnsyncedMwra() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
-        String[] columns = {
-                MHContract.MHTable.COLUMN_ID,
-                MHContract.MHTable.COLUMN_UID,
-                MHContract.MHTable.COLUMN_USERNAME,
-                MHContract.MHTable.COLUMN_SYSDATE,
-                MHContract.MHTable.COLUMN_DEVICEID,
-                MHContract.MHTable.COLUMN_DEVICETAGID,
-                MHContract.MHTable.COLUMN_APPVERSION,
-                MHContract.MHTable.COLUMN_SYNCED,
-                MHContract.MHTable.COLUMN_SYNCED_DATE,
-                MHContract.MHTable.COLUMN_STATUS,
-                MHContract.MHTable.COLUMN_SERIAL,
-                MHContract.MHTable.COLUMN_MH01,
-                MHContract.MHTable.COLUMN_MH02,
-                MHContract.MHTable.COLUMN_MH03,
-                MHContract.MHTable.COLUMN_MH04,
-                MHContract.MHTable.COLUMN_MH05,
-                MHContract.MHTable.COLUMN_MH06,
-                MHContract.MHTable.COLUMN_MH07,
-                MHContract.MHTable.COLUMN_SA
-        };
+        String[] columns = null;
 
         String whereClause;
-        whereClause = MHContract.MHTable.COLUMN_SYNCED + " is null ";
+        whereClause = MWRAContract.MWRATable.COLUMN_SYNCED + " is null ";
 
         String[] whereArgs = null;
 
         String groupBy = null;
         String having = null;
 
-        String orderBy = MHContract.MHTable.COLUMN_ID + " ASC";
+        String orderBy = MWRAContract.MWRATable.COLUMN_ID + " ASC";
 
-        JSONArray jsa = new JSONArray();
-
+        JSONArray allMwra = new JSONArray();
         try {
             c = db.query(
-                    MHContract.MHTable.TABLE_NAME,  // The table to query
+                    MWRAContract.MWRATable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -2309,9 +2216,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                Log.d(TAG, "getUnsyncedMH: " + c.getCount());
-                MobileHealth mhForm = new MobileHealth();
-                jsa.put(mhForm.Hydrate(c).toJSONObject());
+                Log.d(TAG, "getUnsyncedMwra: " + c.getCount());
+                MWRAModel mwra = new MWRAModel();
+                allMwra.put(mwra.Hydrate(c).toJSONObject());
             }
         } finally {
             if (c != null) {
@@ -2321,7 +2228,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return jsa;
+        Log.d(TAG, "getUnsyncedMwra: " + allMwra.toString().length());
+        Log.d(TAG, "getUnsyncedMwra: " + allMwra);
+        return allMwra;
     }
 
 
