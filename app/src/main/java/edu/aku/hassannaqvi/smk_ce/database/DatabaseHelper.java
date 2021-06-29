@@ -846,6 +846,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return all;
     }
+    public ArrayList<Tehsil> getTehsilsByDistID(String dist_id) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause = TableTehsil.COLUMN_DIST_ID + "=?";
+        String[] whereArgs = {dist_id};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = TableTehsil._ID + " ASC";
+        ArrayList<Tehsil> all = new ArrayList<>();
+        try {
+            c = db.query(
+                    TableTehsil.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                all.add(new Tehsil().hydrate(c));
+
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return all;
+    }
 
 
     public ArrayList<HealthFacilities> getHFByTehsil(String tehsilCode) {

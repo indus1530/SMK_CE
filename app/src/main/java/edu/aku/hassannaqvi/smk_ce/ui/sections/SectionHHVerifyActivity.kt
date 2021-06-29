@@ -67,7 +67,7 @@ class SectionHHVerifyActivity : AppCompatActivity() {
         db = MainApp.appInfo.dbHelper
 
         // Populating all Tehsils
-        var tehsils: ArrayList<Tehsil> = db.getAllTehsils()
+        var tehsils: ArrayList<Tehsil> = db.getTehsilsByDistID(MainApp.user.dist_id)
         Log.d(TAG, "populateSpinner: Tehsils: "+ tehsils.size)
         for (t in tehsils) {
             tehsilName.add(t.tehsil)
