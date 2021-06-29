@@ -92,7 +92,7 @@ public class FemaleMembersActivity extends AppCompatActivity {
 
 
     private void checkCompleteFm() {
-        if (!MainApp.form.getIStatus().equals("1")) {
+   //     if (!MainApp.form.getIStatus().equals("1")) {
             int compCount = 0;
             for (FemaleMembersModel fm : fm) {
                 compCount += fm.getStatus().equals("1") ? 1 : 0;
@@ -102,9 +102,9 @@ public class FemaleMembersActivity extends AppCompatActivity {
             bi.btnContinue.setVisibility(compCount == fmCount && !form.getIStatus().equals("1")? View.VISIBLE : View.GONE);
             bi.btnContinue.setEnabled(bi.btnContinue.getVisibility()==View.VISIBLE);
 
-        } else {
+     //   } else {
             Toast.makeText(this, "Form has been completed and locked", Toast.LENGTH_LONG).show();
-        }
+     //   }
         }
 
 
