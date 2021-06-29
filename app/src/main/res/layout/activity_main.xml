@@ -190,256 +190,14 @@
 
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/grayLight"
-                        android:padding="12dp"
-                        android:text="Select Camp"
-                        android:textAlignment="center"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/grayLight"
-                        android:orientation="horizontal"
-                        android:padding="12dp">
-
-                        <com.edittextpicker.aliazaz.EditTextPicker
-                            android:id="@+id/camps"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:background="@drawable/bacground_border"
-                            android:gravity="center"
-                            android:hint="###-####-#"
-                            android:imeOptions="actionSearch"
-                            android:inputType="number"
-                            android:padding="@dimen/_5sdp"
-                            app:mask="###-####-#"
-                            app:pattern="^(\\d{3,3}\\-\\d{4,4}\\-\\d{1,1})$" />
-
-                        <ProgressBar
-                            android:id="@+id/btn_search_camp_progress"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginEnd="24dp"
-                            android:layout_marginBottom="4dp"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:gravity="center_horizontal|center_vertical"
-                            android:theme="@style/ProgressBarStyle"
-                            android:visibility="gone"
-                            tools:ignore="ContentDescription" />
-
-                        <ImageButton
-                            android:id="@+id/btn_check_camp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginEnd="24dp"
-                            android:layout_marginBottom="4dp"
-                            android:background="@drawable/search"
-                            android:elevation="1dp"
-                            android:onClick="@{callback::openSpecificActivity}"
-                            tools:ignore="ContentDescription" />
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-
-                <include
-                    android:id="@+id/cam"
-                    layout="@layout/cardlayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:visibility="gone"
-                    tools:visibility="gone" />
-
-                <LinearLayout
-                    android:id="@+id/btnSection"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/_60sdp"
-                    android:visibility="visible"
-                    tools:visibility="visible">
-
-                    <Button
-                        android:padding="8dp"
-                        android:id="@+id/formA"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:background="@color/colorPrimary"
-                        android:drawableStart="@drawable/action_button"
-                        android:onClick="@{callback::openSpecificActivity}"
-                        android:layout_margin="4dp"
-                        android:text="LHW"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/formAI"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:background="@color/colorPrimary"
-                        android:drawableStart="@drawable/action_button"
-                        android:onClick="@{callback::openSpecificActivity}"
-                        android:padding="1dp"
-                        android:text="HHiD"
-                        android:layout_margin="4dp"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/formAV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:background="@color/colorPrimary"
-                        android:drawableStart="@drawable/action_button"
-                        android:onClick="@{callback::openSpecificActivity}"
-                        android:padding="1dp"
-                        android:text="HH-Verify"
-                        android:layout_margin="4dp"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/formB"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:background="@color/colorPrimary"
-                        android:drawableStart="@drawable/action_button"
-                        android:onClick="@{callback::openSpecificActivity}"
-                        android:padding="1dp"
-                        android:text="B"
-                        android:layout_margin="4dp"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/formC"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:background="@color/colorPrimary"
-                        android:drawableStart="@drawable/action_button"
-                        android:onClick="@{callback::openSpecificActivity}"
-                        android:padding="1dp"
-                        android:text="C"
-                        android:layout_margin="4dp"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/formD"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:background="@color/colorPrimary"
-                        android:drawableStart="@drawable/action_button"
-                        android:onClick="@{callback::openSpecificActivity}"
-                        android:padding="1dp"
-                        android:text="D"
-                        android:layout_margin="4dp"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/formE"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:background="@color/colorPrimary"
-                        android:drawableStart="@drawable/action_button"
-                        android:onClick="@{callback::openSpecificActivity}"
-                        android:padding="1dp"
-                        android:text="E"
-                        android:layout_margin="4dp"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-
-                    <Button
-                        android:id="@+id/editForm"
-                        android:layout_width="220dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/openform_background"
-                        android:drawableStart="@drawable/open_form"
-                        android:onClick="@{callback::openSpecificActivity}"
-                        android:padding="8dp"
-                        android:text="EDIT FORM"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:textColor="@color/white"
-                        android:visibility="gone" />
-
-                    <!--                    <Button
-                                            android:id="@+id/photos"
-                                            android:layout_width="220dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_margin="10dp"
-                                            android:background="@drawable/openform_background"
-                                            android:drawableStart="@drawable/open_form"
-                                            android:onClick="@{callback::uploadPhotos}"
-                                            android:padding="8dp"
-                                            android:text="UPLOAD PHOTOS"
-                                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                                            android:textColor="@color/white" />-->
-
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/adminSection"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_70sdp"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <LinearLayout
                         style="?android:attr/buttonBarStyle"
@@ -455,7 +213,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
                             android:onClick="@{callback::openSpecificActivity}"
-                            android:text="01-HH" />
+                            android:text="01-LHW" />
 
                         <Button
                             android:id="@+id/btn02"
@@ -464,7 +222,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
                             android:onClick="@{callback::openSpecificActivity}"
-                            android:text="02-CB" />
+                            android:text="02-HHID" />
 
                         <Button
                             android:id="@+id/btn03"
@@ -472,8 +230,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
-                            android:onClick="openForm"
-                            android:text="03-CS" />
+                            android:onClick="@{callback::openSpecificActivity}"
+                            android:text="03-HHV" />
 
                         <Button
                             android:id="@+id/btn04"
@@ -481,8 +239,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
-                            android:onClick="openForm"
-                            android:text="04-im" />
+                            android:onClick="@{callback::openSpecificActivity}"
+                            android:text="04-ADOL" />
 
                     </LinearLayout>
 
@@ -499,8 +257,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
-                            android:onClick="openForm"
-                            android:text="05-pd" />
+                            android:onClick="@{callback::openSpecificActivity}"
+                            android:text="05-MWRA" />
 
                         <Button
                             android:id="@+id/btn06"
@@ -508,18 +266,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
-                            android:onClick="openForm"
-                            android:text="06-fb" />
+                            android:onClick="@{callback::openSpecificActivity}"
+                            android:text="06-VHC" />
 
                         <Button
                             android:id="@+id/btn07"
-
                             style="?android:attr/buttonBarButtonStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
-                            android:onClick="openForm"
-                            android:text="07-cv" />
+                            android:onClick="@{callback::openSpecificActivity}"
+                            android:text="07-MEMINFO" />
 
                         <Button
                             android:id="@+id/btn08"
