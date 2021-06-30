@@ -352,7 +352,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:digits="QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm"
+                                android:digits="QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm 1234567890"
                                 android:enabled="@{hhv03b.checked}"
                                 android:hint="@string/hhv02d" />
 
@@ -378,7 +378,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:digits="QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm"
+                                android:digits="QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm 1234567890"
                                 android:enabled="@{hhv03b.checked}"
                                 android:hint="@string/hhv02e" />
 
@@ -404,7 +404,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:digits="QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm"
+                                android:digits="QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm 1234567890"
                                 android:enabled="@{hhv03b.checked}"
                                 android:hint="@string/hhv02f" />
 
@@ -431,6 +431,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:enabled="@{hhv03b.checked}"
+                                android:digits="QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm 1234567890"
                                 android:hint="@string/hhv02g" />
 
                         </LinearLayout>

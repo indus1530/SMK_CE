@@ -51,11 +51,10 @@ import edu.aku.hassannaqvi.smk_ce.contracts.MWRAContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper;
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySyncBinding;
-import edu.aku.hassannaqvi.smk_ce.models.BLRandom;
-import edu.aku.hassannaqvi.smk_ce.models.Camps;
+
 import edu.aku.hassannaqvi.smk_ce.models.Clusters;
 import edu.aku.hassannaqvi.smk_ce.models.Districts;
-import edu.aku.hassannaqvi.smk_ce.models.Doctor;
+
 import edu.aku.hassannaqvi.smk_ce.models.HealthFacilities;
 import edu.aku.hassannaqvi.smk_ce.models.LHW;
 import edu.aku.hassannaqvi.smk_ce.models.Province;
@@ -278,16 +277,7 @@ public class SyncActivity extends AppCompatActivity {
                                             insertCount = db.syncVersionApp(new JSONObject(result));
                                             if (insertCount == 1) jsonArray.put("1");
                                             break;
-                                        case Camps.TableCamp.TABLE_NAME:
-                                            jsonArray = new JSONArray(result);
-                                            insertCount = db.syncCamp(jsonArray);
-                                            Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
-                                            break;
-                                        case Doctor.TableDoctor.TABLE_NAME:
-                                            jsonArray = new JSONArray(result);
-                                            insertCount = db.syncDoctor(jsonArray);
-                                            Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
-                                            break;
+
                                         case UCs.TableUCs.TABLE_NAME:
                                             jsonArray = new JSONArray(result);
                                             insertCount = db.syncUCs(jsonArray);
@@ -301,11 +291,6 @@ public class SyncActivity extends AppCompatActivity {
                                         case Clusters.TableClusters.TABLE_NAME:
                                             jsonArray = new JSONArray(result);
                                             insertCount = db.syncCluster(jsonArray);
-                                            Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
-                                            break;
-                                        case BLRandom.TableRandom.TABLE_NAME:
-                                            jsonArray = new JSONArray(result);
-                                            insertCount = db.syncBLRandom(jsonArray);
                                             Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
                                             break;
                                         case LHW.TableLhw.TABLE_NAME:

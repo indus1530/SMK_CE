@@ -17,12 +17,12 @@ import java.util.List;
 import edu.aku.hassannaqvi.smk_ce.R;
 import edu.aku.hassannaqvi.smk_ce.adapters.FormsAdapter;
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper;
-import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
+import edu.aku.hassannaqvi.smk_ce.models.Form;
 
 
 public class FormsReportCluster extends AppCompatActivity {
     DatabaseHelper db;
-    Collection<MobileHealth> fc;
+    Collection<Form> fc;
     String sysdateToday = new SimpleDateFormat("dd-MM-yy").format(new Date());
     TextView dtFilter;
     TextView noresult;
@@ -46,20 +46,20 @@ public class FormsReportCluster extends AppCompatActivity {
         dtFilter = findViewById(R.id.dtFilter);
         noresult = findViewById(R.id.noresult);
         db = new DatabaseHelper(this);
-        fc = db.getFormsByCluster("0000000");
+        fc = db.getFormByLHW("0000000");
 
         // specify an adapter (see also next example)
-        formsAdapter = new FormsAdapter((List<MobileHealth>) fc, this);
+        formsAdapter = new FormsAdapter((List<Form>) fc, this);
         recyclerView.setAdapter(formsAdapter);
     }
 
     public void filterForms(View view) {
         Toast.makeText(this, "updated", Toast.LENGTH_SHORT).show();
-        fc = db.getFormsByCluster(dtFilter.getText().toString());
+        fc = db.getFormByLHW(dtFilter.getText().toString());
         if (fc.size() > 0) {
             recyclerView.setVisibility(View.VISIBLE);
             noresult.setVisibility(View.GONE);
-            formsAdapter = new FormsAdapter((List<MobileHealth>) fc, this);
+            formsAdapter = new FormsAdapter((List<Form>) fc, this);
             formsAdapter.notifyDataSetChanged();
             recyclerView.setAdapter(formsAdapter);
         } else {

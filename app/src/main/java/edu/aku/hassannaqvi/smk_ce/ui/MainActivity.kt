@@ -11,20 +11,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import edu.aku.hassannaqvi.smk_ce.R
-import edu.aku.hassannaqvi.smk_ce.base.repository.GeneralRepository
-import edu.aku.hassannaqvi.smk_ce.base.viewmodel.MainViewModel
+
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.database.AndroidManager
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivityMainBinding
-import edu.aku.hassannaqvi.smk_ce.models.Camps
 import edu.aku.hassannaqvi.smk_ce.ui.list_activity.FormsReportCluster
 import edu.aku.hassannaqvi.smk_ce.ui.list_activity.FormsReportDate
 import edu.aku.hassannaqvi.smk_ce.ui.login_activity.LoginActivity
 import edu.aku.hassannaqvi.smk_ce.ui.sections.*
 import edu.aku.hassannaqvi.smk_ce.utils.extension.gotoActivity
 import edu.aku.hassannaqvi.smk_ce.utils.extension.gotoActivityWithNoHistory
-import edu.aku.hassannaqvi.smk_ce.utils.extension.obtainViewModel
 import edu.aku.hassannaqvi.smk_ce.utils.isNetworkConnected
 import java.text.SimpleDateFormat
 import java.util.*
@@ -33,10 +30,8 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     lateinit var bi: ActivityMainBinding
-    lateinit var viewModel: MainViewModel
     private var exit = false
     private var sysdateToday = SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).format(Date())
-    private lateinit var camp: Camps
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,10 +40,11 @@ class MainActivity : AppCompatActivity() {
         bi.callback = this
         setSupportActionBar(bi.toolbar)
         if (MainApp.admin) bi.adminSection.visibility = View.VISIBLE
-        viewModel = obtainViewModel(MainViewModel::class.java, GeneralRepository(DatabaseHelper(this)))
+
+
+
 
     }
-
 
     /*
     * Back press button that will route to login activity after pressing -
@@ -105,12 +101,7 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onResume() {
-        super.onResume()
 
-       // animateFadeIn()
-        viewModel.getFormsStatusUploadStatus(sysdateToday)
-    }
 
 
     /*
@@ -136,6 +127,10 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "* * * * * Invalid user! * * * * *", Toast.LENGTH_SHORT).show()
         }
     }
+
+
+
+    fun openForm(view: View) {}
 
 
 }

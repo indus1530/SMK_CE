@@ -14,15 +14,11 @@ import java.util.List;
 import java.util.Random;
 
 import edu.aku.hassannaqvi.smk_ce.models.ADOLModel;
-import edu.aku.hassannaqvi.smk_ce.models.Child;
-import edu.aku.hassannaqvi.smk_ce.models.ChildInformation;
 import edu.aku.hassannaqvi.smk_ce.models.Form;
 import edu.aku.hassannaqvi.smk_ce.models.HHIDModel;
 import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
-import edu.aku.hassannaqvi.smk_ce.models.Immunization;
 import edu.aku.hassannaqvi.smk_ce.models.LHWHouseholdModel;
 import edu.aku.hassannaqvi.smk_ce.models.MWRAModel;
-import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
 import edu.aku.hassannaqvi.smk_ce.models.Users;
 public class MainApp extends Application {
 
@@ -55,10 +51,6 @@ public class MainApp extends Application {
     public static FemaleMembersModel femalemembers;
     public static MWRAModel mwra;
     public static ADOLModel adol;
-    public static Child child;
-    public static Immunization immunization;
-    public static MobileHealth mobileHealth;
-    public static ChildInformation childInformation;
     public static AppInfo appInfo;
     public static Users user;
     public static Boolean admin = false;

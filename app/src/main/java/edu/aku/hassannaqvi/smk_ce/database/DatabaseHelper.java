@@ -6,12 +6,12 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -19,41 +19,29 @@ import java.util.Collection;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.smk_ce.contracts.ADOLContract;
-import edu.aku.hassannaqvi.smk_ce.contracts.ChildContract;
-import edu.aku.hassannaqvi.smk_ce.contracts.ChildContract.ChildTable;
-import edu.aku.hassannaqvi.smk_ce.contracts.ChildInformationContract.ChildInfoTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.FemaleMembersContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.HHIDContract;
-import edu.aku.hassannaqvi.smk_ce.contracts.IMContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.IMContract.IMTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.LHWHouseholdContract.LHW_HOUSEHOLD_Table;
 import edu.aku.hassannaqvi.smk_ce.contracts.MHContract;
-import edu.aku.hassannaqvi.smk_ce.contracts.MHContract.MHTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.MWRAContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 import edu.aku.hassannaqvi.smk_ce.models.ADOLModel;
-import edu.aku.hassannaqvi.smk_ce.models.BLRandom;
-import edu.aku.hassannaqvi.smk_ce.models.BLRandom.TableRandom;
-import edu.aku.hassannaqvi.smk_ce.models.Camps;
-import edu.aku.hassannaqvi.smk_ce.models.Child;
-import edu.aku.hassannaqvi.smk_ce.models.ChildInformation;
+
 import edu.aku.hassannaqvi.smk_ce.models.Clusters;
 import edu.aku.hassannaqvi.smk_ce.models.Clusters.TableClusters;
 import edu.aku.hassannaqvi.smk_ce.models.Districts;
 import edu.aku.hassannaqvi.smk_ce.models.Districts.TableDistricts;
-import edu.aku.hassannaqvi.smk_ce.models.Doctor;
 import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
 import edu.aku.hassannaqvi.smk_ce.models.Form;
 import edu.aku.hassannaqvi.smk_ce.models.FormIndicatorsModel;
 import edu.aku.hassannaqvi.smk_ce.models.HHIDModel;
 import edu.aku.hassannaqvi.smk_ce.models.HealthFacilities;
-import edu.aku.hassannaqvi.smk_ce.models.Immunization;
 import edu.aku.hassannaqvi.smk_ce.models.LHW;
 import edu.aku.hassannaqvi.smk_ce.models.LHWHouseholdModel;
 import edu.aku.hassannaqvi.smk_ce.models.MWRAModel;
-import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
 import edu.aku.hassannaqvi.smk_ce.models.Province;
 import edu.aku.hassannaqvi.smk_ce.models.RsdHF;
 import edu.aku.hassannaqvi.smk_ce.models.Tehsil;
@@ -91,14 +79,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CreateTable.SQL_CREATE_HHMEMBERS);
         db.execSQL(CreateTable.SQL_CREATE_MWRA);
         db.execSQL(CreateTable.SQL_CREATE_ADOLESCENT);
-        db.execSQL(CreateTable.SQL_CREATE_CHILD_INFO);
-        db.execSQL(CreateTable.SQL_CREATE_CHILD);
+
         db.execSQL(CreateTable.SQL_CREATE_IMMUNIZATION);
         db.execSQL(CreateTable.SQL_CREATE_MOBILE_HEALTH);
         db.execSQL(CreateTable.SQL_CREATE_VERSIONAPP);
-        db.execSQL(CreateTable.SQL_CREATE_BL_RANDOM);
-        db.execSQL(CreateTable.SQL_CREATE_CAMP);
-        db.execSQL(CreateTable.SQL_CREATE_DOCTOR);
+
         db.execSQL(CreateTable.SQL_CREATE_LHW);
         db.execSQL(CreateTable.SQL_CREATE_TEHSIL);
         db.execSQL(CreateTable.SQL_CREATE_LHW_HF);
@@ -327,149 +312,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Long addChild(Child child) {
-
-        // Gets the data repository in write mode
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        // Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(ChildContract.ChildTable.COLUMN_PROJECT_NAME, child.getProjectName());
-        values.put(ChildContract.ChildTable.COLUMN_UID, child.getUid());
-        values.put(ChildContract.ChildTable.COLUMN_UUID, child.getUuid());
-        values.put(ChildContract.ChildTable.COLUMN_FMUID, child.getFmuid());
-        values.put(ChildContract.ChildTable.COLUMN_USERNAME, child.getUserName());
-        values.put(ChildContract.ChildTable.COLUMN_SYSDATE, child.getSysDate());
-        values.put(ChildContract.ChildTable.COLUMN_DCODE, child.getDcode());
-        values.put(ChildContract.ChildTable.COLUMN_UCODE, child.getUcode());
-        values.put(ChildContract.ChildTable.COLUMN_CLUSTER, child.getCluster());
-        values.put(ChildContract.ChildTable.COLUMN_HHNO, child.getHhno());
-        values.put(ChildContract.ChildTable.COLUMN_SCS, child.s03CStoString());
-        values.put(ChildContract.ChildTable.COLUMN_DEVICEID, child.getDeviceId());
-        values.put(ChildContract.ChildTable.COLUMN_DEVICETAGID, child.getDeviceTag());
-        values.put(ChildContract.ChildTable.COLUMN_SYNCED, child.getSynced());
-        values.put(ChildContract.ChildTable.COLUMN_SYNCED_DATE, child.getSyncDate());
-        values.put(ChildContract.ChildTable.COLUMN_APPVERSION, child.getAppver());
-        values.put(ChildContract.ChildTable.COLUMN_STATUS, child.getStatus());
-        values.put(ChildContract.ChildTable.COLUMN_CHILD_NAME, child.getChildname());
-        values.put(ChildContract.ChildTable.COLUMN_MOTHER_NAME, child.getMothername());
-        values.put(ChildContract.ChildTable.COLUMN_SERIAL, child.getSerial());
-
-        // Insert the new row, returning the primary key value of the new row
-        long newRowId;
-        newRowId = db.insert(
-                ChildContract.ChildTable.TABLE_NAME,
-                ChildContract.ChildTable.COLUMN_NAME_NULLABLE,
-                values);
-        return newRowId;
-    }
-
-    public Long addChildInformation(ChildInformation form) {
-
-        // Gets the data repository in write mode
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        // Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(FormsContract.FormsTable.COLUMN_PROJECT_NAME, form.getProjectName());
-        values.put(ChildInfoTable.COLUMN_UID, form.getUid());
-        values.put(ChildInfoTable.COLUMN_UUID, form.getUuid());
-        values.put(ChildInfoTable.COLUMN_USERNAME, form.getUserName());
-        values.put(ChildInfoTable.COLUMN_SYSDATE, form.getSysDate());
-        values.put(ChildInfoTable.COLUMN_DCODE, form.getDcode());
-        values.put(ChildInfoTable.COLUMN_UCODE, form.getUcode());
-        values.put(ChildInfoTable.COLUMN_CLUSTER, form.getCluster());
-        values.put(ChildInfoTable.COLUMN_HHNO, form.getHhno());
-        values.put(ChildInfoTable.COLUMN_SCB, form.sCBtoString());
-        values.put(ChildInfoTable.COLUMN_DEVICEID, form.getDeviceId());
-        values.put(ChildInfoTable.COLUMN_DEVICETAGID, form.getDeviceTag());
-        values.put(ChildInfoTable.COLUMN_SYNCED, form.getSynced());
-        values.put(ChildInfoTable.COLUMN_SYNCED_DATE, form.getSyncDate());
-        values.put(ChildInfoTable.COLUMN_APPVERSION, form.getAppver());
-        values.put(ChildInfoTable.COLUMN_STATUS, form.getStatus());
-        values.put(ChildInfoTable.COLUMN_ISSELECTED, form.getIsSelected());
-
-        // Insert the new row, returning the primary key value of the new row
-        long newRowId;
-        newRowId = db.insert(
-                ChildInfoTable.TABLE_NAME,
-                ChildInfoTable.COLUMN_NAME_NULLABLE,
-                values);
-        return newRowId;
-    }
-
-    public Long addIM(Immunization form) {
-
-        // Gets the data repository in write mode
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        // Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(IMContract.IMTable.COLUMN_PROJECT_NAME, form.getProjectName());
-        values.put(IMContract.IMTable.COLUMN_UID, form.getUid());
-        values.put(IMContract.IMTable.COLUMN_UUID, form.getUuid());
-        values.put(IMContract.IMTable.COLUMN_FMUID, form.getFmuid());
-        values.put(IMContract.IMTable.COLUMN_USERNAME, form.getUserName());
-        values.put(IMContract.IMTable.COLUMN_SYSDATE, form.getSysDate());
-        values.put(IMContract.IMTable.COLUMN_DCODE, form.getDcode());
-        values.put(IMContract.IMTable.COLUMN_UCODE, form.getUcode());
-        values.put(IMContract.IMTable.COLUMN_CLUSTER, form.getCluster());
-        values.put(IMContract.IMTable.COLUMN_HHNO, form.getHhno());
-        values.put(IMContract.IMTable.COLUMN_SIM, form.s04IMtoString());
-        values.put(IMContract.IMTable.COLUMN_DEVICEID, form.getDeviceId());
-        values.put(IMContract.IMTable.COLUMN_DEVICETAGID, form.getDeviceTag());
-        values.put(IMContract.IMTable.COLUMN_SYNCED, form.getSynced());
-        values.put(IMContract.IMTable.COLUMN_SYNCED_DATE, form.getSyncDate());
-        values.put(IMContract.IMTable.COLUMN_APPVERSION, form.getAppver());
-        values.put(IMContract.IMTable.COLUMN_STATUS, form.getStatus());
-        values.put(IMContract.IMTable.COLUMN_CHILD_NAME, form.getChildname());
-        values.put(IMContract.IMTable.COLUMN_SERIAL, form.getSerial());
-
-        // Insert the new row, returning the primary key value of the new row
-        long newRowId;
-        newRowId = db.insert(
-                IMContract.IMTable.TABLE_NAME,
-                IMContract.IMTable.COLUMN_NAME_NULLABLE,
-                values);
-        return newRowId;
-    }
-
-    public Long addMH(MobileHealth mobileHealth) {
-
-        // Gets the data repository in write mode
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        // Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(MHContract.MHTable.COLUMN_PROJECT_NAME, mobileHealth.getProjectName());
-        values.put(MHContract.MHTable.COLUMN_UID, mobileHealth.getUid());
-        values.put(MHContract.MHTable.COLUMN_USERNAME, mobileHealth.getUserName());
-        values.put(MHContract.MHTable.COLUMN_SYSDATE, mobileHealth.getSysDate());
-        values.put(MHContract.MHTable.COLUMN_SA, mobileHealth.sAtoString());
-        values.put(MHContract.MHTable.COLUMN_MH01, mobileHealth.getMh01());
-        values.put(MHContract.MHTable.COLUMN_MH02, mobileHealth.getMh02());
-        values.put(MHContract.MHTable.COLUMN_MH03, mobileHealth.getMh03());
-        values.put(MHContract.MHTable.COLUMN_MH04, mobileHealth.getMh04());
-        values.put(MHContract.MHTable.COLUMN_MH05, mobileHealth.getMh05());
-        values.put(MHContract.MHTable.COLUMN_MH06, mobileHealth.getMh06());
-        values.put(MHContract.MHTable.COLUMN_MH07, mobileHealth.getMh07());
-        values.put(MHContract.MHTable.COLUMN_DEVICEID, mobileHealth.getDeviceId());
-        values.put(MHContract.MHTable.COLUMN_DEVICETAGID, mobileHealth.getDeviceTag());
-        values.put(MHContract.MHTable.COLUMN_SYNCED, mobileHealth.getSynced());
-        values.put(MHContract.MHTable.COLUMN_SYNCED_DATE, mobileHealth.getSyncDate());
-        values.put(MHContract.MHTable.COLUMN_APPVERSION, mobileHealth.getAppver());
-        values.put(MHContract.MHTable.COLUMN_STATUS, mobileHealth.getStatus());
-        values.put(MHContract.MHTable.COLUMN_SERIAL, mobileHealth.getSerial());
-
-        // Insert the new row, returning the primary key value of the new row
-        long newRowId;
-        newRowId = db.insert(
-                MHContract.MHTable.TABLE_NAME,
-                MHContract.MHTable.COLUMN_NAME_NULLABLE,
-                values);
-        return newRowId;
-    }
-
 
     /*
      * Functions that dealing with table data
@@ -601,43 +443,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public ArrayList<ChildInformation> getFamilyFromDB(String cluster, String hhno, String uuid) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String whereClause = ChildInfoTable.COLUMN_CLUSTER + " =? AND "
-                + ChildInfoTable.COLUMN_HHNO + " =? AND "
-                + ChildInfoTable.COLUMN_UUID + " =?";
-        String[] whereArgs = {cluster, hhno, uuid};
-        String groupBy = null;
-        String having = null;
-        String orderBy = ChildInfoTable.COLUMN_ID + " ASC";
-        ArrayList<ChildInformation> allForms = new ArrayList<>();
-        try {
-            c = db.query(
-                    ChildInfoTable.TABLE_NAME,  // The table to query
-                    null,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                ChildInformation childItem = new ChildInformation().Hydrate(c);
-                childItem.setMotherAvailable(childItem.getCb11().equals("1"));
-                childItem.setTotalMonths((Integer.parseInt(childItem.getCb0501()) * 12) + Integer.parseInt(childItem.getCb0502()));
-                allForms.add(childItem);
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allForms;
-    }
+
 
     public ArrayList<FemaleMembersModel> getFamilyMembersBYUID(String lhwcode, String khandannumber) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -685,87 +491,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return FemalesByHH;
     }
 
-    public ArrayList<ChildInformation> getSelectedChildrenFromDB(String cluster, String hhno, String uuid) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String whereClause = ChildInfoTable.COLUMN_CLUSTER + " =? AND "
-                + ChildInfoTable.COLUMN_HHNO + " =? AND "
-                + ChildInfoTable.COLUMN_UUID + " =?";
-        String[] whereArgs = {cluster, hhno, uuid};
-        String groupBy = null;
-        String having = null;
-        String orderBy = ChildInfoTable.COLUMN_ID + " ASC";
-        ArrayList<ChildInformation> allForms = new ArrayList<>();
-        try {
-            c = db.query(
-                    ChildInfoTable.TABLE_NAME,  // The table to query
-                    null,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                ChildInformation info = new ChildInformation().Hydrate(c);
-                info.setMotherAvailable(info.getCb11().equals("1"));
-                int calculateMonth = (Integer.parseInt(info.getCb0501()) * 12) + Integer.parseInt(info.getCb0502());
-                if (calculateMonth <= 35) info.setUnder35(true);
-                info.setChildTableDataExist(
-                        (Child) getFormExist(
-                                ChildContract.ChildTable.class,
-                                info.getCluster(),
-                                info.getHhno(),
-                                info.getUuid(),
-                                info.getUid()));
-                allForms.add(info);
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allForms;
-    }
 
-    public Object getFormExist(Class<?> tableName, String cluster, String hhno, String uuid, String fmuid) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Object count = null;
-        String query = "";
-        String[] where = null;
-        if (tableName.getName().equals(ChildContract.ChildTable.class.getName())) {
-            query = String.format("select *from %s where %s=? AND %s=? AND %s=? AND %s=?",
-                    ChildContract.ChildTable.TABLE_NAME,
-                    ChildContract.ChildTable.COLUMN_CLUSTER,
-                    ChildContract.ChildTable.COLUMN_HHNO,
-                    ChildContract.ChildTable.COLUMN_UUID,
-                    ChildContract.ChildTable.COLUMN_FMUID
-            );
-            where = new String[]{cluster, hhno, uuid, fmuid};
-        } else if (tableName.getName().equals(IMContract.IMTable.class.getName())) {
-            query = String.format("select *from %s where %s=? AND %s=? AND %s=? AND %s=?",
-                    IMContract.IMTable.TABLE_NAME,
-                    IMContract.IMTable.COLUMN_CLUSTER,
-                    IMContract.IMTable.COLUMN_HHNO,
-                    IMContract.IMTable.COLUMN_UUID,
-                    IMContract.IMTable.COLUMN_FMUID
-            );
-            where = new String[]{cluster, hhno, uuid, fmuid};
-        }
-        Cursor mCursor = db.rawQuery(query, where, null);
-        if (mCursor != null && mCursor.moveToFirst()) {
-            if (tableName.getName().equals(ChildContract.ChildTable.class.getName())) {
-                count = new Child().Hydrate(mCursor);
-            } else if (tableName.getName().equals(IMContract.IMTable.class.getName())) {
-                count = new Immunization().Hydrate(mCursor);
-            }
-            mCursor.close();
-        }
-        return count;
-    }
+
 
     public ArrayList<Districts> getAllDistricts() {
 
@@ -992,80 +719,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return hhid;
     }
 
-    public Camps getSpecificCamp(String hfCode, String test) {
 
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = null;
-
-        String whereClause = LHW.TableLhw.COLUMN_HF_CODE + "=?";
-        String[] whereArgs = {hfCode};
-        String groupBy = null;
-        String having = null;
-
-        String orderBy = LHW.TableLhw.COLUMN_LHW_NAME + " ASC";
-        ArrayList<Camps> lhw = null;
-        try {
-            c = db.query(
-                    HealthFacilities.TableHealthFacilities.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                lhw.add(new Camps().hydrate(c));
-                while (c.moveToNext()) {
-                }
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return lhw.get(0);
-    }
-    public ArrayList<Doctor> getDoctorByCamp(String camno) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = null;
-
-        String whereClause = Doctor.TableDoctor.COLUMN_ID_CAMP + "=?";
-        String[] whereArgs = {camno};
-        String groupBy = null;
-        String having = null;
-
-        String orderBy = Doctor.TableDoctor.COLUMN_STAFF_NAME + " ASC";
-
-        ArrayList<Doctor> docs = new ArrayList<>();
-        try {
-            c = db.query(
-                    Doctor.TableDoctor.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                docs.add(new Doctor().hydrate(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return docs;
-    }
 
     public ArrayList<UCs> getUCsByDistricts(String dCode) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1105,39 +759,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allDC;
     }
 
-    public BLRandom getBLRandomByClusterHH(String distCode, String subAreaCode, String hh) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = null;
-        String whereClause = TableRandom.COLUMN_DIST_CODE + "=? AND " + TableRandom.COLUMN_CLUSTER_CODE + "=? AND " + TableRandom.COLUMN_HH + "=?";
-        String[] whereArgs = {distCode, subAreaCode, hh};
-        String groupBy = null;
-        String having = null;
-        String orderBy = TableRandom.COLUMN_ID + " ASC";
-        BLRandom allBL = null;
-        try {
-            c = db.query(
-                    TableRandom.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                allBL = new BLRandom().hydrate(c);
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allBL;
-    }
 
     public Form getFormByClusterHH(String distCode, String subAreaCode, String hh) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1213,6 +834,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 allFC = new Form().Hydrate(c);
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+
+    public Collection<Form> getFormByLHW(String lhwcode) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause;
+        whereClause =
+                FormsTable.COLUMN_LHW_CODE + "=? AND " +
+                        FormsTable.COLUMN_KHANDAN_NUMBER + "=?";
+
+        String[] whereArgs = {lhwcode};
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = FormsTable.COLUMN_ID + " ASC";
+
+        Collection<Form> allFC = null;
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allFC.add(new Form().Hydrate(c));
             }
         } finally {
             if (c != null) {
@@ -1397,73 +1061,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /*
      * Update data in tables
      * */
-    public int updateSpecificChildInformationColumn(ChildInformation childInformation, String isSelected) {
-        SQLiteDatabase db = this.getReadableDatabase();
 
-        ContentValues values = new ContentValues();
-        values.put(ChildInfoTable.COLUMN_ISSELECTED, isSelected);
-
-        String selection = ChildInfoTable.COLUMN_CLUSTER + " =? AND "
-                + ChildInfoTable.COLUMN_HHNO + " =? AND "
-                + ChildInfoTable.COLUMN_UUID + " =? AND "
-                + ChildInfoTable.COLUMN_UID + " =? AND "
-                + ChildInfoTable.COLUMN_ID + " =? ";
-        String[] selectionArgs = {childInformation.getCluster(), childInformation.getHhno(), childInformation.getUuid(), childInformation.getUid(), childInformation.getId()};
-
-        int count = db.update(ChildInfoTable.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-
-        updatesFormColumn(FormsTable.COLUMN_ISTATUS, "99");
-
-        return count;
-    }
-
-    public int updatesChildInformationColumn(String column, String value) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(column, value);
-
-        String selection = ChildInfoTable._ID + " =? ";
-        String[] selectionArgs = {String.valueOf(MainApp.childInformation.getId())};
-
-        return db.update(ChildInfoTable.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-    }
-
-    public int updatesChildColumn(String column, String value) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(column, value);
-
-        String selection = ChildContract.ChildTable._ID + " =? ";
-        String[] selectionArgs = {String.valueOf(MainApp.child.getId())};
-
-        return db.update(ChildContract.ChildTable.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-    }
-
-    public int updatesIMColumn(String column, String value) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(column, value);
-
-        String selection = IMContract.IMTable._ID + " =? ";
-        String[] selectionArgs = {String.valueOf(MainApp.immunization.getId())};
-
-        return db.update(IMContract.IMTable.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-    }
 
     public int updatesFemaleMemberbyUUID(String uuid) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1650,46 +1248,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
-    public int syncBLRandom(JSONArray blList) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TableRandom.TABLE_NAME, null, null);
 
-        int insertCount = 0;
-        for (int i = 0; i < blList.length(); i++) {
-            JSONObject jsonObjectCC = null;
-            try {
-                jsonObjectCC = blList.getJSONObject(i);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            BLRandom Vc = new BLRandom();
-            try {
-                Vc.sync(jsonObjectCC);
-                Log.d(TAG, "syncBLRandom: " + Vc.getId());
-                ContentValues values = new ContentValues();
-
-                values.put(TableRandom.COLUMN_LUID, Vc.getLUID());
-                values.put(TableRandom.COLUMN_STRUCTURE_NO, Vc.getStructure());
-                values.put(TableRandom.COLUMN_FAMILY_EXT_CODE, Vc.getExtension());
-                values.put(TableRandom.COLUMN_HH, Vc.getHh());
-                values.put(TableRandom.COLUMN_DIST_CODE, Vc.getDistCode());
-                values.put(TableRandom.COLUMN_CLUSTER_CODE, Vc.getClusterCode());
-                values.put(TableRandom.COLUMN_RANDOMDT, Vc.getRandomDT());
-                values.put(TableRandom.COLUMN_HH_HEAD, Vc.getHhhead());
-                values.put(TableRandom.COLUMN_CONTACT, Vc.getContact());
-                values.put(TableRandom.COLUMN_UPDATEDT, Vc.getUpdateDT());
-                values.put(TableRandom.COLUMN_SNO_HH, Vc.getSno());
-
-                long row = db.insert(TableRandom.TABLE_NAME, null, values);
-                if (row != -1) insertCount++;
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        return insertCount;
-    }
 
     public int syncUCs(JSONArray ucList) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -1721,70 +1280,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
-    public int syncCamp(JSONArray campList) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(Camps.TableCamp.TABLE_NAME, null, null);
-        int insertCount = 0;
-        try {
 
-            for (int i = 0; i < campList.length(); i++) {
-                JSONObject json = campList.getJSONObject(i);
-                Camps camps = new Camps();
-                camps.sync(json);
-                ContentValues values = new ContentValues();
-
-                values.put(Camps.TableCamp.COLUMN_ID_CAMP, camps.getIdCamp());
-                values.put(Camps.TableCamp.COLUMN_CAMP_NO, camps.getCamp_no());
-                values.put(Camps.TableCamp.COLUMN_DIST_ID, camps.getDist_id());
-                values.put(Camps.TableCamp.COLUMN_DISTRICT, camps.getDistrict());
-                values.put(Camps.TableCamp.COLUMN_UC_CODE, camps.getUcCode());
-                values.put(Camps.TableCamp.COLUMN_UC_NAME, camps.getUcName());
-                values.put(Camps.TableCamp.COLUMN_AREA_NAME, camps.getArea_name());
-                values.put(Camps.TableCamp.COLUMN_PLAN_DATE, camps.getPlan_date());
-
-                long rowID = db.insert(Camps.TableCamp.TABLE_NAME, null, values);
-                if (rowID != -1) insertCount++;
-            }
-            db.close();
-
-        } catch (Exception e) {
-            Log.d(TAG, "syncCamp(e): " + e);
-            db.close();
-        } finally {
-            db.close();
-        }
-        return insertCount;
-    }
-
-    public int syncDoctor(JSONArray docList) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(Doctor.TableDoctor.TABLE_NAME, null, null);
-        int insertCount = 0;
-        try {
-
-            for (int i = 0; i < docList.length(); i++) {
-                JSONObject json = docList.getJSONObject(i);
-                Doctor doc = new Doctor();
-                doc.sync(json);
-                ContentValues values = new ContentValues();
-
-                values.put(Doctor.TableDoctor.COLUMN_ID_CAMP, doc.getIdCamp());
-                values.put(Doctor.TableDoctor.COLUMN_ID_DOCTOR, doc.getIddoctor());
-                values.put(Doctor.TableDoctor.COLUMN_STAFF_NAME, doc.getStaff_name());
-
-                long rowID = db.insert(Doctor.TableDoctor.TABLE_NAME, null, values);
-                if (rowID != -1) insertCount++;
-            }
-            db.close();
-
-        } catch (Exception e) {
-            Log.d(TAG, "syncDoctor(e): " + e);
-            db.close();
-        } finally {
-            db.close();
-        }
-        return insertCount;
-    }
 
     public int syncVersionApp(JSONObject VersionList) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -2250,43 +1746,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
-    public void updateSyncedCSChild(String id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(ChildTable.COLUMN_SYNCED, true);
-        values.put(ChildTable.COLUMN_SYNCED_DATE, new Date().toString());
-
-// Which row to update, based on the title
-        String where = ChildTable.COLUMN_ID + " = ?";
-        String[] whereArgs = {id};
-
-        int count = db.update(
-                ChildTable.TABLE_NAME,
-                values,
-                where,
-                whereArgs);
-    }
-
-    public void updateSyncedHHChildrens(String id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(ChildInfoTable.COLUMN_SYNCED, true);
-        values.put(ChildInfoTable.COLUMN_SYNCED_DATE, new Date().toString());
-
-// Which row to update, based on the title
-        String where = ChildInfoTable.COLUMN_ID + " = ?";
-        String[] whereArgs = {id};
-
-        int count = db.update(
-                ChildInfoTable.TABLE_NAME,
-                values,
-                where,
-                whereArgs);
-    }
 
     public void updateSyncedIMChild(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -2327,65 +1786,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Collection<MobileHealth> getFormsByCluster(String cluster) {
 
-        // String sysdate =  spDateT.substring(0, 8).trim()
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                MHTable.COLUMN_ID,
-                MHTable.COLUMN_UID,
-                MHTable.COLUMN_SYSDATE,
-                MHTable.COLUMN_MH02,
-                MHTable.COLUMN_MH06,
-                MHTable.COLUMN_MH07,
-                MHTable.COLUMN_SA,
-                MHTable.COLUMN_SYNCED,
-
-        };
-        String whereClause = MHTable.COLUMN_MH02 + " = ? ";
-        String[] whereArgs = new String[]{cluster};
-//        String[] whereArgs = new String[]{"%" + spDateT.substring(0, 8).trim() + "%"};
-        String groupBy = null;
-        String having = null;
-
-        String orderBy =
-                MHTable.COLUMN_ID + " ASC";
-
-        Collection<MobileHealth> allFC = new ArrayList<>();
-        try {
-            c = db.query(
-                    MHTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                MobileHealth fc = new MobileHealth();
-                fc.setId(c.getString(c.getColumnIndex(MHTable.COLUMN_ID)));
-                fc.setUid(c.getString(c.getColumnIndex(MHTable.COLUMN_UID)));
-                fc.setSysDate(c.getString(c.getColumnIndex(MHTable.COLUMN_SYSDATE)));
-                fc.setMh02(c.getString(c.getColumnIndex(MHTable.COLUMN_MH02)));
-                fc.setMh06(c.getString(c.getColumnIndex(MHTable.COLUMN_MH06)));
-                fc.setMh07(c.getString(c.getColumnIndex(MHTable.COLUMN_MH07)));
-                fc.setSynced(c.getString(c.getColumnIndex(MHTable.COLUMN_SYNCED)));
-                fc.sAHydrate(c.getString(c.getColumnIndex(MHTable.COLUMN_SA)));
-                Log.d(TAG, "getFormsByCluster: " + c.getString(c.getColumnIndex(MHTable.COLUMN_SA)));
-                allFC.add(fc);
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allFC;
-    }
 
     public ArrayList<Form> getUnclosedForms() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -2438,14 +1839,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-    public int getChildrenByUUID(String UUID) {
-        String countQuery = "SELECT  * FROM " + ChildTable.TABLE_NAME + " WHERE " + ChildTable.COLUMN_UUID + " = '" + UUID + "' AND " + ChildTable.COLUMN_STATUS + " = '1'";
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(countQuery, null);
-        int count = cursor.getCount();
-        cursor.close();
-        return count;
-    }
 
     public int getChildrenPhotoCheck(String UID) {
         String countQuery = "SELECT  * FROM " + IMTable.TABLE_NAME +
@@ -2472,64 +1865,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    public Collection<MobileHealth> getTodayForms(String sysdate) {
 
-        // String sysdate =  spDateT.substring(0, 8).trim()
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                MHTable.COLUMN_ID,
-                MHTable.COLUMN_UID,
-                MHTable.COLUMN_SYSDATE,
-                MHTable.COLUMN_MH02,
-                MHTable.COLUMN_MH06,
-                MHTable.COLUMN_MH07,
-                MHTable.COLUMN_SA,
-                MHTable.COLUMN_SYNCED,
-
-
-        };
-        String whereClause = MHTable.COLUMN_SYSDATE + " Like ? ";
-        String[] whereArgs = new String[]{"%" + sysdate + " %"};
-//        String[] whereArgs = new String[]{"%" + spDateT.substring(0, 8).trim() + "%"};
-        String groupBy = null;
-        String having = null;
-
-        String orderBy = MHTable.COLUMN_ID + " DESC";
-
-        Collection<MobileHealth> allFC = new ArrayList<>();
-        try {
-            c = db.query(
-                    MHTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                MobileHealth fc = new MobileHealth();
-                fc.setId(c.getString(c.getColumnIndex(MHTable.COLUMN_ID)));
-                fc.setUid(c.getString(c.getColumnIndex(MHTable.COLUMN_UID)));
-                fc.setSysDate(c.getString(c.getColumnIndex(MHTable.COLUMN_SYSDATE)));
-                fc.setMh02(c.getString(c.getColumnIndex(MHTable.COLUMN_MH02)));
-                fc.setMh06(c.getString(c.getColumnIndex(MHTable.COLUMN_MH06)));
-                fc.setMh07(c.getString(c.getColumnIndex(MHTable.COLUMN_MH07)));
-                fc.sAHydrate(c.getString(c.getColumnIndex(MHTable.COLUMN_SA)));
-                fc.setSynced(c.getString(c.getColumnIndex(MHTable.COLUMN_SYNCED)));
-                allFC.add(fc);
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allFC;
-    }
 
     public ArrayList<Cursor> getData(String Query) {
         //get writable database
@@ -2578,4 +1914,55 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void getFormByID(@NotNull String lhwCode, @NotNull String khandanNumber) {
 
     }
+
+
+    public Collection<Form> getTodayForms(String sysdate) {
+
+        // String sysdate =  spDateT.substring(0, 8).trim()
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause = FormsTable.COLUMN_SYSDATE + " Like ? ";
+        String[] whereArgs = new String[]{"%" + sysdate + " %"};
+//        String[] whereArgs = new String[]{"%" + spDateT.substring(0, 8).trim() + "%"};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsTable.COLUMN_ID + " ASC";
+
+        Collection<Form> allForm = new ArrayList<>();
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                Form Form = new Form();
+                Form.setId(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
+                Form.setUid(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
+                Form.setSysDate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
+                Form.setIStatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
+                Form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
+                allForm.add(Form);
+            }
+        } catch (SQLiteException e) {
+
+
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allForm;
+    }
+
 }

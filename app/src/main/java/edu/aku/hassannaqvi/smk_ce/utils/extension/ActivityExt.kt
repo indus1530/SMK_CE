@@ -7,18 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import edu.aku.hassannaqvi.smk_ce.base.factory.ViewModelFactory
-import edu.aku.hassannaqvi.smk_ce.base.repository.GeneralRepository
 import java.io.Serializable
 
-/*
-* @author Ali Azaz Alam dt. 12.18.20
-* */
-fun <T : ViewModel> AppCompatActivity.obtainViewModel(viewModelClass: Class<T>, generalRepository: GeneralRepository) =
-        ViewModelProvider(this, ViewModelFactory(generalRepository)).get(viewModelClass)
-
-fun <T : ViewModel> Fragment.obtainViewModel(activity: AppCompatActivity, viewModelClass: Class<T>, generalRepository: GeneralRepository) =
-        ViewModelProvider(activity, ViewModelFactory(generalRepository)).get(viewModelClass)
 
 fun <T : AppCompatActivity> AppCompatActivity.gotoActivity(targetActivityClass: Class<T>) {
     val intent = Intent(this, targetActivityClass)

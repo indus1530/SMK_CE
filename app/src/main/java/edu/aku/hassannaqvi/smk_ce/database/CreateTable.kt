@@ -163,52 +163,6 @@ object CreateTable {
             + ADOLContract.ADOLTable.COLUMN_SA + " TEXT"
             + " );")
 
-    const val SQL_CREATE_CHILD_INFO = ("CREATE TABLE "
-            + ChildInformationContract.ChildInfoTable.TABLE_NAME + "("
-            + ChildInformationContract.ChildInfoTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_PROJECT_NAME + " TEXT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_UID + " TEXT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_UUID + " TEXT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_USERNAME + " TEXT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_SYSDATE + " TEXT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_STATUS + " TEXT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_ISSELECTED + " TEXT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_DEVICEID + " TEXT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_DEVICETAGID + " TEXT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_SYNCED + " TEXT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_SYNCED_DATE + " TEXT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_APPVERSION + " TEXT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_DCODE + " TEXT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_UCODE + " TEXT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_CLUSTER + " TEXT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_HHNO + " TEXT,"
-            + ChildInformationContract.ChildInfoTable.COLUMN_SCB + " TEXT"
-            + " );")
-
-    const val SQL_CREATE_CHILD = ("CREATE TABLE "
-            + ChildContract.ChildTable.TABLE_NAME + "("
-            + ChildContract.ChildTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + ChildContract.ChildTable.COLUMN_PROJECT_NAME + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_UID + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_UUID + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_FMUID + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_USERNAME + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_SYSDATE + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_STATUS + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_DEVICEID + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_DEVICETAGID + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_SYNCED + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_SYNCED_DATE + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_APPVERSION + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_DCODE + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_UCODE + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_CLUSTER + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_HHNO + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_MOTHER_NAME + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_CHILD_NAME + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_SERIAL + " TEXT,"
-            + ChildContract.ChildTable.COLUMN_SCS + " TEXT"
-            + " );")
 
     const val SQL_CREATE_IMMUNIZATION = ("CREATE TABLE "
             + IMContract.IMTable.TABLE_NAME + "("
@@ -287,19 +241,6 @@ object CreateTable {
             + Clusters.TableClusters.COLUMN_CLUSTER_CODE + " TEXT"
             + " );")
 
-    const val SQL_CREATE_BL_RANDOM = ("CREATE TABLE " + BLRandom.TableRandom.TABLE_NAME + "("
-            + BLRandom.TableRandom.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + BLRandom.TableRandom.COLUMN_CLUSTER_CODE + " TEXT,"
-            + BLRandom.TableRandom.COLUMN_DIST_CODE + " TEXT,"
-            + BLRandom.TableRandom.COLUMN_LUID + " TEXT,"
-            + BLRandom.TableRandom.COLUMN_HH + " TEXT,"
-            + BLRandom.TableRandom.COLUMN_STRUCTURE_NO + " TEXT,"
-            + BLRandom.TableRandom.COLUMN_FAMILY_EXT_CODE + " TEXT,"
-            + BLRandom.TableRandom.COLUMN_HH_HEAD + " TEXT,"
-            + BLRandom.TableRandom.COLUMN_CONTACT + " TEXT,"
-            + BLRandom.TableRandom.COLUMN_UPDATEDT + " TEXT,"
-            + BLRandom.TableRandom.COLUMN_RANDOMDT + " TEXT,"
-            + BLRandom.TableRandom.COLUMN_SNO_HH + " TEXT );")
 
     const val SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionApp.VersionAppTable.TABLE_NAME + " (" +
             VersionApp.VersionAppTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -307,25 +248,6 @@ object CreateTable {
             VersionApp.VersionAppTable.COLUMN_VERSION_NAME + " TEXT, " +
             VersionApp.VersionAppTable.COLUMN_PATH_NAME + " TEXT " +
             ");"
-
-    const val SQL_CREATE_CAMP = ("CREATE TABLE " + Camps.TableCamp.TABLE_NAME + "("
-            + Camps.TableCamp.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + Camps.TableCamp.COLUMN_ID_CAMP + " TEXT,"
-            + Camps.TableCamp.COLUMN_CAMP_NO + " TEXT,"
-            + Camps.TableCamp.COLUMN_DIST_ID + " TEXT,"
-            + Camps.TableCamp.COLUMN_DISTRICT + " TEXT,"
-            + Camps.TableCamp.COLUMN_UC_CODE + " TEXT,"
-            + Camps.TableCamp.COLUMN_UC_NAME + " TEXT,"
-            + Camps.TableCamp.COLUMN_AREA_NAME + " TEXT,"
-            + Camps.TableCamp.COLUMN_PLAN_DATE + " TEXT"
-            + " );")
-
-    const val SQL_CREATE_DOCTOR = ("CREATE TABLE " + Doctor.TableDoctor.TABLE_NAME + "("
-            + Doctor.TableDoctor.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + Doctor.TableDoctor.COLUMN_ID_CAMP + " TEXT,"
-            + Doctor.TableDoctor.COLUMN_ID_DOCTOR + " TEXT,"
-            + Doctor.TableDoctor.COLUMN_STAFF_NAME + " TEXT"
-            + " );")
 
     const val SQL_CREATE_LHW = ("CREATE TABLE " + LHW.TableLhw.TABLE_NAME + "("
             + LHW.TableLhw.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"

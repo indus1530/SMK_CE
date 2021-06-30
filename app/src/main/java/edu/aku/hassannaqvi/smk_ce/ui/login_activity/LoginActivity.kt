@@ -17,9 +17,6 @@ import com.github.amlcurran.showcaseview.targets.ViewTarget
 import com.nabinbhandari.android.permissions.PermissionHandler
 import com.nabinbhandari.android.permissions.Permissions
 import edu.aku.hassannaqvi.smk_ce.R
-import edu.aku.hassannaqvi.smk_ce.base.repository.GeneralRepository
-import edu.aku.hassannaqvi.smk_ce.base.repository.ResponseStatus.*
-import edu.aku.hassannaqvi.smk_ce.base.viewmodel.LoginViewModel
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivityLoginBinding
@@ -28,7 +25,6 @@ import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import edu.aku.hassannaqvi.smk_ce.ui.SyncActivity
 import edu.aku.hassannaqvi.smk_ce.ui.login_activity.login_view.LoginUISource
 import edu.aku.hassannaqvi.smk_ce.utils.extension.gotoActivity
-import edu.aku.hassannaqvi.smk_ce.utils.extension.obtainViewModel
 import edu.aku.hassannaqvi.smk_ce.utils.isNetworkConnected
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
@@ -38,7 +34,6 @@ import kotlinx.coroutines.launch
 class LoginActivity : AppCompatActivity(), LoginUISource {
 
     lateinit var bi: ActivityLoginBinding
-    lateinit var viewModel: LoginViewModel
     var permissionFlag = false
     var approval = false
 
@@ -47,34 +42,10 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_login)
         bi.callback = this
         bi.txtinstalldate.text = MainApp.appInfo.getAppInfo()
-        viewModel = obtainViewModel(LoginViewModel::class.java, GeneralRepository(DatabaseHelper(this)))
         showcaseBuilderView()
         checkPermissions()
 
-        /*
-        * Get login confirmation from db. If it's null that means username or password - incorrect -
-        * otherwise approve it
-        *
-        * */
-        viewModel.loginResponse.observe(this, {
-            when (it.status) {
-                SUCCESS -> {
-                    approval = true
-                    MainApp.user = it.data
-                    MainApp.admin = it.data!!.userName.contains("@")
-                    gotoActivity(MainActivity::class.java)
-                }
-                ERROR -> {
-                    setPasswordIncorrect()
-                    showProgress(false)
-                }
-                LOADING -> {
-                    lifecycleScope.launch {
-                        delay(1000)
-                    }
-                }
-            }
-        })
+
     }
 
     /*
@@ -195,8 +166,8 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
             MainApp.user = Users(username, "Test User")
             MainApp.admin = username.contains("@")
             approval = true
-        } else
-            viewModel.getLoginInfoFromDB(username, password)
+        }
+
     }
 
     /*

@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.smk_ce.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,7 @@ import java.util.List;
 
 import edu.aku.hassannaqvi.smk_ce.R;
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper;
-import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
+import edu.aku.hassannaqvi.smk_ce.models.Form;
 
 
 /**
@@ -24,10 +25,10 @@ import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
 public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> {
     Context c;
     DatabaseHelper db;
-    private List<MobileHealth> fc = Collections.emptyList();
+    private List<Form> fc = Collections.emptyList();
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public FormsAdapter(List<MobileHealth> fc, Context c) {
+    public FormsAdapter(List<Form> fc, Context c) {
         this.fc = fc;
         this.c = c;
         Log.d("TAG:count", String.valueOf(getItemCount()));
@@ -60,9 +61,9 @@ public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> 
         cardChild = db.getChildrenCardCheck(fc.get(position).getUid());*/
 
 
-        String Status = "Status  Unknown";
+        String iStatus = "Status  Unknown";
         int iColor = 0;
-        switch (fc.get(position).getMh010()) {
+        switch (fc.get(position).getIStatus()) {
             case "1":
                 holder.status.setBackgroundColor(c.getResources().getColor(R.color.colorAccent));
                 holder.status.setImageResource(R.drawable.male);
@@ -72,7 +73,7 @@ public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> 
                 holder.status.setImageResource(R.drawable.female);
                 break;
         }
-      /*  switch (fc.get(position).getIStatus()) {
+        switch (fc.get(position).getIStatus()) {
             case "1":
                 iStatus = "Complete";
                 iColor = Color.GREEN;
@@ -106,14 +107,14 @@ public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> 
                 iColor = Color.RED;
                 break;
 
-        }*/
+        }
 
-        holder.hhno.setText(fc.get(position).getMh02() + "\t\t\t | \t\t\t" + fc.get(position).getSysDate());
-        holder.father.setText(" ( " + fc.get(position).getMh08() + " )");
-        holder.cluster.setText(fc.get(position).getMh07());
-        holder.istatus.setText(fc.get(position).getMh06());
-        Log.d("TAG", "onBindViewHolder: gender " + fc.get(position).getMh010());
-        holder.sysdate.setText(fc.get(position).getMh09y() + "y \t\t\t " + (fc.get(position).getMh010().equals("1") ? "Male" : "Female"));
+        holder.hhno.setText(fc.get(position).getKhandanNumber() + "\t\t\t | \t\t\t" + fc.get(position).getSysDate());
+        holder.father.setText(" ( " + fc.get(position).getLhwName() + " )");
+        holder.cluster.setText(fc.get(position).getHfName());
+        holder.istatus.setText(iStatus);
+       // Log.d("TAG", "onBindViewHolder: gender " + fc.get(position).getMh010());
+        holder.sysdate.setText(fc.get(position).getSysDate());
         holder.status.setBackgroundColor(iColor);
 
 

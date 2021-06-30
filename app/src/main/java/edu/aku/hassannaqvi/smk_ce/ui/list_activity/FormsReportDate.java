@@ -17,12 +17,12 @@ import java.util.List;
 import edu.aku.hassannaqvi.smk_ce.R;
 import edu.aku.hassannaqvi.smk_ce.adapters.FormsAdapter;
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper;
-import edu.aku.hassannaqvi.smk_ce.models.MobileHealth;
+import edu.aku.hassannaqvi.smk_ce.models.Form;
 
 
 public class FormsReportDate extends AppCompatActivity {
     DatabaseHelper db;
-    Collection<MobileHealth> fc;
+    Collection<Form> fc;
     String sysdateToday = new SimpleDateFormat("dd-MM-yy").format(new Date());
     TextView dtFilter;
     TextView noresult;
@@ -49,7 +49,7 @@ public class FormsReportDate extends AppCompatActivity {
         fc = db.getTodayForms(sysdateToday);
 
         // specify an adapter (see also next example)
-        formsAdapter = new FormsAdapter((List<MobileHealth>) fc, this);
+        formsAdapter = new FormsAdapter((List<Form>) fc, this);
         recyclerView.setAdapter(formsAdapter);
     }
 
@@ -60,7 +60,7 @@ public class FormsReportDate extends AppCompatActivity {
             noresult.setVisibility(View.GONE);
 
             Toast.makeText(this, "updated: " + fc.size(), Toast.LENGTH_SHORT).show();
-            formsAdapter = new FormsAdapter((List<MobileHealth>) fc, this);
+            formsAdapter = new FormsAdapter((List<Form>) fc, this);
             formsAdapter.notifyDataSetChanged();
             recyclerView.setAdapter(formsAdapter);
         } else {
