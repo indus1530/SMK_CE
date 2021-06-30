@@ -66,7 +66,7 @@
             android:name=".ui.EndingActivity"
             android:label="@string/io001hint"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeEnglish1" />
+            android:theme="@style/AppThemeUrdu" />
         <activity
             android:name=".ui.MainActivity"
             android:screenOrientation="portrait"
@@ -90,47 +90,47 @@
             android:name=".ui.list_activity.FormsReportCluster"
             android:label="Forms Report"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppThemeUrdu" />
         <activity
             android:name=".ui.list_activity.FormsReportDate"
             android:label="Forms Report"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppThemeUrdu" />
         <activity
             android:name=".ui.sections.SectionLHWActivity"
             android:label="@string/lhwinfo"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeEnglish1" />
+            android:theme="@style/AppThemeUrdu" />
         <activity
             android:name=".ui.sections.SectionHHIdentifyActivity"
             android:label="@string/hhidinfo"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeEnglish1" />
+            android:theme="@style/AppThemeUrdu" />
         <activity
             android:name=".ui.sections.SectionHHVerifyActivity"
             android:label="@string/hhvinfo"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeEnglish1" />
+            android:theme="@style/AppThemeUrdu" />
         <activity
             android:name=".ui.sections.SectionMemberInfoActivity"
             android:label="@string/hhinfo"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeEnglish1" />
+            android:theme="@style/AppThemeUrdu" />
         <activity
             android:name=".ui.sections.SectionMWRAActivity"
             android:label="@string/mwratitle"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeEnglish1" />
+            android:theme="@style/AppThemeUrdu" />
         <activity
             android:name=".ui.sections.SectionAdolActivity"
             android:label="@string/adoltitle"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeEnglish1" />
+            android:theme="@style/AppThemeUrdu" />
         <activity
             android:name=".ui.sections.SectionVHCActivity"
             android:label="@string/vhctitle"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeEnglish1" />
+            android:theme="@style/AppThemeUrdu" />
     </application>
 
 </manifest>

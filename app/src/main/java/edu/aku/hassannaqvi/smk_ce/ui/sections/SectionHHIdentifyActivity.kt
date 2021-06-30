@@ -13,7 +13,6 @@ import edu.aku.hassannaqvi.smk_ce.contracts.HHIDContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.*
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
-import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySectionHhidentifyBinding
 import edu.aku.hassannaqvi.smk_ce.models.HHIDModel
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_section_hhidentify.*
@@ -24,7 +23,7 @@ class SectionHHIdentifyActivity : AppCompatActivity() {
 
     private val TAG: String = "SectionHHIdentifyActivity"
     private lateinit var db: DatabaseHelper
-    lateinit var bi: ActivitySectionHhidentifyBinding
+    lateinit var bi: edu.aku.hassannaqvi.smk_ce.databinding.ActivitySectionHhidentifyBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +36,7 @@ class SectionHHIdentifyActivity : AppCompatActivity() {
 
         bi.hhi01.setText(hhsno.toString())
         bi.hhsno.text = hhsno.toString()
-        bi.hhnoCount.setText(Arrays.toString(MainApp.randHHNo))
+        bi.hhnoCount.text = Arrays.toString(MainApp.randHHNo)
 
 
 
@@ -52,13 +51,13 @@ class SectionHHIdentifyActivity : AppCompatActivity() {
         if (updateDB()) {
             // Loop this activity to record all random households
             if (MainApp.randHHNoIndex < randHHNo.size-1) {
-                MainApp.randHHNoIndex++;
+                MainApp.randHHNoIndex++
                 finish()
                 startActivity(Intent(this, SectionHHIdentifyActivity::class.java))
             }
             // If all random households recored; go to main activity
             else {
-                MainApp.randHHNoIndex = 0;
+                MainApp.randHHNoIndex = 0
                 randHHNo = IntArray(HOUSEHOLDS_TO_RANDOMISE)
                 finish()
                 startActivity(Intent(this, MainActivity::class.java))
