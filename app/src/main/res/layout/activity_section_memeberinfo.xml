@@ -380,6 +380,7 @@
                                 android:gravity="center"
                                 android:hint="##"
                                 android:inputType="number"
+                                android:onTextChanged="@{callback::hh05yOnTextChanged}"
                                 android:maxLength="2"
                                 android:text="0"
                                 app:maxValue="99"
@@ -438,14 +439,15 @@
                         <RadioGroup
                             android:id="@+id/hh06"
                             android:layout_width="match_parent"
-                            android:checkedButton='@{!hh05y.text.toString().equals("")?Integer.parseInt(hh05y.text.toString())&lt;14?-1:0:0}'
                             android:layout_height="wrap_content">
+
+                            <!-- android:checkedButton='@{!hh05y.text.toString().equals("")?Integer.parseInt(hh05y.text.toString())&lt;14?-1:0:0}'
+                             android:enabled='@{!hh05y.text.toString().equals("")?Integer.parseInt(hh05y.text.toString())>=14:true}'-->
 
                             <RadioButton
                                 android:id="@+id/hh06a"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:enabled='@{!hh05y.text.toString().equals("")?Integer.parseInt(hh05y.text.toString())>=14:true}'
                                 android:text="@string/hh06a" />
 
                             <RadioButton
@@ -458,14 +460,12 @@
                                 android:id="@+id/hh06c"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:enabled='@{!hh05y.text.toString().equals("")?Integer.parseInt(hh05y.text.toString())>=14:true}'
                                 android:text="@string/hh06c" />
 
                             <RadioButton
                                 android:id="@+id/hh06d"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:enabled='@{!hh05y.text.toString().equals("")?Integer.parseInt(hh05y.text.toString())>=14:true}'
                                 android:text="@string/hh06d" />
 
                         </RadioGroup>

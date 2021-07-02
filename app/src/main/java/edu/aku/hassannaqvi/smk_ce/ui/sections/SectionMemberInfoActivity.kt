@@ -4,6 +4,7 @@ import android.app.Activity
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
@@ -12,6 +13,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.validatorcrawler.aliazaz.Clear
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
 import edu.aku.hassannaqvi.smk_ce.contracts.FemaleMembersContract
@@ -285,56 +287,25 @@ class SectionMemberInfoActivity : AppCompatActivity() {
     }
 
 
-    fun hh04OnTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        segregate()
-        /*Clear.clearAllFields(bi.fldGrpCVhh04, false)
-        bi.fldGrpCVmh017.setVisibility(View.GONE)
-        bi.llmh020.setVisibility(View.GONE)
-        bi.fldGrpCVmh015.setVisibility(View.GONE)
-        bi.fldGrpCVmh016.setVisibility(View.GONE)
-        bi.fldGrpCVmh018.setVisibility(View.GONE)
-        bi.llchild.setVisibility(View.GONE)
-        patientType = "General"
-        if (age >= 5110 && age < 18250 && bi.mh01002.isChecked()) {
-            bi.fldGrpCVmh017.setVisibility(View.VISIBLE)
-            bi.llmh020.setVisibility(View.VISIBLE)
-            patientType = "MWRA"
+    fun hh05yOnTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        Clear.clearAllFields(bi.fldGrpCVhh06)
+        if (TextUtils.isEmpty(bi.hh05y.text)) return
+        if (bi.hh05y.text.toString().toInt() < 14) {
+            bi.hh06a.isEnabled = false
+            bi.hh06c.isEnabled = false
+            bi.hh06d.isEnabled = false
+        } else {
+            bi.hh06a.isEnabled = true
+            bi.hh06c.isEnabled = true
+            bi.hh06d.isEnabled = true
         }
-        if (age <= 1825) {
-            bi.fldGrpCVmh015.setVisibility(View.VISIBLE)
-            bi.fldGrpCVmh016.setVisibility(View.VISIBLE)
-            bi.fldGrpCVmh018.setVisibility(View.VISIBLE)
-            bi.llchild.setVisibility(View.VISIBLE)
-            bi.mh012.setMinvalue(0.9f)
-            bi.mh012.setMaxvalue(58f)
-            bi.mh012.setMask("###.#")
-            bi.mh012.setHint("###.#")
-            patientType = "Child"
-        }*/
     }
 
-    private fun segregate() {
-
-        /*var age: Int = 0
-        Clear.clearAllFields(bi.fldGrpCVhh05, false)
-        if (TextUtils.isEmpty(bi.hh04a.text) || TextUtils.isEmpty(bi.hh04b.text) || TextUtils.isEmpty(bi.hh04c.text)) return
-
-        if ((bi.hh04a.text.toString() == "98" && bi.hh04b.text.toString() == "98" && bi.hh04c.text.toString() == "9998")) {
-            Clear.clearAllFields(bi.fldGrpCVhh05, true)
-        } else {
-            age = bi.hh04a.text.toString().toInt() + bi.hh04b.text.toString().toInt() * 29 + bi.hh04c.text.toString().toInt() * 365
-        }
-
-        if (age in 1.. 5475) {
-            Clear.clearAllFields(bi.llhh05)
-            bi.llhh05.visibility = View.GONE
-        } else {
-            bi.llhh05.visibility = View.VISIBLE
-        }*/
-    }
 
     fun calculateAge(s: CharSequence?, start: Int, before: Int, count: Int) {
-        if (!bi.hh04a.text.toString().equals("") && !bi.hh04b.text.toString().equals("") && !bi.hh04c.text.toString().equals("")) {
+        if (!bi.hh04a.text.toString().equals("") && !bi.hh04b.text.toString()
+                .equals("") && !bi.hh04c.text.toString().equals("")
+        ) {
 
 
             var dobDD = bi.hh04a.text.toString()
@@ -343,7 +314,10 @@ class SectionMemberInfoActivity : AppCompatActivity() {
             var ageinYears = 0
             var ageinMonth = 0
             var ageinDay = 0
-            if (dobYYYY.toInt() <= Calendar.getInstance().get(Calendar.YEAR) && dobYYYY.toInt() >= Calendar.getInstance().get(Calendar.YEAR) - 100) {
+            if (dobYYYY.toInt() <= Calendar.getInstance()
+                    .get(Calendar.YEAR) && dobYYYY.toInt() >= Calendar.getInstance()
+                    .get(Calendar.YEAR) - 100
+            ) {
 
                 ageinYears = Calendar.getInstance().get(Calendar.YEAR) - dobYYYY.toInt()
 
@@ -351,7 +325,10 @@ class SectionMemberInfoActivity : AppCompatActivity() {
                 if (dobMM.toInt() <= 12) {
 
                     ageinMonth = Calendar.getInstance().get(Calendar.MONTH) + 1 - dobMM.toInt()
-                    Log.d(TAG, "calculateAge: m1 $ageinMonth " + Calendar.getInstance().get(Calendar.MONTH))
+                    Log.d(
+                        TAG,
+                        "calculateAge: m1 $ageinMonth " + Calendar.getInstance().get(Calendar.MONTH)
+                    )
                     if (ageinMonth < 0) {
                         ageinYears--
                         ageinMonth = 12 + ageinMonth
