@@ -1,7 +1,6 @@
 package edu.aku.hassannaqvi.smk_ce.ui.sections
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
@@ -16,7 +15,6 @@ import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Clear
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.smk_ce.R
-import edu.aku.hassannaqvi.smk_ce.contracts.ADOLContract
 import edu.aku.hassannaqvi.smk_ce.contracts.MWRAContract
 import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.mwra
@@ -392,6 +390,8 @@ class SectionMWRAActivity : AppCompatActivity() {
             bi.mwra24b.isChecked -> "2"
             else -> "-1"
         }
+
+        mwra.setsA(mwra.sAtoString())
 
 
     }

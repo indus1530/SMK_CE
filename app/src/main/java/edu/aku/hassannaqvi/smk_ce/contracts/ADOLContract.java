@@ -21,8 +21,8 @@ public class ADOLContract {
         public static final String COLUMN_SERIAL_NO = "serialNo";
         public static final String COLUMN_USERNAME = "username";
         public static final String COLUMN_SYSDATE = "sysdate";
-        public static final String COLUMN_DISTRICT_CODE = "districtCode";
-        public static final String COLUMN_DISTRICT_NAME = "districtName";
+        public static final String COLUMN_DISTRICT_CODE = "hfCode"; //SavingHfDataOnHassanBhaiInstructions
+        public static final String COLUMN_DISTRICT_NAME = "hfName"; //SavingHfDataOnHassanBhaiInstructions
         public static final String COLUMN_TEHSIL_CODE = "tehsilCode";
         public static final String COLUMN_TEHSIL_NAME = "tehsilName";
         public static final String COLUMN_LHW_CODE = "lhwCode";

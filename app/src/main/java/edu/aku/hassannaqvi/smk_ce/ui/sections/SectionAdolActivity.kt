@@ -259,6 +259,8 @@ class SectionAdolActivity : AppCompatActivity() {
             else -> "-1"
         }
 
+        adol.setsA(adol.sAtoString())
+
     }
 
 
