@@ -25,11 +25,9 @@ import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.HHIDContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.IMContract.IMTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.LHWHouseholdContract.LHW_HOUSEHOLD_Table;
-import edu.aku.hassannaqvi.smk_ce.contracts.MHContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.MWRAContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 import edu.aku.hassannaqvi.smk_ce.models.ADOLModel;
-
 import edu.aku.hassannaqvi.smk_ce.models.Clusters;
 import edu.aku.hassannaqvi.smk_ce.models.Clusters.TableClusters;
 import edu.aku.hassannaqvi.smk_ce.models.Districts;
@@ -140,7 +138,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values);
         return newRowId;
     }
-
 
 
     //HHIDENTIFY
@@ -312,7 +309,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
     /*
      * Functions that dealing with table data
      * */
@@ -443,12 +439,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
-
     public ArrayList<FemaleMembersModel> getFamilyMembersBYUID(String lhwcode, String khandannumber) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
-        String whereClause = FemaleMembersContract.FemaleMembersTable.COLUMN_LHW_CODE + " = ? AND "+ FemaleMembersContract.FemaleMembersTable.COLUMN_KHANDAN_NUMBER + " = ? " ;
+        String whereClause = FemaleMembersContract.FemaleMembersTable.COLUMN_LHW_CODE + " = ? AND " + FemaleMembersContract.FemaleMembersTable.COLUMN_KHANDAN_NUMBER + " = ? ";
         String[] whereArgs = {lhwcode, khandannumber};
         String groupBy = null;
         String having = null;
@@ -477,8 +471,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                                 (age >= 14 && age < 50 && !notMarried && isFemale)
 
                 ) {*/
-                    FemalesByHH.add(femalemembers);
-               // }
+                FemalesByHH.add(femalemembers);
+                // }
             }
         } finally {
             if (c != null) {
@@ -490,8 +484,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return FemalesByHH;
     }
-
-
 
 
     public ArrayList<Districts> getAllDistricts() {
@@ -537,7 +529,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = null;
 
-        String whereClause = TableDistricts.COLUMN_DISTRICT_CODE +" = ?";
+        String whereClause = TableDistricts.COLUMN_DISTRICT_CODE + " = ?";
         String[] whereArgs = {dist_id};
         String groupBy = null;
         String having = null;
@@ -607,6 +599,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return all;
     }
+
+
     public ArrayList<Tehsil> getTehsilsByDistID(String dist_id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -658,7 +652,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy = HealthFacilities.TableHealthFacilities.COLUMN_HF_NAME + " ASC";
-        ArrayList<HealthFacilities> hf =  new ArrayList<>();
+        ArrayList<HealthFacilities> hf = new ArrayList<>();
         try {
             c = db.query(
                     HealthFacilities.TableHealthFacilities.TABLE_NAME,  // The table to query
@@ -683,8 +677,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return hf;
     }
 
-    public ArrayList<LHW> getLHWByHF(String hfCode){
-        Log.d(TAG, "getLHWByHF: hfcode "+ hfCode);
+    public ArrayList<LHW> getLHWByHF(String hfCode) {
+        Log.d(TAG, "getLHWByHF: hfcode " + hfCode);
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = null;
@@ -695,7 +689,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy = LHW.TableLhw.COLUMN_LHW_NAME + " ASC";
-        ArrayList<LHW> lhw =  new ArrayList<>();
+        ArrayList<LHW> lhw = new ArrayList<>();
         try {
             c = db.query(
                     LHW.TableLhw.TABLE_NAME,  // The table to query
@@ -732,7 +726,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy = HHIDContract.HHIDTable.COLUMN_LHW_NAME + " ASC";
-        ArrayList<HHIDModel> hhid =  new ArrayList<>();
+        ArrayList<HHIDModel> hhid = new ArrayList<>();
         try {
             c = db.query(
                     HHIDContract.HHIDTable.TABLE_NAME,  // The table to query
@@ -756,7 +750,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return hhid;
     }
-
 
 
     public ArrayList<UCs> getUCsByDistricts(String dCode) {
@@ -842,7 +835,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
- public Form getFormByKhandanNumber(String lhwcode, String kno) {
+    public Form getFormByKhandanNumber(String lhwcode, String kno) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = null;
@@ -850,7 +843,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String whereClause;
         whereClause =
                 FormsTable.COLUMN_LHW_CODE + "=? AND " +
-                FormsTable.COLUMN_KHANDAN_NUMBER + "=?";
+                        FormsTable.COLUMN_KHANDAN_NUMBER + "=?";
 
         String[] whereArgs = {lhwcode, kno};
 
@@ -1287,7 +1280,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
     public int syncUCs(JSONArray ucList) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TableUCs.TABLE_NAME, null, null);
@@ -1317,7 +1309,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return insertCount;
     }
-
 
 
     public int syncVersionApp(JSONObject VersionList) {
@@ -1377,7 +1368,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
-//    Sync LHW
+    //    Sync LHW
     public int syncLhw(JSONArray lhwList) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(LHW.TableLhw.TABLE_NAME, null, null);
@@ -1784,46 +1775,81 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
-
-    public void updateSyncedIMChild(String id) {
+    public void updateSyncedLHW_HOUSEHOLD(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(IMTable.COLUMN_SYNCED, true);
-        values.put(IMTable.COLUMN_SYNCED_DATE, new Date().toString());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_SYNCED, true);
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_SYNCED_DATE, new Date().toString());
 
 // Which row to update, based on the title
-        String where = IMTable.COLUMN_ID + " = ?";
+        String where = LHW_HOUSEHOLD_Table.COLUMN_ID + " = ?";
         String[] whereArgs = {id};
 
         int count = db.update(
-                IMTable.TABLE_NAME,
+                LHW_HOUSEHOLD_Table.TABLE_NAME,
                 values,
                 where,
                 whereArgs);
     }
 
-    public void updateSyncedMobileHealth(String id) {
+    public void updateSyncedHHID(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(MHContract.MHTable.COLUMN_SYNCED, true);
-        values.put(MHContract.MHTable.COLUMN_SYNCED_DATE, new Date().toString());
+        values.put(HHIDContract.HHIDTable.COLUMN_SYNCED, true);
+        values.put(HHIDContract.HHIDTable.COLUMN_SYNCED_DATE, new Date().toString());
 
 // Which row to update, based on the title
-        String where = MHContract.MHTable.COLUMN_ID + " = ?";
+        String where = HHIDContract.HHIDTable.COLUMN_ID + " = ?";
         String[] whereArgs = {id};
 
         int count = db.update(
-                MHContract.MHTable.TABLE_NAME,
+                HHIDContract.HHIDTable.TABLE_NAME,
                 values,
                 where,
                 whereArgs);
     }
 
+    public void updateSyncedADOL(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
 
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(ADOLContract.ADOLTable.COLUMN_SYNCED, true);
+        values.put(ADOLContract.ADOLTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = ADOLContract.ADOLTable.COLUMN_ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                ADOLContract.ADOLTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+    public void updateSyncedMWRA(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(MWRAContract.MWRATable.COLUMN_SYNCED, true);
+        values.put(MWRAContract.MWRATable.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = MWRAContract.MWRATable.COLUMN_ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                MWRAContract.MWRATable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
 
 
     public ArrayList<Form> getUnclosedForms() {
@@ -1877,7 +1903,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-
     public int getChildrenPhotoCheck(String UID) {
         String countQuery = "SELECT  * FROM " + IMTable.TABLE_NAME +
                 " WHERE " + IMTable.COLUMN_UUID + " = '" + UID +
@@ -1902,7 +1927,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return count;
     }
-
 
 
     public ArrayList<Cursor> getData(String Query) {
