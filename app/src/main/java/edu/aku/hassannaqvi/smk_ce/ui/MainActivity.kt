@@ -29,6 +29,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var db: DatabaseHelper
     lateinit var bi: ActivityMainBinding
     private var exit = false
     private var sysdateToday = SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).format(Date())
@@ -36,11 +37,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        db = MainApp.appInfo.dbHelper
         bi = DataBindingUtil.setContentView(this, R.layout.activity_main)
         bi.callback = this
         setSupportActionBar(bi.toolbar)
         if (MainApp.admin) bi.adminSection.visibility = View.VISIBLE
-
+        if(MainApp.user.dist_id.length>0) {
+            bi.username.text = "Welcome," + MainApp.user.fullname + "! \r\n You're working in '" + db.getDistrictNameByID(MainApp.user.dist_id) + "' today.";
+        } else {
+            bi.username.text = MainApp.user.userName +" is invalid User"
+        }
 
 
 

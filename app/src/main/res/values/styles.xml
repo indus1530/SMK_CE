@@ -11,7 +11,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:spinnerStyle">@style/spinner</item>
+        <item name="android:spinnerStyle">@style/spinnerStyle</item>
         <item name="android:actionBarStyle">@style/topBarStyle</item>
         <item name="android:textViewStyle">@style/labels</item>
         <item name="android:editTextStyle">@style/textInput</item>
@@ -35,13 +35,44 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="fontFamily">@font/roboto</item>
         <item name="android:layoutDirection">ltr</item>
-        <item name="android:actionBarStyle">@style/topBarStyle</item>
+        <item name="android:actionBarStyle">@style/ToolbarTheme</item>
+        <item name="android:toolbarStyle">@style/ToolbarTheme</item>
+        <item name="actionMenuTextAppearance">@style/home_menu_style</item>
+        <item name="android:actionMenuTextAppearance" >@style/home_menu_style</item>
+
     </style>
 
     <style name="AppThemeUrdu" parent="Theme.AppCompat.Light.NoActionBar">
 
         <item name="android:fontFamily">@font/urdu_nastaleeq</item>
         <item name="android:textSize">16sp</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="spinnerStyle">@style/spinnerStyle</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:scrollViewStyle">@style/BackgroundStyle</item>
+        <item name="android:spinnerStyle">@style/spinnerStyle</item>
+        <item name="android:actionBarStyle">@style/ToolbarTheme</item>
+        <item name="android:textViewStyle">@style/labels</item>
+        <item name="android:editTextStyle">@style/textInput</item>
+        <item name="radioButtonStyle">@style/radiobutton</item>
+        <item name="checkboxStyle">@style/checkbox</item>
+        <item name="hintEnabled">false</item>
+        <item name="android:buttonStyle">@style/button</item>
+        <item name="android:textColorHint">@color/grayLight</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:fillAfter">true</item>
+        <item name="android:enterFadeDuration">600</item>
+        <item name="android:exitFadeDuration">200</item>
+        <item name="android:layoutDirection">rtl</item>
+        <item name="android:animateLayoutChanges">false</item>
+
+    </style>
+
+    <style name="Theme.Sindhi" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="android:fontFamily">@font/urdu_nastaleeq</item>
+        <item name="android:textSize">18sp</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="spinnerStyle">@style/spinnerStyle</item>
@@ -74,7 +105,6 @@
         <item name="android:textColorSecondary">@color/white</item>
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:typeface">sans</item>
-        <item name="android:fontFamily">@font/urdu_nastaleeq</item>
         <item name="android:maxHeight">@dimen/abc_action_bar_default_height_material</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="titleTextAppearance">@style/Widget.AppCompat.Toolbar</item>
@@ -86,7 +116,6 @@
         <item name="android:textSize">16sp</item>
         <item name="android:layout_marginTop">24dp</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:fontFamily">@font/roboto</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingStart">15dp</item>
         <item name="android:paddingEnd">4dp</item>
@@ -129,6 +158,8 @@
         <item name="android:paddingTop">6dp</item>
         <item name="android:paddingBottom">6dp</item>
         <item name="android:minHeight">52dp</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:imeOptions">actionDone</item>
         <item name="android:singleLine">true</item>
         <item name="android:focusable">true</item>
@@ -176,33 +207,12 @@
         <item name="android:elevation">1dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:typeface">sans</item>
+        <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textColor">@color/gray</item>
         <!--        <item name="android:background">@drawable/background_grad</item>-->
     </style>
 
-    <style name="spinner" parent="Widget.AppCompat.Spinner">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">#ff0000</item>
-        <item name="android:background">#efefef</item>
-        <item name="android:spinnerItemStyle">@style/spinnerItemStyle</item>
-        <item name="android:spinnerDropDownItemStyle">@style/spinnerDropDownItemStyle</item>
 
-    </style>
-
-    <style name="spinnerDropDownItemStyle">
-        <item name="android:padding">4dp</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">#FFFFFF</item>
-    </style>
-
-    <style name="spinnerItemStyle">
-        <item name="android:padding">4dp</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">#FFFFFF</item>
-        <item name="android:text">SpinnerItemText</item>
-    </style>
 
     <!--Card View Start-->
     <style name="cardView">
@@ -309,11 +319,15 @@
         <item name="android:minDate">01/01/2000</item>
     </style>
 
-    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-        <!-- android:textColorPrimary is the color of the title text in the Toolbar  -->
-        <item name="android:textColorPrimary">@color/white</item>
-        <!-- actionMenuTextColor is the color of the text of action (menu) items  -->
-        <item name="actionMenuTextColor">@color/white</item>
+    <style name="ToolbarTheme" parent="Widget.AppCompat.Toolbar">
+
+        <!-- android:textColorPrimary is the color of the title text in the Toolbar<item name="android:textColorPrimary">@color/white</item>
+     actionMenuTextColor is the color of the text of action (menu) items
+        <item name="android:actionMenuTextColor">@color/black</item> -->
+        <item name="android:actionMenuTextAppearance">@style/Toolbar.MenuTextStyle</item>
+        <item name="actionMenuTextAppearance">@style/Toolbar.MenuTextStyle</item>
+        <item name="flow_wrapMode">chain</item>
+        <item name="flow_maxElementsWrap">45</item>
         <!-- Tints the input fields like checkboxes and text fields -->
         <item name="colorAccent">@color/colorAccent</item>
         <!-- Applies to views in their normal state. -->
@@ -323,37 +337,107 @@
         <!-- Applied to framework control highlights (i.e ripples or list selectors) -->
         <item name="colorControlHighlight">@color/colorAccent</item>
 
-        <!-- Enable these below if you want clicking icons to trigger a ripple effect -->
-        <!--
+<!--
+        <item name="android:actionMenuTextAppearance">@style/Toolbar.MenuTextStyle</item>
+-->
+        <item name="android:subtitleTextAppearance">@style/Toolbar.SubtitleText</item>
+        <item name="android:titleTextAppearance">@style/Toolbar.TitleText</item>
         <item name="selectableItemBackground">?android:selectableItemBackground</item>
         <item name="selectableItemBackgroundBorderless">?android:selectableItemBackground</item>
-        -->
+        <item name="android:actionMenuTextColor">#24598a</item>
     </style>
 
     <!-- This configures the styles for the title within the Toolbar  -->
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+
         <item name="android:background">@color/colorPrimary</item>
     </style>
     <style name="Toolbar.SubtitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
         <item name="android:textSize">11sp</item>
         <item name="android:textStyle">italic</item>
+        <item name="android:textColor">@color/grayLight</item>
+
+    </style>
+    <style name="Theme.PopupMenu" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:itemBackground">@color/white</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAppearance">@style/Toolbar.MenuTextStyle</item>
+
+    </style>
+ <style name="Toolbar.MenuTextStyle"
+        parent="TextAppearance.AppCompat.Widget.ActionBar.Menu">
+     <item name="android:textSize">16sp</item>
+     <item name="android:textStyle">normal</item>
+     <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="spinnerStyle" parent="Widget.AppCompat.Spinner">
+    <style name="home_menu_style" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
     </style>
-    <style name="customtheme" parent="@android:style/Theme.Light">
+    <style name="spinnerStyle" parent="Widget.AppCompat.Spinner">
+
         <item name="android:spinnerItemStyle">@style/SpinnerItem</item>
         <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItem</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layoutDirection">ltr</item>
+        <item name="android:fontFamily">@font/roboto</item>
+
+
+
+        <item name="android:background">@color/white</item>
+        <item name="android:popupBackground">@color/white</item>
+
+
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:elevation">1dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">6dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:minHeight">52dp</item>
+        <item name="android:imeOptions">actionDone</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textDirection">ltr</item>
+
     </style>
     <style name="SpinnerItem" parent="TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
         <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:text">SpinnerItemText</item>
+        <item name="android:layoutDirection">ltr</item>
+        <item name="android:textDirection">ltr</item>
+
 
     </style>
     <style name="SpinnerDropDownItem" parent="Widget.AppCompat.DropDownItem.Spinner">
         <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layoutDirection">ltr</item>
+        <item name="android:textDirection">ltr</item>
+        <item name="android:fontFamily">@font/roboto</item>
+
     </style>
+
+
 
 
 </resources>

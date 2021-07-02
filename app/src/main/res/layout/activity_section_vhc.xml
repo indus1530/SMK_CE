@@ -28,6 +28,7 @@
             android:background="@color/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ToolbarTheme"
+            app:title="@string/vhc_mainheading"
             app:subtitle="@string/vhchint"
             app:titleTextColor="@color/white"
             app:subtitleTextColor="@color/whiteOverlay"

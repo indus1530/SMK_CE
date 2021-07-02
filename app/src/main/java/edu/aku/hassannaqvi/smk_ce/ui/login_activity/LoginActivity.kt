@@ -5,13 +5,13 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.text.TextUtils
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.lifecycleScope
 import com.github.amlcurran.showcaseview.ShowcaseView
 import com.github.amlcurran.showcaseview.targets.ViewTarget
 import com.nabinbhandari.android.permissions.PermissionHandler
@@ -23,16 +23,14 @@ import edu.aku.hassannaqvi.smk_ce.databinding.ActivityLoginBinding
 import edu.aku.hassannaqvi.smk_ce.models.Users
 import edu.aku.hassannaqvi.smk_ce.ui.MainActivity
 import edu.aku.hassannaqvi.smk_ce.ui.SyncActivity
-import edu.aku.hassannaqvi.smk_ce.ui.login_activity.login_view.LoginUISource
 import edu.aku.hassannaqvi.smk_ce.utils.extension.gotoActivity
 import edu.aku.hassannaqvi.smk_ce.utils.isNetworkConnected
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 
-class LoginActivity : AppCompatActivity(), LoginUISource {
+class LoginActivity : AppCompatActivity() {
 
+
+    private lateinit var db: DatabaseHelper
     lateinit var bi: ActivityLoginBinding
     var permissionFlag = false
     var approval = false
@@ -44,7 +42,7 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
         bi.txtinstalldate.text = MainApp.appInfo.getAppInfo()
         showcaseBuilderView()
         checkPermissions()
-
+        db = MainApp.appInfo.dbHelper
 
     }
 
@@ -77,7 +75,7 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     * 1. Check the permissions @checkPermissions
     * 3. If both of above conditions are okay then start coroutine to check login and proceed to MainActivity
     * */
-    fun onLoginClick(v: View) {
+    fun onLoginClick(view: View) {
         if (!permissionFlag)
             checkPermissions()
         else {
@@ -85,21 +83,25 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
             val username = bi.username.text.toString()
             val password = bi.password.text.toString()
             showProgress(true)
-            lifecycleScope.launch {
-                delay(1000)
                 if (!formValidation(username, password)) {
-                    this.cancel()
                     showProgress(false)
                 }
-                val job = launch {
-                    isLoginApproved(username, password)
-                }
-                job.join()
-                if (approval) {
+
+
+
+                if (isLoginApproved(username, password)) {
                     showProgress(false)
                     gotoActivity(MainActivity::class.java)
+                } else {
+                    val handler = Handler()
+                    handler.postDelayed(Runnable { // Do something after 5s = 5000ms
+
+                    }, 5000)
+                    showProgress(false)
+                    Toast.makeText(this, "User not found or Password does not match!", Toast.LENGTH_LONG).show()
+                    setPasswordIncorrect("User not found or Password does not match!")
                 }
-            }
+
 
         }
     }
@@ -107,7 +109,7 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     /*
     * Visible progress dialog and hide whole layout when @param{show} is true and vice versa
     * */
-    override fun showProgress(show: Boolean) {
+    fun showProgress(show: Boolean) {
         val shortAnimTime = resources.getInteger(android.R.integer.config_shortAnimTime)
 
         bi.loginForm.visibility = if (show) View.GONE else View.VISIBLE
@@ -130,9 +132,9 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     /*
     * Validate username and password fields
     * */
-    override fun formValidation(username: String, password: String): Boolean {
+   fun formValidation(username: String, password: String): Boolean {
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+        if (password.length < 8) {
             bi.password.error = "Invalid Password"
             bi.password.requestFocus()
             return false
@@ -151,7 +153,7 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     /*
     * Set error on password
     * */
-    override fun setPasswordIncorrect(error: String?) {
+    fun setPasswordIncorrect(error: String?) {
         bi.password.error = error ?: "Incorrect Password"
         bi.password.requestFocus()
     }
@@ -160,14 +162,15 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     * @isLoginApproved takes @params{username & password} and to see if it's testing user else -
     * pass it to viewmodel @getLoginInfoFromDB to check whether it exist in db or not
     * */
-    override suspend fun isLoginApproved(username: String, password: String) {
+    fun isLoginApproved(username: String, password: String): Boolean {
         if ((username == "dmu@aku" && password == "aku?dmu") ||
                 (username == "test1234" && password == "test1234")) {
             MainApp.user = Users(username, "Test User")
             MainApp.admin = username.contains("@")
-            approval = true
-        }
+        } else
+            MainApp.user  = db.getLoginUser(username, password)
 
+        return MainApp.user != null
     }
 
     /*
@@ -206,5 +209,6 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
             }
         })
     }
+
 
 }

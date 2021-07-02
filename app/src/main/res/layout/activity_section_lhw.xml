@@ -31,6 +31,7 @@
             android:theme="@style/ToolbarTheme"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:subtitleTextAppearance="@style/Toolbar.SubtitleText"
+            app:title="@string/lhwandhouseholdidentification_mainheading"
             app:titleTextAppearance="@style/Toolbar.TitleText" />
 
 
@@ -80,8 +81,11 @@
                             android:id="@+id/lhw01"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="@string/lhw01"
+                            android:layoutDirection="ltr"
                             android:minHeight="56dp"
-                            android:hint="@string/lhw01" />
+                            android:fontFamily="@font/roboto"
+                            android:textDirection="ltr" />
 
                     </LinearLayout>
 
@@ -241,6 +245,8 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:fontFamily="@font/roboto"
+                                android:textAlignment="viewStart"
                                 android:text="@string/lhwphoto" />
 
                         </LinearLayout>

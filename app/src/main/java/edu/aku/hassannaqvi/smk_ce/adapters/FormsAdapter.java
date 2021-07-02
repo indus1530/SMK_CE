@@ -109,9 +109,9 @@ public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> 
 
         }
 
-        holder.hhno.setText(fc.get(position).getKhandanNumber() + "\t\t\t | \t\t\t" + fc.get(position).getSysDate());
+        holder.cluster.setText(fc.get(position).getKhandanNumber());
         holder.father.setText(" ( " + fc.get(position).getLhwName() + " )");
-        holder.cluster.setText(fc.get(position).getHfName());
+        holder.hhno.setText(fc.get(position).getHfName());
         holder.istatus.setText(iStatus);
        // Log.d("TAG", "onBindViewHolder: gender " + fc.get(position).getMh010());
         holder.sysdate.setText(fc.get(position).getSysDate());

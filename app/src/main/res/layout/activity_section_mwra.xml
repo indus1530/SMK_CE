@@ -30,6 +30,8 @@
             android:theme="@style/ToolbarTheme"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:subtitleTextAppearance="@style/Toolbar.SubtitleText"
+            app:title="@string/mwra_mainheading"
+            app:subtitle="@string/mwrahint"
             app:titleTextAppearance="@style/Toolbar.TitleText" />
 
 
