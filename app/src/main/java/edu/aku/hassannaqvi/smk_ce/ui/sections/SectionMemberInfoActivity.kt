@@ -8,8 +8,8 @@ import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.CompoundButton
 import android.widget.EditText
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -34,8 +34,8 @@ class SectionMemberInfoActivity : AppCompatActivity() {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_memeberinfo)
         bi.callback = this
         setSupportActionBar(bi.toolbar)
+        bi.hh01.text = (MainApp.fmCount + 1).toString()
         setupSkips()
-        bi.hh01.setText((MainApp.fmCount + 1).toString())
 
     }
 
@@ -47,27 +47,42 @@ class SectionMemberInfoActivity : AppCompatActivity() {
             txtItem.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    bi.hh05y.text = null
-                    bi.hh05m.text = null
-                    bi.hh04c.text = null
+                    if (txtItem.text.toString().trim().isNotEmpty()) {
+                        bi.hh05y.text = null
+                        bi.hh05m.text = null
+                        bi.hh04c.text = null
+                    }
                 }
 
                 override fun afterTextChanged(s: Editable) {}
             })
         }
 
-        // android:visibility="@{hh03a.checked || hh06b.checked?View.GONE:View.VISIBLE}"
+        bi.hh03.setOnCheckedChangeListener { radioGroup: RadioGroup?, i: Int ->
+            Clear.clearAllFields(bi.fldGrpCVhh06)
+            Clear.clearAllFields(bi.fldGrpCVhh07)
+            Clear.clearAllFields(bi.fldGrpCVhh10)
+            bi.fldGrpCVhh06.visibility = View.VISIBLE
+            bi.fldGrpCVhh07.visibility = View.VISIBLE
+            bi.hh10a.isEnabled = true
+            if (i == bi.hh03a.id) {
+                bi.fldGrpCVhh06.visibility = View.GONE
+                bi.fldGrpCVhh07.visibility = View.GONE
+                bi.hh10a.isEnabled = false
+            }
+        }
 
-        // Male
-        bi.hh03a.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
-            bi.hh07.text = null
-            bi.hh08.text = null
-        })
-        // Unmarried
-        bi.hh06b.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
-            bi.hh07.text = null
-            bi.hh08.text = null
-        })
+        bi.hh06.setOnCheckedChangeListener { radioGroup: RadioGroup?, i: Int ->
+            Clear.clearAllFields(bi.fldGrpCVhh06)
+            Clear.clearAllFields(bi.fldGrpCVhh07)
+            bi.fldGrpCVhh06.visibility = View.VISIBLE
+            bi.fldGrpCVhh07.visibility = View.VISIBLE
+            if (i == bi.hh06b.id) {
+                bi.fldGrpCVhh06.visibility = View.GONE
+                bi.fldGrpCVhh07.visibility = View.GONE
+            }
+
+        }
     }
 
 
@@ -275,9 +290,17 @@ class SectionMemberInfoActivity : AppCompatActivity() {
             return false
         }
 
-        if (bi.hh08.text.toString() < bi.hh07.text.toString()) {
-            Validator.emptyCustomTextBox(this, bi.hh08, "Pregnancies cannot be less than children in [Q. HH07].")
-            return false
+        if (bi.hh07.text.toString().trim().isNotEmpty() && bi.hh08.text.toString().trim()
+                .isNotEmpty()
+        ) {
+            if (bi.hh08.text.toString() < bi.hh07.text.toString()) {
+                Validator.emptyCustomTextBox(
+                    this,
+                    bi.hh08,
+                    "Pregnancies cannot be less than children in [Q. HH07]."
+                )
+                return false
+            }
         }
         return true
     }

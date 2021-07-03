@@ -50,10 +50,10 @@
                     android:id="@+id/fldGrpCVhh01"
                     style="@style/cardView">
 
-                    <LinearLayout
+                    <!--<LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical">-->
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -68,24 +68,32 @@
                                 android:text="@string/Q_hh01" />
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="@string/hh01" />
+
+                            <TextView
+                                android:id="@+id/hh01"
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
                                 android:text="@string/hh01" />
 
                         </LinearLayout>
 
-                        <com.edittextpicker.aliazaz.EditTextPicker
-                            android:id="@+id/hh01"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/hh01"
-                            android:inputType="number"
-                            android:maxLength="3"
-                            app:maxValue="100"
-                            app:minValue="1"
-                            app:type="range" />
+                    <!-- <com.edittextpicker.aliazaz.EditTextPicker
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:hint="@string/hh01"
+                         android:inputType="number"
+                         android:maxLength="3"
+                         app:maxValue="100"
+                         app:minValue="1"
+                         app:type="range" />
 
-                    </LinearLayout>
+                 </LinearLayout>-->
 
                 </androidx.cardview.widget.CardView>
 
@@ -115,7 +123,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-
                                 android:text="@string/hh02" />
 
                         </LinearLayout>
@@ -221,7 +228,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
                             android:orientation="horizontal">
 
                             <TextView
@@ -229,7 +235,6 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:layout_margin="2dp"
                                 android:gravity="center"
                                 android:text="@string/hh04a" />
 
@@ -238,7 +243,6 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:layout_margin="2dp"
                                 android:gravity="center"
                                 android:text="@string/hh04b" />
 
@@ -247,7 +251,6 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:layout_margin="2dp"
                                 android:gravity="center"
                                 android:text="@string/hh04c" />
 
@@ -256,7 +259,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
                             android:orientation="horizontal">
 
                             <com.edittextpicker.aliazaz.EditTextPicker
@@ -343,7 +345,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
                             android:orientation="horizontal">
 
                             <TextView
@@ -352,7 +353,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:layout_margin="2dp"
                                 android:text="@string/hh05y" />
 
                             <TextView
@@ -361,7 +361,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:layout_margin="2dp"
                                 android:text="@string/hh05m" />
 
                         </LinearLayout>
@@ -369,7 +368,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
                             android:orientation="horizontal">
 
                             <com.edittextpicker.aliazaz.EditTextPicker
@@ -478,7 +476,6 @@
                 <!-- hh07  Input-Numeric   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVhh07"
-                    android:visibility="@{hh03a.checked || (hh06b.checked &amp;&amp; hh03b.checked)?View.GONE:View.VISIBLE}"
                     style="@style/cardView">
 
                     <LinearLayout
@@ -513,7 +510,6 @@
                             android:hint="##"
                             android:inputType="number"
                             android:maxLength="2"
-                            android:text='@{hh03a.checked || (hh06b.checked &amp;&amp; hh03b.checked)?"":null}'
                             app:maxValue="10"
                             app:minValue="0"
                             app:type="range" />
@@ -525,7 +521,6 @@
 
                 <!-- hh08  Input-Numeric   -->
                 <androidx.cardview.widget.CardView
-                    android:visibility="@{hh03a.checked || (hh06b.checked &amp;&amp; hh03b.checked)?View.GONE:View.VISIBLE}"
                     android:id="@+id/fldGrpCVhh08"
                     style="@style/cardView">
 
@@ -560,7 +555,6 @@
                             android:gravity="center"
                             android:hint="##"
                             android:inputType="number"
-                            android:text='@{hh03a.checked || (hh06b.checked &amp;&amp; hh03b.checked)?"":null}'
                             android:maxLength="2"
                             app:maxValue="10"
                             app:minValue="0"
@@ -722,14 +716,13 @@
                         <RadioGroup
                             android:id="@+id/hh10"
                             android:layout_width="match_parent"
-                            android:checkedButton="@{hh03a.checked?-1:0}"
                             android:layout_height="wrap_content">
+                            <!--android:checkedButton="@{hh03a.checked?-1:0}"-->
 
                             <RadioButton
                                 android:id="@+id/hh10a"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:enabled="@{hh03b.checked}"
                                 android:text="@string/hh10a" />
 
                             <RadioButton
