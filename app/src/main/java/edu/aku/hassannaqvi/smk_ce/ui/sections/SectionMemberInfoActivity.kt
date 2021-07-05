@@ -79,7 +79,7 @@ class SectionMemberInfoActivity : AppCompatActivity() {
             Clear.clearAllFields(bi.fldGrpCVhh08)
             bi.fldGrpCVhh07.visibility = View.VISIBLE
             bi.fldGrpCVhh08.visibility = View.VISIBLE
-            if (i == bi.hh06b.id) {
+            if (i == bi.hh06b.id || bi.hh03a.isChecked) {
                 bi.fldGrpCVhh07.visibility = View.GONE
                 bi.fldGrpCVhh08.visibility = View.GONE
             }
