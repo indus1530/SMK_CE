@@ -59,29 +59,30 @@ class SectionMemberInfoActivity : AppCompatActivity() {
         }
 
         bi.hh03.setOnCheckedChangeListener { radioGroup: RadioGroup?, i: Int ->
-            Clear.clearAllFields(bi.fldGrpCVhh06)
-            Clear.clearAllFields(bi.fldGrpCVhh07)
-            Clear.clearAllFields(bi.fldGrpCVhh10)
-            bi.fldGrpCVhh06.visibility = View.VISIBLE
-            bi.fldGrpCVhh07.visibility = View.VISIBLE
-            bi.hh10a.isEnabled = true
             if (i == bi.hh03a.id) {
                 bi.fldGrpCVhh06.visibility = View.GONE
                 bi.fldGrpCVhh07.visibility = View.GONE
                 bi.hh10a.isEnabled = false
+            } else {
+                Clear.clearAllFields(bi.fldGrpCVhh06)
+                Clear.clearAllFields(bi.fldGrpCVhh07)
+                Clear.clearAllFields(bi.fldGrpCVhh10)
+                bi.fldGrpCVhh06.visibility = View.VISIBLE
+                bi.fldGrpCVhh07.visibility = View.VISIBLE
+                bi.hh10a.isEnabled = true
             }
         }
 
         bi.hh06.setOnCheckedChangeListener { radioGroup: RadioGroup?, i: Int ->
-            Clear.clearAllFields(bi.fldGrpCVhh06)
-            Clear.clearAllFields(bi.fldGrpCVhh07)
-            bi.fldGrpCVhh06.visibility = View.VISIBLE
-            bi.fldGrpCVhh07.visibility = View.VISIBLE
             if (i == bi.hh06b.id) {
                 bi.fldGrpCVhh06.visibility = View.GONE
                 bi.fldGrpCVhh07.visibility = View.GONE
+            } else {
+                Clear.clearAllFields(bi.fldGrpCVhh06)
+                Clear.clearAllFields(bi.fldGrpCVhh07)
+                bi.fldGrpCVhh06.visibility = View.VISIBLE
+                bi.fldGrpCVhh07.visibility = View.VISIBLE
             }
-
         }
     }
 
