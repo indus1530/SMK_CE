@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -105,7 +105,7 @@ android {
         includeInApk false
         includeInBundle false
     }
-    buildToolsVersion '29.0.3'
+    buildToolsVersion '30.0.3'
 }
 
 
@@ -127,7 +127,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.6.0'
 
     //GSON
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.8.7'
 
     //Ali mask
     implementation 'com.github.AliAzaz:Edittext-Library:2.0.0'

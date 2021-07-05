@@ -44,6 +44,7 @@ import edu.aku.hassannaqvi.smk_ce.CONSTANTS;
 import edu.aku.hassannaqvi.smk_ce.R;
 import edu.aku.hassannaqvi.smk_ce.adapters.SyncListAdapter;
 import edu.aku.hassannaqvi.smk_ce.contracts.ADOLContract;
+import edu.aku.hassannaqvi.smk_ce.contracts.FemaleMembersContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.HHIDContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.LHWHouseholdContract;
@@ -169,6 +170,11 @@ public class SyncActivity extends AppCompatActivity {
                 uploadTables.add(new SyncModel(MWRAContract.MWRATable.TABLE_NAME));
                 MainApp.uploadData.add(db.getUnsyncedMwra());
 
+                // FemaleMembers
+                uploadTables.add(new SyncModel(FemaleMembersContract.FemaleMembersTable.TABLE_NAME));
+                MainApp.uploadData.add(db.getUnsyncedFemaleMembers());
+
+                MainApp.downloadData = new String[uploadTables.size()];
                 setAdapter(uploadTables);
                 BeginUpload();
                 break;
@@ -424,7 +430,8 @@ public class SyncActivity extends AppCompatActivity {
                     if (workInfo.getState() != null &&
                             workInfo.getState() == WorkInfo.State.SUCCEEDED) {
 
-                        String result = workInfo.getOutputData().getString("message");
+                       // String result = workInfo.getOutputData().getString("message");
+                        String result = MainApp.downloadData[position];
 
                         int sSynced = 0;
                         int sDuplicate = 0;

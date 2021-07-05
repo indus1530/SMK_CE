@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,7 +30,7 @@
                     android:lineHeight="20dp"
                     android:padding="0dp"
                     android:paddingStart="24dp"
-                    android:text="Households By Date"
+                    android:text="Households by LHW"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -43,7 +42,7 @@
                     android:gravity="top"
                     android:padding="0dp"
                     android:paddingStart="24dp"
-                    android:text="Please select a date to search households"
+                    android:text="Please enter a Camp No. to search patients"
                     android:textColor="#7f7f7f"
                     android:textSize="14dp"
                     android:textStyle="normal" />
@@ -55,15 +54,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                     android:id="@+id/dtFilter"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="0dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
-                    app:dateFormat="yyyy-MM-dd"
-                    app:theme="@style/MyDatePickerDialogTheme" />
+                     />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -86,8 +84,8 @@
         android:layout_height="match_parent"
         android:layout_margin="12dp"
         android:scrollbars="vertical"
+        android:visibility="visible"
         tools:listitem="@layout/pendingform_layout" />
-
 
     <TextView
         android:id="@+id/noresult"

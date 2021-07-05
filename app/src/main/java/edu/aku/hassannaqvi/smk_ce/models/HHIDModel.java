@@ -320,6 +320,7 @@ public class HHIDModel extends BaseObservable {
 
     public HHIDModel setsA(String sA) {
         this.sA = sA;
+        sAHydrate(sA);
         return this;
     }
 

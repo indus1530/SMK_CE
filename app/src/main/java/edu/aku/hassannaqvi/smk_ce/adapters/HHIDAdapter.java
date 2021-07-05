@@ -14,31 +14,31 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 import edu.aku.hassannaqvi.smk_ce.R;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper;
-import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
 import edu.aku.hassannaqvi.smk_ce.models.Form;
+import edu.aku.hassannaqvi.smk_ce.models.HHIDModel;
 import edu.aku.hassannaqvi.smk_ce.ui.FemaleMembersActivity;
-import edu.aku.hassannaqvi.smk_ce.ui.sections.SectionMWRAActivity;
 
 
 /**
  * Created by hassan.naqvi on 8/1/2016.
  */
-public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> {
+public class HHIDAdapter extends RecyclerView.Adapter<HHIDAdapter.ViewHolder> {
     Context c;
     DatabaseHelper db;
-    private List<Form> fc = Collections.emptyList();
+    private List<HHIDModel> hHIDModel = Collections.emptyList();
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public FormsAdapter(List<Form> fc, Context c) {
-        this.fc = fc;
+    public HHIDAdapter(List<HHIDModel> hHIDModel, Context c) {
+        this.hHIDModel = hHIDModel;
         this.c = c;
-        Log.d("TAG:count", String.valueOf(getItemCount()));
+  //      Log.d("TAG:count", String.valueOf(getItemCount()));
     }
 
     // Create new views (invoked by the layout manager)
@@ -67,19 +67,23 @@ public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> 
         int cardChild = 0;
         cardChild = db.getChildrenCardCheck(fc.get(position).getUid());*/
 
-        ArrayList<FemaleMembersModel> members = new ArrayList<>();
-        members = db.getFamilyMembersBYUID(fc.get(position).getLhwCode(), fc.get(position).getKhandanNumber());
+       /* Collection<HHIDModel> hhids = new ArrayList<>();
+        hhids = db.getHHIDByLHW(hHIDModel.get(position).getLhwCode());*/
 
-        int mStatus = 0;
-        for (FemaleMembersModel member : members
+
+        Form forms = db.getFormByKhandanNumber(hHIDModel.get(position).getLhwCode(), hHIDModel.get(position).getKhandanNumber());
+
+/*        int mStatus = 0;
+        for (Form form : forms
              ) {
-            mStatus += member.getStatus().equals("1")?1:0;
+            mStatus += form.getIStatus().equals("1")?1:0;
 
         }
-
-        String iStatus = "Status  Unknown";
+*/
+        String iStatus;
+        
         int iColor = 0;
-        switch (fc.get(position).getIStatus()) {
+       /*switch (forms.getIStatus()) {
             case "1":
                 holder.status.setBackgroundColor(c.getResources().getColor(R.color.colorAccent));
                 holder.status.setImageResource(R.drawable.male);
@@ -88,8 +92,8 @@ public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> 
                 holder.status.setBackgroundColor(c.getResources().getColor(R.color.colorPrimary));
                 holder.status.setImageResource(R.drawable.female);
                 break;
-        }
-        switch (fc.get(position).getIStatus()) {
+        }*/
+        switch (forms.getIStatus()) {
             case "1":
                 iStatus = "Complete";
                 iColor = Color.GREEN;
@@ -119,30 +123,31 @@ public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> 
                 iColor = Color.RED;
                 break;
             default:
-                iStatus = "Open Form";
+                iStatus = "Open LHW";
                 iColor = Color.RED;
                 break;
+        
 
         }
 
-        holder.cluster.setText(fc.get(position).getKhandanNumber() );
-        holder.father.setText(" ( " + fc.get(position).getHhv02a() + " )");
-        holder.hhno.setText(fc.get(position).getHfName() +" | " +fc.get(position).getLhwName());
+        holder.cluster.setText(hHIDModel.get(position).getKhandanNumber() );
+        holder.father.setText(" ( " + hHIDModel.get(position).getHhi03() + " )");
+        holder.hhno.setText(hHIDModel.get(position).getHfName() +" | " + hHIDModel.get(position).getLhwName());
         holder.istatus.setText(iStatus);
        // Log.d("TAG", "onBindViewHolder: gender " + fc.get(position).getMh010());
-        holder.sysdate.setText(fc.get(position).getSysDate()+"\t\t-\t\tMember: "+mStatus+"/"+members.size());
+        holder.sysdate.setText(hHIDModel.get(position).getSysDate()/*+"\t\t-\t\tMember: "+mStatus+"/"+hhids.size()*/);
         holder.status.setBackgroundColor(iColor);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainApp.form = new Form();
-                MainApp.form = db.getFormByKhandanNumber(fc.get(position).getLhwCode(),fc.get(position).getKhandanNumber());
+/*                MainApp.HHIDModel = new HHIDModel();
+                MainApp.HHIDModel = db.getHHIDModelByKhandanNumber(hHIDModel.get(position).getHHIDModelCode(), hHIDModel.get(position).getKhandanNumber());
 
                 Intent intent = null;
                 intent = new Intent(c, FemaleMembersActivity.class);
 
-                ((Activity) c).startActivity(intent);
+                ((Activity) c).startActivity(intent);*/
 
             }
         });
@@ -152,7 +157,7 @@ public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return fc.size();
+        return hHIDModel.size();
     }
 
     // Provide a reference to the views for each data item
@@ -171,7 +176,7 @@ public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> 
 
         public ViewHolder(View v) {
             super(v);
-//            rv = v.findViewById(R.id.FormsList);
+//            rv = v.findViewById(R.id.HHIDModelsList);
             sysdate = v.findViewById(R.id.sysdate);
             cluster = v.findViewById(R.id.cluster);
             hhno = v.findViewById(R.id.hhno);
