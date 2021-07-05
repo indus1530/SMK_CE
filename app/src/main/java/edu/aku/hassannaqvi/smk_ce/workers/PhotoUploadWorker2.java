@@ -270,6 +270,7 @@ public class PhotoUploadWorker2 extends Worker {
             URL url = null;
             try {
                 url = new URL(_PHOTO_UPLOAD_URL);
+                Log.d(TAG, "uploadPhoto: URL: "+url);
             } catch (MalformedURLException e) {
                 Log.d(TAG, "uploadPhoto: " + e.getMessage());
                 return e.getMessage();
