@@ -9,7 +9,6 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.EditText
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -22,6 +21,7 @@ import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.core.MainApp.femalemembers
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivitySectionMemeberinfoBinding
 import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel
+
 
 class SectionMemberInfoActivity : AppCompatActivity() {
 
@@ -58,32 +58,34 @@ class SectionMemberInfoActivity : AppCompatActivity() {
             })
         }
 
-        bi.hh03.setOnCheckedChangeListener { radioGroup: RadioGroup?, i: Int ->
+
+        bi.hh03.setOnCheckedChangeListener { group, i ->
+            Clear.clearAllFields(bi.fldGrpCVhh07)
+            Clear.clearAllFields(bi.fldGrpCVhh08)
+            Clear.clearAllFields(bi.fldGrpCVhh10)
+            bi.fldGrpCVhh07.visibility = View.VISIBLE
+            bi.fldGrpCVhh08.visibility = View.VISIBLE
+            bi.hh10a.isEnabled = true
             if (i == bi.hh03a.id) {
-                bi.fldGrpCVhh06.visibility = View.GONE
                 bi.fldGrpCVhh07.visibility = View.GONE
+                bi.fldGrpCVhh08.visibility = View.GONE
                 bi.hh10a.isEnabled = false
-            } else {
-                Clear.clearAllFields(bi.fldGrpCVhh06)
-                Clear.clearAllFields(bi.fldGrpCVhh07)
-                Clear.clearAllFields(bi.fldGrpCVhh10)
-                bi.fldGrpCVhh06.visibility = View.VISIBLE
-                bi.fldGrpCVhh07.visibility = View.VISIBLE
-                bi.hh10a.isEnabled = true
             }
         }
 
-        bi.hh06.setOnCheckedChangeListener { radioGroup: RadioGroup?, i: Int ->
+
+        bi.hh06.setOnCheckedChangeListener { group, i ->
+            Clear.clearAllFields(bi.fldGrpCVhh07)
+            Clear.clearAllFields(bi.fldGrpCVhh08)
+            bi.fldGrpCVhh07.visibility = View.VISIBLE
+            bi.fldGrpCVhh08.visibility = View.VISIBLE
             if (i == bi.hh06b.id) {
-                bi.fldGrpCVhh06.visibility = View.GONE
                 bi.fldGrpCVhh07.visibility = View.GONE
-            } else {
-                Clear.clearAllFields(bi.fldGrpCVhh06)
-                Clear.clearAllFields(bi.fldGrpCVhh07)
-                bi.fldGrpCVhh06.visibility = View.VISIBLE
-                bi.fldGrpCVhh07.visibility = View.VISIBLE
+                bi.fldGrpCVhh08.visibility = View.GONE
             }
         }
+
+
     }
 
 
