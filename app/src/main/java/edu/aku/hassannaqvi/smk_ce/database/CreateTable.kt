@@ -73,6 +73,7 @@ object CreateTable {
             + LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SYNCED + " TEXT,"
             + LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SYNCED_DATE + " TEXT,"
             + LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_APPVERSION + " TEXT,"
+            + LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHWREG_PHOTO + " TEXT,"
             + LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_HF_CODE + " TEXT,"
             + LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_HF_NAME + " TEXT,"
             + LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_TEHSIL_CODE + " TEXT,"

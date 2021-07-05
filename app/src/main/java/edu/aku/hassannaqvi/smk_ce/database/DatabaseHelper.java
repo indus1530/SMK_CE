@@ -186,6 +186,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(LHW_HOUSEHOLD_Table.COLUMN_LHW_NAME, model.getLhwName());
         values.put(LHW_HOUSEHOLD_Table.COLUMN_KHANDAN_NUMBER, model.getKhandanNumber());
         values.put(LHW_HOUSEHOLD_Table.COLUMN_RAND_NUMBERS, model.getRandSNo());
+        values.put(LHW_HOUSEHOLD_Table.COLUMN_LHWREG_PHOTO, model.getLhwphoto());
         values.put(LHW_HOUSEHOLD_Table.COLUMN_DEVICETAGID, model.getDeviceTag());
         values.put(LHW_HOUSEHOLD_Table.COLUMN_DEVICEID, model.getDeviceId());
         values.put(LHW_HOUSEHOLD_Table.COLUMN_APPVERSION, model.getAppver());

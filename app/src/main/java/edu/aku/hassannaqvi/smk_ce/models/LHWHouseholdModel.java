@@ -426,6 +426,7 @@ public class LHWHouseholdModel extends BaseObservable {
         this.hfName = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_NAME);
         this.khandanNumber = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_KHANDAN_NUMBER);
         this.randSNo = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_RAND_NUMBERS);
+        this.lhwphoto = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHWREG_PHOTO);
         this.deviceId = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICEID);
         this.deviceTag = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICETAGID);
         this.appver = jsonObject.getString(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_APPVERSION);
@@ -456,6 +457,7 @@ public class LHWHouseholdModel extends BaseObservable {
         this.lhwName = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_NAME));
         this.khandanNumber = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_KHANDAN_NUMBER));
         this.randSNo = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_RAND_NUMBERS));
+        this.lhwphoto = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHWREG_PHOTO));
         this.deviceId = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICEID));
         this.deviceTag = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICETAGID));
         this.appver = cursor.getString(cursor.getColumnIndex(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_APPVERSION));
@@ -517,12 +519,14 @@ public class LHWHouseholdModel extends BaseObservable {
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHW_NAME, this.lhwName == null ? JSONObject.NULL : this.lhwName);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_KHANDAN_NUMBER, this.khandanNumber == null ? JSONObject.NULL : this.khandanNumber);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_RAND_NUMBERS, this.randSNo == null ? JSONObject.NULL : this.randSNo);
+            json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_LHWREG_PHOTO, this.lhwphoto == null ? JSONObject.NULL : this.lhwphoto);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_DEVICETAGID, this.deviceTag == null ? JSONObject.NULL : this.deviceTag);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_APPVERSION, this.appver == null ? JSONObject.NULL : this.appver);
 /*            json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_ENDINGDATETIME, this.endTime == null ? JSONObject.NULL : this.endTime);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_STATUS, this.status == null ? JSONObject.NULL : this.status);*/
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+            json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SYNCED_DATE, this.syncDate == null ? JSONObject.NULL : this.syncDate);
             json.put(LHWHouseholdContract.LHW_HOUSEHOLD_Table.COLUMN_SYNCED_DATE, this.syncDate == null ? JSONObject.NULL : this.syncDate);
 
             /*json.put(LHWContract.LHW_HOUSEHOLD_Table.COLUMN_SA, new JSONObject(sAtoString()));
