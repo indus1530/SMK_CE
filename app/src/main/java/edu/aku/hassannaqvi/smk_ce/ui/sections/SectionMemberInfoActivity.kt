@@ -60,6 +60,7 @@ class SectionMemberInfoActivity : AppCompatActivity() {
 
 
         bi.hh03.setOnCheckedChangeListener { group, i ->
+            Clear.clearAllFields(bi.fldGrpCVhh06)
             Clear.clearAllFields(bi.fldGrpCVhh07)
             Clear.clearAllFields(bi.fldGrpCVhh08)
             Clear.clearAllFields(bi.fldGrpCVhh10)

@@ -10,7 +10,7 @@
     <string name="mwra_mainheading">MWRA: </string>
     <string name="adolescent_mainheading">Adolescent: </string>
     <string name="vhc_mainheading">VHC: </string>
-    <string name="householdverification_mainheading">گهر جي شناخت: -</string>
+    <string name="householdverification_mainheading"> گهر جي شناخت: -</string>
     <string name="btnSync">Download Data</string>
     <string name="btnUpload">Upload Data</string>
     <string name="prompt_email">Email</string>
