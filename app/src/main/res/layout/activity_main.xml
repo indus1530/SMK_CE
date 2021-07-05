@@ -29,8 +29,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            app:title="Testing"
-            app:subtitle="Testing"
             android:titleTextAppearance="@style/Toolbar.TitleText"
             android:subtitleTextAppearance="@style/Toolbar.SubtitleText"
             android:title="@string/app_name"

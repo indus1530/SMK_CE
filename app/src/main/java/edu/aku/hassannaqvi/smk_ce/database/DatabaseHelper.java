@@ -23,7 +23,6 @@ import edu.aku.hassannaqvi.smk_ce.contracts.FemaleMembersContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract;
 import edu.aku.hassannaqvi.smk_ce.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.HHIDContract;
-import edu.aku.hassannaqvi.smk_ce.contracts.IMContract.IMTable;
 import edu.aku.hassannaqvi.smk_ce.contracts.LHWHouseholdContract.LHW_HOUSEHOLD_Table;
 import edu.aku.hassannaqvi.smk_ce.contracts.MWRAContract;
 import edu.aku.hassannaqvi.smk_ce.core.MainApp;
@@ -34,14 +33,12 @@ import edu.aku.hassannaqvi.smk_ce.models.Districts;
 import edu.aku.hassannaqvi.smk_ce.models.Districts.TableDistricts;
 import edu.aku.hassannaqvi.smk_ce.models.FemaleMembersModel;
 import edu.aku.hassannaqvi.smk_ce.models.Form;
-import edu.aku.hassannaqvi.smk_ce.models.FormIndicatorsModel;
 import edu.aku.hassannaqvi.smk_ce.models.HHIDModel;
 import edu.aku.hassannaqvi.smk_ce.models.HealthFacilities;
 import edu.aku.hassannaqvi.smk_ce.models.LHW;
 import edu.aku.hassannaqvi.smk_ce.models.LHWHouseholdModel;
 import edu.aku.hassannaqvi.smk_ce.models.MWRAModel;
 import edu.aku.hassannaqvi.smk_ce.models.Province;
-import edu.aku.hassannaqvi.smk_ce.models.RsdHF;
 import edu.aku.hassannaqvi.smk_ce.models.Tehsil;
 import edu.aku.hassannaqvi.smk_ce.models.Tehsil.TableTehsil;
 import edu.aku.hassannaqvi.smk_ce.models.UCs;
@@ -78,15 +75,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CreateTable.SQL_CREATE_MWRA);
         db.execSQL(CreateTable.SQL_CREATE_ADOLESCENT);
 
-        db.execSQL(CreateTable.SQL_CREATE_IMMUNIZATION);
-        db.execSQL(CreateTable.SQL_CREATE_MOBILE_HEALTH);
+
         db.execSQL(CreateTable.SQL_CREATE_VERSIONAPP);
 
         db.execSQL(CreateTable.SQL_CREATE_LHW);
         db.execSQL(CreateTable.SQL_CREATE_TEHSIL);
         db.execSQL(CreateTable.SQL_CREATE_LHW_HF);
         db.execSQL(CreateTable.SQL_CREATE_PROVINCE);
-        db.execSQL(CreateTable.SQL_CREATE_RSD_HF);
     }
 
     @Override
@@ -404,40 +399,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allForms;
     }
 
-    public FormIndicatorsModel getFormStatusCount(String sysdate) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        FormIndicatorsModel count = new FormIndicatorsModel();
-        Cursor mCursor = db.rawQuery(
-                String.format("select " +
-                        "sum(case when %s = 1 then 1 else 0 end) as completed," +
-                        "sum(case when %s != 1 OR %s is null then 1 else 0 end) as notCompleted " +
-                        "from %s WHERE %s Like ?", FormsTable.COLUMN_ISTATUS, FormsTable.COLUMN_ISTATUS, FormsTable.COLUMN_ISTATUS, FormsTable.TABLE_NAME, FormsTable.COLUMN_SYSDATE),
-                new String[]{"%" + sysdate + " %"}, null);
-        if (mCursor != null && mCursor.moveToFirst()) {
-            count = count.copy(Integer.parseInt(mCursor.getString(0)),
-                    Integer.parseInt(mCursor.getString(1)));
-            mCursor.close();
-        }
-        return count;
-    }
-
-    public FormIndicatorsModel getUploadStatusCount() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        FormIndicatorsModel count = new FormIndicatorsModel();
-        Cursor mCursor = db.rawQuery(
-                String.format("select " +
-                        "sum(case when %s = 1 then 1 else 0 end) as completed," +
-                        "sum(case when %s is null OR %s = '' then 1 else 0 end) as notCompleted " +
-                        "from %s", FormsTable.COLUMN_SYNCED, FormsTable.COLUMN_SYNCED, FormsTable.COLUMN_SYNCED, FormsTable.TABLE_NAME),
-                null, null);
-        if (mCursor != null && mCursor.moveToFirst()) {
-            count = count.copy(Integer.parseInt(mCursor.getString(0)),
-                    Integer.parseInt(mCursor.getString(1)));
-            mCursor.close();
-        }
-        return count;
-    }
-
 
     public ArrayList<FemaleMembersModel> getFamilyMembersBYUID(String lhwcode, String khandannumber) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -511,6 +472,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 all.add(new Districts().hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return all;
+    }
+
+    public Collection<LHW> getAllLHW() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = LHW.TableLhw._ID + " ASC";
+        Collection<LHW> all = new ArrayList<>();
+        try {
+            c = db.query(
+                    LHW.TableLhw.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                all.add(new LHW().hydrate(c));
             }
         } finally {
             if (c != null) {
@@ -714,6 +712,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return lhw;
     }
 
+    public Boolean getRegisteredLHWByCode(String lhwcode) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause = LHW_HOUSEHOLD_Table.COLUMN_LHW_CODE + "=?";
+        String[] whereArgs = {lhwcode};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = LHW_HOUSEHOLD_Table.COLUMN_LHW_NAME + " ASC";
+        //LHWHouseholdModel lhwhousehold = null;
+        int cCount = 0;
+        try {
+            c = db.query(
+                    LHW_HOUSEHOLD_Table.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            cCount = c.getCount();
+         /*   while (c.moveToNext()) {
+                lhwhousehold = new LHWHouseholdModel().Hydrate(c);
+            }*/
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return cCount > 0;
+    }
+
     public ArrayList<HHIDModel> getKhandanNumberByLHW(String lhwCode) {
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -883,19 +919,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = null;
 
-        String whereClause;
-        whereClause =
-                FormsTable.COLUMN_LHW_CODE + "=? AND " +
-                        FormsTable.COLUMN_KHANDAN_NUMBER + "=?";
+        String whereClause =
+                FormsTable.COLUMN_LHW_CODE + "=?";
 
-        String[] whereArgs = {lhwcode};
+        String[] whereArgs = {"%" + lhwcode + "%"};
 
         String groupBy = null;
         String having = null;
 
         String orderBy = FormsTable.COLUMN_ID + " ASC";
 
-        Collection<Form> allFC = null;
+        Collection<Form> allForm = new ArrayList<>();
         try {
             c = db.query(
                     FormsTable.TABLE_NAME,  // The table to query
@@ -907,7 +941,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                allFC.add(new Form().Hydrate(c));
+                Form Form = new Form();
+                Form.setId(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
+                Form.setUid(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
+                Form.setSysDate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
+                Form.setIStatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
+                Form.setKhandanNumber(c.getString(c.getColumnIndex(FormsTable.COLUMN_KHANDAN_NUMBER)));
+                Form.setHfName(c.getString(c.getColumnIndex(FormsTable.COLUMN_HF_NAME)));
+                Form.setLhwName(c.getString(c.getColumnIndex(FormsTable.COLUMN_LHW_NAME)));
+                Form.setLhwCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_LHW_CODE)));
+                Form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
+                Form.setsA(c.getString(c.getColumnIndex(FormsTable.COLUMN_SA)));
+                allForm.add(Form);
             }
         } finally {
             if (c != null) {
@@ -917,7 +962,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return allFC;
+        return allForm;
     }
 
     public int checkLHWHHNo(String lhwcode, String kno) {
@@ -1077,6 +1122,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 allBL = new BLRandom().hydrate(c);
             }
+        } catch (SQLiteException e) {
+
+
         } finally {
             if (c != null) {
                 c.close();
@@ -1494,38 +1542,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
-    //    Sync RSDHF
-    public int syncRsdHF(JSONArray rsdHFList) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(RsdHF.TablersdHF.TABLE_NAME, null, null);
-        int insertCount = 0;
-        try {
-
-            for (int i = 0; i < rsdHFList.length(); i++) {
-                JSONObject json = rsdHFList.getJSONObject(i);
-                RsdHF rsdHF = new RsdHF();
-                rsdHF.sync(json);
-                ContentValues values = new ContentValues();
-
-                values.put(RsdHF.TablersdHF.COLUMN_PRO_ID, rsdHF.getPro_id());
-                values.put(RsdHF.TablersdHF.COLUMN_DIST_ID, rsdHF.getDist_id());
-                values.put(RsdHF.TablersdHF.COLUMN_HF_CODE, rsdHF.getHf_Code());
-                values.put(RsdHF.TablersdHF.COLUMN_TEHSIL_ID, rsdHF.getTehsil_id());
-                values.put(RsdHF.TablersdHF.COLUMN_UC_ID, rsdHF.getUc_Id());
-
-                long rowID = db.insert(RsdHF.TablersdHF.TABLE_NAME, null, values);
-                if (rowID != -1) insertCount++;
-            }
-            db.close();
-
-        } catch (Exception e) {
-            Log.d(TAG, "syncLhw(e): " + e);
-            db.close();
-        } finally {
-            db.close();
-        }
-        return insertCount;
-    }
 
 
     //get UnSyncedTables
@@ -1535,7 +1551,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] columns = null;
 
         String whereClause;
-        whereClause = FormsTable.COLUMN_SYNCED + " is null ";
+        whereClause = FormsTable.COLUMN_SYNCED + " is null AND "+
+                FormsTable.COLUMN_ISTATUS + "= '1'";
 
         String[] whereArgs = null;
 
@@ -1753,6 +1770,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG, "getUnsyncedMwra: " + allMwra);
         return allMwra;
     }
+    public JSONArray getUnsyncedFemaleMembers() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause;
+        whereClause = FemaleMembersContract.FemaleMembersTable.COLUMN_SYNCED + " is null ";
+
+        String[] whereArgs = null;
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = FemaleMembersContract.FemaleMembersTable.COLUMN_ID + " ASC";
+
+        JSONArray allFemaleMembers = new JSONArray();
+        try {
+            c = db.query(
+                    FemaleMembersContract.FemaleMembersTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                Log.d(TAG, "getUnsyncedFemaleMembers: " + c.getCount());
+                FemaleMembersModel femaleMembers = new FemaleMembersModel();
+                allFemaleMembers.put(femaleMembers.Hydrate(c).toJSONObject());
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        Log.d(TAG, "getUnsyncedFemaleMembers: " + allFemaleMembers.toString().length());
+        Log.d(TAG, "getUnsyncedFemaleMembers: " + allFemaleMembers);
+        return allFemaleMembers;
+    }
 
 
     //update SyncedTables
@@ -1851,26 +1911,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
+    public void updateSyncedFemaleMembers(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
 
-    public ArrayList<Form> getUnclosedForms() {
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_SYNCED, true);
+        values.put(FemaleMembersContract.FemaleMembersTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = FemaleMembersContract.FemaleMembersTable.COLUMN_ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                FemaleMembersContract.FemaleMembersTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+
+    public Collection<Form> getUnclosedForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
-        String[] columns = {
-                FormsTable._ID,
-                FormsTable.COLUMN_UID,
-                FormsTable.COLUMN_SYSDATE,
-                FormsTable.COLUMN_LHW_CODE,
-                FormsTable.COLUMN_KHANDAN_NUMBER,
-                FormsTable.COLUMN_ISTATUS,
-                FormsTable.COLUMN_SYNCED,
-        };
+        String[] columns = null;
         String whereClause = FormsTable.COLUMN_ISTATUS + " = ''";
         String[] whereArgs = null;
 //        String[] whereArgs = new String[]{"%" + spDateT.substring(0, 8).trim() + "%"};
         String groupBy = null;
         String having = null;
         String orderBy = FormsTable.COLUMN_ID + " ASC";
-        ArrayList<Form> allFC = new ArrayList<>();
+        Collection<Form> allForm = new ArrayList<>();
         try {
             c = db.query(
                     FormsTable.TABLE_NAME,  // The table to query
@@ -1882,16 +1953,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                Form fc = new Form();
-                fc.setId(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
-                fc.setUid(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
-                fc.setSysDate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
-                fc.setLhwCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_LHW_CODE)));
-                fc.setKhandanNumber(c.getString(c.getColumnIndex(FormsTable.COLUMN_KHANDAN_NUMBER)));
-                fc.setIStatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
-                fc.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
-                allFC.add(fc);
+                Form Form = new Form();
+                Form.setId(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
+                Form.setUid(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
+                Form.setSysDate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
+                Form.setIStatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
+                Form.setKhandanNumber(c.getString(c.getColumnIndex(FormsTable.COLUMN_KHANDAN_NUMBER)));
+                Form.setHfName(c.getString(c.getColumnIndex(FormsTable.COLUMN_HF_NAME)));
+                Form.setLhwName(c.getString(c.getColumnIndex(FormsTable.COLUMN_LHW_NAME)));
+                Form.setLhwCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_LHW_CODE)));
+                Form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
+                Form.setsA(c.getString(c.getColumnIndex(FormsTable.COLUMN_SA)));
+
+                allForm.add(Form);
             }
+        } catch (SQLiteException e) {
+
+
         } finally {
             if (c != null) {
                 c.close();
@@ -1900,33 +1978,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return allFC;
+        return allForm;
     }
 
-    public int getChildrenPhotoCheck(String UID) {
-        String countQuery = "SELECT  * FROM " + IMTable.TABLE_NAME +
-                " WHERE " + IMTable.COLUMN_UUID + " = '" + UID +
-                "' AND " + IMTable.COLUMN_STATUS + " = '1' " +
-                " AND (" + IMTable.COLUMN_SIM + " NOT LIKE '%\"frontFileName\":\"\"%' " +
-                " OR " + IMTable.COLUMN_SIM + " NOT LIKE '%\"backFileName\":\"\"%') ";
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(countQuery, null);
-        int count = cursor.getCount();
-        cursor.close();
-        return count;
-    }
 
-    public int getChildrenCardCheck(String UID) {
-        String countQuery = "SELECT  * FROM " + IMTable.TABLE_NAME +
-                " WHERE " + IMTable.COLUMN_UUID + " = '" + UID +
-                "' AND " + IMTable.COLUMN_STATUS + " = '1' " +
-                " AND " + IMTable.COLUMN_SIM + " LIKE '%\"im01\":\"1\"%' ";
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(countQuery, null);
-        int count = cursor.getCount();
-        cursor.close();
-        return count;
-    }
+
+
 
 
     public ArrayList<Cursor> getData(String Query) {
@@ -1985,7 +2042,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = null;
         String whereClause = FormsTable.COLUMN_SYSDATE + " Like ? ";
-        String[] whereArgs = new String[]{"%" + sysdate + " %"};
+        String[] whereArgs = {"%" + sysdate + " %"};
 //        String[] whereArgs = new String[]{"%" + spDateT.substring(0, 8).trim() + "%"};
         String groupBy = null;
         String having = null;
@@ -2013,7 +2070,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 Form.setKhandanNumber(c.getString(c.getColumnIndex(FormsTable.COLUMN_KHANDAN_NUMBER)));
                 Form.setHfName(c.getString(c.getColumnIndex(FormsTable.COLUMN_HF_NAME)));
                 Form.setLhwName(c.getString(c.getColumnIndex(FormsTable.COLUMN_LHW_NAME)));
+                Form.setLhwCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_LHW_CODE)));
                 Form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
+                Form.setsA(c.getString(c.getColumnIndex(FormsTable.COLUMN_SA)));
                 allForm.add(Form);
             }
         } catch (SQLiteException e) {
@@ -2028,6 +2087,56 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allForm;
+    }
+
+    public Collection<HHIDModel> getHHIDByLHW(String lhwcode) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause =
+                HHIDContract.HHIDTable.COLUMN_LHW_CODE + "=?";
+
+        String[] whereArgs = {"%" + lhwcode + "%"};
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = HHIDContract.HHIDTable.COLUMN_ID + " ASC";
+
+        Collection<HHIDModel> allHHID = new ArrayList<>();
+        try {
+            c = db.query(
+                    HHIDContract.HHIDTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                HHIDModel HHID = new HHIDModel();
+                HHID.setId(c.getString(c.getColumnIndex(HHIDContract.HHIDTable.COLUMN_ID)));
+                HHID.setUid(c.getString(c.getColumnIndex(HHIDContract.HHIDTable.COLUMN_UID)));
+                HHID.setSysDate(c.getString(c.getColumnIndex(HHIDContract.HHIDTable.COLUMN_SYSDATE)));
+                HHID.setKhandanNumber(c.getString(c.getColumnIndex(HHIDContract.HHIDTable.COLUMN_KHANDAN_NUMBER)));
+                HHID.setHfName(c.getString(c.getColumnIndex(HHIDContract.HHIDTable.COLUMN_HF_NAME)));
+                HHID.setLhwName(c.getString(c.getColumnIndex(HHIDContract.HHIDTable.COLUMN_LHW_NAME)));
+                HHID.setLhwCode(c.getString(c.getColumnIndex(HHIDContract.HHIDTable.COLUMN_LHW_CODE)));
+                HHID.setSynced(c.getString(c.getColumnIndex(HHIDContract.HHIDTable.COLUMN_SYNCED)));
+                HHID.setsA(c.getString(c.getColumnIndex(HHIDContract.HHIDTable.COLUMN_SA)));
+                allHHID.add(HHID);
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allHHID;
     }
 
 }

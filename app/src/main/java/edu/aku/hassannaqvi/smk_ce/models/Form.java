@@ -323,6 +323,7 @@ public class Form extends BaseObservable implements Observable {
 
     public Form setsA(String sA) {
         this.sA = sA;
+        sAHydrate(sA);
         return this;
     }
 

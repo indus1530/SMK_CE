@@ -55,15 +55,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                     android:id="@+id/dtFilter"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="0dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
-                    app:dateFormat="yyyy-MM-dd"
-                    app:theme="@style/MyDatePickerDialogTheme" />
+                    />
 
                 <ImageView
                     android:layout_width="wrap_content"

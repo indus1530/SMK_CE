@@ -31,7 +31,7 @@
                     android:lineHeight="20dp"
                     android:padding="0dp"
                     android:paddingStart="24dp"
-                    android:text="Households By Date"
+                    android:text="Open Household Forms"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -43,7 +43,7 @@
                     android:gravity="top"
                     android:padding="0dp"
                     android:paddingStart="24dp"
-                    android:text="Please select a date to search households"
+                    android:text="Please select a date to search household"
                     android:textColor="#7f7f7f"
                     android:textSize="14dp"
                     android:textStyle="normal" />

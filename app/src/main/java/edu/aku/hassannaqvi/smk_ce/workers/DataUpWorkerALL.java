@@ -204,18 +204,20 @@ public class DataUpWorkerALL extends Worker {
 
             //JSONObject jsonObjectCC = jsonArray.getJSONObject(0);
             ///BE CAREFULL DATA.BUILDER CAN HAVE ONLY 1024O BYTES. EACH CHAR HAS 8 BYTES
-            if (result.toString().length() > 10240) {
+  /*          if (result.toString().length() > 10240) {
                 data = new Data.Builder()
                         .putString("message", String.valueOf(result).substring(0, (10240 - 1) / 8))
                         .putInt("position", this.position)
                         .build();
-            } else {
+            } else {*/
 
-                data = new Data.Builder()
-                        .putString("message", String.valueOf(result))
+            MainApp.downloadData[position] = String.valueOf(result);
+
+            data = new Data.Builder()
+                    //    .putString("message", String.valueOf(result))
                         .putInt("position", this.position)
                         .build();
-            }
+ /*           }*/
 
             displayNotification(nTitle, "Uploaded successfully");
             return Result.success(data);

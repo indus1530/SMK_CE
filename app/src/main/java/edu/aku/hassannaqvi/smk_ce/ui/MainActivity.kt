@@ -16,8 +16,10 @@ import edu.aku.hassannaqvi.smk_ce.core.MainApp
 import edu.aku.hassannaqvi.smk_ce.database.AndroidManager
 import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper
 import edu.aku.hassannaqvi.smk_ce.databinding.ActivityMainBinding
-import edu.aku.hassannaqvi.smk_ce.ui.list_activity.FormsReportCluster
+import edu.aku.hassannaqvi.smk_ce.ui.list_activity.FormsReportLHW
 import edu.aku.hassannaqvi.smk_ce.ui.list_activity.FormsReportDate
+import edu.aku.hassannaqvi.smk_ce.ui.list_activity.FormsReportPending
+import edu.aku.hassannaqvi.smk_ce.ui.list_activity.HHIDReportDate
 import edu.aku.hassannaqvi.smk_ce.ui.login_activity.LoginActivity
 import edu.aku.hassannaqvi.smk_ce.ui.sections.*
 import edu.aku.hassannaqvi.smk_ce.utils.extension.gotoActivity
@@ -93,10 +95,17 @@ class MainActivity : AppCompatActivity() {
             R.id.formsReportDate -> {
                 gotoActivity(FormsReportDate::class.java)
                 return true
+            }            R.id.lhwsReportDate -> {
+                gotoActivity(HHIDReportDate::class.java)
+                return true
+            }
+    R.id.formsReportPending -> {
+                gotoActivity(FormsReportPending::class.java)
+                return true
             }
 
             R.id.formsReportCluster -> {
-                gotoActivity(FormsReportCluster::class.java)
+                gotoActivity(FormsReportLHW::class.java)
                 return true
             }
             R.id.action_database -> {

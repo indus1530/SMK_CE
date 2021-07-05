@@ -164,54 +164,6 @@ object CreateTable {
             + " );")
 
 
-    const val SQL_CREATE_IMMUNIZATION = ("CREATE TABLE "
-            + IMContract.IMTable.TABLE_NAME + "("
-            + IMContract.IMTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + IMContract.IMTable.COLUMN_PROJECT_NAME + " TEXT,"
-            + IMContract.IMTable.COLUMN_UID + " TEXT,"
-            + IMContract.IMTable.COLUMN_UUID + " TEXT,"
-            + IMContract.IMTable.COLUMN_FMUID + " TEXT,"
-            + IMContract.IMTable.COLUMN_USERNAME + " TEXT,"
-            + IMContract.IMTable.COLUMN_SYSDATE + " TEXT,"
-            + IMContract.IMTable.COLUMN_STATUS + " TEXT,"
-            + IMContract.IMTable.COLUMN_DEVICEID + " TEXT,"
-            + IMContract.IMTable.COLUMN_DEVICETAGID + " TEXT,"
-            + IMContract.IMTable.COLUMN_SYNCED + " TEXT,"
-            + IMContract.IMTable.COLUMN_SYNCED_DATE + " TEXT,"
-            + IMContract.IMTable.COLUMN_APPVERSION + " TEXT,"
-            + IMContract.IMTable.COLUMN_DCODE + " TEXT,"
-            + IMContract.IMTable.COLUMN_UCODE + " TEXT,"
-            + IMContract.IMTable.COLUMN_CLUSTER + " TEXT,"
-            + IMContract.IMTable.COLUMN_HHNO + " TEXT,"
-            + IMContract.IMTable.COLUMN_MOTHER_NAME + " TEXT,"
-            + IMContract.IMTable.COLUMN_CHILD_NAME + " TEXT,"
-            + IMContract.IMTable.COLUMN_SERIAL + " TEXT,"
-            + IMContract.IMTable.COLUMN_SIM + " TEXT"
-            + " );")
-
-    const val SQL_CREATE_MOBILE_HEALTH = ("CREATE TABLE "
-            + MHContract.MHTable.TABLE_NAME + "("
-            + MHContract.MHTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + MHContract.MHTable.COLUMN_PROJECT_NAME + " TEXT,"
-            + MHContract.MHTable.COLUMN_UID + " TEXT,"
-            + MHContract.MHTable.COLUMN_USERNAME + " TEXT,"
-            + MHContract.MHTable.COLUMN_SYSDATE + " TEXT,"
-            + MHContract.MHTable.COLUMN_STATUS + " TEXT,"
-            + MHContract.MHTable.COLUMN_DEVICEID + " TEXT,"
-            + MHContract.MHTable.COLUMN_DEVICETAGID + " TEXT,"
-            + MHContract.MHTable.COLUMN_SYNCED + " TEXT,"
-            + MHContract.MHTable.COLUMN_SYNCED_DATE + " TEXT,"
-            + MHContract.MHTable.COLUMN_APPVERSION + " TEXT,"
-            + MHContract.MHTable.COLUMN_SERIAL + " TEXT,"
-            + MHContract.MHTable.COLUMN_MH01 + " TEXT,"
-            + MHContract.MHTable.COLUMN_MH02 + " TEXT,"
-            + MHContract.MHTable.COLUMN_MH03 + " TEXT,"
-            + MHContract.MHTable.COLUMN_MH04 + " TEXT,"
-            + MHContract.MHTable.COLUMN_MH05 + " TEXT,"
-            + MHContract.MHTable.COLUMN_MH06 + " TEXT,"
-            + MHContract.MHTable.COLUMN_MH07 + " TEXT,"
-            + MHContract.MHTable.COLUMN_SA + " TEXT"
-            + " );")
 
     const val SQL_CREATE_USERS = ("CREATE TABLE " + Users.UsersTable.TABLE_NAME + "("
             + Users.UsersTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -279,12 +231,5 @@ object CreateTable {
             + Province.TableProvince.COLUMN_PRO_ID + " TEXT"
             + " );")
 
-    const val SQL_CREATE_RSD_HF = ("CREATE TABLE " + RsdHF.TablersdHF.TABLE_NAME + "("
-            + RsdHF.TablersdHF.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + RsdHF.TablersdHF.COLUMN_PRO_ID + " TEXT,"
-            + RsdHF.TablersdHF.COLUMN_DIST_ID + " TEXT,"
-            + RsdHF.TablersdHF.COLUMN_TEHSIL_ID + " TEXT,"
-            + RsdHF.TablersdHF.COLUMN_UC_ID + " TEXT,"
-            + RsdHF.TablersdHF.COLUMN_HF_CODE + " TEXT"
-            + " );")
+
 }

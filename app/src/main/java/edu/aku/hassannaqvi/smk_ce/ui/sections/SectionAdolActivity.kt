@@ -112,7 +112,7 @@ class SectionAdolActivity : AppCompatActivity() {
 
         adol.position = position
 
-        adol.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
+        adol.sysDate = MainApp.form.sysDate
         adol.uuid = MainApp.form.uid
         adol.fmid = MainApp.fm.get(position.toInt()).uid
         adol.userName = MainApp.user.userName

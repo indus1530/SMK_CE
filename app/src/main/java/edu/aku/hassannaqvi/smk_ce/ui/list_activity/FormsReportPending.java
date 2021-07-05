@@ -20,7 +20,7 @@ import edu.aku.hassannaqvi.smk_ce.database.DatabaseHelper;
 import edu.aku.hassannaqvi.smk_ce.models.Form;
 
 
-public class FormsReportCluster extends AppCompatActivity {
+public class FormsReportPending extends AppCompatActivity {
     DatabaseHelper db;
     Collection<Form> fc;
     String sysdateToday = new SimpleDateFormat("dd-MM-yy").format(new Date());
@@ -33,7 +33,7 @@ public class FormsReportCluster extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forms_report_cluster);
+        setContentView(R.layout.activity_forms_report_pending);
         recyclerView = findViewById(R.id.fc_recycler_view);
 
         // use this setting to improve performance if you know that changes
@@ -46,7 +46,7 @@ public class FormsReportCluster extends AppCompatActivity {
         dtFilter = findViewById(R.id.dtFilter);
         noresult = findViewById(R.id.noresult);
         db = new DatabaseHelper(this);
-        fc = db.getFormByLHW("0000000");
+        fc = db.getUnclosedForms();
 
         // specify an adapter (see also next example)
         formsAdapter = new FormsAdapter((List<Form>) fc, this);
@@ -54,11 +54,12 @@ public class FormsReportCluster extends AppCompatActivity {
     }
 
     public void filterForms(View view) {
-        Toast.makeText(this, "updated", Toast.LENGTH_SHORT).show();
-        fc = db.getFormByLHW(dtFilter.getText().toString());
+        fc = db.getUnclosedForms();
         if (fc.size() > 0) {
             recyclerView.setVisibility(View.VISIBLE);
             noresult.setVisibility(View.GONE);
+
+            Toast.makeText(this, "updated: " + fc.size(), Toast.LENGTH_SHORT).show();
             formsAdapter = new FormsAdapter((List<Form>) fc, this);
             formsAdapter.notifyDataSetChanged();
             recyclerView.setAdapter(formsAdapter);

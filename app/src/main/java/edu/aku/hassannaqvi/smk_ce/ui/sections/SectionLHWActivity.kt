@@ -184,8 +184,11 @@ class SectionLHWActivity : AppCompatActivity() {
                 lhwCode = ArrayList(listOf("...."))
                 var lhw: ArrayList<LHW> = db.getLHWByHF(hfCode[position].toString())
                 for (l in lhw) {
-                    lhwName.add(l.lhw_Name)
-                    lhwCode.add(l.lhw_Code)
+                    if(!db.getRegisteredLHWByCode(l.lhw_Code)) {
+                        lhwName.add(l.lhw_Name)
+                        lhwCode.add(l.lhw_Code)
+                    }
+
                 }
 
                 // Update LHW Adapter

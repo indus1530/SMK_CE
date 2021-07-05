@@ -69,7 +69,7 @@ class SectionHHIdentifyActivity : AppCompatActivity() {
 
     private fun saveDraft() {
         hhid = HHIDModel()
-        hhid.sysDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(Date().time)
+        hhid.sysDate = lhwHousehold.sysDate
         hhid.uuid = lhwHousehold.uid
         hhid.userName = MainApp.user.userName
         hhid.hfCode = lhwHousehold.hfCode
