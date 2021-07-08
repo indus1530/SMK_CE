@@ -210,9 +210,9 @@
                             android:gravity="center"
                             android:hint="####"
                             android:inputType="number"
-                            android:maxLength="4"
+                            android:maxLength="20"
                             app:maxValue="9999"
-                            app:minValue="10"
+                            app:minValue="20"
                             app:type="range" />
 
                     </LinearLayout>

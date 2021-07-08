@@ -164,19 +164,22 @@ public class MainApp extends Application {
         Double blockSize = Double.valueOf(total)/Double.valueOf(HOUSEHOLDS_TO_RANDOMISE);
         System.out.println(" blockSize: "+blockSize+"\n");
 
-        int randQuat = new Random().nextInt((int) (blockSize-1))+1;
-        System.out.println(" randQuat: "+randQuat+"\n");
+        //int randQuat = new Random().nextInt((int) (blockSize-1))+1;
+      //  System.out.println(" randQuat: "+randQuat+"\n");
 
         int[] hhno = new int[HOUSEHOLDS_TO_RANDOMISE];
         int c =0;
-        for(int i=1;c<HOUSEHOLDS_TO_RANDOMISE;i+=blockSize){
+        for(double i=1;c<HOUSEHOLDS_TO_RANDOMISE;i+=blockSize){
             c++;
             int high =  (int) (blockSize *c);
-            int low = i;
-            hhno[c - 1] = new Random().nextInt(high - low) + low;
+            int low = (int) i;
+            if (high!=low) {
+                hhno[c - 1] = new Random().nextInt(high - low) + low;
            /* System.out.println(c + " - " + low + "-" + high + "\r");
             System.out.println(c+" -> "+hhno[c-1]+"\n");*/
-
+            } else {
+                hhno[c - 1] = (int) i;
+            }
         }
         MainApp.randHHNo = new int[HOUSEHOLDS_TO_RANDOMISE];
         MainApp.randHHNo =  hhno;

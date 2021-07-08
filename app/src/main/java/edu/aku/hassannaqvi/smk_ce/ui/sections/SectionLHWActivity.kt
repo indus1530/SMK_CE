@@ -28,13 +28,14 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-var PhotoSerial: Int = 0
+
 
 class SectionLHWActivity : AppCompatActivity() {
 
+    private var photolist: String = ""
     private val TAG: String = "SectionLHWActivity"
     lateinit var bi: ActivitySectionLhwBinding
-
+    private var PhotoSerial: Int = 0
     /*    var tehsilName = mutableListOf("....")
         var tehsilCode = mutableListOf<String>()
         var hfName = mutableListOf("....")
@@ -65,7 +66,7 @@ class SectionLHWActivity : AppCompatActivity() {
             Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show()
 
             val fileName = data!!.getStringExtra("FileName")
-
+photolist = photolist + fileName + ";";
             PhotoSerial++
 
             bi.lhwphoto.text = bi.lhwphoto.text.toString() + PhotoSerial.toString() + " - " + fileName + ";\r\n"
@@ -85,7 +86,6 @@ class SectionLHWActivity : AppCompatActivity() {
         lateinit var lhwAdapter: ArrayAdapter<String>*/
     lateinit var db: DatabaseHelper
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_lhw)
@@ -94,7 +94,6 @@ class SectionLHWActivity : AppCompatActivity() {
         setTitle(R.string.lhwinfo)
         populateSpinner()
         setupSkips()
-        PhotoSerial = 1
 
     }
 
@@ -281,7 +280,7 @@ class SectionLHWActivity : AppCompatActivity() {
         Toast.makeText(this, "Rand HHNo: " + lhwHousehold.lhw04sno, Toast.LENGTH_SHORT).show()*/
 
         lhwHousehold.lhwphoto = when {
-            bi.lhwphoto.text.toString().trim().isNotEmpty() -> bi.lhwphoto.text.toString()
+            photolist.trim().isNotEmpty() -> photolist
             else -> "-1"
         }
      //   lhw.setsA(lhw.sAtoString())
